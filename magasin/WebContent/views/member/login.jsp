@@ -113,6 +113,8 @@
 <title>Insert title here</title>
 </head>
   <body>
+  <!-- 팀원이 각자 생성, 수정, 삭제하고 그 내용을 팀장에게 병합 요청하는 것을 보여주기 위해서 -->
+  <!-- 이곳에 이런 주석을 달아보겠습니다. 비록 주석이라고 하더라도 git은 코드의 변화로 감지해줍니다. 훌륭하죠? -->
   	<section>
   		<form action="/login" method="post" id="login-box">
   			<div class="main">
