@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList");
+    	String pageNavi = (String)request.getAttribute("pageNavi"); 
     %>
 <!DOCTYPE html>
 <html>
@@ -66,9 +67,7 @@
 						<tfoot>
 							<!-- 페이징할거에요~~~~~ -->
 							<tr>
-								<td colspan="5"><a href="#" class="btn btn-sm">1</a> <a
-									href="#" class="btn btn-sm">2</a> <a href="#"
-									class="btn btn-sm">3</a></td>
+								<td colspan="5"><%=pageNavi %></td>
 							</tr>
 						</tfoot>
 					</table>
