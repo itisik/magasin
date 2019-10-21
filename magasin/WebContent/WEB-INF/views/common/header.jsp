@@ -28,9 +28,9 @@
 					<% }else{%>
 						<%if(m.getId().equals("admin")){%>
 							<li><a href="#">관리자Page</a></li>
-							<li><a href="#">Logout</a></li>
+							<li><a href="/logout">Logout</a></li>
 						<%}else{ %>
-						<li><a href="#">Logout</a></li>
+						<li><a href="/logout">Logout</a></li>
 						<li><a href="/mypage?id=<%= m.getId() %>">mypage</a></li>
 						<li><a href="#" id="cart-img">cart<img src="/img/common_img/jang.png" width="20"></a></li>
 						

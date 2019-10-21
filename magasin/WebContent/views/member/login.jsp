@@ -136,7 +136,7 @@
 					        				<input type="text" name="id" id="id" placeholder="아이디 입력" />
 					        			</div>
 							        	<div class="window__pw">
-							          		<input type="text" name="pw" id="pw" placeholder="비밀번호 입력" />
+							          		<input type="password" name="pw" id="pw" placeholder="비밀번호 입력" />
 							        	</div>
 							        </div>
 							        <div class="window__loginBtn"><button type="submit" style="cursor:pointer">LOGIN</button></div>
