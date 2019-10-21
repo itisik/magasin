@@ -46,6 +46,7 @@ public class MemberDao {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		System.out.println(id);
 		String query = "select * from member where id=?";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -63,6 +64,7 @@ public class MemberDao {
 				m.setGrade(rset.getString("grade"));
 				m.setEmail(rset.getString("email"));
 				m.setEnrollDate(rset.getDate("enroll_date"));
+			
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,8 +74,7 @@ public class MemberDao {
 		}
 		return m;
 	}
-	
-	
+  
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -99,5 +100,5 @@ public class MemberDao {
 		System.out.println(m.getId());
 		return result;
 	}
-	
+}
 }

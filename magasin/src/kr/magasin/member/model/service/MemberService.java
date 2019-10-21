@@ -1,5 +1,4 @@
 package kr.magasin.member.model.service;
-
 import java.sql.Connection;
 
 import kr.magasin.common.JDBCTemplate;
@@ -21,6 +20,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
+  
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
