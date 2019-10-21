@@ -20,7 +20,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
-  
+
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
