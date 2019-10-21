@@ -1,5 +1,8 @@
+<%@page import="kr.magasin.board.model.vo.Notice"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,19 +36,18 @@
 						</thead>
 						<tbody>
 							<%
-								for (int i = 1; i < 100; i++) {
+								for(Notice n : list) {
 							%>
 							<tr>
-								<td>No.<%=i%></td>
-								<td><a href="/views/test_board/notice/noticeViewTest.jsp" class="content">Title<%=i%></a></td>
-								<td><img src="/common_img/footerlogo2.png" height="27"></td>
-								<td>19/10/10</td>
-								<td>0</td>
+								<td>No.<%=n.getNoticeNo()%></td>
+								<td><a href="/noticeView?noticeNo=<%=n.getNoticeNo() %>" class="content">Title<%=n.getNoticeTitle()%></a></td>
+								<td><img src="/img/common_img/footerlogo2.png" height="27"></td>
+								<td><%=n.getNoticeDate() %></td>
+								<td><%=n.getNoticeCount() %></td>
 							</tr>
 							<%
 								}
 							%>
-						
 						<tfoot>
 							<!-- 페이징할거에요~~~~~ -->
 							<tr>
