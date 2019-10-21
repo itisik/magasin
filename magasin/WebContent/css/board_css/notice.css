@@ -138,3 +138,12 @@ table {
 	color: white;
 	background: #888888;						
 }
+
+#insertBtn{
+	display:block;
+	width:70px;
+	height:30px;
+	background:none;
+	float:right;
+	
+}

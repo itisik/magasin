@@ -34,7 +34,7 @@
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					<div class="noticeContainer">
 					<%if(m != null && m.getId().equals("admin")){%>
-						<a href="#" class="btn writeBtn">Write</a>
+					<a href="/views/board/notice/noticeWriteTest.jsp" class="btn writeBtn">Write</a>
 					<%}%>
 					<ul id="notice">
 						<li>Notice</li>
@@ -56,7 +56,7 @@
 							%>
 							<tr>
 								<td>No.<%=n.getNoticeNo()%></td>
-								<td><a href="/noticeView?noticeNo=<%=n.getNoticeNo() %>" class="content">Title<%=n.getNoticeTitle()%></a></td>
+								<td><a href="/noticeView?noticeNo=<%=n.getNoticeNo() %>" class="content"><%=n.getNoticeTitle()%></a></td>
 								<td><img src="/img/common_img/footerlogo2.png" height="27"></td>
 								<td><%=n.getNoticeDate() %></td>
 								<td><%=n.getNoticeCount() %></td>

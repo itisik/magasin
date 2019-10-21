@@ -1,7 +1,6 @@
-package kr.magasin.board.controller;
+package kr.magasin.board.controller.notice;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,23 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.magasin.board.model.service.NoticeService;
 import kr.magasin.board.model.vo.Notice;
-import kr.magasin.board.model.vo.PageData;
 
 /**
- * Servlet implementation class NoticeListServlet
+ * Servlet implementation class NoticeUpdateServlet
  */
-@WebServlet(name = "noticeList", urlPatterns = { "/noticeList" })
-public class NoticeListServlet extends HttpServlet {
+@WebServlet(name = "NoticeUpdate", urlPatterns = { "/noticeUpdate" })
+public class NoticeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public NoticeListServlet() {
+    public NoticeUpdateServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,24 +32,12 @@ public class NoticeListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-//		페이징 처리 합니다..
-		
-		
-		int reqPage;
-		try {
-			reqPage = Integer.parseInt(request.getParameter("reqPage"));
-			
-		}catch(NumberFormatException e){
-			reqPage = 1;
-			
-		}
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		NoticeService service = new NoticeService();
-		PageData pd  = service.noticeList(reqPage);
-		request.setAttribute("noticeList", pd.getNoticeList());
-		request.setAttribute("pageNavi", pd.getPageNavi());
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeListTest.jsp");
+		Notice n = service.noticeOne(noticeNo);
+		request.setAttribute("notice", n);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeUpdateTest.jsp");
 		rd.forward(request, response);
-	
 	}
 
 	/**
