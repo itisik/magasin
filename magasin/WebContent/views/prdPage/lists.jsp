@@ -53,6 +53,7 @@
 						<div class="cloths-title">
 							<a href="/views/prdPage/exdetail.jsp">latte v-neck cable
 								cardigan</a>
+							<a href="#">latte v-neck cable cardigan</a>
 						</div>
 						<div class="cloths-price">
 							<span>32,000</span>
