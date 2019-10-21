@@ -2,7 +2,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList"); %>
+    <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,28 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>***notice***</title>
 <link rel="stylesheet" href="/css/board_css/notice.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+<body id="body1">
+	<header>
+		<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+	</header>
 	<section>
-			<div class="noticeContainer">
-				<p id="writeNotice"><a href="#" class="btn writeBtn">Write</a></p>
-				<ul id="notice">
-					<li>Notice</li>
-				</ul>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					<div class="noticeContainer">
+					<%if(m != null && m.getId().equals("admin")){%>
+						<a href="#" class="btn writeBtn">Write</a>
+					<%}%>
+					<ul id="notice">
+						<li>Notice</li>
+					</ul>
 				<div class="table-wrapper">
 					<table class="table table-hover list-table">
 						<thead>
@@ -57,8 +72,20 @@
 							</tr>
 						</tfoot>
 					</table>
+					
 				</div>
+				
 			</div>
+								
+			</div>
+		</div>
+			
 	</section>
+	<footer>
+		<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+	</footer>
+
 </body>
 </html>
