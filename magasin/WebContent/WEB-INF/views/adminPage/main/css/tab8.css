@@ -1,0 +1,31 @@
+.tab8-title {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background-color: #ffffff;
+  padding: 15px 25px;
+  font-size: 24px;
+}
+
+#tab-8 > .tab8-search {
+  margin-top: 10px;
+  border: 1px solid #cdcdcd;
+  background-color: #ffffff;
+  height: 185px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 35px;
+}
+
+.tab8-search > .search-top,
+.tab8-search > .search-bottom {
+  display: flex;
+}
+
+#tab-8 > .tab8-content {
+  margin-top: 10px;
+  border: 1px solid #cdcdcd;
+  background-color: #ffffff;
+  height: 570px;
+}
