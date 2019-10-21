@@ -1,3 +1,4 @@
+
 <%@page import="kr.magasin.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
  <%
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="/css/common_css/header.css">
 </head>
 <body>
+
 		<div class="header-left">
 			<a href="/index.jsp"><img src="/img/common_img/mainlogo.png" width="170"></a>
 		</div>
@@ -34,6 +36,8 @@
 						
 						<%}%>
 					<%} %>
+					
+					
 				</ul>
 			</div>
 			
