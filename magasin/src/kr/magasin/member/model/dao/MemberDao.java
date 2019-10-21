@@ -46,7 +46,6 @@ public class MemberDao {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		System.out.println(id);
 		String query = "select * from member where id=?";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -57,7 +56,7 @@ public class MemberDao {
 				m.setId(rset.getString("id"));
 				m.setPw(rset.getString("pw"));
 				m.setName(rset.getString("name"));
-				m.setAddr(rset.getString("phone"));
+				m.setAddr(rset.getString("addr"));
 				m.setPhone(rset.getString("phone"));
 				m.setBirthdate(rset.getInt("birthdate"));
 				m.setGender(rset.getString("gender"));
@@ -102,5 +101,64 @@ public class MemberDao {
 		return result;
 	}
 	
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+	
+		String query = "update MEMBER SET pw=?,addr=?,phone=?,email=? where id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getPw());
+			pstmt.setString(2, m.getAddr());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getId());
+			result = pstmt.executeUpdate();
+			
+			if(result > 0) {
+				conn.commit();
+			}else {
+				conn.rollback();
+				
+			}		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+	
+		return result;
+		
+		
+	}
+	
+	public int delete(Connection conn, String memberId) {
+	      int result = 0;
+	      PreparedStatement  pstmt =null;
+	      String query = "DELETE FROM MEMBER WHERE ID =?";
+	      
+	      try {
+	         pstmt = conn.prepareStatement(query);
+	         pstmt.setString(1, memberId);
+	         result = pstmt.executeUpdate();
+
+	         if (result > 0) {
+	            conn.commit();
+	         } else {
+	            conn.rollback();
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         JDBCTemplate.close(pstmt);
+	      }
+	      return result;
+	   }
+	   
 	}
 	
