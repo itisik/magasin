@@ -1,0 +1,60 @@
+.bg-modal,
+.modal-content,
+.modal-content > form,
+.modal-button,
+.modal-button > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+}
+
+.modal-content,
+.modal-content > form {
+  flex-direction: column;
+}
+
+.modal-content > form > .modal-button {
+  margin-top: 10px;
+}
+
+.modal-content {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.modal-content input {
+  width: 150px;
+  height: 30px;
+  margin: 5px;
+}
+
+.modal-button,
+.modal-button > a {
+  text-decoration: none;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  background-color: #1e76e9;
+}
+
+.modal-content > .close {
+  transform: (45deg);
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}

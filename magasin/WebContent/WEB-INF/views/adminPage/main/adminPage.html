@@ -20,10 +20,7 @@
     <!--아이콘을 위한 링크-->
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-      crossorigin="anonymous"
-    />
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
 
     <!--매출 그래프를 위한 링크-->
     <link href="c3-0.7.10/c3.css" rel="stylesheet">
@@ -64,9 +61,11 @@
           <li class="tab-link" data-tab="tab-7">매출조회</li>
           <li class="tab-link" data-tab="tab-8">등급관리</li>
         </ul>
-        
+
+        <!-- 아래 'tab-#'형으로 id를 갖는 div들 순서 바꾸지 말아주세요... 1, 2, 3,... 순으로 하면 깨져서 그래요!-->
+
         <div id="tab-7" class="tab-content current">
-    
+            
             <div class="tab7-window">
               <div class="chart-title">
                   <i class="fas fa-chart-line"></i>&nbsp;&nbsp;&nbsp;매출조회
@@ -106,19 +105,19 @@
                   </div>
               </div>
               <div class="chart-top">
-                <div class="top-canvas1">
+                <div class="top-canvas1" style="width: 70%; height: 300px;">
                   주문금액 / 주문건수
                 </div>
-                <div class="top-canvas3">
+                <div class="top-canvas3" style="width: 30%; height: 300px;">
                     성별별 구매비율
                 </div>
               </div>
               
               <div class="chart-bottom">
-                <div class="bottom-canvas2">
+                <div class="bottom-canvas2" style="width: 70%; height: 300px;">
                     매 시간마다 주문건수
                 </div>
-                <div class="bottom-canvas4">
+                <div class="bottom-canvas4" style="width: 30%; height: 300px;">
                     연령별 구매 비율
                 </div>
               </div>
@@ -229,7 +228,7 @@
             </div>
           </div>
         </div>
-        
+                
         <div id="tab-2" class="tab-content">
           <div class="searchmain">
               <i class="fas fa-list"></i><span> 상품 조회 및 수정/삭제</span>

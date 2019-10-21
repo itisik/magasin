@@ -1,12 +1,10 @@
-#tab-7 {
-  position: relative;
-}
-
 #tab-7 > .tab7-window {
-  width: 100%;
+  position: relative;
+  width: 100vh;
+  height: 100vh;
 }
-
 #tab-7 > .tab7-window > .chart-title {
+  width: 1545px;
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
   padding: 15px 25px;
@@ -29,12 +27,12 @@
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
   height: 145px;
+  width: 1600px;
 }
 
 .chart-search > .search-top,
 .chart-search > .search-bottom {
   display: flex;
-  min-width: 700px;
   height: 55px;
 }
 .chart-search > .search-top > div,
@@ -73,28 +71,32 @@
 .tab7-window > .chart-top,
 .tab7-window > .chart-bottom {
   display: flex;
+  width: 1545px;
 }
 .tab7-window > .chart-top {
   margin-bottom: 10px;
 }
 
 .chart-top > .top-canvas1,
-.chart-bottom > .bottom-canvas2 {
+.chart-bottom > .bottom-canvas2,
+.chart-top > .top-canvas3,
+.chart-bottom > .bottom-canvas4 {
   padding: 5px 10px;
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
-  height: 70%;
 }
+
 .chart-top > .top-canvas1,
 .chart-top > .top-canvas3 {
   padding-top: 10px;
 }
 
+.chart-top > .top-canvas1,
+.chart-bottom > .bottom-canvas2 {
+  padding-right: 20px;
+}
+
 .chart-top > .top-canvas3,
 .chart-bottom > .bottom-canvas4 {
-  padding: 5px 10px;
   margin-left: 15px;
-  border: 1px solid #cdcdcd;
-  background-color: #ffffff;
-  height: 30%;
 }
