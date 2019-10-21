@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.magasin.board.model.service.NoticeService;
 import kr.magasin.board.model.vo.Notice;
+import kr.magasin.board.model.vo.PageData;
 
 /**
  * Servlet implementation class NoticeListServlet
@@ -33,21 +34,24 @@ public class NoticeListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		NoticeService service = new NoticeService();
-		ArrayList<Notice> list  = service.noticeList();
+//		페이징 처리 합니다..
 		
-		if(list.isEmpty()) {
-			// 임시로 msg.jsp 사용합니다.
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			request.setAttribute("msg", "리스트 비었어요...");
-			request.setAttribute("loc", "/");
-			rd.forward(request, response);
-		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeListTest.jsp");
-			request.setAttribute("noticeList", list);
-			rd.forward(request, response);
+		
+		int reqPage;
+		try {
+			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+			
+		}catch(NumberFormatException e){
+			reqPage = 1;
+			
 		}
-		
+		NoticeService service = new NoticeService();
+		PageData pd  = service.noticeList(reqPage);
+		request.setAttribute("noticeList", pd.getNoticeList());
+		request.setAttribute("pageNavi", pd.getPageNavi());
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeListTest.jsp");
+		rd.forward(request, response);
+	
 	}
 
 	/**
