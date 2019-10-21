@@ -12,15 +12,33 @@
   margin-top: 10px;
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
-  height: 185px;
+  height: 130px;
   display: flex;
   flex-direction: column;
-  padding: 40px 35px;
+  padding: 25px 35px;
 }
 
 .tab8-search > .search-top,
 .tab8-search > .search-bottom {
   display: flex;
+  line-height: 55px;
+  min-width: 750px;
+}
+
+.tab8-search > .search-top > .top-select,
+.tab8-search > .search-bottom > .bottom-select {
+  margin-left: 67px;
+}
+
+.tab8-search > .search-top > .top-btn > button {
+  cursor: pointer;
+  width: 70px;
+  height: 28px;
+}
+
+.tab8-search > .search-top > .top-btn,
+.tab8-search > .search-bottom > .bottom-input {
+  margin-left: 65px;
 }
 
 #tab-8 > .tab8-content {
@@ -28,4 +46,71 @@
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
   height: 570px;
+}
+
+.tab8-search > .search-btn {
+  text-align: center;
+}
+
+.tab8-search > .search-btn > button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background-color: #bcbcbc;
+  border-radius: 5px;
+  width: 100px;
+  height: 35px;
+}
+
+.tab8-content {
+  margin-top: 10px;
+  height: 440px;
+  border: 1px solid #cdcdcd;
+  background-color: #ffffff;
+}
+
+.tab8-content > .content-title {
+  border-bottom: 1px solid #cdcdcd;
+  padding: 15px 35px;
+}
+
+.tab8-content > .content-list > .list-title {
+  border: 1px solid #cdcdcd;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tab8-content > .content-list > .list-content {
+  border: 1px solid #cdcdcd;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.tab8-content > .content-list > .list-title {
+  margin: 0;
+  padding: 0;
+}
+
+.tab8-content > .content-list > .list-title > table,
+.tab8-content > .content-list > .list-content > table {
+  text-align: center;
+  width: 100%;
+}
+
+.tab8-content > .content-list > .list-title > table td,
+.tab8-content > .content-list > .list-content > table td {
+  width: 14.2857%;
+  height: 40px;
+  line-height: 40px;
+}
+
+.tab8-content > .content-list > .list-title > table td:first-child,
+.tab8-content > .content-list > .list-content > table td:first-child {
+  width: 30px;
+  padding-left: 15px;
 }

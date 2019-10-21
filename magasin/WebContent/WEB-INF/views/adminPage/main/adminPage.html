@@ -53,7 +53,7 @@
               width="143px"
               height="86px"
           /></a>
-          <li class="tab-link" data-tab="tab-1">메인 창</li>
+          <li class="tab-link current" data-tab="tab-1">메인 창</li>
           <li class="tab-link" data-tab="tab-2">상품조회</li>
           <li class="tab-link" data-tab="tab-3">상품등록</li>
           <li class="tab-link" data-tab="tab-4">고객조회</li>
@@ -126,7 +126,7 @@
       
         </div>
   
-        <div id="tab-1" class="tab-content">
+        <div id="tab-1" class="tab-content current">
           <div class="main">
             <div class="window1">
               <div class="order">
@@ -290,6 +290,7 @@
                   <button>오늘</button>
                   <button>1주일</button>
                   <button>1개월</button>
+                  <button>3개월</button>
                   <button>전체기간</button>
               </div>
               </div>
@@ -571,8 +572,6 @@
                     <option>고객 아이디</option>
                     <option>상품 이름</option>
                     <option>상품 개수</option>
-                    <option>결제일</option>
-                    <option>발송일</option>
                   </select>
                 </div>
                 <div class="bottom-input">
@@ -605,125 +604,6 @@
                       <td>pdt1</td>
                       <td>2</td>
                       <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
-                    </tr>
-                    <tr>
-                      <td>idid1</td>
-                      <td>name1</td>
-                      <td>pdt1</td>
-                      <td>2</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
-                    </tr>
-                    <tr>
-                      <td>idid1</td>
-                      <td>name1</td>
-                      <td>pdt1</td>
-                      <td>2</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid1</td>
-                      <td>name1</td>
-                      <td>pdt1</td>
-                      <td>2</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
-                    </tr>
-                    <tr>
-                      <td>idid1</td>
-                      <td>name1</td>
-                      <td>pdt1</td>
-                      <td>2</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
-                    </tr>
-                    <tr>
-                      <td>idid1</td>
-                      <td>name1</td>
-                      <td>pdt1</td>
-                      <td>2</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid2</td>
-                      <td>name2</td>
-                      <td>pdt2</td>
-                      <td>3</td>
-                      <td>2019-10-15</td>
-                    </tr>
-                    <tr>
-                      <td>idid3</td>
-                      <td>name3</td>
-                      <td>pdt3</td>
-                      <td>1</td>
-                      <td>2019-10-11</td>
                     </tr>
                   </table>
                 </div>
@@ -1003,12 +883,64 @@
                   <option>첫결제일</option>
                 </select>
               </div>
+              <div class="top-btn">
+                <button>1주일</button>
+                <button>2주일</button>
+                <button>1달</button>
+                <button>3달</button>
+                <button>전체기간</button>
+              </div>
             </div>
             <div class="search-bottom">
-              <div class="bottom-title"></div>
+              <div class="bottom-title">상세조건</div>
+              <div class="bottom-select">
+                <select>
+                  <option>고객이름</option>
+                  <option>고객아이디</option>
+                  <option>구매상품</option>
+                  <option>총구매금액</option>
+                  <option>총구매횟수</option>
+                </select>
+              </div>
+              <div class="bottom-input">
+                <input type="text"/>
+              </div>
             </div>
+            <div class="search-btn"><button>검색</button></div>
           </div>
-          <div class="tab8-content"></div>
+          <div class="tab8-content">
+                <div class="content-title">목록 (총 <span>0</span>개)</div>
+                <div class="content-list">
+                  <div class="list-title">
+                    <table>
+                      <tr>
+                        <td><input type="checkbox"></td>
+                        <td>고객 아이디</td>
+                        <td>고객 이름</td>
+                        <td>총 구매금액</td>
+                        <td>총 구매횟수</td>
+                        <td>최초결제일</td>
+                        <td>최근결제일</td>
+                        <td>등급</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="list-content">
+                    <table>
+                      <tr>
+                          <td><input type="checkbox"></td>
+                        <td>idid1</td>
+                        <td>name1</td>
+                        <td>238000</td>
+                        <td>3</td>
+                        <td>2019-01-15</td>
+                        <td>2019-10-15</td>
+                        <td>member</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
         </div>
 
               
