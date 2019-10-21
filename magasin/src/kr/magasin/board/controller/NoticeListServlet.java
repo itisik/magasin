@@ -35,7 +35,7 @@ public class NoticeListServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		NoticeService service = new NoticeService();
 		ArrayList<Notice> list  = service.noticeList();
-		HttpSession session = request.getSession();
+		
 		if(list.isEmpty()) {
 			// 임시로 msg.jsp 사용합니다.
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
