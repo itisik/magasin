@@ -22,7 +22,7 @@
 				</div>
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					<%@include file="/views/prdPage/lists.html" %>
+					<%@include file="/views/prdPage/lists.jsp" %>
 				</div>
 			</div>
 		</section>

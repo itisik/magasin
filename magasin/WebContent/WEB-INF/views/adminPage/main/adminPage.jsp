@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/adminPage.css" />
-    <link rel="stylesheet" href="css/adminPage-prd.css" />
-    <link rel="stylesheet" href="css/tab3.css" />
-    <link rel="stylesheet" href="css/tab4.css" />
-    <link rel="stylesheet" href="css/tab5.css" />
-    <link rel="stylesheet" href="css/tab7.css" />
-    <link rel="stylesheet" href="css/tab8.css" />
+    <link rel="stylesheet" href="/css/adminPage/adminPage.css" />
+    <link rel="stylesheet" href="/css/adminPage/adminPage-prd.css" />
+    <link rel="stylesheet" href="/css/adminPage/tab3.css" />
+    <link rel="stylesheet" href="/css/adminPage/tab4.css" />
+    <link rel="stylesheet" href="/css/adminPage/tab5.css" />
+    <link rel="stylesheet" href="/css/adminPage/tab7.css" />
+    <link rel="stylesheet" href="/css/adminPage/tab8.css" />
 
     <!--폰트를 위한 링크-->
     <link
@@ -25,10 +25,10 @@
       href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
 
     <!--매출 그래프를 위한 링크-->
-    <link href="c3-0.7.10/c3.css" rel="stylesheet">
+    <link href="/js/c3-0.7.10/c3.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="c3-0.7.10/c3.min.js"></script>
-    <script src="c3-0.7.10/c3.js"></script>
+    <script src="/js/c3-0.7.10/c3.min.js"></script>
+    <script src="/js/c3-0.7.10/c3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <!-- jQuery를 위한 스크립트-->
@@ -48,7 +48,7 @@
         <ul class="tabs">
           <a href="adminPage.html">
             <img
-            src="img/manager-logo.png"
+            src="img/adminPage/manager-logo.png"
               alt="매거진"
               class="tabs-logo"
               width="143px"
@@ -61,7 +61,7 @@
           <li class="tab-link" data-tab="tab-5">주문조회</li>
           <li class="tab-link" data-tab="tab-6">답변관리</li>
           <li class="tab-link" data-tab="tab-7">매출조회</li>
-          <li class="tab-link current" data-tab="tab-8">등급관리</li>
+          <li class="tab-link" data-tab="tab-8">등급관리</li>
         </ul>
 
         <!-- 아래 'tab-#'형으로 id를 갖는 div들 순서 바꾸지 말아주세요... 1, 2, 3,... 순으로 하면 깨져서 그래요!-->
@@ -465,7 +465,7 @@
                       <input type="file" name="filesumname" onchange="loadImg(this)"
                              id="estsetse">
                       <div id="img-viewer">
-                  <img src="img/ompang1.jpg"id="img-view" width="50" height="50">
+                  <img src="img/adminPage/ompang1.jpg"id="img-view" width="50" height="50">
                       </div>
                   </td>
               </tr>   
@@ -480,7 +480,7 @@
                   <td id="tdimg2">
                       <input type="file" name="filename" onchange="loadImg(this)">
                       <div id="img-viewer2">
-                          <img src="img/ompang1.jpg" id="img-view2" width="50" height="50">
+                          <img src="/img/adminPage/ompang1.jpg" id="img-view2" width="50" height="50">
                       </div>
                   </td>
               </tr>
@@ -869,7 +869,7 @@
         <div id="tab-6" class="tab-content">
         </div>
 
-        <div id="tab-8" class="tab-content current">
+        <div id="tab-8" class="tab-content">
           <div class="tab8-title">
             <i class="fas fa-medal"></i>&nbsp;&nbsp;등급관리
           </div>
@@ -1028,7 +1028,7 @@
                             <i class="fas fa-edit"></i><span>상품 썸네일 수정</span>
                         </div>    
                         <div class="updatecon6-2">
-                            <img src="img/ompang1.jpg" id="img-view" width="50" height="50">
+                            <img src="img/adminPage/ompang1.jpg" id="img-view" width="50" height="50">
                         </div>    
                         <div class="updatecon6-3" id="img-viewer5">
                             <input type="file">
@@ -1043,7 +1043,7 @@
                             <i class="fas fa-edit"></i><span>상품 이미지 수정</span>
                         </div>   
                         <div class="updatecon7-2">
-                            <img src="img/ompang1.jpg" id="img-view2" width="50" height="50">
+                            <img src="img/adminPage/ompang1.jpg" id="img-view2" width="50" height="50">
                         </div>
                         <div class="updatecon7-3" id="img-viewer6">
                              <input type="file">
@@ -1063,8 +1063,8 @@
         </div>
   </div>
     </div>
-    <script type="text/javascript" src="js/adminPage.js"></script>
-    <script type="text/javascript" src="js/adminPagePrd.js"></script>
-    <script type="text/javascript" src="js/graph.js"></script>
+    <script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
+    <script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
+    <script type="text/javascript" src="/js/adminPage/graph.js"></script>
   </body>
 </html>
