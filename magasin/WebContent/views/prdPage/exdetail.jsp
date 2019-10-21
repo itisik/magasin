@@ -89,6 +89,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
 					<div class="detailView">
 						<p>DESIGN TIP</p>
 						<p>꽈배기 짜임이 돋보이는 도톰한 니트 가디건. 여리여리한 무드를 자아내는 핏에, 단독으로 착용했을 때도

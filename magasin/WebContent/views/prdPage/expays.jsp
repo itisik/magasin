@@ -82,7 +82,7 @@
                         <input type="text" name="addr2" value="">
                         나머지주소
                         <input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
-                                <input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
+                        <input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
                                 <input type="text" name="addr_3" id="addr_extraAddress" placeholder="참고항목">
                         
                         </td>
