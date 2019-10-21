@@ -79,13 +79,17 @@
          width: 80%;
          margin: 0 auto;
      }
-     .sale{
+     //sale에관한  css는 필요없어서 지우셔도되서 주석처리합니다.
+     /*
+    .sale{
          color:chocolate
      }
      .sale>td:nth-of-type(1){
      	 font-weight:bolder;
      }
-     .detailTotal{
+     */ 
+      
+     detailTotal{
          border-top: 1px solid black;
          padding: 20px 0px 0px 8px;
          font-size:11px;
@@ -149,4 +153,25 @@
      .detail-Wash{
          width: 900px;
          margin: 0 auto;
+     }
+     /*상세버튼과 배송비문구에 관한 css추가합니다.*/
+    .qBtn{
+         margin-top: 50px;
+              
+     }
+     .delivery{
+         margin-top: 15px;
+     }
+     .delivery>div:first-child{
+         text-align: center;
+         color: burlywood;
+         font-size: 15px;
+         font-weight: bold;
+     }
+     .delivery>div:last-child{
+         padding-top: 15px;
+         text-align: center;
+         color: darkorange;
+         font-size: 20px;
+         font-weight: bold;
      }

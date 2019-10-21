@@ -1,3 +1,4 @@
+@charset "UTF-8";
         *{
             text-decoration: none;
         }
@@ -10,7 +11,7 @@
             padding: 20px 10px;
 /*            border: 5px solid black;*/
             position: relative;
-        }
+        }W
         .window-cloths{
             width: 25%;
             height: 250px;
@@ -34,12 +35,16 @@
             color: #000000;
             font-size: 12px;
         }
+        /*
+                 베스트 카테고리 불필요하다고 판다되서 스타일 지웠어요
         .title-bottom{
             margin-bottom: 12px;           
         }
+        
         .title-bottom>h3{
             font-size: 15px;
         }
+        */
         .cloths-title,.cloths-price,.cloths-color{
             padding: 5px 0px;
         }
@@ -104,7 +109,8 @@
             display: flex;
         }
         .cloths-price span{
-            padding-right: 10px;
+           
+            /*padding-right: 10px;*/ /*sale price에 관한 스타일 삭제합니다.*/
             font-size: 12px;
         }
         .cloths-color>div{

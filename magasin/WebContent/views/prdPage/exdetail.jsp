@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/common_css/layout.css">
 
 <!-- 경필 CSS -->
+<!--test-->
 <link rel="stylesheet" href="/css/prdPage/exdetail.css">
 
 <link rel="stylesheet"
@@ -48,10 +49,7 @@
 									<tr>
 										<th>Price</th>
 										<td><span>32,000</span>원</td>
-									</tr>
-									<tr class="sale">
-										<th>Sale price</th>
-										<td><span>28,000</span>won</td>
+										<!--sale가격에 대한 테이블삭제-->
 									</tr>
 									<tr>
 										<td>color</td>
@@ -66,6 +64,13 @@
 										<th>size</th>
 										<td><select>
 												<option>-필수 옵션을 선택해주세요-</option>
+												<!--필수옵션에 사이즈 상세추가함-->
+												<option value="XS">XS</option>
+                                                <option value="S">S</option>
+                                                <option value="M">M</option>
+                                                <option value="L">L</option>
+                                                <option value="XL">XL</option>
+                                                <option value="FreeSize">FreeSize</option>
 										</select></td>
 									</tr>
 								</table>
@@ -77,6 +82,10 @@
 										TO BAG</a> <a href="/views/prdPage/expays.jsp"><img
 										src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW</a>
 								</div>
+                                    <!--상품문의하기 버튼과 배송비에관한 문구추가-->
+								    <a href="/views/qProduct.jsp" class="btn btn-default qBtn">상품 문의하기</a>
+                                  <div class="delivery"><div>Magasin 배송</div>
+                               <div>100원을 사도 무료배송!!</div>
 							</div>
 						</div>
 					</div>

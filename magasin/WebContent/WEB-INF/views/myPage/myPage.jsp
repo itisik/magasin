@@ -1,5 +1,9 @@
+<%@page import="kr.magasin.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <% 
+ Member member  = (Member)request.getAttribute("member");
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,7 @@
 <body>
 <div class="myp-wrapper">
 	<div class="myp-div1">
-	<span>임은지</span> 님은<span>[VVIP]</span>  회원이십니다.
+	<span><%= member.getName() %></span> 님은<span>[VVIP]</span>  회원이십니다.
 	</div>
 
 	<div  class="myp-div2">

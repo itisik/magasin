@@ -24,14 +24,12 @@ public class JoinServlet extends HttpServlet {
      */
     public JoinServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		//1. 인코딩
@@ -40,7 +38,12 @@ public class JoinServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
+		//String addr = request.getParameter("addr");
+		String addr1 = request.getParameter("addr_1");
+		String addr2 = request.getParameter("addr_2");
+		String addr3 = request.getParameter("addr_3");
+		String addr4 = request.getParameter("addr_4");
+		String addr = addr1 + "," + addr2 + "," + addr3 + "," + addr4;
 		String phone = request.getParameter("phone");
 		int birthdate = Integer.parseInt(request.getParameter("birthdate"));
 		String gender = request.getParameter("gender");
@@ -70,7 +73,7 @@ public class JoinServlet extends HttpServlet {
 		//4. view처리
 		if(result>0) {
 			request.setAttribute("member", m); //joinSuccess.jsp에서 사용해야되니까 set    //(key,value)
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/member/joinSuccess.jsp"); //회원가입 성공했을 때 회원가입이 완료되었습니다 라는 페이지 만들기
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/join/joinSuccess.jsp"); //회원가입 성공했을 때 회원가입이 완료되었습니다 라는 페이지 만들기
 			rd.forward(request, response);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");

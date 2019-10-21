@@ -3,8 +3,16 @@
   width: 100vh;
   height: 100vh;
 }
+
 #tab-7 > .tab7-window > .chart-title {
-  width: 1545px;
+  width: 1562px;
+}
+
+.tab7-window > .chart-search {
+  width: 1612px;
+}
+
+#tab-7 > .tab7-window > .chart-title {
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
   padding: 15px 25px;
@@ -27,7 +35,6 @@
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
   height: 145px;
-  width: 1600px;
 }
 
 .chart-search > .search-top,
