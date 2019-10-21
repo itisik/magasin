@@ -24,7 +24,9 @@
 							<li><a href="/views/member/login.jsp">log-in</a></li>
 							<% if (m == null){ %>
 								<li><a href="/views/myPage/myPage.jsp">mypage</a></li>
-							<% }else{%>
+							<% } else if(m.getId().equals("admin")){%>
+								<li><a href="/adminPageMain">>adminPage</a></li>
+							<%}else{%>
 								<li><a href="/mypage?id=<%= m.getId() %>">mypage</a></li>
 							<%} %>
 							

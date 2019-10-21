@@ -19,7 +19,7 @@ public class MemberDao {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			if (rset.next()) {
 				m = new Member();
 				m.setId(rset.getString("id"));
 				m.setPw(rset.getString("pw"));
@@ -34,14 +34,13 @@ public class MemberDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
 		return m;
 	}
-	
-	
+
 	public Member selectOne(Connection conn, String id) {
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -52,7 +51,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, id);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			if (rset.next()) {
 				m = new Member();
 				m.setId(rset.getString("id"));
 				m.setPw(rset.getString("pw"));
@@ -64,11 +63,11 @@ public class MemberDao {
 				m.setGrade(rset.getString("grade"));
 				m.setEmail(rset.getString("email"));
 				m.setEnrollDate(rset.getDate("enroll_date"));
-			
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
