@@ -35,12 +35,16 @@
             color: #000000;
             font-size: 12px;
         }
+        /*
+                 베스트 카테고리 불필요하다고 판다되서 스타일 지웠어요
         .title-bottom{
             margin-bottom: 12px;           
         }
+        
         .title-bottom>h3{
             font-size: 15px;
         }
+        */
         .cloths-title,.cloths-price,.cloths-color{
             padding: 5px 0px;
         }
