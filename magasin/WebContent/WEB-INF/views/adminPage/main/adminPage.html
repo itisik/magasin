@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/tab4.css" />
     <link rel="stylesheet" href="css/tab5.css" />
     <link rel="stylesheet" href="css/tab7.css" />
+    <link rel="stylesheet" href="css/tab8.css" />
 
     <!--폰트를 위한 링크-->
     <link
@@ -52,14 +53,14 @@
               width="143px"
               height="86px"
           /></a>
-          <li class="tab-link current" data-tab="tab-1">메인 창</li>
+          <li class="tab-link" data-tab="tab-1">메인 창</li>
           <li class="tab-link" data-tab="tab-2">상품조회</li>
           <li class="tab-link" data-tab="tab-3">상품등록</li>
           <li class="tab-link" data-tab="tab-4">고객조회</li>
           <li class="tab-link" data-tab="tab-5">주문조회</li>
           <li class="tab-link" data-tab="tab-6">답변관리</li>
           <li class="tab-link" data-tab="tab-7">매출조회</li>
-          <li class="tab-link" data-tab="tab-8">등급관리</li>
+          <li class="tab-link current" data-tab="tab-8">등급관리</li>
         </ul>
 
         <!-- 아래 'tab-#'형으로 id를 갖는 div들 순서 바꾸지 말아주세요... 1, 2, 3,... 순으로 하면 깨져서 그래요!-->
@@ -125,7 +126,7 @@
       
         </div>
   
-        <div id="tab-1" class="tab-content current">
+        <div id="tab-1" class="tab-content">
           <div class="main">
             <div class="window1">
               <div class="order">
@@ -386,9 +387,6 @@
           </div>   
         </div>
   
-          
-          
-          
         <div id="tab-3" class="tab-content">
           <div class="enter1">
              <table class="producttable">
@@ -990,8 +988,27 @@
         <div id="tab-6" class="tab-content">
         </div>
 
-        <div id="tab-8" class="tab-content">
-          등급관리를 하기 싫다. 영주바보
+        <div id="tab-8" class="tab-content current">
+          <div class="tab8-title">
+            <i class="fas fa-medal"></i>&nbsp;&nbsp;등급관리
+          </div>
+          <div class="tab8-search">
+            <div class="search-top">
+              <div class="top-title">조회기간</div>
+              <div class="top-select">
+                <select>
+                  <option>전체기간</option>
+                  <option>회원가입일</option>
+                  <option>최근결제일</option>
+                  <option>첫결제일</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-bottom">
+              <div class="bottom-title"></div>
+            </div>
+          </div>
+          <div class="tab8-content"></div>
         </div>
 
               
