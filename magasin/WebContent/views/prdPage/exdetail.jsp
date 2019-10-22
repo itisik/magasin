@@ -1,5 +1,9 @@
+<%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+			Product pdI = (Product)request.getAttribute("productId");
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,19 +40,19 @@
 			<div class="mainContent" style="width: 943px;">
 				<div class="detailContainr">
 					<p>
-						<a href="#">home</a> / <a href="#">OUTER</a>
+						<a href="/views/prdPage/lists.jsp">home</a> / <a href="/views/prdPage/lists.jsp">OUTER</a>
 					</p>
 					<div class="detailBorder">
 						<div class="detailImg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
+							<img src="/img/product/0.jpg">
 						</div>
 						<div class="detailInfor">
 							<div class="table-wrapper">
-								<p>latte v-neck cable cardigan</p>
+								<p><%=pdI.getPrdName()%></p>
 								<table class="table detail-table">
 									<tr>
 										<th>Price</th>
-										<td><span>32,000</span>원</td>
+										<td><span><%=pdI.getPrdPrice()%></span>원</td>
 										<!--sale가격에 대한 테이블삭제-->
 									</tr>
 									<tr>
@@ -95,11 +99,10 @@
 						<p>꽈배기 짜임이 돋보이는 도톰한 니트 가디건. 여리여리한 무드를 자아내는 핏에, 단독으로 착용했을 때도
 							스타일리쉬한 분위기가 나는 매력적인 니트.</p>
 						<div class="detailAllImg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
+							<img src="/img/product/0.jpg">
+							<img src="/img/product/0.jpg">
+							<img src="/img/product/0.jpg">
+							<img src="/img/product/0.jpg">
 
 						</div>
 					</div>
@@ -128,7 +131,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		</section>
