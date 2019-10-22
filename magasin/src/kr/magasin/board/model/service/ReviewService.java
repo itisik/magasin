@@ -44,5 +44,48 @@ public class ReviewService {
 		return pd;
 		
 	}
+	public int reviewInsert(Review r) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.reviewInsert(conn, r);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public Review reviewOne(int reviewNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		Review r = dao.reviewOne(conn, reviewNo);
+		JDBCTemplate.close(conn);
+		return r;
+	}
+	public int reviewUpdate(Review r) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.reviewUpdate(conn, r);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public int reviewDelete(int reviewNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.reviewDelete(conn,reviewNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 
 }
