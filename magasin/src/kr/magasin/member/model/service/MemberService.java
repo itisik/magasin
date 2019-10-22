@@ -1,8 +1,5 @@
 package kr.magasin.member.model.service;
-
 import java.sql.Connection;
-
-
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.member.model.dao.MemberDao;
 import kr.magasin.member.model.vo.Member;
@@ -22,9 +19,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
-	
 
-	
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
@@ -37,7 +32,6 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
-
 	
 	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -60,6 +54,5 @@ public class MemberService {
 		      return result;
 		   }
 
-	
 
 }

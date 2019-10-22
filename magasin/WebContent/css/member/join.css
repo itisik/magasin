@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+		body{
+            background-color: rgb(246,246,246);
+        }
+        .join-wrapper{
+            /*text-align: center;*/
+            padding: 20px;
+            width: 943px;
+        }
+        .join-div-h3{
+            text-align: left;
+	        margin: 50px 0px 10px;
+	       font-size: 16px;
+	       color : #666;
+        }
+        .join-div-p{
+            text-align: right;
+            font-size: 11px;
+            color : #777777;
+            margin: -25px 0 10px;
+        }
+        .join-div-table{
+        /*    width: 400px;
+            height: 200px;
+            border: 1px solid black;    */
+            
+           width: 100%;
+	       border-top: 1.5px solid #d7d7d7;
+	       border-bottom: 1.5px solid #d7d7d7;
+        }
+        .join-div-tabel tr{
+            border-bottom: 1px solid black;
+        }
+        .join-div-table tr th{
+        	background-color: #fafafa;
+        }
+        .join-div-table tr th,
+        .join-div-table tr td span{
+            width: 150px;
+            font-size: 11px;
+            color : #777777;
+            padding: 14px;
+        }
+        .join-div-table tr td{
+            text-align: left;
+            font-size: 11px;
+	       line-height: 1.8;
+	       color : #666666;
+	       background-color: white;
+	       padding: 14px;	
+	       vertical-align: middle;
+        }
+        .join-div-table tr td input{
+            border: 1px solid #d7d7d7;
+            color: #333;
+            margin: 5px 0 0;
+	       border-radius: 5px;
+	       /*width:  128px;*/
+        }
+        #addr_postcode{
+            width: 100px;
+        }
+        #addr_address{
+            width: 230px;
+        }
+        #addr_detailAddress{
+            width: 230px;
+        }
+        #addr_extraAddress{
+            width: 230px;
+        }
+        
+        .join_agree_wrap{
+            text-align: center;
+            border: 1.5px solid #d7d7d7;
+            width: 80%;
+            background-color: #fafafa;
+        }
+        .agreeArea{
+            text-align: left;
+            font-size: 11px;
+            color: #666;
+        }
+        .agreeArea.check{
+            padding: 7px 0 0 0;
+            color: #666;
+            font-size: 11px;
+        }
+        .area_content{
+            overflow: auto;
+            height: 110px;
+            padding: 20px;
+            border: 1px solid #e8e8e8;
+            background: #fff;
+        }
+        .ec-base-box {
+            padding: 20px;
+            border: 1px solid #eee;
+            color: #666;
+            font-size: 11px;
+        }
+        .ec-base-box.agreeAreaAll p{
+            font-size: 14px;
+            color: #666;
+            line-height: 22px;
+        }
+        .ec-base-box #agree_all {
+            width: 15px;
+            height: 15px;
+            margin: 0 0 0 13px;
+        }
+        .allCheck{
+            font-size: 14px;
+        }
+        .btn_join {
+            font-size: 15px;
+            height: 60px;
+            width: 250px;
+            border: 0;
+            background-color: #2f2f2f;
+            color: white;         
+        }
+        .btn-box{
+            padding: 2px 8px;
+	       border: 1px solid #888888;
+	       font-size: 11px;
+	       background-color: white;
+        }
+        .gender{
+            padding: 0;
+            text-align: left;
+        }
+        

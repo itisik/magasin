@@ -1,6 +1,7 @@
 package kr.magasin.basket.model.vo;
 
 public class Basket {
+
 	private String basketId;
 	private String basketUserId;
 	private String basketProDtlId;
@@ -28,6 +29,7 @@ public class Basket {
 	public void setBasketUserId(String basketUserId) {
 		this.basketUserId = basketUserId;
 	}
+
 	public String getBasketProDtlId() {
 		return basketProDtlId;
 	}
@@ -41,5 +43,6 @@ public class Basket {
 		this.basketProCount = basketProCount;
 	}
 	
+
 
 }

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
     <% 
     Member member = (Member)request.getAttribute("member"); 
     %>
@@ -18,9 +19,8 @@
 <div class="myp-wrapper">
 	<div class="myp-div1">
 
+
 	<span><%=member.getName() %></span> 님은<span><%=member.getGrade() %></span>  회원이십니다.
-
-
 	</div>
 
 	<div  class="myp-div2">
