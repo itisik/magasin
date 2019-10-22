@@ -1,15 +1,26 @@
 package kr.magasin.basket.model.vo;
 
 public class Basket {
-	private int basketId;
+
+	private String basketId;
 	private String basketUserId;
-	private int basketPrdDtlId;
-	private int basketPrdCount;
-	
-	public int getBasketId() {
+	private String basketProDtlId;
+	private String basketProCount;
+	public Basket() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Basket(String basketId, String basketUserId, String basketProDtlId, String basketProCount) {
+		super();
+		this.basketId = basketId;
+		this.basketUserId = basketUserId;
+		this.basketProDtlId = basketProDtlId;
+		this.basketProCount = basketProCount;
+	}
+	public String getBasketId() {
 		return basketId;
 	}
-	public void setBasketId(int basketId) {
+	public void setBasketId(String basketId) {
 		this.basketId = basketId;
 	}
 	public String getBasketUserId() {
@@ -18,27 +29,20 @@ public class Basket {
 	public void setBasketUserId(String basketUserId) {
 		this.basketUserId = basketUserId;
 	}
-	public int getBasketPrdDtlId() {
-		return basketPrdDtlId;
+
+	public String getBasketProDtlId() {
+		return basketProDtlId;
 	}
-	public void setBasketPrdDtlId(int basketPrdDtlId) {
-		this.basketPrdDtlId = basketPrdDtlId;
+	public void setBasketProDtlId(String basketProDtlId) {
+		this.basketProDtlId = basketProDtlId;
 	}
-	public int getBasketPrdCount() {
-		return basketPrdCount;
+	public String getBasketProCount() {
+		return basketProCount;
 	}
-	public void setBasketPrdCount(int basketPrdCount) {
-		this.basketPrdCount = basketPrdCount;
+	public void setBasketProCount(String basketProCount) {
+		this.basketProCount = basketProCount;
 	}
-	public Basket(int basketId, String basketUserId, int basketPrdDtlId, int basketPrdCount) {
-		super();
-		this.basketId = basketId;
-		this.basketUserId = basketUserId;
-		this.basketPrdDtlId = basketPrdDtlId;
-		this.basketPrdCount = basketPrdCount;
-	}
-	public Basket() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+
+
 }

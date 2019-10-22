@@ -63,7 +63,6 @@ public class MemberDao {
 				m.setGrade(rset.getString("grade"));
 				m.setEmail(rset.getString("email"));
 				m.setEnrollDate(rset.getDate("enroll_date"));
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,4 +98,67 @@ public class MemberDao {
 		System.out.println(m.getId());
 		return result;
 	}
+	
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+	
+		String query = "update MEMBER SET pw=?,addr=?,phone=?,email=? where id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getPw());
+			pstmt.setString(2, m.getAddr());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getId());
+			result = pstmt.executeUpdate();
+			
+			if(result > 0) {
+				conn.commit();
+			}else {
+				conn.rollback();
+				
+			}		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+	
+		return result;
+		
+		
+	}
+	
+	public int delete(Connection conn, String memberId) {
+	      int result = 0;
+	      PreparedStatement  pstmt =null;
+	      String query = "DELETE FROM MEMBER WHERE ID =?";
+	      
+	      try {
+	         pstmt = conn.prepareStatement(query);
+	         pstmt.setString(1, memberId);
+	         result = pstmt.executeUpdate();
+
+	         if (result > 0) {
+	            conn.commit();
+	         } else {
+	            conn.rollback();
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         JDBCTemplate.close(pstmt);
+	      }
+	      return result;
+	   }
+	   
+	
+
+
 }
