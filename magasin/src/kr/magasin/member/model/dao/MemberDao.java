@@ -71,24 +71,10 @@ public class MemberDao {
 		}
 		return m;
 	}
-<<<<<<< HEAD
-	
-<<<<<<< Updated upstream
-=======
-	//은지
-	public int updateMember(Member member) {
-		Connection conn = JDBCTemplate.getConnection();
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = "update member set member_pw=?,member_name=?,age=?,email=?,phone=? where member_id=?";
-	
-		return result;
-	}
->>>>>>> Stashed changes
-	
-=======
 
->>>>>>> 61f07aa69ed897aba06f6ab485cfd094517903d6
+
+
+
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -114,8 +100,7 @@ public class MemberDao {
 		System.out.println(m.getId());
 		return result;
 	}
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
 	
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
@@ -176,11 +161,9 @@ public class MemberDao {
 	      return result;
 	   }
 	   
-	}
 	
-=======
+
+
+
 }
->>>>>>> Stashed changes
-=======
-}
->>>>>>> 61f07aa69ed897aba06f6ab485cfd094517903d6
+

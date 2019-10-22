@@ -48,8 +48,8 @@ public class UpdateServlet extends HttpServlet {
 
 		 String[] phoneArr = new String[3];
 			 phoneArr[0] = phoneStr.substring(0,3); 
-			 phoneArr[1] = phoneStr.substring(4,8); 
-			 phoneArr[2] = phoneStr.substring(9); 
+			 phoneArr[1] = phoneStr.substring(3,7); 
+			 phoneArr[2] = phoneStr.substring(7); 
 
 			String addrStr = m.getAddr();
 			

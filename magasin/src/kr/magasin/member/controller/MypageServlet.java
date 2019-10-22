@@ -1,12 +1,11 @@
 package kr.magasin.member.controller;
 
 import java.io.IOException;
-<<<<<<< Updated upstream
+
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
-=======
->>>>>>> Stashed changes
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +34,7 @@ public class MypageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< Updated upstream
+
 	//1.문자인코딩
 	request.setCharacterEncoding("UTF-8");
 	
@@ -53,21 +52,7 @@ public class MypageServlet extends HttpServlet {
 		rd.forward(request, response);
 	}else {
 		response.sendRedirect("/");
-	}
-	
-	
-=======
-		//1.문자인코딩 
-		request.setCharacterEncoding("utf-8");
-		//2.변수저장
-		String id = request.getParameter("id");
-		//3.비지니스 로직
-		MemberService service = new MemberService();
-		Member m = service.selectOne(id);
-		
-		
->>>>>>> Stashed changes
-		
+	}		
 	}
 
 	/**

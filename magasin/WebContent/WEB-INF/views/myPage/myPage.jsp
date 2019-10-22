@@ -1,15 +1,11 @@
 <%@page import="kr.magasin.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< Updated upstream
+
     <% 
     Member member = (Member)request.getAttribute("member"); 
     %>
-=======
-    <%
-	Member member = (Member)request.getAttribute("member");
-	%>
->>>>>>> Stashed changes
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +17,10 @@
 <body>
 <div class="myp-wrapper">
 	<div class="myp-div1">
-<<<<<<< Updated upstream
+
 	<span><%=member.getName() %></span> 님은<span><%=member.getGrade() %></span>  회원이십니다.
-=======
-	<span><input type="text" value="<%=member.getId() %>"></span> 님은<span></span>  회원이십니다.
->>>>>>> Stashed changes
+
+
 	</div>
 
 	<div  class="myp-div2">

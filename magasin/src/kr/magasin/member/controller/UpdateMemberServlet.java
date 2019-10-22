@@ -49,7 +49,7 @@ public class UpdateMemberServlet extends HttpServlet {
 		phoneList[0] = request.getParameter("phoneArr0");
 		phoneList[1] = request.getParameter("phoneArr1");
 		phoneList[2] = request.getParameter("phoneArr2");
-		String phone  = phoneList[0]+","+phoneList[1]+","+phoneList[2];
+		String phone  = phoneList[0]+phoneList[1]+phoneList[2];
 		emailList[0] = request.getParameter("emailList0");
 		emailList[1] = request.getParameter("emailList1");
 	
@@ -76,7 +76,8 @@ public class UpdateMemberServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			session.setAttribute("member", m);			
 			request.setAttribute("member", m);
-			response.sendRedirect("/views/myPage/myInfoUpdate?id="+id);
+		
+			response.sendRedirect("/update?id="+id);
 			request.setAttribute("msg", "회원정보 변경 성공");
 			
 		}else {
