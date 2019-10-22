@@ -17,17 +17,17 @@
 				<div class="top-title">조회기간</div>
 				<div class="top-select">
 					<select name="searchIndex">
+						<option value="none">전체기간</option>
 						<option value="purchaseDate">결제일</option>
 						<option value="outDate">발송일</option>
 					</select>
 				</div>
 				<div class="top-date-select">
-					<input name="date" class="dateSelect" type="hidden" />
+					<input id="dateSelect" name="dateSelect" class="dateSelect" type="hidden" />
 					<button value="1w" type="button">1주일</button>
 					<button value="2w" type="button">2주일</button>
 					<button value="1m" type="button">1달</button>
-					<button value="3w" type="button">3달</button>
-					<button value="all" type="button">전체기간</button>
+					<button value="3m" type="button">3달</button>
 				</div>
 			</div>
 			<div class="search-bottom">
@@ -41,7 +41,7 @@
 					</select>
 				</div>
 				<div class="bottom-input">
-					<input type="text">
+					<input name="customer" type="text">
 				</div>
 			</div>
 			<div class="bottom-btn">

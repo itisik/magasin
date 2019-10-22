@@ -7,37 +7,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.magasin.adminPage.model.service.CustomerSearch;
+import kr.magasin.adminPage.model.service.CustomerSearchService;
+
 /**
  * Servlet implementation class CustomerSearchServlet
  */
 @WebServlet(name = "CustomerSearch", urlPatterns = { "/customerSearch" })
 public class CustomerSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CustomerSearchServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String searchIndex = request.getParameter("searchIndex");
-		System.out.println(searchIndex);
-		
-		String selectIndex = request.getParameter("selectIndex");
-		System.out.println(selectIndex);
+	public CustomerSearchServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String searchIndex = request.getParameter("searchIndex");
+		String selectIndex = request.getParameter("selectIndex");
+		String dateSelect = request.getParameter("dateSelect");
+		String customer = request.getParameter("customer");
+		
+		CustomerSearchService service = new CustomerSearchService();
+		service.CustomerSearch(searchIndex, dateSelect, selectIndex, customer);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

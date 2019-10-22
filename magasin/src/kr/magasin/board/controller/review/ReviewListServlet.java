@@ -1,28 +1,29 @@
-package kr.magasin.board.controller.notice;
+package kr.magasin.board.controller.review;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import kr.magasin.board.model.service.NoticeService;
-import kr.magasin.board.model.vo.Notice;
+
+import kr.magasin.board.model.service.ReviewService;
 import kr.magasin.board.model.vo.PageData;
 
 /**
- * Servlet implementation class NoticeListServlet
+ * Servlet implementation class ReviewListServlet
  */
-@WebServlet(name = "noticeList", urlPatterns = { "/noticeList" })
-public class NoticeListServlet extends HttpServlet {
+@WebServlet(name = "ReviewList", urlPatterns = { "/reviewList" })
+public class ReviewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public NoticeListServlet() {
+    public ReviewListServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -30,9 +31,8 @@ public class NoticeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-//		페이징 처리 합니다..
-		
 		
 		int reqPage;
 		try {
@@ -42,11 +42,11 @@ public class NoticeListServlet extends HttpServlet {
 			reqPage = 1;
 			
 		}
-		NoticeService service = new NoticeService();
-		PageData pd  = service.noticeList(reqPage);
-		request.setAttribute("noticeList", pd.getNoticeList());
+		ReviewService service = new ReviewService();
+		PageData pd  = service.reviewList(reqPage);
+		request.setAttribute("reviewList", pd.getReviewList());
 		request.setAttribute("pageNavi", pd.getPageNavi());
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeListTest.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/review/reviewListTest.jsp");
 		rd.forward(request, response);
 	
 	}

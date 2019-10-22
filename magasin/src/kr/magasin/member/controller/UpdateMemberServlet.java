@@ -56,7 +56,13 @@ public class UpdateMemberServlet extends HttpServlet {
 		String email = emailList[0]+"@"+emailList[1];
 		
 		String addr = addrList[0]+","+addrList[1]+","+addrList[2]+","+addrList[3];
+<<<<<<< HEAD
 	
+=======
+		//String addr = (String)request.getAttribute("addr");
+		//
+		
+>>>>>>> upstream/master
 		
 
 		
@@ -72,6 +78,7 @@ public class UpdateMemberServlet extends HttpServlet {
 			
 			Member m = service.selectOne(id);			
 			HttpSession session = request.getSession(false);
+<<<<<<< HEAD
 			session.setAttribute("member", m);	
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			request.setAttribute("msg", "회원정보 변경이 정상적으로 처리되었습니다.");
@@ -82,6 +89,18 @@ public class UpdateMemberServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/views/myPage/myInfoUpdate.jsp");
 			request.setAttribute("msg", "회원정보 변경 실패");
 			request.setAttribute("loc", "/update?id="+id);
+=======
+			session.setAttribute("member", m);			
+			request.setAttribute("member", m);
+		
+			response.sendRedirect("/update?id="+id);
+			request.setAttribute("msg", "회원정보 변경 성공");
+			
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("/views/myPage/myInfoUpdate.jsp");
+			request.setAttribute("msg", "회원정보 변경 실패");
+			request.setAttribute("loc", "/myInfoUpdate?id="+id);
+>>>>>>> upstream/master
 			rd.forward(request, response);
 		}
 		
