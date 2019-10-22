@@ -43,23 +43,11 @@
 	
 	<table class="miu-div-2-table">
 		<tbody>
-<<<<<<< HEAD
-			<tr>
-			
-				<th>아이디  </th><td><input type="text" name="id" class="form-control" value="<%=member.getId() %>" readonly> (영문소문자/숫자,4~16자)</td>
-=======
-			<tr>
+
+		<tr>
 				<th>아이디  </th><td><input type="text" name="id" class="form-control" value="<%=member.getId() %>" readonly> (영문소문자/숫자,4~16자)</td>
 			</tr>
-			<tr>
-				<th>비밀번호  </th><td><input type="password" name="pw" value="<%= member.getPw()%>"> (영문 대소문자/숫자/특수문자 중 2가지이상 조합 8~16자)</td>
-			</tr>
-						<tr>
-				<th>비밀번호 확인 </th><td><input type="password" value="<%= member.getPw()%>"></td>
->>>>>>> upstream/master
-			</tr>
-			
-			
+
 			
 			
 			
@@ -75,7 +63,7 @@
 						<tr>
 				<th>이름</th><td><input type="text" name="name" value="<%=member.getName()  %>"  readonly></td>
 			</tr>
-<<<<<<< HEAD
+
 			<tr>
                 <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
                 <td>
@@ -88,34 +76,7 @@
                 </td>
             </tr>
 			
- 	
-=======
-				<tr>
-				<th >주소 </th>
-			
-				<td>
-				<!-- 다음주소찾기 api사용  -->
-				   <ul class="mif-table-addr">
-					    <li>
-					     <input id="mif-postCode" type="text"  class="form-control" name="addrList3" value="<%=addrList[3]%>" readonly >
-					     <button id="mif-addrSearchBtn" onclick="addrSearch();" class="btn btn-primary" >주소검색</button>
-					    </li>
-					    <li>
-					     <input id="mif-roadAddr"  type="text"  class="form-control" name="addrList0"  value="<%=addrList[0] %>" readonly > 기본주소
-					    <input id="jibunAddr"  name="addrList1" value="<%=addrList[1]%>"style="width:400px; display:inline-block;" type="text"  class="form-control" readonly>
-					     
-					    </li>
-					    <li>
-					     <input id="mif-detailAddr"  type="text" name="addrList2" value="<%=addrList[2] %>" class="form-control"> 나머지주소
-					     
-					    </li>
-						
-	
-    					  
-   					</ul> 	
-				</td>
-					</tr>
->>>>>>> upstream/master
+
 						<tr>
 				<th>휴대전화 </th>
 				<td>
@@ -151,7 +112,7 @@
 	</div>
 	</form>
 </body>
-<<<<<<< HEAD
+
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 //다음 api 주소찾기
@@ -229,18 +190,7 @@
 			});
 		});
 
-=======
-<script>
-function addrSearch(){
-		new daum.Postcode({
-			oncomplete:function(data){
-				$("mif-postCode").val(data.zonecode);
-				$("mif-roadAddr").val(data.roadAddress);
-				$("mif-jibanAddr").val(data.jibunAddress);
-			}
-		}).open();
-	}
->>>>>>> upstream/master
+
 
 </script>
 </html>

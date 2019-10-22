@@ -47,11 +47,9 @@ public class DeleteMemberServlet extends HttpServlet {
 	            //session은 로그인 되어있을 경우 
 	            session.invalidate();   //session.invalidate(); 로 로그아웃 
 	         }
-<<<<<<< HEAD
+
 	         request.setAttribute("msg", "회원정보가 삭제가 정상적으로 처리 되었습니다.");
-=======
-	         request.setAttribute("msg", "회원정보 삭제 성공");
->>>>>>> upstream/master
+
 	         //   - request : 하나의 요청에 대해서 정보를 공유하는 객체 /<form>태그로 데이터 전송 시 다음페이지에서 사용   
 	      }else {
 	         request.setAttribute("msg", "회원정보 삭제 실패");
