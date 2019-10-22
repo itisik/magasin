@@ -15,4 +15,21 @@ public class ProductDao {
 		return null;
 	}
 
+	public int delete(Connection conn, int prdId) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		String query = "delete from product where prd_id=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, prdId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

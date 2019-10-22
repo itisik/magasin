@@ -18,4 +18,17 @@ public class ProductService {
 		return list;
 	}
 
+	public int delete(int prdId) {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		int result = dao.delete(conn, prdId);
+		if(result>0){
+			JDBCTemplate.commit(conn);
+		}else{
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 }
