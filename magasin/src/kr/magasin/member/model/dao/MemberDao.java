@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.member.model.vo.Member;
@@ -73,6 +71,7 @@ public class MemberDao {
 		}
 		return m;
 	}
+<<<<<<< HEAD
 	
 <<<<<<< Updated upstream
 =======
@@ -87,6 +86,9 @@ public class MemberDao {
 	}
 >>>>>>> Stashed changes
 	
+=======
+
+>>>>>>> 61f07aa69ed897aba06f6ab485cfd094517903d6
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -112,6 +114,7 @@ public class MemberDao {
 		System.out.println(m.getId());
 		return result;
 	}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	
 	public int updateMember(Connection conn, Member m) {
@@ -178,3 +181,6 @@ public class MemberDao {
 =======
 }
 >>>>>>> Stashed changes
+=======
+}
+>>>>>>> 61f07aa69ed897aba06f6ab485cfd094517903d6
