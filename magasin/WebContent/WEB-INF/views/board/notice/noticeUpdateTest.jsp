@@ -1,5 +1,7 @@
+<%@page import="kr.magasin.board.model.vo.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% Notice n = (Notice)request.getAttribute("notice"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@
 				<ul id="notice">
 					<li>Notice</li>
 				</ul>
-				<form action="/noticeInsert" method="get">
+				<form action="/noticeUpdateEnd" method="get">
 				
 				<div class="table-wrapper">
 					<table class="table view-table">
@@ -28,14 +30,16 @@
 							<tr>
 								<th>subject</th>
 								<!-- 원래 Title 받아올거에요~ -->
-								<td><input type="text" name="noticeTitle" class="inputText" value="원래값"></td>
+								<td><input type="text" name="noticeTitle" class="inputText" value="<%=n.getNoticeTitle()%>">
+								</td>
 							</tr>
 							<tr>
 								<th>Writer</th>
-								<td><img src="/common_img/footerlogo2.png" height="27">
+								<td><img src="/img/common_img/footerlogo2.png" height="27">
 								<!-- 관리자 넘겨줄거에요~ -->
 								<input type="hidden" name="noticeWriter" class="inputText"
 								value="admin">
+								<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo() %>">
 								</td>
 							</tr>
 							
@@ -44,17 +48,16 @@
 							<tr>
 								<td colspan="2">
 									<textarea cols="120" rows="20" style="text-align: center;" 
-									 name="noticeContent">원래글 받아오기</textarea>
+									 name="noticeContent"><%=n.getNoticeCont() %></textarea>
 								</td>
 							</tr>
 					</table>
 				</div>
 				
 				<div class="notice-btn">
-					<br>
-					<a href="/views/test_board/noticeListTest.jsp" class="btn btn-md" >List</a>
-					<button type="submit" class="btn btn-md">등록</button>
-					
+				<br>
+					<a href="/noticeList" class="btn btn-md" >List</a>
+					<button type="submit" class="btn btn-md">Update</button>
 				</div>
 				</form>
 			</div>

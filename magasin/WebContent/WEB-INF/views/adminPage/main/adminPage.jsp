@@ -44,9 +44,11 @@
 	<div class="all-container">
 		<div class="container">
 			<ul class="tabs">
-				<a href="/adminPageMain"> <img
+				<a href="/adminPageMain">
+				<img
 					src="img/adminPage/manager-logo.png" alt="매거진" class="tabs-logo"
-					width="143px" height="86px" /></a>
+					width="143px" height="86px" />
+				</a>
 				<li class="tab-link current" data-tab="tab-1">메인 창</li>
 				<li class="tab-link" data-tab="tab-2">상품조회</li>
 				<li class="tab-link" data-tab="tab-3">상품등록</li>
@@ -129,7 +131,8 @@
 			</div>
 
 			<div id="tab-4" class="tab-content">
-				<%@include file="/WEB-INF/views/adminPage/customer/customerSearch.jsp"%>
+				<%@include
+					file="/WEB-INF/views/adminPage/customer/customerSearch.jsp"%>
 			</div>
 
 			<div id="tab-5" class="tab-content">
@@ -145,9 +148,11 @@
 			<div id="tab-9" class="tab-content">
 				<%@include file="/WEB-INF/views/adminPage/graph/graphPage.jsp"%>
 			</div>
-			
-			<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
-			<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
-			<script type="text/javascript" src="/js/adminPage/graph.js"></script>
+		</div>
+	<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
+	<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
+	<script type="text/javascript" src="/js/adminPage/graph.js"></script>
+	<script type="text/javascript" src="/js/adminPage/customerSearch.js"></script>
+	</div>
 </body>
 </html>

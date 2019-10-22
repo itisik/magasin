@@ -43,5 +43,62 @@ public class NoticeService {
 		JDBCTemplate.close(conn);
 		return pd;
 	}
+	public Notice noticeOne(int noticeNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		Notice n = dao.noticeOne(conn, noticeNo);
+		if(n!=null) {
+			// 조회수UP
+			int result = dao.noticeCountUp(conn,noticeNo);
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+				
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		}
+		JDBCTemplate.close(conn);
+		return n;
+	}
+	public int noticeInsert(Notice n) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.noticeInsert(conn,n);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+			
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public int noticeUpdate(Notice n) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.noticeUpdate(conn, n);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+			
+		}
+		JDBCTemplate.close(conn);
+		return result;
+		
+	}
+	public int noticeDelete(int noticeNo) {
+		// TODO Auto-generated method stub
+		Connection conn= JDBCTemplate.getConnection();
+		int result = dao.noticeDelete(conn, noticeNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+			
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 
 }
