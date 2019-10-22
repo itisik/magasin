@@ -23,6 +23,11 @@ public class MemberService {
 		return m;
 	}
 	
+<<<<<<< Updated upstream
+=======
+	
+	
+>>>>>>> Stashed changes
 	
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -36,6 +41,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+<<<<<<< Updated upstream
 	
 	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -57,6 +63,8 @@ public class MemberService {
 		      JDBCTemplate.close(conn);
 		      return result;
 		   }
+=======
+>>>>>>> Stashed changes
 
 	
 
