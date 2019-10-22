@@ -33,9 +33,9 @@
 				<div class="mainContent" style="width: 943px;">
 				    <div id="join-wrapper" style="margin:0 auto; width:800px; color:black; text-align:center;">
 				    <form name="checkIdFrm"> <!-- 숨겨서 처리할거 -->
-				    	<input type="hidden" name="checkId">
-				    </form>
-				    <form action="/join" method="post" id="memberJoin">
+    					<input type="hidden" name="checkId">
+    				</form>
+				    <form action="/join" onsubmit="return checkz()" method="post" id="memberJoin">
 				        <h3 class="join-div-h3">회원가입</h3>
 				        <!--해당하는 html파일이 있는 곳에 img파일 만들어서 그 안에 저장-->
 				        <p class="join-div-p"><img src="img/ico_required_blue.gif">필수입력사항</p>
@@ -79,21 +79,19 @@
 				            </tr>
 				            <tr>
 								<th>휴대전화 <img src="img/ico_required_blue.gif"></th>
-								<td><input type="text" pattern="(010)\d{3,4}\d{4}" name="phone" id="phone" class="form-control" placeholder="'-'빼고 작성" required></td>
+								<td><input type="text" name="phone" id="phone" class="form-control" placeholder="'-'빼고 작성" required></td>
 								
 							</tr>
 							<tr>
 								<th>이메일 <img src="img/ico_required_blue.gif"></th>
-								<form action="/sendEmail" method="post" id="form1">
-									<td>
-										<input type="text" name="receiver" id="receiver" class="form-control" placeholder="ex)choiji@naver.com"> 
-										<input type="submit" id="email_btn" class="btn-box" onclick="email()" value="인증번호 발송">
-										<span id="emailChkMsg" required></span> <!--클릭하면 창뜨고 3분내로 입력하도록 시계뜨고 이메일로 인증번호 날려주고 그 값 입력하면 인증되었습니다 뜨게하기-->
-									</td>
-									<td>
-										<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
-									</td>
-								</form>
+								<td>
+								<!-- <form action="/sendEmail" method="post" id="form1"> -->
+										<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@naver.com"> 
+										<input type="button" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
+										<span id="emailChkMsg"></span> <!--클릭하면 창뜨고 3분내로 입력하도록 시계뜨고 이메일로 인증번호 날려주고 그 값 입력하면 인증되었습니다 뜨게하기-->
+										<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>										
+								<!-- </form> -->
+								</td>
 							</tr>
 						</table>
 						<br><br>
@@ -397,7 +395,7 @@
                         }
                         // 건물명이 있고, 공동주택일 경우 추가한다.
                         if(data.buildingName !== '' && data.apartment === 'Y'){
-                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                            extraAddr += (extraAddr !== '' ? '/' + data.buildingName : data.buildingName);
                         }
                         // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
                         if(extraAddr !== ''){
@@ -437,6 +435,29 @@
 				},
 				error:function(){
 					console.log("아이디 중복체크 실패");
+				}
+			});
+		});
+		
+		
+		$("#email").keyup(function(){ //칠때마다 ajax로 갔다옴(바로바로이메일체크)		
+			var email = $("#email").val();
+			$.ajax({
+				url: "/ajaxCheckEmail",
+				type: "get",
+				data: {email:email},
+				success:function(data){
+					var msg = $("#emailChkMsg");
+					if(data == '1'){
+						msg.html('사용가능한 이메일 입니다.');
+						msg.css('color','green');
+					}else{
+						msg.html('이미 사용중인 이메일 입니다.');
+						msg.css('color','red');
+					}
+				},
+				error:function(){
+					console.log("이메일 중복체크 실패");
 				}
 			});
 		});
@@ -490,28 +511,38 @@
 				}
 			});
 		});
-
 	
-		function checkId(){
-			var id = document.getElementById("id").value;
-			//alert(id);
-			if(id == ""){
-				alert("아이디를 입력해주세요.");
+	
+		//아직 하는중
+		//인증번호 전송 누르면 뜨는 창 (인증번호 치는 칸과 시간제한있음)
+		function sendEmailWindow(){
+			var email = document.getElementById("email").value;
+			alert(email);
+			if(email == ""){
+				alert("이메일을 입력해주세요.");
 				return;
 			}
-			var url = "/checkId"; //요청 서블릿 url
-			var title = "checkId";
+			var url = "/sendEmail"; //요청 서블릿 url
+			var title = "checkEmailNum";
 			var status = "left=500px, top=100px, width=300px, height=200px, menubar=no, status=no, scrollbar=yes";
+			window.open(url,title,status);
+//			var popup = window.open(url,title,status);
+//			checkNumFrm.code_check.value=email;
+//			checkNumFrm.target=title;
+//			checkNumFrm.action = url;
+//			checkNumFrm.method="post";
+//			checkNumFrm.submit();
 			//빈 창 오픈
-			var popup = window.open("",title,status); //빈창이랑 checkIdFrm 연결해서 form수행했을 때 창에 뜰 수 있게해서 중복체크하고 넘겨줌     //나중엔 ajax쓰기
-			checkIdFrm.checkId.value = id; //input hidden에 값 설정
-			checkIdFrm.target = title; //popup창과 form태그를 연결
+			//var popup = window.open(url,title,status); //빈창이랑 checkIdFrm 연결해서 form수행했을 때 창에 뜰 수 있게해서 중복체크하고 넘겨줌     //나중엔 ajax쓰기
+			//checkIdFrm.checkId.value = id; //input hidden에 값 설정
+			//checkIdFrm.target = title; //popup창과 form태그를 연결
 			//action, method설정 후 form태그 submit
-			checkIdFrm.action = url;
-			checkIdFrm.method = "post";
-			checkIdFrm.submit();
+			//checkIdFrm.action = url;
+			//checkIdFrm.method = "post";
+			//checkIdFrm.submit();
 		}
 		
+/*		
 		//addr, birthdate, gender 은 입력안해도 가입되게.
 		$("form").submit(function(event){
 			//var joinAgrWrap = $('#joinAgrWrap');
@@ -534,8 +565,7 @@
 				return;
 			}
 		});
-		
-		
+*/
 		
 		
 //      $('#pw').on('keypress', function(event) {
@@ -551,12 +581,13 @@
    
    		//최소 하나의 문자 하나의 숫자 및 하나의 특수문자
    		//"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$"
-
    		//"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}"
 
    		$('#pw').on('keypress', function(event) {
 	      //var regExp = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-	      var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{7,13}$/;
+	      //var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{8,15}$/;
+	      //var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
+	      var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/;
 	      if(!regExp.test($("#pw").val())){
 	         var msg = $('#pwChk');
 	         msg.html('형식에 맞는 값을 입력해주세요.');
@@ -591,6 +622,101 @@
 	   
 	   //=======================================================================================//
 	   // submit 유효성 검사 //
+	   function checkz() {
+		   var getName= RegExp(/^[가-힣]+$/);
+		   var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		   var getCheck= RegExp(/^[a-zA-Z0-9]{8,15}$/);
+		   var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/);
+		   var getPhone = RegExp(/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/);
+
+		   
+		   //id 공백 확인
+		   if($("#id").val()==""){
+			   alert("아이디를 입력해주세요");
+			   $("#id").focus();
+			   return false;
+		   }
+		   //id의 유효성 검사
+		   if(!getCheck.test($("#id").val())){
+			   alert("형식에 맞게 입력해주세요");
+			   $("#id").val("");
+			   $("#id").focus();
+			   return false;
+		   }
+		   //비밀번호 유효성 검사
+		   if(!getPw.test($("#pw").val())){
+			   alert("형식에 맞춰서 pw를 입력해주세요");
+			   $("#pw").val("");
+			   $("#pw").focus();
+			   return false;
+		   }
+		   //아이디랑 비밀번호가 같으면 안돼
+		   if($("#id").val()==($("#pw").val())){
+			   alert("비밀번호와 id가 같으면 안돼요");
+			   $("#pw").val("");
+			   $("#pw").focus();
+		   }
+		   //비밀번호 같은지
+		   if($("#pw").val()!=($("#pw2").val())){
+			   alert("비밀번호 확인란을 다시 입력해주세요");
+			   $("#pw").val("");
+			   $("#pw2").val("");
+			   $("#pw").focus();
+			   return false;
+		   }
+		   //이메일 공백 확인
+		   if($("#email").val()==""){
+			   alert("이메일을 입력하고 인증번호를 입력해주세요.");
+			   $("#email").focus();
+			   return false;
+		   }
+		   //이메일 유효성 검사
+		   if(!getMail.test($("#email").val())){
+			   alert("이메일 형식에 맞게 입력해주세요");
+			   $("#email").val("");
+			   $("#email").focus();
+			   return false;
+		   }
+		   //이름 공백 확인
+		   if(("#name").val()==""){
+			   alert("이름을 입력해주세요");
+			   $("#name").focus();
+			   return false;
+		   }
+		   //이름 유효성
+		   if(!getName.test($("#name").val())){
+			   alert("이름은 한글만 됩니다");
+			   $("#name").val("");
+			   $("#name").focus();
+			   return false;
+		   }
+		   //이용약관 동의
+		   if($('#agreeSerChk').val()!="Y" || $('#agreePrvChk').val()!="Y"){
+				if($('#agreeSerChk').val()!="Y"){
+					alert("이용약관에 동의하여 주시기 바랍니다.");
+					$('#agreeSerChk').focus();
+				}else if($('#agreePrvChk').val()!="Y"){
+					alert("개인정보 수집 및 이용에 동의하여 주시기 바랍니다.");
+					$('#agreePrvChk').focus();
+				}
+				return false;
+			}
+		   
+		   
+		   
+		   //이메일 인증번호 확인안했을 때도 검사 
+		   
+	   }
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	   
 	   
 	   

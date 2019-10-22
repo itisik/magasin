@@ -73,6 +73,39 @@ public class MemberDao {
 		}
 		return m;
 	}
+	
+	
+	public Member selectOne2(Connection conn, String email) {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		System.out.println(email);
+		String query = "select * from member where email=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, email);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				m = new Member();
+				m.setId(rset.getString("id"));
+				m.setPw(rset.getString("pw"));
+				m.setName(rset.getString("name"));
+				m.setAddr(rset.getString("addr"));
+				m.setPhone(rset.getString("phone"));
+				m.setBirthdate(rset.getInt("birthdate"));
+				m.setGender(rset.getString("gender"));
+				m.setGrade(rset.getString("grade"));
+				m.setEmail(rset.getString("email"));
+				m.setEnrollDate(rset.getDate("enroll_date"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return m;
+	}
 
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;

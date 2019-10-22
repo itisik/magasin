@@ -20,7 +20,13 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
-
+	public Member selectOne2(String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.selectOne2(conn,email);
+		JDBCTemplate.close(conn);
+		return m;
+	}
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
