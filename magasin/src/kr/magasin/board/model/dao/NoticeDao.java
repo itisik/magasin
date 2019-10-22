@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
 import kr.magasin.board.model.vo.Notice;
 import kr.magasin.common.JDBCTemplate;
 
