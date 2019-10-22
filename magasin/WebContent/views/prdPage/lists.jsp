@@ -4,6 +4,12 @@
     pageEncoding="UTF-8"%>
     <%
 		ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("Product");
+    
+        ArrayList<Product> lop = (ArrayList<Product>)request.getAttribute("Product"); /* 같은 리스트를 쓰기 땜에 키값을 맞춰서 써줘야함. */ /*낮은 가격순 조회*/
+        
+        ArrayList<Product> hop = (ArrayList<Product>)request.getAttribute("Product"); /* 높은 가격순 조회 */
+        
+        ArrayList<Product> nc = (ArrayList<Product>)request.getAttribute("Product"); /* 최신순 으로 조회 */
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +44,7 @@
     <div class="sub-title">
             <div class="sub-top">
              <div>new arrivalcategory have <strong><%=list.size() %></strong> product</div>
-             <div><a href="#">low price</a> |<a href="#">high price</a> |<a href="#">new arrival</a></div>
+             <div><a href="/productLowprice">low price</a> |<a href="/productHighprice">high price</a> |<a href="/productArrival">new arrival</a></div>
             </div>
         </div> 
         <%for(int i=0; i<list.size()/4; i++){ %>
@@ -46,7 +52,7 @@
 			<%for(int j=0; j<4; j++){ %>
             <div class="window-cloths">
             <div class="cloths-event" style="display: none;"></div>
-                <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><img src="/img/product/<%=(4*i+j)%>.jpg"></a></div>
+            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><img src="/img/product/<%=list.get(i*4+j).getPrdSnImgpath()%>"></a></div>
             <div class="cloths-title"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><%=list.get(4*i+j).getPrdName()%></a></div>
             <div class="cloths-price"><span><%=list.get(4*i+j).getPrdPrice() %></span></div>
             <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>

@@ -44,7 +44,7 @@
 					</p>
 					<div class="detailBorder">
 						<div class="detailImg">
-							<img src="/img/product/0.jpg">
+							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
 						</div>
 						<div class="detailInfor">
 							<div class="table-wrapper">
@@ -95,15 +95,9 @@
 					</div>
 				</div>
 					<div class="detailView">
-						<p>DESIGN TIP</p>
-						<p>꽈배기 짜임이 돋보이는 도톰한 니트 가디건. 여리여리한 무드를 자아내는 핏에, 단독으로 착용했을 때도
-							스타일리쉬한 분위기가 나는 매력적인 니트.</p>
-						<div class="detailAllImg">
-							<img src="/img/product/0.jpg">
-							<img src="/img/product/0.jpg">
-							<img src="/img/product/0.jpg">
-							<img src="/img/product/0.jpg">
 
+						<div class="detailAllImg">
+							<img src="/img/product/<%=pdI.getPrdFilepath()%>">
 						</div>
 					</div>
 					<div class="detailSize">

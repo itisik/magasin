@@ -127,14 +127,6 @@
          font-size: 18Px;
          font-weight: bold;
      }
-     .ditailView>p:first-child{
-         font-weight:bold;
-     }
-     .detailView p{
-     	 font-size : 12px;
-         text-align: center;
-         padding-top: 20px;
-     }
      .detailBorderSize{
          margin: 50px 0px;
      }
