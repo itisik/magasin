@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%!
+			public int getRandom(){
+				int random = 0;
+				random = (int)Math.floor((Math.random()*(99999-10000+1)))+10000;
+				return random;
+		}
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,7 +59,6 @@
 				            <tr>
 				                <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
 				                <td>
-				                    <!--addr_1,addr_2,addr_3 합쳐서 DB에 넣어주기 -->
 				                    <input type="text" name="addr_4" id="addr_postcode"  placeholder="우편번호" readonly="readonly">
 				                    <button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
 				                    <input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
@@ -78,8 +84,16 @@
 							</tr>
 							<tr>
 								<th>이메일 <img src="img/ico_required_blue.gif"></th>
-								<td><input type="text" name="email" id="email" class="form-control"> <button type="button" id="email_btn" class="btn-box" onclick="email()" value="이메일인증">이메일 인증</button><span id="emailChkMsg" required></span></td> <!--클릭하면 창뜨고 3분내로 입력하도록 시계뜨고 이메일로 인증번호 날려주고 그 값 입력하면 인증되었습니다 뜨게하기-->
-								
+								<form action="/sendEmail" method="post" id="form1">
+									<td>
+										<input type="text" name="receiver" id="receiver" class="form-control" placeholder="ex)choiji@naver.com"> 
+										<input type="submit" id="email_btn" class="btn-box" onclick="email()" value="인증번호 발송">
+										<span id="emailChkMsg" required></span> <!--클릭하면 창뜨고 3분내로 입력하도록 시계뜨고 이메일로 인증번호 날려주고 그 값 입력하면 인증되었습니다 뜨게하기-->
+									</td>
+									<td>
+										<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
+									</td>
+								</form>
 							</tr>
 						</table>
 						<br><br>
@@ -259,8 +273,7 @@
 				#카카오톡 알림톡 시행에 관한 내용
 				
 				“슬로우앤드”는 회원가입, 주문안내, 배송안내 등 비광고성 정보를 카카오톡 알림톡으로 알려드리며, 만약 알림톡 수신이 불가능하거나 수신 차단하신 경우에는 일반 문자메시지로 보내드립니다. 카카오톡 알림톡을 통해 안내되는 정보를 와이파이가 아닌 이동통신망으로 이용할 경우, 알림톡 수신 중 데이터 요금이 발생할 수 있습니다. 카카오톡을 통해 발송되는 알림톡 수신을 원치 않으실 경우 반드시 알림톡을 차단하여 주시기 바랍니다.
-				
-				</p>
+
 				                    </div>
 				                    <p class="check">
 				                        <span>이용약관에 동의하십니까?</span>
@@ -578,6 +591,7 @@
 	   
 	   //=======================================================================================//
 	   // submit 유효성 검사 //
+	   
 	   
 	   
 	   
