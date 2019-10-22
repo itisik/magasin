@@ -3,13 +3,126 @@ package kr.magasin.product.model.vo;
 import java.sql.Date;
 
 public class Product {
-	private String prdId;
+	private int prdId;
 	private String prdName;
 	private String prdGender;
 	private String prdCtgr;
 	private String prdSubCtrg;
 	private int prdPrice;
-	// 실수형으로 받지 못하게 유효성 검사?
 	private Date prdUpDate;
+	private String prdSnImgname;
+	private String prdSnImgpath;
+	private String prdImgname;
+	private String prdImgpath;
+	
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Product(int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg, int prdPrice,
+			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdImgname, String prdImgpath) {
+		super();
+		this.prdId = prdId;
+		this.prdName = prdName;
+		this.prdGender = prdGender;
+		this.prdCtgr = prdCtgr;
+		this.prdSubCtrg = prdSubCtrg;
+		this.prdPrice = prdPrice;
+		this.prdUpDate = prdUpDate;
+		this.prdSnImgname = prdSnImgname;
+		this.prdSnImgpath = prdSnImgpath;
+		this.prdImgname = prdImgname;
+		this.prdImgpath = prdImgpath;
+	}
+
+	public int getPrdId() {
+		return prdId;
+	}
+
+	public void setPrdId(int prdId) {
+		this.prdId = prdId;
+	}
+
+	public String getPrdName() {
+		return prdName;
+	}
+
+	public void setPrdName(String prdName) {
+		this.prdName = prdName;
+	}
+
+	public String getPrdGender() {
+		return prdGender;
+	}
+
+	public void setPrdGender(String prdGender) {
+		this.prdGender = prdGender;
+	}
+
+	public String getPrdCtgr() {
+		return prdCtgr;
+	}
+
+	public void setPrdCtgr(String prdCtgr) {
+		this.prdCtgr = prdCtgr;
+	}
+
+	public String getPrdSubCtrg() {
+		return prdSubCtrg;
+	}
+
+	public void setPrdSubCtrg(String prdSubCtrg) {
+		this.prdSubCtrg = prdSubCtrg;
+	}
+
+	public int getPrdPrice() {
+		return prdPrice;
+	}
+
+	public void setPrdPrice(int prdPrice) {
+		this.prdPrice = prdPrice;
+	}
+
+	public Date getPrdUpDate() {
+		return prdUpDate;
+	}
+
+	public void setPrdUpDate(Date prdUpDate) {
+		this.prdUpDate = prdUpDate;
+	}
+
+	public String getPrdSnImgname() {
+		return prdSnImgname;
+	}
+
+	public void setPrdSnImgname(String prdSnImgname) {
+		this.prdSnImgname = prdSnImgname;
+	}
+
+	public String getPrdSnImgpath() {
+		return prdSnImgpath;
+	}
+
+	public void setPrdSnImgpath(String prdSnImgpath) {
+		this.prdSnImgpath = prdSnImgpath;
+	}
+
+	public String getPrdImgname() {
+		return prdImgname;
+	}
+
+	public void setPrdImgname(String prdImgname) {
+		this.prdImgname = prdImgname;
+	}
+
+	public String getPrdImgpath() {
+		return prdImgpath;
+	}
+
+	public void setPrdImgpath(String prdImgpath) {
+		this.prdImgpath = prdImgpath;
+	}
+	
+	
 }

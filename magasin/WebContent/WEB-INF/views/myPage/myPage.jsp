@@ -1,9 +1,12 @@
 <%@page import="kr.magasin.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <% 
- Member member  = (Member)request.getAttribute("member");
- %>
+
+
+    <% 
+    Member member = (Member)request.getAttribute("member"); 
+    %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,9 @@
 <body>
 <div class="myp-wrapper">
 	<div class="myp-div1">
-	<span><%= member.getName() %></span> 님은<span>[VVIP]</span>  회원이십니다.
+
+
+	<span><%=member.getName() %></span> 님은<span><%=member.getGrade() %></span>  회원이십니다.
 	</div>
 
 	<div  class="myp-div2">
@@ -47,7 +52,8 @@
 			<li class="myp-div3-ul-li2">
 			<h3>
 			<img src="/img/myPage/myp-profile.png">
-			<a href="/views/myPage/myInfoUpdate.jsp">Profile</a>
+			 
+			<a href="/update?id=<%=member.getId() %>">Profile</a>
 			</h3>
 				<pre>회원 정보</pre>
 			<p>고객님의 개인정보를 <br>관리하는 공간 입니다.</p>
