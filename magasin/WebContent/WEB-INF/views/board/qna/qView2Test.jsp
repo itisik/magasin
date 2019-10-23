@@ -12,6 +12,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>***Question***</title>
 <link rel="stylesheet" href="/css/board_css/qna.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
 <body>
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->

@@ -74,7 +74,7 @@
 							%>
 							<tr>
 								<td><%=q.getqCtgr() %></td>
-								<td><a href="/qView?qNo=<%=q.getqNo() %>" class="content"><%=q.getqTitle() %></a></td>
+								<td><a href="/qEtcView?qNo=<%=q.getqNo() %>" class="content"><%=q.getqTitle() %></a></td>
 								<td><%=q.getqWriter()%></td>
 								<td><%=q.getqDate() %></td>
 							</tr>
@@ -170,7 +170,7 @@
 								<br>
 								<%=q.getPrdName() %>
 								</td>
-								<td><a href="/qView?qNo=<%=q.getqNo() %>" class="content"><%=q.getqTitle() %></a></td>
+								<td><a href="/qPrdView?qNo=<%=q.getqNo() %>" class="content"><%=q.getqTitle() %></a></td>
 								<td><%=q.getqWriter() %></td>
 								<td><%=q.getqDate() %></td>
 							</tr>
@@ -202,6 +202,9 @@
 							%>
 							
 					</table>
+					<!-- 임시로 -->
+					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
+					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
 					<%if(m!=null){ %>
 								
 								<p id="writeQ"><a href="/qWrite" class="btn" id="write">Write</a></p>

@@ -217,7 +217,67 @@ public class QnADao {
 		
 		return result;
 	}
-
+	
+	public QEtc qEtcOne(Connection conn, int qNo) {
+		// TODO Auto-generated method stub
+		QEtc q = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query="select * from q_etc where q_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				q = new QEtc();
+				q.setqCont(rset.getString("q_cont"));
+				q.setqCtgr(rset.getString("q_ctgr"));
+				q.setqDate(rset.getDate("q_date"));
+				q.setqIsA(rset.getInt("q_is_a"));
+				q.setqNo(rset.getInt("q_no"));
+				q.setqTitle(rset.getString("q_title"));
+				q.setqWriter(rset.getString("q_writer"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return q;
+	}
+	public QPrd qPrdOne(Connection conn, int qNo) {
+		// TODO Auto-generated method stub
+		QPrd q = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query="select * from q_Prd where q_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				q = new QPrd();
+				q.setqCont(rset.getString("q_cont"));
+				q.setqCtgr(rset.getString("q_ctgr"));
+				q.setqDate(rset.getDate("q_date"));
+				q.setqIsA(rset.getInt("q_is_a"));
+				q.setqNo(rset.getInt("q_no"));
+				q.setqTitle(rset.getString("q_title"));
+				q.setqWriter(rset.getString("q_writer"));
+				q.setPrdName(rset.getString("prd_name"));
+				q.setPrdSnImg(rset.getString("prd_sn_img"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return q;
+	}
 	/*public ArrayList<Question> qList(Connection conn, int start, int end) {
 		// TODO Auto-generated method stub
 		ArrayList<Question> qList = new ArrayList<Question>();

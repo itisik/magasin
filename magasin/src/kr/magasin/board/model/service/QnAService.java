@@ -1,6 +1,8 @@
 package kr.magasin.board.model.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import kr.magasin.board.model.dao.QnADao;
@@ -81,6 +83,20 @@ public class QnAService {
 		}
 		JDBCTemplate.close(conn);
 		return result;
+	}
+	public QEtc qEtcOne(int qNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		QEtc q = dao.qEtcOne(conn,qNo);
+		JDBCTemplate.close(conn);
+		return q;
+	}
+	public QPrd qPrdOne(int qNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		QPrd q = dao.qPrdOne(conn,qNo);
+		JDBCTemplate.close(conn);
+		return q;
 	}
 
 }
