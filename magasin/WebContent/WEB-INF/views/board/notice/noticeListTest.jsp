@@ -2,7 +2,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList"); %>
+    <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("noticeList");
+    	String pageNavi = (String)request.getAttribute("pageNavi"); 
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +17,28 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>***notice***</title>
 <link rel="stylesheet" href="/css/board_css/notice.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+<body id="body1">
+	<header>
+		<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+	</header>
 	<section>
-			<div class="noticeContainer">
-				<p id="writeNotice"><a href="#" class="btn writeBtn">Write</a></p>
-				<ul id="notice">
-					<li>Notice</li>
-				</ul>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					<div class="noticeContainer">
+					<%if(m != null && m.getId().equals("admin")){%>
+					<a href="/views/board/notice/noticeWriteTest.jsp" class="btn writeBtn">Write</a>
+					<%}%>
+					<ul id="notice">
+						<li>Notice</li>
+					</ul>
 				<div class="table-wrapper">
 					<table class="table table-hover list-table">
 						<thead>
@@ -40,7 +56,7 @@
 							%>
 							<tr>
 								<td>No.<%=n.getNoticeNo()%></td>
-								<td><a href="/noticeView?noticeNo=<%=n.getNoticeNo() %>" class="content">Title<%=n.getNoticeTitle()%></a></td>
+								<td><a href="/noticeView?noticeNo=<%=n.getNoticeNo() %>" class="content"><%=n.getNoticeTitle()%></a></td>
 								<td><img src="/img/common_img/footerlogo2.png" height="27"></td>
 								<td><%=n.getNoticeDate() %></td>
 								<td><%=n.getNoticeCount() %></td>
@@ -51,14 +67,24 @@
 						<tfoot>
 							<!-- 페이징할거에요~~~~~ -->
 							<tr>
-								<td colspan="5"><a href="#" class="btn btn-sm">1</a> <a
-									href="#" class="btn btn-sm">2</a> <a href="#"
-									class="btn btn-sm">3</a></td>
+								<td colspan="5"><%=pageNavi %></td>
 							</tr>
 						</tfoot>
 					</table>
+					
 				</div>
+				
 			</div>
+								
+			</div>
+		</div>
+			
 	</section>
+	<footer>
+		<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+	</footer>
+
 </body>
 </html>

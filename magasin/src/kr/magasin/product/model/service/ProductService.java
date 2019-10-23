@@ -10,10 +10,15 @@ import kr.magasin.product.model.vo.Product;
 public class ProductService {
 
 
+
 	public ArrayList<Product> productList() {
 		Connection conn = JDBCTemplate.getConnection();
 		ProductDao dao = new ProductDao();
 		ArrayList<Product> list = dao.productList(conn);
+	public ArrayList<Product> productList(int prdId) {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		ArrayList<Product> list = dao.productList(conn,prdId);
 		JDBCTemplate.close(conn);
 		return list;
 	}
@@ -49,4 +54,18 @@ public class ProductService {
 		JDBCTemplate.close(conn);
 		return nc;
 	}
+	public int delete(int prdId) {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		int result = dao.delete(conn, prdId);
+		if(result>0){
+			JDBCTemplate.commit(conn);
+		}else{
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
 }

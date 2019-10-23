@@ -9,12 +9,14 @@ public class Product {
 	private String prdCtgr;
 	private String prdSubCtrg;
 	private int prdPrice;
-	// 실수형으로 받지 못하게 유효성 검사?
 	private Date prdUpDate;
 	private String prdSnImgname;
 	private  String prdSnImgpath;
 	private String prdFilename;
 	private String prdFilepath;
+	private String prdSnImgpath;
+	private String prdImgname;
+	private String prdImgpath;
 	
 	public Product() {
 		super();
@@ -22,7 +24,9 @@ public class Product {
 	}
 
 	public Product(int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg, int prdPrice,
+
 			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdFilename, String prdFilepath) {
+			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdImgname, String prdImgpath) {
 		super();
 		this.prdId = prdId;
 		this.prdName = prdName;
@@ -33,8 +37,12 @@ public class Product {
 		this.prdUpDate = prdUpDate;
 		this.prdSnImgname = prdSnImgname;
 		this.prdSnImgpath = prdSnImgpath;
+
 		this.prdFilename = prdFilename;
 		this.prdFilepath = prdFilepath;
+		this.prdImgname = prdImgname;
+		this.prdImgpath = prdImgpath;
+
 	}
 
 	public int getPrdId() {
@@ -109,6 +117,7 @@ public class Product {
 		this.prdSnImgpath = prdSnImgpath;
 	}
 
+
 	public String getPrdFilename() {
 		return prdFilename;
 	}
@@ -123,6 +132,22 @@ public class Product {
 
 	public void setPrdFilepath(String prdFilepath) {
 		this.prdFilepath = prdFilepath;
+
+	public String getPrdImgname() {
+		return prdImgname;
+	}
+
+	public void setPrdImgname(String prdImgname) {
+		this.prdImgname = prdImgname;
+	}
+
+	public String getPrdImgpath() {
+		return prdImgpath;
+	}
+
+	public void setPrdImgpath(String prdImgpath) {
+		this.prdImgpath = prdImgpath;
+
 	}
 	
 	

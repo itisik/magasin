@@ -18,6 +18,7 @@
 </head>
 <body>
 	<div class="windowContainer">
+
     <div class="main-div">
         <div class="main-title">
             <div class="title-top"><a href=#>home</a>><a href="#">OUTER</a></div>
