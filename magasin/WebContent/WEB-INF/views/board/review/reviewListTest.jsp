@@ -74,7 +74,13 @@
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 								<div class="reviewContainer">
-				<!-- <p id="writeNotice"><a href="#" class="btn writeBtn">Write</a></p> -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<!-- test용 버튼입니당~~~~~ -->
+				<a href="/reviewWrite" class="btn writeBtn">Write</a>
 				<ul id="review">
 					<li>review</li>
 				</ul>
@@ -117,15 +123,21 @@
 									어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ...
 									</p>
 									</div>
+									<%if(r.getReviewFilepath1()!=null||r.getReviewFilepath2()!=null){ %>
 									<div class="review-img-container">
 									<!-- 리뷰작성때 업로드한 이미지 있으면, 없으면 안생김 또는 사진 없음 X표시 -->
+										<%if(r.getReviewFilepath1()!=null){ %>
 										<div class="review-img-div">
-										<img src="/img/review_upload/<%=r.getReviewFilepath() %>" width="100px;"> 
+										<img src="/img/review_upload/<%=r.getReviewFilepath1() %>" width="100px;"> 
 										</div>
+										<%} %>
+										<%if(r.getReviewFilepath2()!=null){ %>
 										<div class="review-img-div">
-										<img src="/img/review_upload/<%=r.getReviewFilepath() %>" width="100px;">
+										<img src="/img/review_upload/<%=r.getReviewFilepath2() %>" width="100px;">
 										</div>
+										<%} %>
 									</div>
+									<%} %>
 									<style>
 										.review-ud>a{
 											color:black;
@@ -138,7 +150,7 @@
 										%>
 									<div class="review-ud" style="width:100%; text-align:right;">
 									<a href="/reviewUpdate?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">수정</a>
-									<a href="/reviewDelete?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">삭제</a>
+									<a href="/reviewDelete?reviewNo=<%=r.getReviewNo()%>&reviewFilepath1=<%=r.getReviewFilepath1() %>&reviewFilepath2=<%=r.getReviewFilepath2() %>" class="btn btn-sm">삭제</a>
 									</div>
 									<%} %>
 								</div>

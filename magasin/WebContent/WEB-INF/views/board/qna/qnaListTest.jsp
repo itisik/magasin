@@ -1,5 +1,17 @@
+<%@page import="kr.magasin.board.model.vo.APrd"%>
+<%@page import="kr.magasin.board.model.vo.QPrd"%>
+<%@page import="kr.magasin.board.model.vo.AEtc"%>
+<%@page import="kr.magasin.board.model.vo.QEtc"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% ArrayList<QEtc> qEtcList =(ArrayList<QEtc>)request.getAttribute("qEtcList");
+    	ArrayList<AEtc> aEtcList = (ArrayList<AEtc>)request.getAttribute("aEtcList");
+    	ArrayList<QPrd> qPrdList =(ArrayList<QPrd>)request.getAttribute("qPrdList");
+    	ArrayList<APrd> aPrdList = (ArrayList<APrd>)request.getAttribute("aPrdList");
+    	String pageNavi = (String)request.getAttribute("pageNavi");
+    	
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +23,24 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/board_css/qna.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 <title>***Q&A***</title>
 </head>
-<body>
-	<section>
-			<div class="qnaContainer">
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+							<div class="qnaContainer">
 				
 				
 				<div class="q-category-container">
@@ -24,13 +49,16 @@
 						<li>상품 관련 문의</li>
 					</ul> 
 				</div>
-				<p id="writeQ"><a href="#" class="btn writeBtn">Write</a></p>
+				<%if(m!=null){ %>
+				<p id="writeQ"><a href="/views/board/qna/qWrite1Test.jsp" class="btn writeBtn">Write</a></p>
+				<%} %>
 				
 				<div class="qnaListContainer">
 				<ul id="qna">
 					<li>Q&A</li>
 				</ul>
 				<div class="table-wrapper normalQue">
+				
 					<table class="table table-hover qnalist-table">
 						<thead>
 							<tr>
@@ -42,44 +70,42 @@
 						</thead>
 						 <tbody>
 							<%
-								for (int i = 1; i < 10; i++) {
+								for (QEtc q : qEtcList) {
 							%>
 							<tr>
-								<td>카테고리</td>
-								<td><a href="#" class="content">Title<%=i%></a></td>
-								<td>Writer</td>
-								<td>19/10/10</td>
+								<td><%=q.getqCtgr() %></td>
+								<td><a href="/qEtcView?qNo=<%=q.getqNo() %>&id=<%=m.getId() %>" class="content"><%=q.getqTitle() %></a></td>
+								<td><%=q.getqWriter()%></td>
+								<td><%=q.getqDate() %></td>
 							</tr>
-							<!-- 답변 있으면 밑에 뜨게 해주쇼 -->
-							<% int aIs = 1;
-								if(aIs ==1 ){
+							<!-- 답변 있으면 밑에 달리게-->
+							<%
+								for(AEtc a : aEtcList){
+								if(q.getqNo()==a.getaQEtcNoRef()){
 							%>
 								<tr>
-									<td>
-									</td>
+									<td></td>
 									<td>
 									<!-- 제목 -->
-									<img src="/views/test_board/test_img/realRe.png">
-									<a href="/views/test_board/qna/aViewTest.jsp">A Title</a>
+									<img src="/img/board_img/realRe.png">
+									<a href="/aView?aQNoRef=<%=q.getqNo()%>"><%=q.getqWriter() %>님 <%=a.getaTitle() %></a>
 									</td>
 									<td>
-									<img src="/common_img/footerlogo2.png" height="27">
+									<img src="/img/common_img/footerlogo2.png" height="27">
 								<input type="hidden" name="noticeWriter" class="inputText"
 								value="admin">
 									</td>
-									<td>글작성 날짜</td>
+									<td><%=a.getaDate() %></td>
 								</tr>
 							
-							<%} %>
-							<%
-								}
+									<%}
+								}%>
+							<%}
 							%>
 							
 						<tfoot>
 							<tr>
-								<td colspan="5"><a href="#" class="btn btn-sm">1</a> <a
-									href="#" class="btn btn-sm">2</a> <a href="#"
-									class="btn btn-sm">3</a></td>
+								<td colspan="5"><%=pageNavi %></td>
 							</tr>
 						</tfoot>
 					</table>
@@ -99,11 +125,15 @@
 						
 						$(".q-category>li").eq(0).click(function(){
 							$(".productQue").hide();
+							$(".writeBtn").show();
+							
 							$(".normalQue").show();
 						
 						});
 						$(".q-category>li").eq(1).click(function(){
 							$(".normalQue").hide();
+							$(".writeBtn").hide();
+							
 							$(".productQue").show();
 						});
 					});
@@ -127,60 +157,73 @@
 							</tr>
 						</thead>
 						 <tbody>
+						 
+						 <!-- 더보기 기능 추가할게용 -->
 							<%
-								for (int i = 1; i < 10; i++) {
+							for (QPrd q : qPrdList) {
+								if(q.getPrdName()!=null&& q.getPrdSnImg()!=null){
 							%>
 							<tr>
-								<td>카테고리</td>
+								<td><%=q.getqCtgr() %></td>
 								<td>
-								<img src="/views/test_board/test_img/testimg.png" width="70">
+								<img src="/img/product/<%=q.getPrdSnImg() %>" width="70">
 								<br>
-								Product<%=i %>
+								<%=q.getPrdName() %>
 								</td>
-								<td><a href="#" class="content">Title<%=i%></a></td>
-								<td>Writer</td>
-								<td>19/10/10</td>
+								<td><a href="/qPrdView?qNo=<%=q.getqNo() %>&id=<%=m.getId() %>" class="content"><%=q.getqTitle() %></a></td>
+								<td><%=q.getqWriter() %></td>
+								<td><%=q.getqDate() %></td>
 							</tr>
 							<!-- 답변 있으면 밑에 뜨게 해주쇼 -->
-							<% int aIs = 1;
-								if(aIs ==1 ){
+							<% for(APrd a : aPrdList){
+								if(q.getqNo()==a.getaQPrdNoRef()){
 							%>
 								<tr>
-									<td>
-									</td>
-									<td></td>
+									<td colspan="2"></td>
+									
 									<td>
 									<!-- 제목 -->
-									<img src="/views/test_board/test_img/realRe.png">
-									<a href="/views/test_board/qna/aViewTest.jsp">A Title</a>
+									<img src="/img/board_img/realRe.png">
+									<a href="/aView?aNo=<%=a.getaNo()%>"><%=q.getqWriter() %>님 <%=a.getaTitle() %></a>
 									</td>
 									<td>
-									<img src="/common_img/footerlogo2.png" height="27">
+									<img src="/img/common_img/footerlogo2.png" height="27">
 								<input type="hidden" name="noticeWriter" class="inputText"
 								value="admin">
 									</td>
-									<td>글작성 날짜</td>
+									<td><%=a.getaDate() %></td>
 								</tr>
-							
-							<%} %>
-							<%
+								
+							<%			}
+									}
 								}
+								
+							}
 							%>
 							
-						<tfoot>
-							<tr>
-								<td colspan="5"><a href="#" class="btn btn-sm">1</a> <a
-									href="#" class="btn btn-sm">2</a> <a href="#"
-									class="btn btn-sm">3</a></td>
-							</tr>
-						</tfoot>
 					</table>
+					<!-- 임시로 -->
+					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
+					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
+					<%if(m!=null){ %>
+								
+								<p id="writeQ"><a href="/qWrite" class="btn" id="write">Write</a></p>
+								
+								<%} %>
 				</div>
 				
 				
 				
+				</div>
+			</div>	
 				</div>
 			</div>
-	</section>
-</body>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
+	</body>
 </html>
