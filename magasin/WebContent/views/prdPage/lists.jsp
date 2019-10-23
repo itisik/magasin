@@ -4,12 +4,10 @@
     pageEncoding="UTF-8"%>
     <%
 		ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("Product");
-    
-        ArrayList<Product> lop = (ArrayList<Product>)request.getAttribute("Product"); /* 같은 리스트를 쓰기 땜에 키값을 맞춰서 써줘야함. */ /*낮은 가격순 조회*/
-        
-        ArrayList<Product> hop = (ArrayList<Product>)request.getAttribute("Product"); /* 높은 가격순 조회 */
-        
+        ArrayList<Product> lop = (ArrayList<Product>)request.getAttribute("Product"); /* 같은 리스트를 쓰기 땜에 키값을 맞춰서 써줘야함. */ /*낮은 가격순 조회*/      
+        ArrayList<Product> hop = (ArrayList<Product>)request.getAttribute("Product"); /* 높은 가격순 조회 */       
         ArrayList<Product> nc = (ArrayList<Product>)request.getAttribute("Product"); /* 최신순 으로 조회 */
+        
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,12 +25,11 @@
                 <div class="title-text">
                     <h3>OUTER</h3>
                 </div>
-                <div class="title-category">
-                <ul class="subCategory">        
-                   <li><span><a href="#">JACKET</a>(109)</span></li>
+                <div class="title-category">     
+                <ul class="subCategory">  
+                   <li><span><a href="#">JACKET</a></span></li>
                    <li><span><a href="#">CARDIGAN</a>(109)</span></li>
-                   <li><span><a href="#">TRENCH COAT</a>(109)</span></li>
-                   <li><span><a href="#">JUMPER / MUSTANG</a>(109)</span></li>     
+                   <li><span><a href="#">JUMPER</a>(109)</span></li>     
                    <li><span><a href="#">COAT</a>(109)</span></li>        
                 </ul>
                 </div>

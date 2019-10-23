@@ -1,7 +1,6 @@
 package kr.magasin.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +13,16 @@ import kr.magasin.product.model.service.ProductService;
 import kr.magasin.product.model.vo.Product;
 
 /**
- * Servlet implementation class ProductListServlet
+ * Servlet implementation class ProductExpayServlet
  */
-@WebServlet(name = "ProductList", urlPatterns = { "/productList" })
-public class ProductListServlet extends HttpServlet {
+@WebServlet(name = "ProductExpay", urlPatterns = { "/productExpay" })
+public class ProductExpayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductListServlet() {
+    public ProductExpayServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,12 +32,15 @@ public class ProductListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		int prdId = Integer.parseInt(request.getParameter("prdId"));
+		
 		ProductService service = new ProductService();
-		ArrayList<Product> list = service.productList();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
+		Product pay = service.ProductdetailId(prdId);
 		
-		request.setAttribute("Product", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
+		request.setAttribute("pays", pay);
 		rd.forward(request, response);
 	}
 

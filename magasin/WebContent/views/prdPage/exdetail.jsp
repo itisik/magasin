@@ -13,10 +13,6 @@
 <!-- 보영 CSS -->
 <link rel="stylesheet" href="/css/common_css/layout.css">
 
-<!-- 경필 CSS -->
-<!--test-->
-<link rel="stylesheet" href="/css/prdPage/exdetail.css">
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -24,6 +20,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<!-- 경필 CSS -->
+<!--test-->
+<link rel="stylesheet" href="/css/prdPage/exdetail.css">
 </head>
 <body id="body1">
 	<div class="wrapper">
@@ -40,7 +40,7 @@
 			<div class="mainContent" style="width: 943px;">
 				<div class="detailContainr">
 					<p>
-						<a href="/views/prdPage/lists.jsp">home</a> / <a href="/views/prdPage/lists.jsp">OUTER</a>
+						<a href="#">home</a> / <a href="/productList">OUTER</a>
 					</p>
 					<div class="detailBorder">
 						<div class="detailImg">
@@ -79,15 +79,15 @@
 									</tr>
 								</table>
 								<div class="detailTotal">
-									총 상품금액(수량): <span>0</span>개
+									  총 상품금액(수량): <input id = "totals "type="number" name="total" value="1" style="width:40px;"><span><%=pdI.getPrdPrice() %></span>(won)
 								</div>
 								<div class="detailBag">
 									<a href="#"><img src="/img/product/topCartBtn.gif">ADD
-										TO BAG</a> <a href="/views/prdPage/expays.jsp"><img
+										TO BAG</a> <a href="/productExpay?prdId=<%=pdI.getPrdId()%>"><img
 										src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW</a>
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
-								    <a href="/views/qProduct.jsp" class="btn btn-default qBtn">상품 문의하기</a>
+								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>
                                   <div class="delivery"><div>Magasin 배송</div>
                                <div>100원을 사도 무료배송!!</div>
 							</div>

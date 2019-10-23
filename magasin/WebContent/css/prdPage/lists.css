@@ -6,15 +6,17 @@
             width: 943px;
             box-sizing: border-box;
         }
-        .main-div,.sub-main{
-            height: 550px;
+        .sub-main{
             padding: 20px 10px;
 /*            border: 5px solid black;*/
             position: relative;
-        }W
+        }
+        .sub-title{
+        	padding-top:10px;
+        }
         .window-cloths{
             width: 25%;
-            height: 250px;
+           /* height: 250px;*/ /* 수정 처리  오류가 있어서 이부분 필요가 없어서 삭제 합니다.*/  
         }
         .window-cloths img {
              width: 100%;
@@ -35,21 +37,11 @@
             color: #000000;
             font-size: 12px;
         }
-        /*
-                 베스트 카테고리 불필요하다고 판다되서 스타일 지웠어요
-        .title-bottom{
-            margin-bottom: 12px;           
-        }
-        
-        .title-bottom>h3{
-            font-size: 15px;
-        }
-        */
         .cloths-title,.cloths-price,.cloths-color{
             padding: 5px 0px;
         }
         .cloths-title{
-            font-size: 12px;
+            font-size: 12px;        
         }
         .cloths-title a{
              color: #555555;
@@ -81,6 +73,7 @@
         }
         .window-cloths{
             padding: 10px;
+            padding-top:130px;
         }
         .color1{
             border: 0.1px solid #aaa;
@@ -109,8 +102,7 @@
             display: flex;
         }
         .cloths-price span{
-           
-            /*padding-right: 10px;*/ /*sale price에 관한 스타일 삭제합니다.*/
+            padding-right: 10px;
             font-size: 12px;
         }
         .cloths-color>div{
