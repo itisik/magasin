@@ -2,21 +2,20 @@ package kr.magasin.board.model.vo;
 
 import java.sql.Date;
 
-public class Answer {
-
+public class AEtc {
 	private int aNo;
-	private int aQNoRef;
+	private int aQEtcNoRef;
 	private String aTitle;
 	private String aCont;
 	private Date aDate;
-	public Answer() {
+	public AEtc() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Answer(int aNo, int aQNoRef, String aTitle, String aCont, Date aDate) {
+	public AEtc(int aNo, int aQEtcNoRef, String aTitle, String aCont, Date aDate) {
 		super();
 		this.aNo = aNo;
-		this.aQNoRef = aQNoRef;
+		this.aQEtcNoRef = aQEtcNoRef;
 		this.aTitle = aTitle;
 		this.aCont = aCont;
 		this.aDate = aDate;
@@ -27,11 +26,11 @@ public class Answer {
 	public void setaNo(int aNo) {
 		this.aNo = aNo;
 	}
-	public int getaQNoRef() {
-		return aQNoRef;
+	public int getaQEtcNoRef() {
+		return aQEtcNoRef;
 	}
-	public void setaQNoRef(int aQNoRef) {
-		this.aQNoRef = aQNoRef;
+	public void setaQEtcNoRef(int aQEtcNoRef) {
+		this.aQEtcNoRef = aQEtcNoRef;
 	}
 	public String getaTitle() {
 		return aTitle;
@@ -51,7 +50,5 @@ public class Answer {
 	public void setaDate(Date aDate) {
 		this.aDate = aDate;
 	}
-	
-	
 	
 }

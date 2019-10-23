@@ -38,7 +38,7 @@ public class ReviewService {
 		if(pageNo <= totalPage) {
 			pageNavi += "<a class='btn' href='/reviewList?reqPage="+pageNo+ "'>다음</a>";
 		}
-		PageData pd = new PageData(pageNavi, null, list, null, null);
+		PageData pd = new PageData(pageNavi, null, list, null, null,null,null);
 		
 		JDBCTemplate.close(conn);
 		return pd;

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String prdName=(String)request.getAttribute("prdName");
-    	String prdSnImg = (String)request.getAttribute("prdSnImg");
-    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,21 +27,24 @@
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">
-					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+			<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 등록!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
 			<div class="qnaContainer">
 			
 				<ul id="qna">
 					<li>Q&A</li>
 				</ul>
-				<form action="/qPrdInsert" method="post">
+				<form action="/qEtcInsert" method="post">
 				<div class="table-wrapper">
+					
 					<table class="table qna-view-table">
 						<thead>
 							<tr>
@@ -52,8 +52,10 @@
 								<td>
 								<!-- qCategory 값 받아오기 -->
 								<select name="qCtgr">
-									<option value="사이즈">사이즈</option>
-									<option value="컬러">컬러</option>
+									<option value="배송">배송</option>
+									<option value="주문">주문</option>
+									<option value="결제">결제</option>
+									<option value="환불">환불</option>
 									<option value="기타">기타</option>
 								</select>
 								</td>
@@ -72,18 +74,9 @@
 						</thead>
 						<tbody>
 							<tr>
-							<td>
-								<div class="product-div">
-							
-							<img src="/img/product/<%=prdSnImg %>" width="150"><br>
-							<span><%=prdName %></span>
-							<input type="hidden" name="prdSnImg" value="<%=prdSnImg %>">
-							<input type="hidden" name="prdName" value="<%=prdName %>">
-							</div>
-							</td>
-							<td>
+							<td colspan="2">
 								<div>
-								<textarea name="qContent" placeholder="문의하실 내용을 작성해주세요" cols="100" rows="10"></textarea>
+								<textarea name="qContent" placeholder="문의하실 내용을 입력해주세요" cols="100" rows="10"></textarea>
 								</div>
 								
 								</td>
@@ -92,13 +85,13 @@
 				</div>
 				<div class="qna-btn">
 					<br>
-					
 					<a href="/views/test_board/qna/qnaListTest.jsp" class="btn btn-default btn-md" >List</a>
 					<button type="submit" class="btn btn-default btn-md">등록</button>
+					
 				</div>
 				</form>
 			</div>
-	
+					
 				</div>
 			</div>
 		</section>

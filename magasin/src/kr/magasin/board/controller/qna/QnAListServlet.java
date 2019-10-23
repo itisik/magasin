@@ -1,27 +1,30 @@
-package kr.magasin.board.controller.notice;
+package kr.magasin.board.controller.qna;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kr.magasin.board.model.service.NoticeService;
 
+
+import kr.magasin.board.model.service.QnAService;
 import kr.magasin.board.model.vo.PageData;
 
 /**
- * Servlet implementation class NoticeListServlet
+ * Servlet implementation class QnAListServlet
  */
-@WebServlet(name = "noticeList", urlPatterns = { "/noticeList" })
-public class NoticeListServlet extends HttpServlet {
+@WebServlet(name = "QnAList", urlPatterns = { "/qnaList" })
+public class QnAListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public NoticeListServlet() {
+    public QnAListServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -30,28 +33,35 @@ public class NoticeListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-//		페이징 처리 합니다..
+
+		int reqPage1;
 		
-		
-		int reqPage;
 		try {
-			reqPage = Integer.parseInt(request.getParameter("reqPage"));
+			reqPage1 = Integer.parseInt(request.getParameter("reqPage1"));
+			
 			
 		}catch(NumberFormatException e){
-			reqPage = 1;
+			reqPage1 = 1;
+			
 			
 		}
-		NoticeService service = new NoticeService();
-		PageData pd  = service.noticeList(reqPage);
-		request.setAttribute("noticeList", pd.getNoticeList());
-		request.setAttribute("pageNavi", pd.getPageNavi());
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeListTest.jsp");
-		rd.forward(request, response);
-	
-	}
 
+		QnAService service = new QnAService();
+		PageData pd  = service.qnAList(reqPage1);
+		
+		request.setAttribute("qEtcList", pd.getqEtcList());
+		request.setAttribute("aEtcList", pd.getaEtcList());
+		request.setAttribute("qPrdList", pd.getqPrdList());
+		request.setAttribute("aPrdList", pd.getaPrdList());
+		
+		request.setAttribute("pageNavi", pd.getPageNavi());
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/qnaListTest.jsp");
+		rd.forward(request, response);
+	}
+		
+	
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
