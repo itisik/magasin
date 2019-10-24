@@ -35,7 +35,7 @@ public class AdminPageMainServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/adminPage/main/adminPage.jsp");
 		rd.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -42,6 +42,7 @@
 				</select>
 			</div>
 			<div class="top-date-select">
+				<button>전체기간</button>
 				<button>1주일</button>
 				<button>2주일</button>
 				<button>1달</button>

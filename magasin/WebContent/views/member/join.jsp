@@ -522,11 +522,13 @@
 			var email = document.getElementById("email").value;
 			var code_check = document.getElementById("code_check").value;
 			var closetime = 10;
+
 			alert(email);
 			if(email == ""){
 				alert("이메일을 입력해주세요.");
 				return;
 			}
+
 			//email, code_check(랜덤숫자)값 넘겨줌
 			var url = "/sendEmail?email="+email+"&code_check="+code_check+""; //요청 서블릿 url
 			var title = "numChkWindow";
@@ -632,6 +634,7 @@
 	   });
 	   
 	   
+
 	   
 	  
 	   

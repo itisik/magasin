@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <div class="enter1">
              <table class="producttable">
                  <legend><b>상품등록</b></legend>
@@ -73,10 +74,10 @@
                       </div>
                   </th>
                   <td id="tdimg1">
-                      <input type="file" name="filesumname" onchange="loadImg(this)"
+                      <input type="file" name="filesumname" onchange="loadImg2(this)"
                              id="estsetse">
                       <div id="img-viewer">
-                  <img src="img/adminPage/ompang1.jpg"id="img-view" width="50" height="50">
+                  <img id="img-view" width="50" height="50">
                       </div>
                   </td>
               </tr>   
@@ -89,9 +90,9 @@
                       </div>
                   </th> 
                   <td id="tdimg2">
-                      <input type="file" name="filename" onchange="loadImg(this)">
+                      <input type="file" name="filename" onchange="loadImg(this)" id="imgfile5">
                       <div id="img-viewer2">
-                          <img src="/img/adminPage/ompang1.jpg" id="img-view2" width="50" height="50">
+                          <img id="img-view2" width="50" height="50">
                       </div>
                   </td>
               </tr>
@@ -153,3 +154,27 @@
               
               
             </div>
+            
+            <script>
+            	function loadImg(value){
+            		if(value.files && value.files[0]){
+            			var reader = new FileReader();
+            			reader.onload = function(e){
+            				$('#img-view2').attr('src',e.target.result);
+            				
+            			}
+            			reader.readAsDataURL(value.files[0]);
+            		}
+            	}
+            	
+            	function loadImg2(value){
+            		if(value.files && value.files[0]){
+            			var reader = new FileReader();
+            			reader.onload = function(e){
+            				$('#img-view').attr('src',e.target.result);
+            				
+            			}
+            			reader.readAsDataURL(value.files[0]);
+            		}
+            	}
+            </script>

@@ -4,7 +4,7 @@ public class Customer {
 	private String cusId;
 	private String cusName;
 	private String cusPrdName;
-	private int cusPrdCount;
+	private String cusPrdCount;
 	private String cusPurDate;
 	private String cusOutDate;
 
@@ -13,7 +13,7 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String cusId, String cusName, String cusPrdName, int cusPrdCount, String cusPurDate,
+	public Customer(String cusId, String cusName, String cusPrdName, String cusPrdCount, String cusPurDate,
 			String cusOutDate) {
 		super();
 		this.cusId = cusId;
@@ -48,11 +48,11 @@ public class Customer {
 		this.cusPrdName = cusPrdName;
 	}
 
-	public int getCusPrdCount() {
+	public String getCusPrdCount() {
 		return cusPrdCount;
 	}
 
-	public void setCusPrdCount(int cusPrdCount) {
+	public void setCusPrdCount(String cusPrdCount) {
 		this.cusPrdCount = cusPrdCount;
 	}
 
