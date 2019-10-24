@@ -8,22 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.magasin.board.model.service.QnAService;
-import kr.magasin.board.model.vo.QPrd;
+import kr.magasin.board.model.vo.AEtc;
+import kr.magasin.board.model.vo.APrd;
+import kr.magasin.board.model.vo.QEtc;
 
 /**
- * Servlet implementation class QPrdViewServlet
+ * Servlet implementation class AInsertServlet
  */
-@WebServlet(name = "QPrdView", urlPatterns = { "/qPrdView" })
-public class QPrdViewServlet extends HttpServlet {
+@WebServlet(name = "AInsert", urlPatterns = { "/aInsert" })
+public class AInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QPrdViewServlet() {
+    public AInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,25 +35,37 @@ public class QPrdViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		int qNo = Integer.parseInt(request.getParameter("qNo"));
-		String id = request.getParameter("id");
+		String ctgr = request.getParameter("ctgr");
+		String aTitle = request.getParameter("aTitle");
+		int qNoRef = Integer.parseInt(request.getParameter("qNoRef"));
+		String aCont = request.getParameter("aContent");
+		
 		QnAService service = new QnAService();
-		QPrd q = service.qPrdOne(qNo);
-		if(q!=null && id!=null&&(q.getqWriter().equals(id)||id.equals("admin"))) {
-			request.setAttribute("qPrd", q);
-			RequestDispatcher rd =  request.getRequestDispatcher("/WEB-INF/views/board/qna/qView2Test.jsp");
-			rd.forward(request, response);
-		}else if(id==null){
-			response.sendRedirect("/views/member/login.jsp");
-		}else {
-			request.setAttribute("msg", "접근권한이 없습니다.");
-			request.setAttribute("loc", "/qnaList");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			rd.forward(request, response);
-
+		if(ctgr.equals("etc")) {
+			
+			AEtc a = new AEtc(0, qNoRef, aTitle, aCont, null);
+			int result = service.aEtcInsert(a);
+			if(result>0) {
+				response.sendRedirect("/qnaList");
+				/*request.setAttribute("a", a);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/aViewTest.jsp");
+				rd.forward(request, response);*/
+			}
+			return;
+		}else if(ctgr.equals("prd")) {
+			
+			APrd a = new APrd(0, qNoRef, aTitle, aCont, null);
+			int result = service.aPrdInsert(a);
+			if(result>0) {
+				response.sendRedirect("/qnaList");
+			}
 		}
-
+		
+		
+		
+		
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
