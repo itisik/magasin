@@ -48,13 +48,16 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", m);
 			request.setAttribute("msg", "로그인 성공");
+			String url = request.getRequestURI();
+			request.setAttribute("loc", url);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+			rd.forward(request, response);
 		}else {
 			request.setAttribute("msg", "로그인 실패");
+			request.setAttribute("loc", "/views/member/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+			rd.forward(request, response);
 		}
-		request.setAttribute("loc", "/index.jsp");
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-		rd.forward(request, response);
 		System.out.println("로그인 Servlet 끝");
 	}
 

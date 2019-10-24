@@ -132,4 +132,28 @@ public class MemberDao {
 		System.out.println(m.getId());
 		return result;
 	}
+	
+	
+	//addr, birthdate, grade 입력안했을 때
+	public int insertMember2(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO MEMBER (ID,PW,NAME,PHONE,EMAIL,ENROLL_DATE) VALUES(?,?,?,?,?,SYSDATE)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getId());
+			pstmt.setString(2, m.getPw());
+			pstmt.setString(3, m.getName());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getEmail());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(conn);
+		}
+		System.out.println(m.getId());
+		return result;
+	}
 }

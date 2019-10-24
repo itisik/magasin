@@ -33,7 +33,7 @@ public class AjaxCheckEmailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		MemberService service = new MemberService();
-		Member m = service.selectOne(email);
+		Member m = service.selectOne2(email);
 		PrintWriter out = response.getWriter();
 		if(m==null) {
 			out.print(1);

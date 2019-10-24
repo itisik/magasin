@@ -21,31 +21,41 @@
 				</td>
 			</tr>
 		</table>
-		<input id="hi" type="hidden" value='인증하기'/>
+		<input id="hi" type="hidden" onclick="sameCode()" value='인증하기'/>
 	</form>
 	<script type="text/javascript">
 		function checkCode(){
 			var v1 = form2.code_check.value;
 			var v2 = form2.code.value;
+			var hi = document.getElementById("hi");
 			if(v1!=v2){
 				document.getElementById('checkCode').style.color="red";
 				document.getElementById('checkCode').innerHTML = "잘못된인증번호";
-				makeNull();
+				//makeNull();
+				var hi = document.getElementById("hi");
+				hi.type="hidden";
 			}else{
 				document.getElementById('checkCode').style.color="blue";
 				document.getElementById('checkCode').innerHTML = "인증되었습니다.";
-				makeReal();
+				//makeReal();
+				var hi = document.getElementById("hi");
+				hi.type="submit";
 			}
 		}
-		function makeReal(){
+/* 		function makeReal(){
 			var hi = document.getElementById("hi");
 			hi.type="submit";
+			
 		}
 		function makeNull(){
 			var hi = document.getElementById("hi");
 			hi.type="hidden";
+		} */
+		function sameCode(){
+			opener.document.getElementById("chkAfter").value = document.getElementById("hi").value;
+			
+			window.close();
 		}
-		
 	</script>
 </body>
 </html>
