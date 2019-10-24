@@ -113,10 +113,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-  <body>
-  <!-- 팀원이 각자 생성, 수정, 삭제하고 그 내용을 팀장에게 병합 요청하는 것을 보여주기 위해서 -->
-  <!-- 이곳에 이런 주석을 달아보겠습니다. 비록 주석이라고 하더라도 git은 코드의 변화로 감지해줍니다. 훌륭하죠? -->
-	</head>
 	<body id="body1">
 		<div class="wrapper">
 			<header>
@@ -141,7 +137,7 @@
 					        				<input type="text" name="id" id="id" placeholder="아이디 입력" />
 					        			</div>
 							        	<div class="window__pw">
-							          		<input type="text" name="pw" id="pw" placeholder="비밀번호 입력" />
+							          		<input type="password" name="pw" id="pw" placeholder="비밀번호 입력" />
 							        	</div>
 							        </div>
 							        <div class="window__loginBtn"><button type="submit" style="cursor:pointer">LOGIN</button></div>

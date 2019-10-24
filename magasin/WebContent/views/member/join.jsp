@@ -860,8 +860,6 @@
 		  		return false;
 		   }
 	   }
-
-
 	</script>
 </body>
 

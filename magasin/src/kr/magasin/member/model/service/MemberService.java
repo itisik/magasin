@@ -1,6 +1,5 @@
 package kr.magasin.member.model.service;
 import java.sql.Connection;
-
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.member.model.dao.MemberDao;
 import kr.magasin.member.model.vo.Member;
@@ -40,16 +39,27 @@ public class MemberService {
 		return result;
 	}
 	
-	public int insertMember2(Member m) {
+
+	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
-		int result = dao.insertMember2(conn,m);
+		int result = dao.updateMember(conn,m);
 		if(result>0) {
 			JDBCTemplate.commit(conn);
 		}else{
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
+		return result;	
+	}
+	public int delete(String memberId) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		int result  = dao.delete(conn, memberId);
+		JDBCTemplate.close(conn);
 		return result;
 	}
+
+
+
 }

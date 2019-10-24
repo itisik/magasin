@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/prdPage/lists.css">
 </head>
 <body>
 	<div class="windowContainer">
@@ -50,6 +51,8 @@
 								src="img/product/081f1a7aa4e4579414d6390716fb73ab.jpg"></a>
 						</div>
 						<div class="cloths-title">
+							<a href="/views/prdPage/exdetail.jsp">latte v-neck cable
+								cardigan</a>
 							<a href="#">latte v-neck cable cardigan</a>
 						</div>
 						<div class="cloths-price">

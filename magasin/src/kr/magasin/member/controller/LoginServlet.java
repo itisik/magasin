@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("로그인 Servlet 시작");
-		//1. 인코딩
+		//1. 인코딩s
 		request.setCharacterEncoding("utf-8");
 		//2. 변수저장
 		String id = request.getParameter("id");

@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- 보영 CSS -->
+    <link rel="stylesheet" href="/css/common_css/layout.css">
+    
+    <!-- 경필 CSS -->
     <link rel="stylesheet" href="/css/prdPage/expays.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -76,7 +80,12 @@
                     <td><input type="text" name="addr1" value="">
                         <button class="btn" type="button">우편번호</button><br><br>
                         <input type="text" name="addr2" value="">
-                        나머지주소</td>
+                        나머지주소
+                        <input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
+                                <input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
+                                <input type="text" name="addr_3" id="addr_extraAddress" placeholder="참고항목">
+                        
+                        </td>
                 </tr>
                 <tr>
                     <td>휴대전화<img src="/img/product/ico_required.gif"></td>
