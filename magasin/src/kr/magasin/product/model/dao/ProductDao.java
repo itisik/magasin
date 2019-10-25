@@ -5,13 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.product.model.vo.Product;
 
 public class ProductDao {
+
 
 	// 리스트불러옴 //
 	public ArrayList<Product> productList(Connection conn) {
@@ -64,15 +62,16 @@ public class ProductDao {
 			
 			if(rset.next()) {
 				pdI = new Product();
-				pdI.setPrdId(rset.getInt("prd_Id"));
 				pdI.setPrdName(rset.getString("prd_Name"));
+				pdI.setPrdGender(rset.getString("prd_gender"));
+				pdI.setPrdCtgr(rset.getString("prd_ctgr"));
+				pdI.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
 				pdI.setPrdPrice(rset.getInt("prd_price"));
 				pdI.setPrdUpDate(rset.getDate("prd_up_date"));
 				pdI.setPrdSnImgname(rset.getString("prd_sn_imgname"));
 				pdI.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
 				pdI.setPrdFilename(rset.getString("prd_filename"));
 				pdI.setPrdFilepath(rset.getString("prd_filepath"));
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -84,118 +83,123 @@ public class ProductDao {
 		return pdI;	
 	}
 
-//	// 낮은 가격으로 조회 //
-//	public ArrayList<Product> productLowPrice(Connection conn) {
-//		ArrayList<Product> lop = new ArrayList<Product>();
-//		Product lp = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		String query = "select * from product order by prd_price";
-//		try {
-//			pstmt = conn.prepareStatement(query);
-//			
-//			rset = pstmt.executeQuery();
-//			while(rset.next()) {
-//				lp = new Product();
-//				lp.setPrdId(rset.getInt("prd_Id"));
-//				lp.setPrdName(rset.getString("prd_Name"));
-//				lp.setPrdGender(rset.getString("prd_gender"));
-//				lp.setPrdCtgr(rset.getString("prd_ctgr"));
-//				lp.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
-//				lp.setPrdPrice(rset.getInt("prd_price"));
-//				lp.setPrdUpDate(rset.getDate("prd_up_date"));
-//				lp.setPrdSnImgname(rset.getString("prd_sn_imgname"));
-//				lp.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
-//				lp.setPrdFilename(rset.getString("prd_filename"));
-//				lp.setPrdFilepath(rset.getString("prd_filepath"));
-//				lop.add(lp);
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			JDBCTemplate.close(rset);
-//			JDBCTemplate.close(pstmt);
-//		}
-//		return lop;
-//	}
-//
-//	// 높은 가격으로 조회 //
-//	public ArrayList<Product> productHighprice(Connection conn) {
-//		ArrayList<Product> hop = new ArrayList<Product>();
-//		Product hp = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		String query = "select * from product order by prd_price desc";
-//		
-//		try {
-//			pstmt = conn.prepareStatement(query);
-//			
-//			rset=  pstmt.executeQuery();
-//			
-//			while(rset.next()) {
-//			hp = new Product();
-//			hp.setPrdId(rset.getInt("prd_Id"));
-//			hp.setPrdName(rset.getString("prd_Name"));
-//			hp.setPrdGender(rset.getString("prd_gender"));
-//			hp.setPrdCtgr(rset.getString("prd_ctgr"));
-//			hp.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
-//			hp.setPrdPrice(rset.getInt("prd_price"));
-//			hp.setPrdUpDate(rset.getDate("prd_up_date"));
-//			hp.setPrdSnImgname(rset.getString("prd_sn_imgname"));
-//			hp.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
-//			hp.setPrdFilename(rset.getString("prd_filename"));
-//			hp.setPrdFilepath(rset.getString("prd_filepath"));
-//			hop.add(hp);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			JDBCTemplate.close(rset);
-//			JDBCTemplate.close(pstmt);
-//		}
-//		return hop;
-//	}
-//
-//	// 최신 상품으로 조회//
-//	public ArrayList<Product> productArrival(Connection conn) {
-//		ArrayList<Product> nc = new ArrayList<Product>();
-//		Product c = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		
-//		String query = "select * from product order by PRD_UP_DATE desc";
-//		try {
-//			pstmt = conn.prepareStatement(query);
-//			
-//			rset = pstmt.executeQuery();
-//			
-//			while(rset.next()) {
-//				c = new Product();
-//				c.setPrdId(rset.getInt("prd_Id"));
-//				c.setPrdName(rset.getString("prd_Name"));
-//				c.setPrdGender(rset.getString("prd_gender"));
-//				c.setPrdCtgr(rset.getString("prd_ctgr"));
-//				c.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
-//				c.setPrdPrice(rset.getInt("prd_price"));
-//				c.setPrdUpDate(rset.getDate("prd_up_date"));
-//				c.setPrdSnImgname(rset.getString("prd_sn_imgname"));
-//				c.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
-//				c.setPrdFilename(rset.getString("prd_filename"));
-//				c.setPrdFilepath(rset.getString("prd_filepath"));
-//				nc.add(c);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			JDBCTemplate.close(rset);
-//			JDBCTemplate.close(pstmt);
-//		}
-//		return nc;
-//	}
+/*
+ 	
+ 	가격과 신상으로 조회
+ 	
+	// 낮은 가격으로 조회 //
+	public ArrayList<Product> productLowPrice(Connection conn) {
+		ArrayList<Product> lop = new ArrayList<Product>();
+		Product lp = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from product order by prd_price";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				lp = new Product();
+				lp.setPrdId(rset.getInt("prd_Id"));
+				lp.setPrdName(rset.getString("prd_Name"));
+				lp.setPrdGender(rset.getString("prd_gender"));
+				lp.setPrdCtgr(rset.getString("prd_ctgr"));
+				lp.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+				lp.setPrdPrice(rset.getInt("prd_price"));
+				lp.setPrdUpDate(rset.getDate("prd_up_date"));
+				lp.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+				lp.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+				lp.setPrdFilename(rset.getString("prd_filename"));
+				lp.setPrdFilepath(rset.getString("prd_filepath"));
+				lop.add(lp);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return lop;
+	}
+
+	// 높은 가격으로 조회 //
+	public ArrayList<Product> productHighprice(Connection conn) {
+		ArrayList<Product> hop = new ArrayList<Product>();
+		Product hp = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from product order by prd_price desc";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset=  pstmt.executeQuery();
+			
+			while(rset.next()) {
+			hp = new Product();
+			hp.setPrdId(rset.getInt("prd_Id"));
+			hp.setPrdName(rset.getString("prd_Name"));
+			hp.setPrdGender(rset.getString("prd_gender"));
+			hp.setPrdCtgr(rset.getString("prd_ctgr"));
+			hp.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+			hp.setPrdPrice(rset.getInt("prd_price"));
+			hp.setPrdUpDate(rset.getDate("prd_up_date"));
+			hp.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+			hp.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+			hp.setPrdFilename(rset.getString("prd_filename"));
+			hp.setPrdFilepath(rset.getString("prd_filepath"));
+			hop.add(hp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return hop;
+	}
+
+	// 최신 상품으로 조회//
+	public ArrayList<Product> productArrival(Connection conn) {
+		ArrayList<Product> nc = new ArrayList<Product>();
+		Product c = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select * from product order by PRD_UP_DATE desc";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				c = new Product();
+				c.setPrdId(rset.getInt("prd_Id"));
+				c.setPrdName(rset.getString("prd_Name"));
+				c.setPrdGender(rset.getString("prd_gender"));
+				c.setPrdCtgr(rset.getString("prd_ctgr"));
+				c.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+				c.setPrdPrice(rset.getInt("prd_price"));
+				c.setPrdUpDate(rset.getDate("prd_up_date"));
+				c.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+				c.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+				c.setPrdFilename(rset.getString("prd_filename"));
+				c.setPrdFilepath(rset.getString("prd_filepath"));
+				nc.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return nc;
+	}
+*/
 
 	public ArrayList<Product> selectList(Connection conn, int start, int end, String ctgr, String gender) {
 		ArrayList<Product> lists = new ArrayList<Product>();
@@ -266,4 +270,5 @@ public class ProductDao {
 		}
 		return result;
 	}
+
 }

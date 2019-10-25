@@ -18,8 +18,13 @@
 <link rel="stylesheet" href="/css/prdPage/lists.css">
 </head>
 <body>
+<<<<<<< HEAD
 
 	<div class="windowContainer mainContent" style="width: 943px;">
+=======
+	<div class="windowContainer">
+
+>>>>>>> 3962d960fb76ae12bea74e7f093aad963789ad93
     <div class="main-div">
         <div class="main-title">
             <div class="title-top">home > OUTER</div>

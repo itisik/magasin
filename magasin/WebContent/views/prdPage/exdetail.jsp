@@ -40,7 +40,7 @@
 			<div class="mainContent" style="width: 943px;">
 				<div class="detailContainr">
 					<p>
-						<a href="#">home</a> / <a href="/productList">OUTER</a>
+						<a href="#">home</a> / <a href="/productList"><%=pdI.getPrdCtgr() %></a>
 					</p>
 					<div class="detailBorder">
 						<div class="detailImg">

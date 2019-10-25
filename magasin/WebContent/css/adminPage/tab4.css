@@ -111,9 +111,10 @@
   width: 100%;
 }
 
-.bottom-list > .list-title > table td,
-.bottom-list > .list-content > table td {
-  width: 20%;
+.customer-bottom > .bottom-list > .list-title td,
+.customer-bottom > .bottom-list > .list-content td {
+  max-width: 275px;
+  min-width: 275px;
   height: 40px;
   line-height: 40px;
 }

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+<link rel="stylesheet" href="/css/common_css/layout.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- <link rel="stylesheet" href="/css/member/login.css"> -->
 <style type="text/css">
@@ -142,7 +143,7 @@
 							        <div class="window__loginBtn"><button type="submit" style="cursor:pointer">LOGIN</button></div>
 							        <div class="window__btns">
 							          	<div class="btn1">
-							            	보안접속&nbsp;&nbsp;&nbsp;<input type="checkbox" style="cursor:pointer">아이디저장
+							            	<img src="img/ico_access.gif">보안접속&nbsp;&nbsp;&nbsp;<input type="checkbox" style="cursor:pointer">아이디저장
 							          	</div>&nbsp;&nbsp;
 							          	<div class="btn2">
 							          		<a href="/views/member/searchId.jsp" style="cursor:pointer" class="">아이디 찾기</a> /  

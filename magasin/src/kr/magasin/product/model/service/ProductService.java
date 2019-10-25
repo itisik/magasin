@@ -2,14 +2,13 @@ package kr.magasin.product.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
-import jdk.nashorn.internal.runtime.arrays.ArrayData;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.product.model.dao.ProductDao;
 import kr.magasin.product.model.vo.PageData;
 import kr.magasin.product.model.vo.Product;
 
 public class ProductService {
+
 
 
 	public ArrayList<Product> productList() {
@@ -28,29 +27,32 @@ public class ProductService {
 		return pdI;
 	}
 
-//	public ArrayList<Product> productLowPrice() {
-//		Connection conn = JDBCTemplate.getConnection();
-//		ProductDao dao = new ProductDao();
-//		ArrayList<Product> lop = dao.productLowPrice(conn);
-//		JDBCTemplate.close(conn);
-//		return lop;
-//	}
-//
-//	public ArrayList<Product> productHighprice() {
-//		Connection conn = JDBCTemplate.getConnection();
-//		ProductDao dao = new ProductDao();
-//		ArrayList<Product> hop = dao.productHighprice(conn);
-//		JDBCTemplate.close(conn);
-//		return hop;
-//	}
-//
-//	public ArrayList<Product> productArrival() {
-//		Connection conn = JDBCTemplate.getConnection();
-//		ProductDao dao = new ProductDao();
-//		ArrayList<Product> nc = dao.productArrival(conn);
-//		JDBCTemplate.close(conn);
-//		return nc;
-//	}
+/*
+  가격과 신상으로 정렬
+	public ArrayList<Product> productLowPrice() {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		ArrayList<Product> lop = dao.productLowPrice(conn);
+		JDBCTemplate.close(conn);
+		return lop;
+	}
+
+	public ArrayList<Product> productHighprice() {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		ArrayList<Product> hop = dao.productHighprice(conn);
+		JDBCTemplate.close(conn);
+		return hop;
+	}
+
+	public ArrayList<Product> productArrival() {
+		Connection conn = JDBCTemplate.getConnection();
+		ProductDao dao = new ProductDao();
+		ArrayList<Product> nc = dao.productArrival(conn);
+		JDBCTemplate.close(conn);
+		return nc;
+	}
+*/
 
 	public PageData selectList(int reqPage,String ctgr, String gender) {
 		Connection conn = JDBCTemplate.getConnection();
@@ -95,4 +97,6 @@ public class ProductService {
 		JDBCTemplate.close(conn);
 		return pd;
 	}
+
+
 }

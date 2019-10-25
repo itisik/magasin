@@ -13,8 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-   
-   
     <!-- 보영 CSS -->
     <link rel="stylesheet" href="/css/common_css/layout.css">
     
@@ -88,12 +86,14 @@
                 </tr>
                 <tr>
                     <td>주소<img src="/img/product/ico_required.gif"></td>
+
                              <td>
                                 <input type="text" name="addr1" > <br>
                                 <input  type="text" name="addr2" ><br>
                                 <input  type="text" name="addr3"><br>
                                 <input  type="text" name="addr4">
                             </td>
+
                 </tr>
                 <tr>
                     <td>휴대전화<img src="/img/product/ico_required.gif"></td>

@@ -1,5 +1,11 @@
+<%@page import="kr.magasin.board.model.vo.Review"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("reviewList");
+    	String pageNavi = (String)request.getAttribute("pageNavi");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +20,60 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>***review***</title>
 <link rel="stylesheet" href="/css/board_css/review.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
+<style>
+
+.review-contents{
+	padding-left: 20px;
+}
+.review-img-container {
+	border: 1px dashed black;
+	width: 100%;
+	padding: 10px;
+	margin-left: 10px;
+}
+
+.review-img-div {
+	width: 100px;
+	float: left;
+	margin-right: 10px;
+	margin-left: 15px;
+	border: 1px solid white;
+}
+</style>
+<script>
+									
+	function lookContent(obj){
+		console.log(obj);
+		var index = $(".lookReview").index(obj);
+		if($(".lookReview").eq(index).text()=="접기"){
+			$(".review-contents").eq(index).hide(500);
+			$(".lookReview").eq(index).text("내용보기");
+		}else if($(".lookReview").eq(index).text()=="내용보기"){
+			$(".review-contents").eq(index).show(500);	
+			$(".lookReview").eq(index).text("접기");	
+		}
+		
+	}	
+		
+												
+</script>
 </head>
-<body>
-<section>
-			<div class="reviewContainer">
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+								<div class="reviewContainer">
 				<!-- <p id="writeNotice"><a href="#" class="btn writeBtn">Write</a></p> -->
 				<ul id="review">
 					<li>review</li>
@@ -30,7 +86,7 @@
 								<th style="width: 10%;">Product</th>
 								<th style="width: 45%;">Subject</th>
 								<th style="width: 15%;">
-								<img src="/views/test_board/test_img/yellowstar1.png" width="12">
+								<img src="/img/board_img/yellowstar1.png" width="12">
 								</th>
 								<th style="width: 10%;">Writer</th>
 								<th style="width: 5%;">Date</th>
@@ -40,78 +96,85 @@
 						<tbody>
 					
 							<%
-								for (int i = 1; i < 10; i++) {
+								for (Review r : list) {
 							%>
 							
 							<tr>
-								<td style="width: 8%;">No.<%=i %></td>
+								<td style="width: 8%;">No.<%=r.getReviewNo() %></td>
 								<td style="width: 10%;">
-								<img src="/views/test_board/test_img/testimg.png" width="70">
-								Product<%=i %>
+								<img src="/img/product/<%=r.getPrdSnImg() %>" width="100">
+								<%=r.getPrdName() %>
 								</td>
-								<td style="width: 42%;"><span>review Title</span>
-								<br><span class="lookReview" onclick="lookContent(this);">내용보기</span>
-							
+								<td style="width: 42%;"><span><%=r.getReviewTitle() %></span> &nbsp;&nbsp;
+								<span class="lookReview" onclick="lookContent(this);">내용보기</span><br>
 							
 								<!-- contents 보이기 -->
 							
-								<div class="review-contents">		
+								<div class="review-contents">	
+								<hr>	
 									<div class="review-con">
-									<h1>내용</h1>
+									<p style="text-align:center;"><%=r.getReviewCont() %>
+									어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ...
+									</p>
 									</div>
 									<div class="review-img-container">
 									<!-- 리뷰작성때 업로드한 이미지 있으면, 없으면 안생김 또는 사진 없음 X표시 -->
 										<div class="review-img-div">
-										<img src="/views/test_board/test_img/images/07bc0f7cf69c4248576799346decb819 (1).jpg" width="100px;"> 
+										<img src="/img/review_upload/<%=r.getReviewFilepath() %>" width="100px;"> 
 										</div>
 										<div class="review-img-div">
-										<img src="/views/test_board/test_img/images/07bc0f7cf69c4248576799346decb819 (1).jpg" width="100px">
+										<img src="/img/review_upload/<%=r.getReviewFilepath() %>" width="100px;">
 										</div>
 									</div>
+									<style>
+										.review-ud>a{
+											color:black;
+										}
+										.review-ud>a:hover{
+											color:purple;
+										}
+									</style>
+									<%if(m!=null&&(m.getId().equals(r.getReviewWriter())||m.getId().equals("admin"))){
+										%>
+									<div class="review-ud" style="width:100%; text-align:right;">
+									<a href="/reviewUpdate?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">수정</a>
+									<a href="/reviewDelete?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">삭제</a>
+									</div>
+									<%} %>
 								</div>
 								</td>
 								<td style="width: 15%;">
-								<img src="/views/test_board/test_img/yellowstar1.png" width="12">
-								<img src="/views/test_board/test_img/yellowstar1.png" width="12">	
-								<img src="/views/test_board/test_img/yellowstar1.png" width="12">
-								<img src="/views/test_board/test_img/star11.png" width="12">
-								<img src="/views/test_board/test_img/star11.png" width="12">
+								<%for(int i=0; i<r.getReviewPoint() ; i++){ %>
+								<img src="/img/board_img/yellowstar1.png" width="12">
+								<%} %>
 								</td>
-								<td style="width: 10%;">Writer</td>
-								<td style="width: 5%;">Date</td>
-								<td style="width: 10%;">조회수</td>
+								<td style="width: 10%;"><%=r.getReviewWriter() %></td>
+								<td style="width: 5%;"><%=r.getReviewDate() %></td>
+								<td style="width: 10%;"><%=r.getReviewCount() %></td>
 							</tr>
 								
 							<%
 								}
 							%>
-								<script>
-									
-								function lookContent(obj){
-									console.log(obj);
-									var index = $(".lookReview").index(obj);
-									if($(".lookReview").eq(index).text()=="접기"){
-										$(".review-contents").eq(index).hide(500);
-										$(".lookReview").eq(index).text("내용보기");
-									}else if($(".lookReview").eq(index).text()=="내용보기"){
-										$(".review-contents").eq(index).show(500);	
-										$(".lookReview").eq(index).text("접기");	
-									}
-									
-								}	
-									
-																			
-								</script>
+								
 						<tfoot>
 							<tr>
-								<td colspan="5"><a href="#" class="btn btn-sm">1</a> <a
-									href="#" class="btn btn-sm">2</a> <a href="#"
-									class="btn btn-sm">3</a></td>
+								<td colspan="7">
+									<%=pageNavi %>
+								</td>
 							</tr>
 						</tfoot>
 					</table>
 				</div>
+			</div>		
+				</div>
 			</div>
-	</section>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>

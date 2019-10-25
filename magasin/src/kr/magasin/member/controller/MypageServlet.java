@@ -2,6 +2,7 @@ package kr.magasin.member.controller;
 
 import java.io.IOException;
 
+
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,6 +33,7 @@ public class MypageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	//1.문자인코딩
 	request.setCharacterEncoding("UTF-8");
 	//2. 변수 저장
@@ -42,16 +44,12 @@ public class MypageServlet extends HttpServlet {
 	//4. 뷰
 	if(m != null) {
 		request.setAttribute("member", m);
-	
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/myPage/myPage.jsp");
-		//이동할페이지 
 		rd.forward(request, response);
 	}else {
 		response.sendRedirect("/");
-	}
-	
-	
-		
+
+	}		
 	}
 
 	/**
