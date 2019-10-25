@@ -18,10 +18,10 @@
 	$(document).ready(function(){
 		
 		$(".insert-btn").click(function(){
-			if($("#title").val()=""){
+			if($("#title").val()==""){
 				alert("제목을 입력하세요");
 				return false;
-			}else if($("#cont").val()=""){
+			}else if($("#cont").val()==""){
 				alert("내용을 입력하세요");
 				return false;
 			}
