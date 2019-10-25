@@ -197,7 +197,11 @@ public class QnAService {
 		Connection conn = JDBCTemplate.getConnection();
 		int result = dao.aEtcDelete(conn, aNo);
 		if(result>0) {
-			JDBCTemplate.commit(conn);
+			int qNo = aEtcOne(aNo).getaQEtcNoRef();
+			int result2 = dao.qEtcQIsADown(conn, qNo);
+			if(result2>0) {
+				JDBCTemplate.commit(conn);	
+			}
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
@@ -208,6 +212,34 @@ public class QnAService {
 		// TODO Auto-generated method stub
 		Connection conn = JDBCTemplate.getConnection();
 		int result = dao.aPrdDelete(conn, aNo);
+		if(result>0) {
+			int qNo = aPrdOne(aNo).getaQPrdNoRef();
+			int result2 = dao.qPrdQIsADown(conn,qNo);
+			if(result2>0) {
+				JDBCTemplate.commit(conn);	
+			}
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aEtcUpdate(AEtc a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aEtcUpdate(conn, a);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aPrdUpdate(APrd a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aPrdUpdate(conn, a);
 		if(result>0) {
 			JDBCTemplate.commit(conn);
 		}else {

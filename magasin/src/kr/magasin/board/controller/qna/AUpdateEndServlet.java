@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.board.model.service.QnAService;
-import kr.magasin.board.model.vo.QEtc;
+import kr.magasin.board.model.vo.AEtc;
+import kr.magasin.board.model.vo.APrd;
 
 /**
- * Servlet implementation class ADeleteServlet
+ * Servlet implementation class AUpdateEndServlet
  */
-@WebServlet(name = "ADelete", urlPatterns = { "/aDelete" })
-public class ADeleteServlet extends HttpServlet {
+@WebServlet(name = "AUpdateEnd", urlPatterns = { "/aUpdateEnd" })
+public class AUpdateEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ADeleteServlet() {
+    public AUpdateEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +34,23 @@ public class ADeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String ctgr = request.getParameter("ctgr");
 		int aNo = Integer.parseInt(request.getParameter("aNo"));
-		/*int qNo = Integer.parseInt(request.getParameter("qNo"));*/
+		String aTitle = request.getParameter("aTitle");
+		String aCont = request.getParameter("aContent");
 		QnAService service = new QnAService();
-		
 		if(ctgr.equals("etc")) {
-			int result = service.aEtcDelete(aNo);
+			AEtc a = new AEtc(aNo, 0, aTitle, aCont, null);
+			int result = service.aEtcUpdate(a);
 			if(result>0) {
-				System.out.println("aetc 삭제 성공");	
+				response.sendRedirect("/qnaList");
 			}
 		}else if(ctgr.equals("prd")) {
-			int result = service.aPrdDelete(aNo);
+			APrd a = new APrd(aNo, 0, aTitle, aCont, null);
+			int result = service.aPrdUpdate(a);
 			if(result>0) {
-				System.out.println("aprd 삭제 성공");
+				response.sendRedirect("/qnaList");
 			}
 		}
-		response.sendRedirect("/qnaList");
+		
 	}
 
 	/**

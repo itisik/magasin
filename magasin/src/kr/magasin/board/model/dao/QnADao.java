@@ -588,5 +588,77 @@ public class QnADao {
 		
 		return result;
 	}
+	public int qEtcQIsADown(Connection conn,int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update q_etc set q_is_a=0 where q_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public int qPrdQIsADown(Connection conn,int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update q_prd set q_is_a=0 where q_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public int aEtcUpdate(Connection conn, AEtc a) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query="update a_etc set a_Title=? , a_Cont =? where a_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, a.getaTitle());
+			pstmt.setString(2, a.getaCont());
+			pstmt.setInt(3, a.getaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result ;
+	}
+	public int aPrdUpdate(Connection conn, APrd a) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query="update a_prd set a_Title=? , a_Cont =? where a_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, a.getaTitle());
+			pstmt.setString(2, a.getaCont());
+			pstmt.setInt(3, a.getaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result ;
+	}
 
 }

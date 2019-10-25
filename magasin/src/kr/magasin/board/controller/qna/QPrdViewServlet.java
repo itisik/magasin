@@ -49,7 +49,6 @@ public class QPrdViewServlet extends HttpServlet {
 			request.setAttribute("loc", "/qnaList");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			rd.forward(request, response);
-
 		}
 
 	}

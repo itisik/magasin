@@ -105,7 +105,7 @@
 									<%} %>
 									<td>
 									<img src="/img/common_img/footerlogo2.png" height="27">
-								<input type="hidden" name="noticeWriter" class="inputText"
+								<input type="hidden" name="aWriter" class="inputText"
 								value="admin">
 									</td>
 									<td><%=a.getaDate() %></td>
@@ -218,7 +218,7 @@
 									
 									<td>
 									<img src="/img/common_img/footerlogo2.png" height="27">
-								<input type="hidden" name="noticeWriter" class="inputText"
+								<input type="hidden" name="aWriter" class="inputText"
 								value="admin">
 									</td>
 									<td><%=a.getaDate() %></td>

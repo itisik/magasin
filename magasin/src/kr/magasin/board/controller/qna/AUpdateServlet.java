@@ -1,6 +1,8 @@
 package kr.magasin.board.controller.qna;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.board.model.service.QnAService;
-import kr.magasin.board.model.vo.QEtc;
+import kr.magasin.board.model.vo.AEtc;
+import kr.magasin.board.model.vo.APrd;
 
 /**
- * Servlet implementation class ADeleteServlet
+ * Servlet implementation class AUpdateServlet
  */
-@WebServlet(name = "ADelete", urlPatterns = { "/aDelete" })
-public class ADeleteServlet extends HttpServlet {
+@WebServlet(name = "AUpdate", urlPatterns = { "/aUpdate" })
+public class AUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ADeleteServlet() {
+    public AUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +36,19 @@ public class ADeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String ctgr = request.getParameter("ctgr");
 		int aNo = Integer.parseInt(request.getParameter("aNo"));
-		/*int qNo = Integer.parseInt(request.getParameter("qNo"));*/
 		QnAService service = new QnAService();
-		
 		if(ctgr.equals("etc")) {
-			int result = service.aEtcDelete(aNo);
-			if(result>0) {
-				System.out.println("aetc 삭제 성공");	
-			}
+			AEtc a = service.aEtcOne(aNo);
+			request.setAttribute("a", a);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/aEtcUpdate.jsp");
+			rd.forward(request, response);
 		}else if(ctgr.equals("prd")) {
-			int result = service.aPrdDelete(aNo);
-			if(result>0) {
-				System.out.println("aprd 삭제 성공");
-			}
+			APrd a = service.aPrdOne(aNo);
+			request.setAttribute("a", a);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/aPrdUpdate.jsp");
+			rd.forward(request, response);
 		}
-		response.sendRedirect("/qnaList");
+		
 	}
 
 	/**

@@ -1,6 +1,7 @@
+<%@page import="kr.magasin.board.model.vo.APrd"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%  %>
+    <% APrd a = (APrd)request.getAttribute("a"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,58 +30,54 @@
 				</div>
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				<!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 -->
-				
-				<div class="qnaContainer">
+								<div class="qnaContainer">
 			
 				<ul id="qna">
 					<li>Q&A</li>
 				</ul>
+				<form action="/aUpdateEnd" method="post">
 				<div class="table-wrapper">
 					<table class="table qna-view-table">
 						<thead>
 							<tr>
 								<th>subject</th>
 								<td>
-									<img src="/views/test_board/test_img/realRe.png">A 제목제목
+									<input type="hidden" name="ctgr" value="prd">
+									<input type="hidden" name="aNo" value="<%=a.getaNo() %>">
+									<img src="/img/board_img/realRe.png">
+								<input type="text" name="aTitle" class="inputText"
+								value="<%=a.getaTitle()%>">
 								</td>
 							</tr>
 							<tr>
 								<th>Writer</th>
-								<td><img src="/common_img/footerlogo2.png" height="27">
+								<td><img src="/img/common_img/footerlogo2.png" height="27">
 								<input type="hidden" name="aWriter" class="inputText"
 								value="admin"></td>
 							</tr>
 							<tr>
 								<th>Date</th>
-								<td>19.10.17</td>
+								<td><%=a.getaDate() %></td>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr>		
 							<td colspan="2">
-								<div style="text-align:center;">
-								<h1>내용</h1>
-								<h1>내용</h1>
-								<h1>내용</h1>
-								<h1>내용</h1>
-								<h1>내용</h1>
-								<h1>내용</h1>
-								<h1>내용</h1>
-								</div>
-								
+								<textarea name="aContent" cols="100" rows="10" ><%=a.getaCont() %></textarea>
 								</td>
-							</tr>
-					</table>
+							</tr>	
+						</table>
 				</div>
 				<div class="qna-btn">
 					<br>
-					<a href="/views/test_board/qna/qnaListTest.jsp" class="btn btn-default btn-md" >List</a>
+				
+					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
 					<!-- 관리자 일때만 보이게~ -->
-					<!-- <a href="#" class="btn btn-default btn-md" >삭제</a>
-					<a href="#" class="btn btn-default btn-md" >수정</a> -->
+					<!-- <a href="#" class="btn btn-default btn-md" >삭제</a> -->
+					<button type="submit" class="btn btn-default btn-md" >수정완료</button>
 					
 				</div>
+				</form>
 			</div>
 				</div>
 			</div>
@@ -91,7 +88,5 @@
 			</div>
 		</footer>
 	</div>
-
-	
 </body>
 </html>

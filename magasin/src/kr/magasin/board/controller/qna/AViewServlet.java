@@ -48,6 +48,8 @@ public class AViewServlet extends HttpServlet {
 				request.setAttribute("a", a);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/aEtcView.jsp");
 				rd.forward(request, response);
+			}else if(id==null){
+				response.sendRedirect("/views/member/login.jsp");
 			}else {
 				request.setAttribute("msg", "접근권한이 없습니다.");
 				request.setAttribute("loc", "/qnaList");
@@ -62,6 +64,8 @@ public class AViewServlet extends HttpServlet {
 				request.setAttribute("a", a);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/aPrdView.jsp");
 				rd.forward(request, response);
+			}else if(id==null){
+				response.sendRedirect("/views/member/login.jsp");
 			}else {
 				request.setAttribute("msg", "접근권한이 없습니다.");
 				request.setAttribute("loc", "/qnaList");

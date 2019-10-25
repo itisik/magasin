@@ -50,7 +50,7 @@
 							<tr>
 								<th>Writer</th>
 								<td><img src="/img/common_img/footerlogo2.png" height="27">
-								<input type="hidden" name="noticeWriter" class="inputText"
+								<input type="hidden" name="aWriter" class="inputText"
 								value="admin"></td>
 							</tr>
 							<tr>
@@ -74,7 +74,7 @@
 					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
 					<%if(m!=null&& m.getId().equals("admin")){ %>
 					<!-- 관리자 일때만 보이게~ -->
-					<a href="/aDelete?ctgr=prd&aNo=<%=a.getaNo() %>" class="btn btn-default btn-md" >삭제</a>
+					<a href="/aDelete?ctgr=prd&aNo=<%=a.getaNo() %>&qNo=<%=a.getaQPrdNoRef() %>" class="btn btn-default btn-md" >삭제</a>
 					<a href="/aUpdate?ctgr=prd&aNo=<%=a.getaNo() %>" class="btn btn-default btn-md" >수정</a>
 					<%} %>
 					

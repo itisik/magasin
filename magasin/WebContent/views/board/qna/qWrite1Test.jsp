@@ -13,6 +13,23 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/board_css/qna.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
+
+<script>
+	$(document).ready(function(){
+		
+		$(".insert-btn").click(function(){
+			if($("#title").val()=""){
+				alert("제목을 입력하세요");
+				return false;
+			}else if($("#cont").val()=""){
+				alert("내용을 입력하세요");
+				return false;
+			}
+
+		});
+	});
+</script>
+
 </head>
 <body id="body1">
 	<div class="wrapper">
@@ -62,7 +79,7 @@
 							</tr>
 							<tr>
 								<th>subject</th>
-								<td><input type="text" name="qTitle" class="inputText"></td>
+								<td><input type="text" name="qTitle" class="inputText" id="title"></td>
 							</tr>
 							<tr>
 								<th>Writer</th>
@@ -76,7 +93,7 @@
 							<tr>
 							<td colspan="2">
 								<div>
-								<textarea name="qContent" placeholder="문의하실 내용을 입력해주세요" cols="100" rows="10"></textarea>
+								<textarea name="qContent" placeholder="문의하실 내용을 입력해주세요" cols="100" rows="10" id="cont"></textarea>
 								</div>
 								
 								</td>
@@ -86,7 +103,7 @@
 				<div class="qna-btn">
 					<br>
 					<a href="/views/test_board/qna/qnaListTest.jsp" class="btn btn-default btn-md" >List</a>
-					<button type="submit" class="btn btn-default btn-md">등록</button>
+					<button type="submit" class="btn btn-default btn-md insert-btn">등록</button>
 					
 				</div>
 				</form>
