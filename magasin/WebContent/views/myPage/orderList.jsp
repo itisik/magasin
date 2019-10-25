@@ -1,5 +1,9 @@
+<%@page import="kr.magasin.orderP.model.service.OrderPService"%>
+<%@page import="kr.magasin.orderP.model.vo.OrderP"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +20,7 @@
 		</header>
 		<section>
 			<div class="mainContainer">
-				<div class="side-nav">
+				<div class="side-nav"> 
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">

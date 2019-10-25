@@ -1,11 +1,12 @@
+
 <%@page import="kr.magasin.orderP.model.vo.OrderP2"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.magasin.orderP.model.service.OrderPService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%
+     <% 
     OrderPService service = new OrderPService();
-    ArrayList<OrderP2> lists = (ArrayList<OrderP2>)request.getAttribute("orderP2");
+    ArrayList<OrderP2> list = (ArrayList<OrderP2>)request.getAttribute("orderP2");
     %>
 <!DOCTYPE html>
 <html>
@@ -17,10 +18,8 @@
 <body>
 <div class="ol-wrapper">
 
-<% if( !lists.isEmpty() ) {%>
-<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(1).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
-<% }%>
-<h3 class="ol-wrapper-h3">주문내역</h3>
+<h2 class="ol-wrapper-h2">주문내역조회</h2>
+<h3 class="ol-wrapper-h3">취소내역</h3>
 <table class="ol-table">
 	<thead class ="ol-thead">
 	<tr>
@@ -29,14 +28,13 @@
         <th>상품정보</th>
         <th>수량</th>
         <th>상품구매금액</th>
-        <th>주문처리상태</th>
         <th>취소/반품</th>
 	</tr>
 	</thead>
 	<tbody  class ="ol-tbody">
 	
-	<%for(OrderP2 oP : lists){ %>
-		
+	<%for(OrderP2 oP : list){ %>
+ <% if(oP.getOrderStatus().equals("반품") || oP.getOrderStatus().equals("취소")){%>
 	
 	
 	<tr>
@@ -52,22 +50,10 @@
         <td class="ol-list-4"><%=oP.getOrderPrdCount() %>	</td>
         <td class="ol-list-5"><%=oP.getOrderMoney() %></td>
         
-        <%if(oP.getOrderStatus().equals("배송완료")){ %>
-          <td class="ol-list-6"><%=oP.getOrderStatus() %><br>
-          <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
-        <%}else{ %>
-          <td class="ol-list-6"><%=oP.getOrderStatus() %></td>
-        <%} %>
-         <%if(oP.getOrderStatus().equals("결제완료")){ %>
-         <td class="ol-list-7"><a href="/updateOrder?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>" >주문취소</a></td>
-            <%}else if(oP.getOrderStatus().equals("배송완료")){ %>
-                <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품요청</a></td>
-                <%}else {%>
-                  <td class="ol-list-7"></td>
-                <%} %>
-        
+          <td class="ol-list-7"><%=oP.getOrderStatus() %></td>
+      <%} %>
+   
 	</tr>
- 
 	<%} %>
 	</tbody>
 	</table>

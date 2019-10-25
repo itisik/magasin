@@ -1,6 +1,7 @@
 
 <%@page import="kr.magasin.basket.model.vo.Basket"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@page import="kr.magasin.basket.model.service.BasketService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -140,7 +141,6 @@
 </body>
 <script type="text/javascript">
 
-	/*
 	$('#submitFrm').on("click",function(){
 		if($(".chkclass :check").size()<2){
 			alert("체크 갯수가 2개 이하입니다.");
@@ -158,7 +158,7 @@
 		}
 	});
 
-	*/
+	
 	
 	
 	$(document).ready(function(){

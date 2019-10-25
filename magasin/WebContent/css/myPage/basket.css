@@ -99,10 +99,7 @@ font-size: 11px;
 font-weight: bold;
 color: #666666;
 }
-.bkt-list-5-img1, .bkt-list-5-img2{
-height: 13px;
-width: 22px; 
-}
+
 .bkt-list-5-span{
 position: relative;
 display: inline-block;
@@ -111,24 +108,14 @@ margin: 0 1px 0 0;
 text-align: left;
 }
 .bkt-list-5-span input{
-width: 31px;
+width: 40px;
 height: 23px;
-padding: 0 0 0 5px;
+/* padding: 0 0 0 5px; */
 line-height: 25px;
 border : 1px solid #d4d4d4;
 border-radius: 3px 0 0 3px;
 }
-.bkt-list-5-img1{
-position: absolute;
-left: 27px;
-top: 0;
 
-}
-.bkt-list-5-img2{
-position: absolute;
-left: 27px;
-bottom: 0;
-}
 .bkt-list-5-chg-btn{
 display : inline-block;
 padding: 2px 8px;
@@ -141,7 +128,7 @@ color: #666;
 
 }
 .bkt-list-5-li{
-margin-top: 5px;
+ 
 }
 .bkt-list-6{
     font-size: 11px;
