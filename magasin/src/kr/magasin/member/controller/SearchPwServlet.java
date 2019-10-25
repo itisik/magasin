@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SearchPwServlet
  */
-@WebServlet(name = "Login", urlPatterns = { "/login" })
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "SearchPw", urlPatterns = { "/searchPw" })
+public class SearchPwServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public SearchPwServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,33 +31,38 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("로그인 Servlet 시작");
 		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
 		//2. 변수저장
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		//3. 비지니스로직처리
+		//String memberId = request.getParameter("checkId"); //checkId속성 가져오기
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		//3. 비지니스 로직처리
 		MemberService service = new MemberService();
-		Member m = service.login(id, pw); //서비스라는 객체에 로그인메소드 없음
-		//4. view처리
-		if(m!=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("member", m);
-			request.setAttribute("msg", "로그인 성공");
-			String url = "/";
-			request.setAttribute("loc", url);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			rd.forward(request, response);
+		Member m1 = service.searchId(name,email);
+		Member m2 = service.searchId2(name, phone);
+		
+		//-----------하는중-----------
+		//4. view 처리
+		if(m1==null) {
+			request.setAttribute("result", true);
 		}else {
-			request.setAttribute("msg", "로그인 실패");
-			request.setAttribute("loc", "/views/member/login.jsp");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			rd.forward(request, response);
+			request.setAttribute("result", false);
 		}
-		System.out.println("로그인 Servlet 끝");
+		request.setAttribute("email", email);
+		
+		if(m2==null) { 
+			request.setAttribute("result", true);
+		}else {
+			request.setAttribute("result", false);
+		}
+		request.setAttribute("phone", phone);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/member/searchId.jsp");
+		RequestDispatcher rd2 = request.getRequestDispatcher("/WEB-INF/views/member/searchPw.jsp");
+		rd.forward(request, response);
+		rd2.forward(request, response);
 	}
 
 	/**

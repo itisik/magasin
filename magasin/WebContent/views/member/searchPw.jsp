@@ -91,13 +91,15 @@
 				</div>
 				<div class="mainContent" style="width: 943px;">
 					<div class="main">
+						<form action="/searchPw" onsubmit="return checkz();" method="post" id="searchPw">
 						 <div class="main_h3"><h3>비밀번호 찾기</h3></div>
 						 	<div class="container">
 								<table class="search-pw-table">
 									<tr>
-										<th>비밀번호 찾기 </th>
-										<td><input type="radio" name="SearchPw" id="email" value="email" selected><label for="email"><span>이메일</span></label>&nbsp;
-											<input type="radio" name="SearchPw" id="phone" value="phone"><label for="phone"><span>휴대폰번호</span></label>
+										<th>비밀번호 찾기</th>
+										<td>
+											<input type="radio" name="SearchPw" id="showEmail" onclick="showEmail()" checked><label for="email"><span>이메일</span></label>&nbsp;
+											<input type="radio" name="SearchPw" id="showPhone" onclick="showPhone()"><label for="phone"><span>휴대폰번호</span></label>
 										</td>
 									</tr>
 									<tr>
@@ -108,14 +110,14 @@
 										<th>이름 </th>
 										<td><input type="text" name="name" id="name" class="form-control"></td>
 									</tr>
-									<tr id="showEmail">
+									<tr id="viewEmail" style="display:;">
 										<th>이메일로 찾기 </th>
-										<td><input type="text" name="email" id="email" class="form-control" onchange="setDisplay()"></td>
+										<td><input type="text" name="email" id="email" class="form-control"></td>
 									</tr>
-									<tr id="showPhone">
+									<tr id="viewPhone" style="display:none;">
 										<th>휴대전화로 찾기</th>
-										<td><input type="text" name="phone" id="phone" class="form-control" onchange="setDisplay()"></td>
-									</tr>  	    
+										<td><input type="hidden" name="phone" id="phone" class="form-control"></td>
+									</tr>    
 								</table>
 				            </div>
 							<br>
@@ -125,6 +127,7 @@
 									<div class="btn_main"><a href="/index.html"><button>메인으로 이동</button></a></div>
 								</div>	
 							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -135,5 +138,27 @@
 			</div>
 		</footer>
 	</div>
+	<script type="text/javascript">
+	 $(document).ready(function(){
+			$("#showPhone").click(function(){
+				$("#viewPhone").css("display", ""); 
+				$("#viewEmail").css("display", "none");
+				var p = document.getElementById("phone");
+				var e = document.getElementById("email");
+				p.type="text";
+				e.type="hidden";
+			});
+			
+			$("#showEmail").click(function(){
+				$("#viewEmail").css("display", ""); 
+				$("#viewPhone").css("display", "none");
+				var p = document.getElementById("phone");
+				var e = document.getElementById("email");
+				p.type="hidden";
+				e.type="text";
+			});
+		});
+
+	</script>
 </body>
 </html>
