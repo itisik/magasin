@@ -130,14 +130,13 @@
 		<ul class="bsk-f-ul">
 			<li class="bsk-f-ul-li-1" ><button type="button" name="button"  onclick="tempBasketAll();">전체상품주문</button></li>
 			<li class="bsk-f-ul-li-2" ><button type="button" onclick="tempBasket();">선택상품주문</button></li>
-				
-			<!--  메인으로 가기 -->
+
+		
 			<li class="bsk-f-ul-li-3" ><a href="#">쇼핑계속하기</a></li>
 		</ul>
 
 	</div>
 </div>
-
 
 
 </body>
@@ -204,7 +203,6 @@
 	    //최상단 체크박스 클릭
 	   
 	    $("#checkall").click(function(){
-	        //클릭되었으면
 	        if($("#checkall").prop("checked")){
 	            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
 	            $("input[name=chk]").prop("checked",true);
