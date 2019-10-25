@@ -38,10 +38,7 @@
 				<%@include file="/WEB-INF/views/common/nav.html"%>
 			</div>
 			<div class="mainContent" style="width: 943px;">
-				<div class="detailContainr">
-					<p>
-						<a href="#">home</a> / <a href="/productList"><%=pdI.getPrdCtgr() %></a>
-					</p>
+				<div class="detailContainr">			
 					<div class="detailBorder">
 						<div class="detailImg">
 							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
@@ -79,12 +76,14 @@
 									</tr>
 								</table>
 								<div class="detailTotal">
-									  총 상품금액(수량): <input id = "totals "type="number" name="total" value="1" style="width:40px;"><span><%=pdI.getPrdPrice() %></span>(won)
+									  총 상품금액(수량): <input id = "totals" type="number" name="total" value="1" style="width:40px;"><span><%=pdI.getPrdPrice() %></span>(won)
 								</div>
 								<div class="detailBag">
 									<a href="#"><img src="/img/product/topCartBtn.gif">ADD
-										TO BAG</a> <a href="/productExpay?prdId=<%=pdI.getPrdId()%>"><img
-										src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW</a>
+										TO BAG</a>
+										<a href="/productExpay?prdId=<%=pdI.getPrdId()%>">
+											<img src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW
+										</a>
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
 								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>

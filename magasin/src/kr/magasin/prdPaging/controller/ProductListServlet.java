@@ -1,4 +1,4 @@
-package kr.magasin.product.controller;
+package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,7 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kr.magasin.product.model.service.ProductService;
+
+import kr.magasin.prdPaging.model.service.ProductLeeService;
 import kr.magasin.product.model.vo.Product;
 
 /**
@@ -32,7 +33,7 @@ public class ProductListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
-		ProductService service = new ProductService();
+		ProductLeeService service = new ProductLeeService();
 		ArrayList<Product> list = service.productList();
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");

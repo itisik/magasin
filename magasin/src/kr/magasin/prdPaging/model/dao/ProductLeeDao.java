@@ -1,4 +1,4 @@
-package kr.magasin.product.model.dao;
+package kr.magasin.prdPaging.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import kr.magasin.common.JDBCTemplate;
+import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
-public class ProductDao {
+
+public class ProductLeeDao {
 
 
 	// 리스트불러옴 //
@@ -62,6 +65,7 @@ public class ProductDao {
 			
 			if(rset.next()) {
 				pdI = new Product();
+				pdI.setPrdId(prdId);
 				pdI.setPrdName(rset.getString("prd_Name"));
 				pdI.setPrdGender(rset.getString("prd_gender"));
 				pdI.setPrdCtgr(rset.getString("prd_ctgr"));
@@ -201,8 +205,8 @@ public class ProductDao {
 	}
 */
 
-	public ArrayList<Product> selectList(Connection conn, int start, int end, String ctgr, String gender) {
-		ArrayList<Product> lists = new ArrayList<Product>();
+	public ArrayList<ProductLee> selectList(Connection conn, int start, int end, String ctgr, String gender) {
+		ArrayList<ProductLee> lists = new ArrayList<ProductLee>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "select*from"+"(select ROWNUM as rnum, n. * from"
@@ -219,7 +223,7 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				Product p = new Product();
+				ProductLee p = new ProductLee();
 				p.setRnum(rset.getInt("rnum"));
 				p.setPrdId(rset.getInt("prd_Id"));
 				p.setPrdName(rset.getString("prd_Name"));
@@ -270,5 +274,4 @@ public class ProductDao {
 		}
 		return result;
 	}
-
 }

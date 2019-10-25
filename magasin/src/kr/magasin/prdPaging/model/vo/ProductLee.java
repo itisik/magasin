@@ -1,9 +1,10 @@
-package kr.magasin.product.model.vo;
+package kr.magasin.prdPaging.model.vo;
 
 import java.sql.Date;
 
-public class Product {
+public class ProductLee {
 	
+	private int rnum;
 	private int prdId;
 	private String prdName;
 	private String prdGender;
@@ -16,15 +17,16 @@ public class Product {
 	private String prdFilename;
 	private String prdFilepath;
 	
-	public Product() {
+	public ProductLee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg, int prdPrice,
-			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdFilename, String prdFilepath,
-			String prdImgname, String prdImgpath) {
+	public ProductLee(int rnum, int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg,
+			int prdPrice, Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdFilename,
+			String prdFilepath) {
 		super();
+		this.rnum = rnum;
 		this.prdId = prdId;
 		this.prdName = prdName;
 		this.prdGender = prdGender;
@@ -36,7 +38,14 @@ public class Product {
 		this.prdSnImgpath = prdSnImgpath;
 		this.prdFilename = prdFilename;
 		this.prdFilepath = prdFilepath;
+	}
 
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
 
 	public int getPrdId() {
@@ -125,6 +134,8 @@ public class Product {
 
 	public void setPrdFilepath(String prdFilepath) {
 		this.prdFilepath = prdFilepath;
-	}	
+	}
+
+	
 	
 }

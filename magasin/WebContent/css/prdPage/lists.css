@@ -41,10 +41,6 @@
             font-size: 18px;
             padding-left: 40px;
         }
-        .title-top {
-            color: #000000;
-            font-size: 12px;
-        }
         .cloths-title,.cloths-price,.cloths-color{
             padding: 5px 0px;
         }
@@ -129,12 +125,6 @@
         .move{
 /*            border: 5px solid black;*/
             text-align: center;
-        }
-        .move a{
-            text-decoration: none;
-            margin: 12px 0px 0px 14px;
-            color: #000000;
-            font-size: 11px;
         }
         .move img{
           position: relative;

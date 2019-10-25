@@ -1,4 +1,5 @@
-<%@page import="kr.magasin.product.model.vo.PageData"%>
+<%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
+<%@page import="kr.magasin.prdPaging.model.vo.ProductLee"%>
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +7,7 @@
     <%
 		/* ArrayList<Product> list = (ArrayList<Product>)request.getAttribute("list");*/
          
-        ArrayList<Product> lists = (ArrayList<Product>)request.getAttribute("lists");
+        ArrayList<ProductLee> lists = (ArrayList<ProductLee>)request.getAttribute("lists");
         String pageNavi = (String)request.getAttribute("pageNavi");
         
 	%>
@@ -18,31 +19,31 @@
 <link rel="stylesheet" href="/css/prdPage/lists.css">
 </head>
 <body>
-<<<<<<< HEAD
 
 	<div class="windowContainer mainContent" style="width: 943px;">
-=======
-	<div class="windowContainer">
 
->>>>>>> 3962d960fb76ae12bea74e7f093aad963789ad93
+	<div class="windowContainer">
+	
+	
     <div class="main-div">
         <div class="main-title">
-            <div class="title-top">home > OUTER</div>
             <div class="title-middle">
                 <div class="title-text">
-                    <h3>outer</h3>
+                <h3><%=lists.get(0).getPrdCtgr() %></h3>
                 </div>
                 <div class="title-category">     
                 <ul class="subCategory">  
-                   <li><span><a href="#">JACKET</a></span></li>
-                   <li><span><a href="#">CARDIGAN</a>(109)</span></li>
-                   <li><span><a href="#">JUMPER</a>(109)</span></li>     
-                   <li><span><a href="#">COAT</a>(109)</span></li>        
+                
+                   <li><span><a href="#"><%=lists.get(0).getPrdSubCtrg() %></a></span></li>
+                   <li><span><a href="#"><%=lists.get(1).getPrdSubCtrg() %></span></li>
+                   <li><span><a href="#"><%=lists.get(2).getPrdSubCtrg() %></span></li>     
+                   <li><span><a href="#"><%=lists.get(3).getPrdSubCtrg() %></a></span></li>        
                 </ul>
                 </div>
             </div>
         </div>
     </div>
+   
     
     <div class="sub-main">
     <div class="sub-title">
@@ -53,8 +54,12 @@
 			<%for(int j=0; j<4; j++){ %>
             <div class="window-cloths">
             <div class="cloths-event" style="display: none;"></div>
-            <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>"><img src="/img/product/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a></div>
-            <div class="cloths-title"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>"><%=lists.get(4*i+j).getPrdName()%></a></div>
+            <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>">
+            	<img src="/img/product/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a>
+            </div>
+            <div class="cloths-title">
+            	<a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>"><%=lists.get(4*i+j).getPrdName()%></a>
+            </div>
             <div class="cloths-price"><span><%=lists.get(4*i+j).getPrdPrice() %></span></div>
             <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
             <div class="cloths-color">

@@ -1,19 +1,21 @@
-package kr.magasin.product.model.service;
+package kr.magasin.prdPaging.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 import kr.magasin.common.JDBCTemplate;
-import kr.magasin.product.model.dao.ProductDao;
-import kr.magasin.product.model.vo.PageData;
+import kr.magasin.prdPaging.model.dao.ProductLeeDao;
+import kr.magasin.prdPaging.model.vo.PageDataLee;
+import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
-public class ProductService {
+public class ProductLeeService {
 
 
 
 	public ArrayList<Product> productList() {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductDao dao = new ProductDao();
+		ProductLeeDao dao = new ProductLeeDao();
 		ArrayList<Product> list = dao.productList(conn);
 		JDBCTemplate.close(conn);
 		return list;
@@ -21,7 +23,7 @@ public class ProductService {
 
 	public Product ProductdetailId(int prdId) {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductDao dao = new ProductDao();
+		ProductLeeDao dao = new ProductLeeDao();
 		Product pdI = dao.ProductdetailId(conn,prdId);
 		JDBCTemplate.close(conn);
 		return pdI;
@@ -54,15 +56,15 @@ public class ProductService {
 	}
 */
 
-	public PageData selectList(int reqPage,String ctgr, String gender) {
+	public PageDataLee selectList(int reqPage,String ctgr, String gender) {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductDao dao = new ProductDao();
+		ProductLeeDao dao = new ProductLeeDao();
 		int numPerPage = 12;// 한페이지당 게시물 수
 		int totalCount = dao.totalCount(conn,ctgr,gender); //전체 게시물수
 		int totalPage = (totalCount%numPerPage == 0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
 		int start = (reqPage-1)*numPerPage+1; // 페이지 시작게시물 번호
 		int end = reqPage*numPerPage; // 페이지 마지막 게시물 번호
-		ArrayList<Product> lists = dao.selectList(conn,start,end,ctgr,gender);
+		ArrayList<ProductLee> lists = dao.selectList(conn,start,end,ctgr,gender);
 		/* 페이지 네비게이션 생성 */
 		String pageNavi="";
 		int pageNaviSize = 5; // 페이지 넘버 수
@@ -92,11 +94,12 @@ public class ProductService {
 			pageNavi += "<a class = 'btn' href ='/productPage?ctgr="+ctgr+"&gender="+gender+"&?reqPage="+pageNo+"'><img src=\"/img/product/prnx3.jpg\"></a>";
 		}
 
-		PageData pd = new PageData(lists,pageNavi);
+		PageDataLee pd = new PageDataLee(lists,pageNavi);
 		
 		JDBCTemplate.close(conn);
 		return pd;
 	}
+
 
 
 }

@@ -1,4 +1,4 @@
-package kr.magasin.product.controller;
+package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.magasin.product.model.service.ProductService;
-import kr.magasin.product.model.vo.PageData;
+import kr.magasin.prdPaging.model.service.ProductLeeService;
+import kr.magasin.product.model.vo.Product;
 
 /**
- * Servlet implementation class ProductPageServlet
+ * Servlet implementation class ProductExdetailServlet
  */
-@WebServlet(name = "ProductPage", urlPatterns = { "/productPage" })
-public class ProductPageServlet extends HttpServlet {
+@WebServlet(name = "ProductExdetail", urlPatterns = { "/productExdetail" })
+public class ProductExdetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductPageServlet() {
+    public ProductExdetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,32 +31,21 @@ public class ProductPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String ctgr = request.getParameter("ctgr");
+		int prdId = Integer.parseInt(request.getParameter("prdId"));
 		
-		String gender = request.getParameter("gender");
 		
-		int reqPage;
+		ProductLeeService service = new ProductLeeService();
+		Product prd = service.ProductdetailId(prdId);
 		
-		try {
-		reqPage = Integer.parseInt(request.getParameter("reqPage"));
-		}catch(NumberFormatException e) {
-			reqPage = 1;
-		}
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/exdetail.jsp");
 		
-		ProductService service = new ProductService();
-		PageData pd = service.selectList(reqPage,ctgr,gender);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
-		
-		request.setAttribute("lists", pd.getLists());
-		request.setAttribute("pageNavi",pd.getPageNavi());
-		
+		request.setAttribute("productId", prd);
 		rd.forward(request, response);
 		
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
