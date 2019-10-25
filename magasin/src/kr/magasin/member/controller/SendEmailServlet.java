@@ -41,7 +41,8 @@ public class SendEmailServlet extends HttpServlet {
     //이메일로 비밀번호 인증번호 보내기.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Properties props = System.getProperties();
-		props.put("mail.smtp.user", "구글아이디"); //서버 아이디만 쓰기
+		props.put("mail.smtp.user", "hiyomama12"); //서버 아이디만 쓰기
+
 		props.put("mail.smtp.host", "smtp.gmail.com"); //구글 SMTP
 		props.put("mail.smtp.port", "465");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -59,18 +60,19 @@ public class SendEmailServlet extends HttpServlet {
 		try {
 			//편지보낸시간
 			msg.setSentDate(new Date());
-			InternetAddress from = new InternetAddress("보내는 사람");
+
+			InternetAddress from = new InternetAddress("hiyomama12@gmail.com");//보내는사람
+
 			
 			//이메일 발신자
 			msg.setFrom(from);
-			
 			//이메일 수신자
-			String email = request.getParameter("receiver"); //사용자가 입력한 이메일 받아오기
+			String email = request.getParameter("email"); //사용자가 입력한 이메일 받아오기
 			InternetAddress to = new InternetAddress(email);
 			msg.setRecipient(Message.RecipientType.TO, to);
 			
 			//이메일 제목
-			msg.setSubject("[MAGASIN] 비밀번호 인증번호입니다.","UTF-8");
+			msg.setSubject("[MAGASIN] (비밀번호)인증번호입니다.","UTF-8");
 			
 			//이메일 내용
 			String code = request.getParameter("code_check"); //인증번호 값 받기
@@ -78,7 +80,7 @@ public class SendEmailServlet extends HttpServlet {
 			msg.setText(code, "UTF-8");
 			
 			//이메일 헤더
-			msg.setHeader("content-Type", "text/html");
+			msg.setHeader("content-Type", "text/html;charset=UTF-8");
 			
 			//메일 보내기
 			javax.mail.Transport.send(msg);
@@ -90,15 +92,16 @@ public class SendEmailServlet extends HttpServlet {
 			msg_e.printStackTrace();
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("인증번호확인하는페이지");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/join/checkcode.jsp"); //인증번호 확인하는 페이지
 		rd.forward(request, response);
 	}
 	
 	class MyAuthentication extends Authenticator{
 		PasswordAuthentication pa;
 		public MyAuthentication() {
-			String id="구글 아이디"; //구글 ID
-			String pw="구글 비밀번호"; //구글 비밀번호	
+			String id="hiyomama12@gmail.com"; //구글 ID
+			String pw="topp0112*"; //구글 비밀번호	
+
 			//ID와 비밀번호를 입력한다.
 			pa = new PasswordAuthentication(id,pw);
 		}

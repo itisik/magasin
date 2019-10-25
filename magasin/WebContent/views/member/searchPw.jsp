@@ -108,11 +108,14 @@
 										<th>이름 </th>
 										<td><input type="text" name="name" id="name" class="form-control"></td>
 									</tr>
-									<tr>
+									<tr id="showEmail">
 										<th>이메일로 찾기 </th>
-										<td><input type="text" name="email" id="email" class="form-control"></td>
-									</tr> 
-									    
+										<td><input type="text" name="email" id="email" class="form-control" onchange="setDisplay()"></td>
+									</tr>
+									<tr id="showPhone">
+										<th>휴대전화로 찾기</th>
+										<td><input type="text" name="phone" id="phone" class="form-control" onchange="setDisplay()"></td>
+									</tr>  	    
 								</table>
 				            </div>
 							<br>

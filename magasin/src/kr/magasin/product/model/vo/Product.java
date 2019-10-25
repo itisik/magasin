@@ -11,6 +11,9 @@ public class Product {
 	private int prdPrice;
 	private Date prdUpDate;
 	private String prdSnImgname;
+	private  String prdSnImgpath;
+	private String prdFilename;
+	private String prdFilepath;
 	private String prdSnImgpath;
 	private String prdImgname;
 	private String prdImgpath;
@@ -21,6 +24,8 @@ public class Product {
 	}
 
 	public Product(int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg, int prdPrice,
+
+			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdFilename, String prdFilepath) {
 			Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdImgname, String prdImgpath) {
 		super();
 		this.prdId = prdId;
@@ -32,8 +37,12 @@ public class Product {
 		this.prdUpDate = prdUpDate;
 		this.prdSnImgname = prdSnImgname;
 		this.prdSnImgpath = prdSnImgpath;
+
+		this.prdFilename = prdFilename;
+		this.prdFilepath = prdFilepath;
 		this.prdImgname = prdImgname;
 		this.prdImgpath = prdImgpath;
+
 	}
 
 	public int getPrdId() {
@@ -108,6 +117,22 @@ public class Product {
 		this.prdSnImgpath = prdSnImgpath;
 	}
 
+
+	public String getPrdFilename() {
+		return prdFilename;
+	}
+
+	public void setPrdFilename(String prdFilename) {
+		this.prdFilename = prdFilename;
+	}
+
+	public String getPrdFilepath() {
+		return prdFilepath;
+	}
+
+	public void setPrdFilepath(String prdFilepath) {
+		this.prdFilepath = prdFilepath;
+
 	public String getPrdImgname() {
 		return prdImgname;
 	}
@@ -122,6 +147,7 @@ public class Product {
 
 	public void setPrdImgpath(String prdImgpath) {
 		this.prdImgpath = prdImgpath;
+
 	}
 	
 	

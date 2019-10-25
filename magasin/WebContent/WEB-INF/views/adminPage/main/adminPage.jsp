@@ -3,49 +3,64 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<link rel="stylesheet" href="/css/adminPage/adminPage.css" />
-<link rel="stylesheet" href="/css/adminPage/adminPage-prd.css" />
-<link rel="stylesheet" href="/css/adminPage/tab3.css" />
-<link rel="stylesheet" href="/css/adminPage/tab4.css" />
-<link rel="stylesheet" href="/css/adminPage/tab5.css" />
-<link rel="stylesheet" href="/css/adminPage/tab7.css" />
-<link rel="stylesheet" href="/css/adminPage/tab8.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	
+	<link rel="stylesheet" href="/css/adminPage/adminPage.css" />
+	<link rel="stylesheet" href="/css/adminPage/adminPage-prd.css" />
+	<link rel="stylesheet" href="/css/adminPage/tab3.css" />
+	<link rel="stylesheet" href="/css/adminPage/tab4.css" />
+	<link rel="stylesheet" href="/css/adminPage/tab5.css" />
+	<link rel="stylesheet" href="/css/adminPage/tab7.css" />
+	<link rel="stylesheet" href="/css/adminPage/tab8.css" />
+	
+	<!--폰트를 위한 링크-->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"
+		rel="stylesheet" />
+	
+	<!--아이콘을 위한 링크-->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
+	
 
-<!--폰트를 위한 링크-->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"
-	rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="/js/c3-0.7.10/c3.min.js"></script>
+	<script src="/js/c3-0.7.10/c3.js"></script>
+	<!--매출 그래프를 위한 링크-->
+	<link href="/js/c3-0.7.10/c3.css" rel="stylesheet">
 
-<!--아이콘을 위한 링크-->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
-
-<!--매출 그래프를 위한 링크-->
-<link href="/js/c3-0.7.10/c3.css" rel="stylesheet">
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="/js/c3-0.7.10/c3.min.js"></script>
-<script src="/js/c3-0.7.10/c3.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
-<!-- jQuery를 위한 스크립트-->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-
+	<!-- jQuery를 위한 스크립트-->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <title>관리자 창</title>
+
+<style>
+#categorysemi1 {
+	display: none;
+}
+
+.searchbutton {
+	padding-left: 5%;
+}
+
+.current3 {
+	border: 0;
+	background: #0b83e6;
+	color: #fff;
+}
+</style>
+
 </head>
 
 <body>
 	<div class="all-container">
 		<div class="container">
 			<ul class="tabs">
-				<a href="/adminPageMain">
-				<img
+				<a href="/adminPageMain"> <img
 					src="img/adminPage/manager-logo.png" alt="매거진" class="tabs-logo"
 					width="143px" height="86px" />
 				</a>
@@ -149,10 +164,14 @@
 				<%@include file="/WEB-INF/views/adminPage/graph/graphPage.jsp"%>
 			</div>
 		</div>
+	</div>
+	
 	<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
 	<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
 	<script type="text/javascript" src="/js/adminPage/graph.js"></script>
+	<script type="text/javascript" src="/js/adminPage/prdSearch.js"></script>
+	<script type="text/javascript" src="/js/adminPage/prdInsert.js"></script>
 	<script type="text/javascript" src="/js/adminPage/customerSearch.js"></script>
-	</div>
+	
 </body>
 </html>

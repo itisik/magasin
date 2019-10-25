@@ -80,11 +80,11 @@
 					<i class="fas fa-edit"></i><span>상품 썸네일 수정</span>
 				</div>
 				<div class="updatecon6-2">
-					<img src="img/adminPage/ompang1.jpg" id="img-view" width="50"
-						height="50">
+					<img id="img-view3" width="50" height="50">
 				</div>
 				<div class="updatecon6-3" id="img-viewer5">
-					<input type="file">
+					<input type="file" name="updatepicturesum"
+						onchange="loadImg3(this)" id="awefawef">
 
 				</div>
 
@@ -96,11 +96,11 @@
 					<i class="fas fa-edit"></i><span>상품 이미지 수정</span>
 				</div>
 				<div class="updatecon7-2">
-					<img src="img/adminPage/ompang1.jpg" id="img-view2" width="50"
-						height="50">
+					<img id="img-view4" width="50" height="50">
 				</div>
 				<div class="updatecon7-3" id="img-viewer6">
-					<input type="file">
+					<input type="file" name="updatepicture" onchange="loadImg4(this)"
+						id="astasdtz">
 				</div>
 			</div>
 
