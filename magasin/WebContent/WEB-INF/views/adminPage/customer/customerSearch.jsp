@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<style>
-.current3 {
-	border: 0;
-	background: #0b83e6;
-	color: #fff;
-}
-</style>
 <div class="tab4-customer">
 	<div class="customer-title">
 		<i class="fas fa-users"></i>&nbsp;&nbsp;고객조회
@@ -15,13 +8,14 @@
 		<div class="search-top">
 			<div class="top-title">조회기간</div>
 			<div class="top-select">
-				<select name="searchIndex">
+				<select name="searchIndex" class="searchIndex">
+					<option>---선택---</option>
 					<option value="none">전체기간</option>
 					<option value="purchaseDate">결제일</option>
 					<option value="outDate">발송일</option>
 				</select>
 			</div>
-			<div class="top-date-select">
+			<div class="top-date-select" style="display: none;">
 				<input id="dateSelect" name="dateSelect" class="dateSelect"
 					type="hidden" />
 				<button value="99999" type="button">전체기간</button>
@@ -47,6 +41,7 @@
 		<div class="bottom-btn">
 			<button id="customerSearchBtn" type="submit">검색</button>
 		</div>
+		
 	</div>
 	<div class="customer-bottom">
 		<div class="bottom-title">
@@ -57,18 +52,20 @@
 				<table>
 					<thead>
 						<tr>
-							<td><input type="checkbox" /></td>
+							<td><input type="checkbox"></td>
 							<td>고객 아이디</td>
 							<td>고객 이름</td>
 							<td>상품 이름</td>
 							<td>상품 개수</td>
-							<td>결제일|발송일</td>
+							<td>결제일</td>
+							<td>발송일</td>
+							<td>배송완료일</td>
 						</tr>
 					</thead>
 				</table>
 			</div>
 			<div class="list-content">
-				<table id="customersResult" >
+				<table id="customersResult">
 					<tbody>
 					</tbody>
 				</table>

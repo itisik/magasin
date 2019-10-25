@@ -658,13 +658,14 @@
 			   $("#id").focus();
 			   return false;
 		   }
-		   //id의 유효성 검사
+		/*    //id의 유효성 검사
 		   if(!getCheck.test($("#id").val())){
 			   alert("형식에 맞게 입력해주세요");
 			   $("#id").val("");
 			   $("#id").focus();
 			   return false;
-		   } 
+		   } */
+
 		   //비밀번호 유효성 검사
 		   if(!getPw.test($("#pw").val())){
 			   alert("형식에 맞춰서 pw를 입력해주세요");
@@ -726,6 +727,7 @@
 			   return false;
 		   }
 		   
+
 		   
 		   //이용약관 동의 유효성 검사
 		   if(!($("#agreeSerChk").is(':checked'))){
@@ -739,7 +741,6 @@
 		   }
 		   
 		   
-
 		   
 		   
 		   /* if(check2.prop("checked")==false){
@@ -753,6 +754,7 @@
 		   
 		 /*   var check1 = $("input[id=agreeSerChk]");
 		   
+
 		   var check2 = $("input[id=agreePrvChk]");
 		   
 		   if(check1.prop("checked")==false){
@@ -767,7 +769,9 @@
 			   $("#agreeChkAll").focus();
 			   return false;
 		   }
+
 		    */
+
 		   
 		   /*
 		   //이용약관 동의 유효성 검사
@@ -878,13 +882,14 @@
 		   
 		   
 		   
+
 		  /*  //이메일 인증번호 확인안했을 때도 검사 --빨리하자
 		   if($('#chkAfter').val().equals("인증하기")) { //팝업창에서 인증번호 제대로 쓰고 인증하기 눌렀을 때
 			   alert("이메일 '인증번호 발송'을 누르셔서 인증번호를 입력해주시기 바랍니다.");
 		   		$("#email_btn").focus();
 		  		return false;
+
 		   } */
-	   }
 	</script>
 </body>
 

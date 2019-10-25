@@ -51,6 +51,7 @@
 			var hi = document.getElementById("hi");
 			hi.type="hidden";
 		} */
+
 		/* function sameCode(){
 			opener.document.getElementById("chkAfter").value = document.getElementById("hi").value;
 			
