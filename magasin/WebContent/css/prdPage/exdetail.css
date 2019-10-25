@@ -5,10 +5,11 @@
      *{
          text-decoration: none;
          list-style-type: none;
+
      }
      .detailContainr{
          width: 943px;
-/*             border: 5px solid red;*/
+/*       border: 5px solid red;*/
      }
      .detailContainr p{
          font-size: 12px;
@@ -30,12 +31,12 @@
          margin: 0 auto;
          width: 50%;
          height: 550px;
-/*         border: 5px solid red;*/
+/*       border: 5px solid red;*/
      }
      .detailImg{
          width: 440px;
          height: 500px;
-/*         border: 5px solid red;*/
+/*       border: 5px solid red;*/
          margin-left: 30px; 
      }
      .detailImg img{
@@ -44,14 +45,16 @@
      }
      .detailView{
          width: 100%;
-/*         border: 5px solid black;*/
+         border-top : 1px solid black;
+         margin-top : 20px;
+/*       border: 5px solid black;*/
      }
      .detailAllImg{
          width: 65%;
          overflow: hidden;
          margin: 0 auto;
          margin-top: 40px;
-/*         border: 5px solid red;       */
+/*       border: 5px solid red;       */
      }
      .detailAllImg img{
      	padding-bottom: 30px;  	
@@ -62,6 +65,9 @@
          border: 1px solid grey;
          float: left;
          margin-right: 10px;
+     }
+     .color div:hover{
+     	cursor: pointer;
      }
      .color1{
          background: #EFE8D8;
@@ -95,10 +101,12 @@
          font-size:11px;
          font-weight: bolder;     
      }
+     .detailTotal>input{
+     	margin-left: 75px;
+     }
      .detailTotal>span{
      	font-size : 21px;
-        padding-left: 200px;
-        
+     	padding-left: 40px; 
      }
      .table-wrapper>p{
          text-align: left;
@@ -122,18 +130,10 @@
          margin-top: 50px;
      }
      .detailBag>a{
-         padding: 50px 3px 0px 12px;
+         padding: 0px 3px 0px 12px;
          color: black;
          font-size: 18Px;
          font-weight: bold;
-     }
-     .ditailView>p:first-child{
-         font-weight:bold;
-     }
-     .detailView p{
-     	 font-size : 12px;
-         text-align: center;
-         padding-top: 20px;
      }
      .detailBorderSize{
          margin: 50px 0px;

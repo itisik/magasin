@@ -111,9 +111,10 @@
   width: 100%;
 }
 
-.customer-bottom > .bottom-list > .list-title > td,
-.customer-bottom > .bottom-list > .list-content > td {
-	width: 275px;
+.customer-bottom > .bottom-list > .list-title td,
+.customer-bottom > .bottom-list > .list-content td {
+  max-width: 20%;
+  max-width: 20%;
   height: 40px;
   line-height: 40px;
 }

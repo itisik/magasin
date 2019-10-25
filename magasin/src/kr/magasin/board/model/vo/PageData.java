@@ -7,20 +7,24 @@ public class PageData {
 	private String pageNavi;
 	private ArrayList<Notice> noticeList;
 	private ArrayList<Review> reviewList;
-	private ArrayList<Question> qList;
-	private ArrayList<Answer> aList;
+	private ArrayList<QEtc> qEtcList;
+	private ArrayList<AEtc> aEtcList;
+	private ArrayList<QPrd> qPrdList;
+	private ArrayList<APrd> aPrdList;
 	public PageData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public PageData(String pageNavi, ArrayList<Notice> noticeList, ArrayList<Review> reviewList,
-			ArrayList<Question> qList, ArrayList<Answer> aList) {
+			ArrayList<QEtc> qEtcList, ArrayList<AEtc> aEtcList, ArrayList<QPrd> qPrdList, ArrayList<APrd> aPrdList) {
 		super();
 		this.pageNavi = pageNavi;
 		this.noticeList = noticeList;
 		this.reviewList = reviewList;
-		this.qList = qList;
-		this.aList = aList;
+		this.qEtcList = qEtcList;
+		this.aEtcList = aEtcList;
+		this.qPrdList = qPrdList;
+		this.aPrdList = aPrdList;
 	}
 	public String getPageNavi() {
 		return pageNavi;
@@ -40,18 +44,29 @@ public class PageData {
 	public void setReviewList(ArrayList<Review> reviewList) {
 		this.reviewList = reviewList;
 	}
-	public ArrayList<Question> getqList() {
-		return qList;
+	public ArrayList<QEtc> getqEtcList() {
+		return qEtcList;
 	}
-	public void setqList(ArrayList<Question> qList) {
-		this.qList = qList;
+	public void setqEtcList(ArrayList<QEtc> qEtcList) {
+		this.qEtcList = qEtcList;
 	}
-	public ArrayList<Answer> getaList() {
-		return aList;
+	public ArrayList<AEtc> getaEtcList() {
+		return aEtcList;
 	}
-	public void setaList(ArrayList<Answer> aList) {
-		this.aList = aList;
+	public void setaEtcList(ArrayList<AEtc> aEtcList) {
+		this.aEtcList = aEtcList;
 	}
-	
+	public ArrayList<QPrd> getqPrdList() {
+		return qPrdList;
+	}
+	public void setqPrdList(ArrayList<QPrd> qPrdList) {
+		this.qPrdList = qPrdList;
+	}
+	public ArrayList<APrd> getaPrdList() {
+		return aPrdList;
+	}
+	public void setaPrdList(ArrayList<APrd> aPrdList) {
+		this.aPrdList = aPrdList;
+	}
 	
 }
