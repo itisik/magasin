@@ -49,7 +49,9 @@
 						<li>상품 관련 문의</li>
 					</ul> 
 				</div>
+
 				<%if(m!=null&&!m.getId().equals("admin")){ %>
+
 				<p id="writeQ"><a href="/views/board/qna/qWrite1Test.jsp" class="btn writeBtn">Write</a></p>
 				<%} %>
 				
@@ -74,12 +76,14 @@
 							%>
 							<tr>
 								<td><%=q.getqCtgr() %></td>
+
 								<%if(m!=null){
 									%>
 									<td><a href="/qEtcView?qNo=<%=q.getqNo() %>&id=<%=m.getId() %>" class="content"><%=q.getqTitle() %></a></td>
 								<%}else{ %>
 								<td><a href="/qEtcView?qNo=<%=q.getqNo()%>" class="content"><%=q.getqTitle() %></a></td>
 								<%} %>
+
 								<td><%=q.getqWriter()%></td>
 								<td><%=q.getqDate() %></td>
 							</tr>
@@ -90,6 +94,7 @@
 							%>
 								<tr>
 									<td></td>
+
 									<%if(m!=null){ %>
 									<td>
 									<!-- 제목 -->
@@ -101,11 +106,14 @@
 									<!-- 제목 -->
 									<img src="/img/board_img/realRe.png">
 									<a href="/views/member/login.jsp"><%=a.getaTitle() %></a>
+
 									</td>
 									<%} %>
 									<td>
 									<img src="/img/common_img/footerlogo2.png" height="27">
+
 								<input type="hidden" name="aWriter" class="inputText"
+
 								value="admin">
 									</td>
 									<td><%=a.getaDate() %></td>
@@ -183,6 +191,7 @@
 								<br>
 								<%=q.getPrdName() %>
 								</td>
+
 								<%if(m!=null){
 									%>
 									<td><a href="/qPrdView?qNo=<%=q.getqNo() %>&id=<%=m.getId() %>" class="content"><%=q.getqTitle() %></a></td>
@@ -190,6 +199,7 @@
 								<td><a href="/views/member/login.jsp" class="content" id="cont"><%=q.getqTitle() %></a></td>
 								<%} %>
 								
+
 								<td><%=q.getqWriter() %></td>
 								<td><%=q.getqDate() %></td>
 							</tr>
@@ -200,6 +210,7 @@
 								<tr>
 									<td colspan="2"></td>
 									
+
 									
 									<!-- 제목 -->
 									<%if(m!=null){
@@ -212,13 +223,16 @@
 									<td>
 									<img src="/img/board_img/realRe.png">
 									<a href="/views/member/login.jsp"><%=a.getaTitle() %></a>
+
 									</td>
 									
 									<%} %>
 									
 									<td>
 									<img src="/img/common_img/footerlogo2.png" height="27">
+
 								<input type="hidden" name="aWriter" class="inputText"
+
 								value="admin">
 									</td>
 									<td><%=a.getaDate() %></td>

@@ -1,4 +1,4 @@
-package kr.magasin.member.model.dao;
+﻿package kr.magasin.member.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -132,6 +132,7 @@ public class MemberDao {
 		return result;
 	}
 	
+
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -192,6 +193,7 @@ public class MemberDao {
 	   }
 	   
 	
+
 
 
 }

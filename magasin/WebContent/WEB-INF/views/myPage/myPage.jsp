@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
     <% 
     Member member = (Member)request.getAttribute("member"); 
     %>
@@ -44,7 +43,7 @@
 			<li class="myp-div3-ul-li1">
 			<h3>
 				<img src="/img/myPage/myp-order.png">
-				<a href="/views/myPage/orderList.jsp">Order</a>
+				<a href="/orderList?id=<%=member.getId()%>">Order</a>
 			</h3>
 			<pre>주문내역 조회</pre>
 			<p>고객님께서 주문하신 상품의<br>주문내역을 확인하실 수 있습니다.</p>
@@ -61,7 +60,7 @@
 			<li class="myp-div3-ul-li3">
 			<h3>
 			<img src="/img/myPage/myp-cart1.png">
-			<a href="/views/myPage/basket.jsp">Basket</a></h3>
+			<a href="/listBasket?id=<%=member.getId() %>">Basket</a></h3>
 				<pre>장바 구니</pre>
 			<p>장바구니에 등록하신 <br>상품 목록을 보여드립니다.</p>	
 			</li>	

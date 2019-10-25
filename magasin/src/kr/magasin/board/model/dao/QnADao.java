@@ -347,6 +347,7 @@ public class QnADao {
 				
 		return aList;
 	}*/
+
 	public int aEtcInsert(Connection conn, AEtc a) {
 		// TODO Auto-generated method stub
 		int result = 0;
@@ -660,5 +661,6 @@ public class QnADao {
 		}
 		return result ;
 	}
+
 
 }

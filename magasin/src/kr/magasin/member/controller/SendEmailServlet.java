@@ -41,7 +41,8 @@ public class SendEmailServlet extends HttpServlet {
     //이메일로 비밀번호 인증번호 보내기.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Properties props = System.getProperties();
-		props.put("mail.smtp.user", "hiyomama12@gmail.com"); //서버 아이디만 쓰기
+		props.put("mail.smtp.user", "hiyomama12"); //서버 아이디만 쓰기
+
 		props.put("mail.smtp.host", "smtp.gmail.com"); //구글 SMTP
 		props.put("mail.smtp.port", "465");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -59,11 +60,12 @@ public class SendEmailServlet extends HttpServlet {
 		try {
 			//편지보낸시간
 			msg.setSentDate(new Date());
-			InternetAddress from = new InternetAddress("최지현");//보내는사람
+
+			InternetAddress from = new InternetAddress("hiyomama12@gmail.com");//보내는사람
+
 			
 			//이메일 발신자
 			msg.setFrom(from);
-			
 			//이메일 수신자
 			String email = request.getParameter("email"); //사용자가 입력한 이메일 받아오기
 			InternetAddress to = new InternetAddress(email);

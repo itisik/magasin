@@ -1,6 +1,7 @@
 
 <%@page import="kr.magasin.basket.model.vo.Basket"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@page import="kr.magasin.basket.model.service.BasketService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,9 +42,7 @@
 	<%for(Basket b2 : lists){ %>
 	<tr>
 	
-		<td class="bkt-list-1">
-			<input type="checkbox" name="chk">
-			<input type="hidden" class="prdDtlId" value="<%=b2.getBasketPrdDtlId() %>" >
+		<td class="bkt-list-1"><input type="checkbox" name="chk[]">
 			<input type="hidden" class="prdDtlSize" value="<%=b2.getPrdDtlSize() %>" >
 			<input type="hidden" class="prdDtlColor" value="<%=b2.getPrdDtlColor() %>" >
 			<input type="hidden" class="prdCount" value="<%=b2.getBasketPrdCount() %>" >
@@ -51,7 +50,6 @@
 		</td>
 		
         <td class="bkt-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
-      
         <td class="bkt-list-3">
         	<ul>
         		<li class="bkt-list-3-li-1" ><strong><%=b2.getPrdName() %></strong></li>
@@ -128,74 +126,41 @@
 			
 		</table>
 		<ul class="bsk-f-ul">
-			<li class="bsk-f-ul-li-1" ><button type="button" name="button"  onclick="tempBasketAll();">전체상품주문</button></li>
-			<li class="bsk-f-ul-li-2" ><button type="button" onclick="tempBasket();">선택상품주문</button></li>
+			<li class="bsk-f-ul-li-1" ><button type="submit">전체상품주문</button></li>
+			<li class="bsk-f-ul-li-2" ><button id="submitFrm" type="submit">선택상품주문</button></li>
 			<!--  메인으로 가기 -->
 			<li class="bsk-f-ul-li-3" ><a href="#">쇼핑계속하기</a></li>
 		</ul>
 
 	</div>
 </div>
+	<form action="/" method="post"> 
+	
+	</form>
 
 </body>
 <script type="text/javascript">
-	
-	function tempBasket(){
-	
-		var form =$("<form action='/productExpay' method='post'></form>");
-	 	var last =  $("[name=chk]:checked").length;
-	 	alert(last);
-		for(var i = 0;i<last;i++){
-		//	alert($("[name=chk]:checked").length);
-			
-	 	var id = $("[name=chk]:checked").eq(i).siblings().eq(0).val();
-	 	var size =  $("[name=chk]:checked").eq(i).siblings().eq(1).val();
-	 	var color =  $("[name=chk]:checked").eq(i).siblings().eq(2).val();
-	 	var count =  $("[name=chk]:checked").eq(i).siblings().eq(3).val();
-	 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
-	 	
-	 	
-		form.append($("<input type='number' name='count"+i+"' value='"+last+"'>"));
-	 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+id+"'>"));
-		form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
-		form.append($("<input type='text' name='prdDtlColor"+i+"' value='"+color+"'>"));
-		form.append($("<input type='text' name='prdCount"+i+"' value='"+count+"'>"));
-		form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
-		
-		
-	}
-		$('.bsk-wrapper').append(form);
-		form.submit();
-	}
+
+	$('#submitFrm').on("click",function(){
+		if($(".chkclass :check").size()<2){
+			alert("체크 갯수가 2개 이하입니다.");
+			return;
+		}
+		else{
+			var size= $('.prdDtlSize').val();
+			var color= $('.prsdDtlColor').val();
+			var count= $('.prdCount').val();
+			var price= $('.prdPrice').val();
+			vat tBasket = {size:size, color:color,count:count,price:price};
+			$(".bkt-tbody:checked").each(function(){
+				
+			})
+		}
+	});
+
 	
 	
-	function tempBasketAll(){
-		
-		var form =$("<form action='/productExpay' method='post'></form>");
-	 	var last =  $("[name=chk]").length;
-	 	alert(last);
-		for(var i = 0;i<last;i++){
-		//	alert($("[name=chk]:checked").length);
-			
-	 	var id = $("[name=chk]:checked").eq(i).siblings().eq(0).val();
-	 	var size =  $("[name=chk]:checked").eq(i).siblings().eq(1).val();
-	 	var color =  $("[name=chk]:checked").eq(i).siblings().eq(2).val();
-	 	var count =  $("[name=chk]:checked").eq(i).siblings().eq(3).val();
-	 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
-	 	
-	 	
-		form.append($("<input type='number' name='count"+i+"' value='"+last+"'>"));
-	 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+id+"'>"));
-		form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
-		form.append($("<input type='text' name='prdDtlColor"+i+"' value='"+color+"'>"));
-		form.append($("<input type='text' name='prdCount"+i+"' value='"+count+"'>"));
-		form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
-		
-		
-	}
-		$('.bsk-wrapper').append(form);
-		form.submit();
-	}
+	
 	$(document).ready(function(){
 	    //최상단 체크박스 클릭
 	   

@@ -100,6 +100,7 @@
 					<!-- 글쓴이 일때 -->
 					<a href="/qDelete?ctgr=prd&qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >삭제</a>
 					<a href="/qUpdate?ctgr=prd&qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >수정</a>
+
 					<%} 
 					}%>
 				</div>

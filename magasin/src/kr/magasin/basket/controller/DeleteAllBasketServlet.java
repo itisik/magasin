@@ -1,28 +1,27 @@
-package kr.magasin.member.controller;
+package kr.magasin.basket.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.magasin.member.model.service.MemberService;
-import kr.magasin.member.model.vo.Member;
+import kr.magasin.basket.model.service.BasketService;
 
 /**
- * Servlet implementation class AjaxCheckEmailServlet
+ * Servlet implementation class DeleteAllBasketServlet
  */
-@WebServlet(name = "AjaxCheckEmail", urlPatterns = { "/ajaxCheckEmail" })
-public class AjaxCheckEmailServlet extends HttpServlet {
+@WebServlet(name = "DeleteAllBasket", urlPatterns = { "/deleteAllBasket" })
+public class DeleteAllBasketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxCheckEmailServlet() {
+    public DeleteAllBasketServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +30,20 @@ public class AjaxCheckEmailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		MemberService service = new MemberService();
-		Member m = service.selectOne2(email);
-
-		PrintWriter out = response.getWriter();
-		if(m==null) {
-			out.print(1);
+		request.setCharacterEncoding("utf-8");
+		
+		String basketUserId = request.getParameter("basketUserId");
+		System.out.println("basketUserId DB 다녀오기 전 "+ basketUserId);
+		BasketService service = new BasketService();
+		int result = service.deleteAll(basketUserId);
+		if(result>0) {
+			System.out.println("basketUserId DB 다녀온 후 "+ basketUserId);
+			RequestDispatcher rd = request.getRequestDispatcher("/listBasket?id="+basketUserId);
+			rd.forward(request, response);
 		}else {
-			out.print(0);
+			System.out.println("장바구니 전체 삭제 실패 ");
 		}
+		
 	}
 
 	/**

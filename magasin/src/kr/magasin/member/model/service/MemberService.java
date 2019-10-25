@@ -39,6 +39,7 @@ public class MemberService {
 		return result;
 	}
 	
+
 	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
@@ -49,16 +50,16 @@ public class MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
-		return result;
-		
+		return result;	
 	}
-	   public int delete(String memberId) {
-		      Connection conn = JDBCTemplate.getConnection();
-		      MemberDao dao = new MemberDao();
-		      int result  = dao.delete(conn, memberId);
-		      JDBCTemplate.close(conn);
-		      return result;
-		   }
+	public int delete(String memberId) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		int result  = dao.delete(conn, memberId);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 
 
 }
