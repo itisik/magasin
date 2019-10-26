@@ -33,6 +33,7 @@ public class UpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.문자인코딩
+
 		request.setCharacterEncoding("UTF-8");
 		//2. 변수 저장
 		String id = request.getParameter("id");
