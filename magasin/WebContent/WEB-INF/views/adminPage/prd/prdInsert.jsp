@@ -165,10 +165,10 @@
             			$("#tbl>tbody").append(tr);
             			for(var j=0;j<textArr2.length;j++){
             				var sizeHidden = ("<input type='hidden'  name='sizee"+index1 +"' value='"+textArr1[i]+"'>");
-                			var colorHidden = ("<input type='hidden'  name='colorr"+index1 +"' value='"+textArr2[i]+"'>");
+                			var colorHidden = ("<input type='hidden'  name='colorr"+index1 +"' value='"+textArr2[j]+"'>");
                 			var input2 = $("<input type='text' name='count"+ index1 +"' placeholder ='재고입력'>");
             				if(j==0){ 
-            					
+            					//첫번째 출력은 tr을 추가할 필요가 없는데  두번째 세번째부턴 tr을 추가해야된다. 그래서 첫번째랑 두번째랑 나눈 것
             					var td2=$("<td>");
             					td2.append(textArr2[j]);
             					var td3=$("<td>");            					

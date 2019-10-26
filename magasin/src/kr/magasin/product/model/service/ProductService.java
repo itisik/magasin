@@ -66,6 +66,8 @@ public class ProductService {
 			int refKey = dao.selectSequenNo(conn); //prdId 확인
 			for(int i=0; i<list.size(); i++){
 				int result1= dao.insertProdctdtl(conn, refKey, list.get(i));//prddtl 등록
+				System.out.println("리스트 값 확인");
+				System.out.println(list.get(i).getPrdDtlColor());
 				if(result>0){
 					totalResult++;
 				}

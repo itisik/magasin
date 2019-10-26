@@ -97,6 +97,18 @@ public class PrdInsertServlet extends HttpServlet {
 			list.add(pdtl);
 			
 		}
+//		for(int i=0; i<length1; i++){
+//			String sizee = "sizee"+i;
+//			size[i] = mRequest.getParameter(sizee);
+//			for(int j=0; j<length2; j++){
+//				String colorr = "colorr"+i;
+//				color[i] = mRequest.getParameter(colorr);
+//				String countt = "count"+i;
+//				count[i] =  Integer.parseInt(mRequest.getParameter(countt));
+//				ProductDtl pdtl = new ProductDtl(0, 0, count[i], size[i], color[i]);
+//				list.add(pdtl);
+//			}
+//		}
 //		for(int i=0; i<totalLength; i++){
 //			size[i] = mRequest.getParameter("sizee"+i);
 //			System.out.println(size[i]);
