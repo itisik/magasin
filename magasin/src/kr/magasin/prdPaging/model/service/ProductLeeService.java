@@ -2,6 +2,8 @@ package kr.magasin.prdPaging.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
@@ -11,11 +13,10 @@ import kr.magasin.productDtl.model.vo.ProductDtl;
 
 public class ProductLeeService {
 
-
+	ProductLeeDao dao = new ProductLeeDao();
 
 	public ArrayList<Product> productList() {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductLeeDao dao = new ProductLeeDao();
 		ArrayList<Product> list = dao.productList(conn);
 		JDBCTemplate.close(conn);
 		return list;
@@ -23,7 +24,6 @@ public class ProductLeeService {
 
 	public Product ProductdetailId(int prdId) {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductLeeDao dao = new ProductLeeDao();
 		Product pdI = dao.ProductdetailId(conn,prdId);
 		JDBCTemplate.close(conn);
 		return pdI;
@@ -58,7 +58,7 @@ public class ProductLeeService {
 
 	public PageDataLee selectList(int reqPage,String ctgr, String gender) {
 		Connection conn = JDBCTemplate.getConnection();
-		ProductLeeDao dao = new ProductLeeDao();
+		
 		int numPerPage = 12;// 한페이지당 게시물 수
 		int totalCount = dao.totalCount(conn,ctgr,gender); //전체 게시물수
 		int totalPage = (totalCount%numPerPage == 0)?(totalCount/numPerPage):(totalCount/numPerPage)+1;
@@ -99,7 +99,19 @@ public class ProductLeeService {
 		JDBCTemplate.close(conn);
 		return pd;
 	}
+	
+	public ArrayList<ProductDtl> searchColor(){
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<ProductDtl> list = dao.searchColor(conn);
+		JDBCTemplate.close(conn);
+		return list;
+	}
 
-
-
+	public ArrayList<String> subCtgr(String ctgr) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<String> sub = dao.subCtgr(conn,ctgr);
+		JDBCTemplate.close(conn);
+		return sub;
+	}
+	
 }

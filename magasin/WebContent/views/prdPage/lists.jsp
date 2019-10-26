@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="kr.magasin.prdPaging.model.vo.ProductLee"%>
 <%@page import="kr.magasin.product.model.vo.Product"%>
@@ -9,6 +10,8 @@
          
         ArrayList<ProductLee> lists = (ArrayList<ProductLee>)request.getAttribute("lists");
         String pageNavi = (String)request.getAttribute("pageNavi");
+        ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
+        ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
         
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -31,13 +34,12 @@
                 <div class="title-text">
                 <h3><%=lists.get(0).getPrdCtgr() %></h3>
                 </div>
+                
                 <div class="title-category">     
                 <ul class="subCategory">  
-                
-                   <li><span><a href="#"><%=lists.get(0).getPrdSubCtrg() %></a></span></li>
-                   <li><span><a href="#"><%=lists.get(1).getPrdSubCtrg() %></span></li>
-                   <li><span><a href="#"><%=lists.get(2).getPrdSubCtrg() %></span></li>     
-                   <li><span><a href="#"><%=lists.get(3).getPrdSubCtrg() %></a></span></li>        
+                <%for(String sub : subCtgr) {%>
+                   <li><span><%=sub%></span></li>      
+                <%} %>
                 </ul>
                 </div>
             </div>
@@ -63,19 +65,30 @@
             <div class="cloths-price"><span><%=lists.get(4*i+j).getPrdPrice() %></span></div>
             <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
             <div class="cloths-color">
-            <div class="color1"></div>
-            <div class="color2"></div>
+            
+            <%
+            for(int k=0; k<prdDtl.size(); k++){
+ 
+            	if(lists.get(4*i+j).getPrdId() == prdDtl.get(k).getPrdId()){
+            %>
+            
+            <div class="color1" style="background-color:<%=prdDtl.get(k).getPrdDtlColor()%>"></div>
+           
+            <% 
+            }
+            }%>
+           <!--  <div class="color2"></div>
             <div class="color3"></div>
-            <div class="color4"></div>
+            <div class="color4"></div> -->
             </div>
-            <div class="cloths-new"><div class="imgs"><img src="/img/product/custom_43.gif"></div>
+            <div class="cloths-new">
             <div class="cloths-review">Review : <span></span></div>
             </div> </div>       
          <%} %>
         </div>
        <%} %>
     </div>
-     <div class="move"><%=pageNavi %></div>
+     <div class="move"><%=pageNavi %></div> 
 </div>
 
 </body>

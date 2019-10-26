@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
@@ -209,9 +211,10 @@ public class ProductLeeDao {
 		ArrayList<ProductLee> lists = new ArrayList<ProductLee>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select*from"+"(select ROWNUM as rnum, n. * from"
+		String query = "select* from"+
+						"(select ROWNUM as rnum, n. * from"
 						+ "(select * from product where prd_ctgr=? and prd_gender=? order by prd_up_date desc) n )"
-						+ "where rnum between ? and ?";
+						+ " where rnum between ? and ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -274,4 +277,61 @@ public class ProductLeeDao {
 		}
 		return result;
 	}
+
+	public ArrayList<ProductDtl> searchColor(Connection conn){
+		ArrayList<ProductDtl> list = new ArrayList<ProductDtl>();
+		ProductDtl prdDtl = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from product_dtl order by prd_id desc";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				prdDtl = new ProductDtl();
+				prdDtl.setPrdDtlColor(rset.getString("prd_dtl_color"));
+				prdDtl.setPrdDtlId(rset.getInt("prd_dtl_id"));
+				prdDtl.setPrdId(rset.getInt("prd_id"));
+				prdDtl.setPrdDtlSize(rset.getString("prd_dtl_size"));
+				prdDtl.setPrdDtlCount(rset.getInt("prd_dtl_count"));
+				list.add(prdDtl);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+	}
+
+	public ArrayList<String> subCtgr(Connection conn,String ctgr) {
+		ArrayList<String> sub = new ArrayList<String>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "SELECT DISTINCT PRD_CTGR, PRD_SUB_CTGR FROM PRODUCT WHERE PRD_CTGR =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, ctgr);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				sub.add(rset.getString("prd_sub_ctgr"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return sub;
+	}
+
+	
 }

@@ -1,6 +1,7 @@
 package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.prdPaging.model.service.ProductLeeService;
 import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 /**
  * Servlet implementation class ProductExdetailServlet
@@ -42,6 +44,9 @@ public class ProductExdetailServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/exdetail.jsp");
 		
+		ArrayList<ProductDtl> prdDtl = service.searchColor();
+		
+		request.setAttribute("prdCol", prdDtl);
 		request.setAttribute("productId", prd);
 		rd.forward(request, response);
 		

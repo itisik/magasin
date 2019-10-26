@@ -69,8 +69,7 @@
             color: #000000;      
         }
         .cloths-new{
-            display: flex;
-            justify-content: space-between;
+            float: left;
         }
         .imgs>img{
             width: 40px;
@@ -85,24 +84,6 @@
             border: 0.1px solid #aaa;
             width: 10px;
             height: 10px;
-            background: #EFE8D8;
-        }
-        .color2{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #cc6f34;
-        }
-        .color3{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #718f39;
-        }.color4{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #595f79;
         }        
         .cloths-color{
             display: flex;

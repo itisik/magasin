@@ -1,6 +1,8 @@
 package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.prdPaging.model.service.ProductLeeService;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
+import kr.magasin.prdPaging.model.vo.ProductLee;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 /**
  * Servlet implementation class ProductPageServlet
@@ -45,13 +49,19 @@ public class ProductPageServlet extends HttpServlet {
 			reqPage = 1;
 		}
 		
+		
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
+		ArrayList<ProductDtl> list = service.searchColor();
+		
+		ArrayList<String> subCtgr = service.subCtgr(ctgr);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		
 		request.setAttribute("lists", pd.getLists());
 		request.setAttribute("pageNavi",pd.getPageNavi());
+		request.setAttribute("prdDtl", list);
+		request.setAttribute("sub", subCtgr);
 		
 		rd.forward(request, response);
 		

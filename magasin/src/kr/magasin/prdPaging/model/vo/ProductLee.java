@@ -16,6 +16,10 @@ public class ProductLee {
 	private  String prdSnImgpath;
 	private String prdFilename;
 	private String prdFilepath;
+	private int prdDtlId;
+	private int prdDtlCount;
+	private String prdDtlSize;
+	private String prdDtlColor;
 	
 	public ProductLee() {
 		super();
@@ -24,7 +28,7 @@ public class ProductLee {
 
 	public ProductLee(int rnum, int prdId, String prdName, String prdGender, String prdCtgr, String prdSubCtrg,
 			int prdPrice, Date prdUpDate, String prdSnImgname, String prdSnImgpath, String prdFilename,
-			String prdFilepath) {
+			String prdFilepath, int prdDtlId, int prdDtlCount, String prdDtlSize, String prdDtlColor) {
 		super();
 		this.rnum = rnum;
 		this.prdId = prdId;
@@ -38,6 +42,10 @@ public class ProductLee {
 		this.prdSnImgpath = prdSnImgpath;
 		this.prdFilename = prdFilename;
 		this.prdFilepath = prdFilepath;
+		this.prdDtlId = prdDtlId;
+		this.prdDtlCount = prdDtlCount;
+		this.prdDtlSize = prdDtlSize;
+		this.prdDtlColor = prdDtlColor;
 	}
 
 	public int getRnum() {
@@ -135,6 +143,40 @@ public class ProductLee {
 	public void setPrdFilepath(String prdFilepath) {
 		this.prdFilepath = prdFilepath;
 	}
+
+	public int getPrdDtlId() {
+		return prdDtlId;
+	}
+
+	public void setPrdDtlId(int prdDtlId) {
+		this.prdDtlId = prdDtlId;
+	}
+
+	public int getPrdDtlCount() {
+		return prdDtlCount;
+	}
+
+	public void setPrdDtlCount(int prdDtlCount) {
+		this.prdDtlCount = prdDtlCount;
+	}
+
+	public String getPrdDtlSize() {
+		return prdDtlSize;
+	}
+
+	public void setPrdDtlSize(String prdDtlSize) {
+		this.prdDtlSize = prdDtlSize;
+	}
+
+	public String getPrdDtlColor() {
+		return prdDtlColor;
+	}
+
+	public void setPrdDtlColor(String prdDtlColor) {
+		this.prdDtlColor = prdDtlColor;
+	}
+
+	
 
 	
 	
