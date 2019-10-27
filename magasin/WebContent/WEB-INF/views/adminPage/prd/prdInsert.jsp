@@ -6,6 +6,7 @@
 	<div>
 	<form method="post" action="/prdInsert" enctype="multipart/form-data" name="myForm">
 	<div class="enter1">
+
 			<style>
 			.producttable{
 				background-color: white;
@@ -81,9 +82,11 @@
                   </th>
                   <td>
                       <select id="gender" name="prdGender">
+
                           <option value="w">여자</option>
                           <option value="m">남자</option>
                           <option value="c">공통</option>
+
                       </select>
                   </td>
               </tr> 
@@ -106,6 +109,7 @@
                           <option value="bottomm">하의</option>
                           <option value="dress">드레스</option>
                           <option value="common">기타</option>
+
                       </select>
                       
                       <span id="sebuspan1">세부 카테고리 선택</span>
@@ -133,6 +137,7 @@
                           <option value="shoese">신발</option>
                           <option value="acc">악세사리</option>
                           <option value="dress">드레스</option>
+
                       </select>
                       
                   </td>
@@ -186,11 +191,14 @@
           <i class="fas fa-list"><span id="optionenterspan"> 상품 옵션 등록</span></i>
           <div class="enter2">
           
+
           	<div>
           		<input type="text" name="size" id="input1" placeholder="상품 사이즈 입력 ex) S,M,L" style="width:300px;">
           		<input type="text" name="color" id="input2" placeholder="상품 컬러 입력 ex) red,black,white" style="width:300px;">
           		<button id="btn1" type="button">상품 재고 입력하기</button>
+
           		<button id="prdinsert">상품 최종 등록하기</button>
+
           		<table id="tbl" border="1">
           		
           			<tbody>
@@ -236,6 +244,7 @@
             			for(var j=0;j<textArr2.length;j++){
             				var sizeHidden = ("<input type='hidden'  name='sizee"+index1 +"' value='"+textArr1[i]+"'>");
                 			var colorHidden = ("<input type='hidden'  name='colorr"+index1 +"' value='"+textArr2[j]+"'>");
+
                 			var input2 = $("<input type='text' class='cntinput' name='count"+ index1 +"' placeholder ='재고입력'>");
             				if(j==0){ 
             					//첫번째 출력은 tr을 추가할 필요가 없는데  두번째 세번째부턴 tr을 추가해야된다. 그래서 첫번째랑 두번째랑 나눈 것
@@ -244,15 +253,18 @@
             					var td3=$("<td class='tdcolor'>");            					
             					td3.append(sizeHidden).append(colorHidden).append(input2);
             					tr.append("사이즈").append(td2).append(td3);
+
             					$("#tbl>tbody").append(tr);
             				}else{
             					
             					var tr1=$("<tr>");
+
             					var td2=$("<td class='tdsize'>");
             					td2.append(textArr2[j]);
             					var td3=$("<td class='tdcolor'>");            					
             					td3.append(sizeHidden).append(colorHidden).append(input2);
             					tr1.append("사이즈").append(td2).append(td3);
+
             					$("#tbl>tbody").append(tr1);
             				}
             				
@@ -297,6 +309,7 @@
             			reader.readAsDataURL(value.files[0]);
             		}
             	}
+
             	$("#gender").change(function(){
             		var state2 = $('#gender option:selected').val();
             		$("#category").show();
@@ -502,12 +515,8 @@
            	#categorysemi2{
           		display:none;
             }
-<<<<<<< HEAD
+
             #category{
             	display:none;
             }
             </style>
-=======
-            </style>
-
->>>>>>> 5f63aa1b635e8e22f7a5351d2e9545f6a4ec762d

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/css/adminPage/tab5.css" />
 	<link rel="stylesheet" href="/css/adminPage/tab7.css" />
 	<link rel="stylesheet" href="/css/adminPage/tab8.css" />
-	
+    
 	<!--폰트를 위한 링크-->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"

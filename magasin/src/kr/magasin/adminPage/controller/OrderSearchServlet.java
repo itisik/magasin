@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import kr.magasin.adminPage.model.service.CustomerSearchService;
 import kr.magasin.adminPage.model.service.OrderSearchService;
 import kr.magasin.adminPage.model.vo.Customer;
 import kr.magasin.adminPage.model.vo.Order;
@@ -46,19 +45,19 @@ public class OrderSearchServlet extends HttpServlet {
 
 		if (!timeIndex.equals("all2") && !timeIndex.equals("none2")) {
 			// 전체기간이 아니면, 조회 기간을 숫자로 변환한다.
-			dateSelect2 = Integer.parseInt(request.getParameter("dateSelect"));
+			dateSelect2 = Integer.parseInt(request.getParameter("dateSelect2"));
 		}
 		String detailIndex = request.getParameter("detailIndex");
 		// 상세조건 : 전체주문, 신규주문, ..........
 		
 		String order = request.getParameter("order");
 		// 검색 키워드
-
+		
 		OrderSearchService service = new OrderSearchService();
 		ArrayList<Order> list = service.OrderSearch(timeIndex, dateSelect2, detailIndex, order);
 		if(list.isEmpty()) {
 			list = new ArrayList<Order>();
-			list.set(0, new Order("", "", "", "", "", "", "", ""));
+			list.set(0, new Order(999, "", "", "", "", "", "", "", "", 999));
 		}
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

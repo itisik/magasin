@@ -93,11 +93,6 @@
   line-height: 40px;
 }
 
-.order-bottom > .bottom-list > .list-title > table td:first-child,
-.order-bottom > .bottom-list > .list-content > table td:first-child {
-  width: 100px;
-}
-
 .order-bottom > .bottom-list > .list-content > table td {
   height: 40px;
   line-height: 40px;
@@ -118,22 +113,73 @@
   padding-bottom: 10px;
 }
 
-.bottom-title{
-	display: flex;
-	align-items: center;;
-	justify-content: space-between;
+.bottom-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.readyRed {
+.order-bottom > .bottom-list .list-title table td:first-child{
+	width: 4.2%
+}
+.order-bottom > .bottom-list .list-title table td:not(:first-child){
+	width: 10%
+}
+
+.oneShotForOrder{
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+}
+
+.o1 {
+  /*신규주문*/
   color: #ffffff;
-  background-color: #cf2727;
+  background-color: #f43142;
 }
 
-.outYellow {
+.o0 {
+  /*주문취소요청*/
+  color: #ffffff;
+  background-color: #0b83e6;
+}
+
+.oc,
+.o7 {
+  /*주문취소완료*/
+  /*반품완료*/
+  color: #000000;
+  background-color: #bcbcbc;
+}
+
+.o2 {
+  /*배송준비중*/
+  color: #ffffff;
+  background-color: #fc7b04;
+}
+
+.o3 {
+  /*배송중*/
   color: #000000;
   background-color: #e7da20;
 }
 
-.lookGreen {
+.o4 {
+  /*배송완료*/
+  color: #ffffff;
   background-color: #1fd045;
+}
+
+.o5 {
+  /*반품신청*/
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.o6 {
+  /*반품중*/
+  color: #ffffff;
+  background-color: #bb1389;
 }
