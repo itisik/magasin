@@ -6,7 +6,8 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	
+
+
 	<link rel="stylesheet" href="/css/adminPage/adminPage.css" />
 	<link rel="stylesheet" href="/css/adminPage/adminPage-prd.css" />
 	<link rel="stylesheet" href="/css/adminPage/tab3.css" />
@@ -33,9 +34,7 @@
 	<link href="/js/c3-0.7.10/c3.css" rel="stylesheet">
 
 	<!-- jQuery를 위한 스크립트-->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>관리자 창</title>
 
 <style>

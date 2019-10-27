@@ -84,7 +84,7 @@
 	<div class="order-bottom">
 		<div class="bottom-title">
 			<div>목록 (총 <span id="countList2">0</span>개)</div>
-			<div><button class="oneShotForOrder" style="display: none;">일괄처리</button></div>
+			<div><button id="oneShotForOrder" class="oneShotForOrder" style="display: none;">일괄처리</button></div>
 		</div>
 		<div class="bottom-list">
 			<div class="list-title">
@@ -131,6 +131,10 @@
 
 <script type="text/javascript" src="/js/adminPage/orderAjax.js"></script>
 
+<!-- jQuery confirm을 위한 Load -->	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
 	$(".timeIndex").change(function() {
 		var isAll = $(".timeIndex>option:selected").val();
@@ -159,5 +163,50 @@
 				}
 		});
 	});
-
+	
+	$(document).on('click', '.orderProgress', function(){
+		let detailIndex = $("[name = detailIndex]").val();
+		let msg = "";
+		
+		if(detailIndex == 0){
+			msg = "주문 취소 요청을 수락";
+		} else if (detailIndex == 1){
+			msg = "신규주문에 대한 배송을 준비";
+		} else if (detailIndex == 2){
+			msg = "발송처리";
+		} else if (detailIndex == 3){
+			msg = "배송완료 처리";
+		} else if (detailIndex == 4){
+			msg = "반품처리";
+		} else if (detailIndex == 5){
+			msg = "반품 요청을 수락";
+		} else if (detailIndex == 6){
+			msg = "반품완료 처리";
+		} else {
+			alert("잘못된 요청입니다.");
+			return;
+		}
+		isGo = confirm(msg + "하시겠습니까?");
+		
+		if(isGo){
+			$.ajax({
+				url : "/orderProgress",
+				type : "get",
+				data : {
+					orderStatus : $(this).attr("status"),
+					orderNum : $(this).attr("id")
+				},
+				success : function(data) {
+					if(data > 0){
+						$("#orderSearchBtn").trigger('click');
+					} else {
+						alert("주문 처리가 비정상적으로 종료되었습니다.");
+					}
+				},
+				error : function(){
+					alert("주문 처리가 비정상적으로 종료되었습니다.");
+					}
+			})
+		}
+1	});
 </script>

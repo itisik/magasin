@@ -106,39 +106,39 @@ $("#orderSearchBtn").click(function() {
 
 						switch(data[index].orderStatus){
 						case 1:
-							temp = $("<button class='o1'>").html(decodeURIComponent("신규주문"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o1' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("신규주문"));
 							oneShotForOrder.addClass('o1');
 						break;
 						case 2:
-							temp = $("<button class='o2'>").html(decodeURIComponent("배송준비중"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o2' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("배송준비중"));
 							oneShotForOrder.addClass('o2');
 							break;
 						case 3:
-							temp = $("<button class='o3'>").html(decodeURIComponent("배송중"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o3' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("배송중"));
 							oneShotForOrder.addClass('o3');
 							break;
 						case 4:
-							temp = $("<button class='o4'>").html(decodeURIComponent("배송완료"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o4' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("배송완료"));
 							oneShotForOrder.addClass('o4');
 							break;
 						case 5:
-							temp = $("<button class='o5'>").html(decodeURIComponent("반품신청"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o5' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("반품신청"));
 							oneShotForOrder.addClass('o5');
 							break;
 						case 6:
-							temp = $("<button class='o6'>").html(decodeURIComponent("반품중"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o6' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("반품중"));
 							oneShotForOrder.addClass('o6');
 							break;
 						case 7:
-							temp = $("<button class='o7'>").html(decodeURIComponent("반품완료"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='o7' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("반품완료"));
 							oneShotForOrder.addClass('o7');
 							break;
 						case 0:
-							temp = $("<button class='o0'>").html(decodeURIComponent("주문취소요청"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='orderProgress o0' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("주문취소요청"));
 							oneShotForOrder.addClass('o0');
 							break;
 						case -1:
-							temp = $("<button class='oc'>").html(decodeURIComponent("취소완료"));
+							temp = $("<button id='"+ data[index].orderNum +"' class='oc' status='"+ data[index].orderStatus + "'>").html(decodeURIComponent("취소완료"));
 							oneShotForOrder.addClass('oc');
 							break;
 						}
