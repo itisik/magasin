@@ -1,15 +1,25 @@
+<%@page import="kr.magasin.orderP.model.vo.OrderP2"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.magasin.orderP.model.service.OrderPService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%
+    OrderPService service = new OrderPService();
+    ArrayList<OrderP2> lists = (ArrayList<OrderP2>)request.getAttribute("orderP2");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/myPage/orderList.css"> 
 </head>
 <body>
 <div class="ol-wrapper">
 
-<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="#">취소/반품/교환내역</a></span> </h2>
+<% if( !lists.isEmpty() ) {%>
+<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(1).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
+<% }%>
 <h3 class="ol-wrapper-h3">주문내역</h3>
 <table class="ol-table">
 	<thead class ="ol-thead">
@@ -24,21 +34,41 @@
 	</tr>
 	</thead>
 	<tbody  class ="ol-tbody">
+	
+	<%for(OrderP2 oP : lists){ %>
+		
+	
+	
 	<tr>
-		<td class="ol-list-1">2019-10-27<br>[20191017-000511]</td>
+		<td class="ol-list-1"><%= oP.getOrderDate() %><br>[<%=oP.getOrderNum() %>]</td>
         <td class="ol-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
         <td class="ol-list-3">
         	<ul>
-        		<li class="ol-list-3-li-1" ><strong>베이직 미니 가디건</strong></li>
-        		<li class="ol-list-3-li-2" >[옵션:아이보리]</li>
+        		<li class="ol-list-3-li-1" ><strong><%=oP.getPrdName() %></strong></li>
+        		<li class="ol-list-3-li-2" >[사이즈 :<%=oP.getPrdDtlSize() %>] [옵션 : <%=oP.getPrdDtlColor() %>]</li>
         	</ul>
         </td>
    
-        <td class="ol-list-4">1	</td>
-        <td class="ol-list-5">39,000</td>
-        <td class="ol-list-6">입금 전</td>
-         <td class="ol-list-7"><a href="#">주문취소</a></td>
+        <td class="ol-list-4"><%=oP.getOrderPrdCount() %>	</td>
+        <td class="ol-list-5"><%=oP.getOrderMoney() %></td>
+        
+        <%if(oP.getOrderStatus().equals("배송완료")){ %>
+          <td class="ol-list-6"><%=oP.getOrderStatus() %><br>
+          <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
+        <%}else{ %>
+          <td class="ol-list-6"><%=oP.getOrderStatus() %></td>
+        <%} %>
+         <%if(oP.getOrderStatus().equals("결제완료")){ %>
+         <td class="ol-list-7"><a href="/updateOrder?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>" >주문취소</a></td>
+            <%}else if(oP.getOrderStatus().equals("배송완료")){ %>
+                <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품요청</a></td>
+                <%}else {%>
+                  <td class="ol-list-7"></td>
+                <%} %>
+        
 	</tr>
+ 
+	<%} %>
 	</tbody>
 	</table>
 		<div class ="ol-pageNavi">
@@ -55,4 +85,5 @@
 
 
 </body>
+
 </html>

@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 35px;
+  padding: 20px 35px;
   margin-top: 10px;
   padding-bottom: 0;
   border: 1px solid #cdcdcd;
@@ -89,6 +89,8 @@
 .order-bottom > .bottom-list > .list-title td,
 .order-bottom > .bottom-list > .list-content > table td {
   width: 250px;
+  height: 40px;
+  line-height: 40px;
 }
 
 .order-bottom > .bottom-list > .list-title > table td:first-child,
@@ -116,16 +118,22 @@
   padding-bottom: 10px;
 }
 
-.ready {
+.bottom-title{
+	display: flex;
+	align-items: center;;
+	justify-content: space-between;
+}
+
+.readyRed {
   color: #ffffff;
   background-color: #cf2727;
 }
 
-.out {
+.outYellow {
   color: #000000;
   background-color: #e7da20;
 }
 
-.look {
+.lookGreen {
   background-color: #1fd045;
 }

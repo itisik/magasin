@@ -1,5 +1,9 @@
+<%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+			Product pdI = (Product)request.getAttribute("productId");
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +13,6 @@
 <!-- 보영 CSS -->
 <link rel="stylesheet" href="/css/common_css/layout.css">
 
-<!-- 경필 CSS -->
-<!--test-->
-<link rel="stylesheet" href="/css/prdPage/exdetail.css">
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -20,6 +20,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<!-- 경필 CSS -->
+<!--test-->
+<link rel="stylesheet" href="/css/prdPage/exdetail.css">
 </head>
 <body id="body1">
 	<div class="wrapper">
@@ -36,19 +40,19 @@
 			<div class="mainContent" style="width: 943px;">
 				<div class="detailContainr">
 					<p>
-						<a href="#">home</a> / <a href="#">OUTER</a>
+						<a href="#">home</a> / <a href="/productList">OUTER</a>
 					</p>
 					<div class="detailBorder">
 						<div class="detailImg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
+							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
 						</div>
 						<div class="detailInfor">
 							<div class="table-wrapper">
-								<p>latte v-neck cable cardigan</p>
+								<p><%=pdI.getPrdName()%></p>
 								<table class="table detail-table">
 									<tr>
 										<th>Price</th>
-										<td><span>32,000</span>원</td>
+										<td><span><%=pdI.getPrdPrice()%></span>원</td>
 										<!--sale가격에 대한 테이블삭제-->
 									</tr>
 									<tr>
@@ -75,31 +79,25 @@
 									</tr>
 								</table>
 								<div class="detailTotal">
-									총 상품금액(수량): <span>0</span>개
+									  총 상품금액(수량): <input id = "totals "type="number" name="total" value="1" style="width:40px;"><span><%=pdI.getPrdPrice() %></span>(won)
 								</div>
 								<div class="detailBag">
 									<a href="#"><img src="/img/product/topCartBtn.gif">ADD
-										TO BAG</a> <a href="/views/prdPage/expays.jsp"><img
+										TO BAG</a> <a href="/productExpay?prdId=<%=pdI.getPrdId()%>"><img
 										src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW</a>
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
-								    <a href="/views/qProduct.jsp" class="btn btn-default qBtn">상품 문의하기</a>
+								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>
                                   <div class="delivery"><div>Magasin 배송</div>
                                <div>100원을 사도 무료배송!!</div>
 							</div>
 						</div>
 					</div>
+				</div>
 					<div class="detailView">
-						<p>DESIGN TIP</p>
-						<p>꽈배기 짜임이 돋보이는 도톰한 니트 가디건. 여리여리한 무드를 자아내는 핏에, 단독으로 착용했을 때도
-							스타일리쉬한 분위기가 나는 매력적인 니트.</p>
-						<div class="detailAllImg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
-							<img src="/img/product/082a653adedb983a627445653600a6ad.jpg">
 
+						<div class="detailAllImg">
+							<img src="/img/product/<%=pdI.getPrdFilepath()%>">
 						</div>
 					</div>
 					<div class="detailSize">
@@ -127,7 +125,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		</section>

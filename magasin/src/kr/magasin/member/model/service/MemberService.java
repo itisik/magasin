@@ -19,7 +19,34 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
-
+	public Member selectOne2(String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.selectOne2(conn,email);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+	public Member searchId(String name, String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.searchId(conn,name,email);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+	public Member searchId2(String name, String phone) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.searchId2(conn,name,phone);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+	/*public Member searchPw(String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.selectOne2(conn,email);
+		JDBCTemplate.close(conn);
+		return m;
+	}*/
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
@@ -33,6 +60,7 @@ public class MemberService {
 		return result;
 	}
 	
+
 	public int updateMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
@@ -43,16 +71,16 @@ public class MemberService {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
-		return result;
-		
+		return result;	
 	}
-	   public int delete(String memberId) {
-		      Connection conn = JDBCTemplate.getConnection();
-		      MemberDao dao = new MemberDao();
-		      int result  = dao.delete(conn, memberId);
-		      JDBCTemplate.close(conn);
-		      return result;
-		   }
+	public int delete(String memberId) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		int result  = dao.delete(conn, memberId);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 
 
 }

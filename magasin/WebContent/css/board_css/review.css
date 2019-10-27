@@ -101,13 +101,13 @@
 
 .review-img-container {
 	border: 1px dashed black;
-	width: 90%;
-	padding: 10px 10px 10px 10px;
-	margin-left: 45px;
+	width: 100%;
+	padding: 10px;
+	margin-left: 10px;
 }
 
 .review-img-div {
-	width: 150px;
+	width: 100px;
 	float: left;
 	margin-right: 20px;
 	border: 1px solid white;

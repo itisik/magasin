@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  <div class="searchmain">
               <i class="fas fa-list"></i><span> 상품 조회 및 수정/삭제</span>
               <br><br>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="searchcategory2">
                       <select id="category1" name="category1">
-                      	  <option selected="selected">-선택-</option>
+                           <option selected="selected">-선택-</option>
                           <option value="top">상의</option>
                           <option value="bottom">하의</option>
                           <option value="outter">아우터</option>
@@ -43,7 +43,7 @@
                   <div class="searchcategory3">
                       <span id="sebuspan">세부 카테고리 선택</span>
                       <select id="categorysemi1" name="categorysemi1">
-                      	  <option selected="selected">-선택-</option>
+                           <option selected="selected">-선택-</option>
                           <option value="cardigan" name="cardigan">가디건</option>
                           <option value="leatherjacket">가죽자켓</option>
                           <option value="mantoman">맨투맨</option>
@@ -65,7 +65,7 @@
                   <i class="far fa-calendar-alt"></i><span> 상품등록일로 조회</span>
               
               <div class="searchbutton">
-              	  <input id="prddatesearch" name="prddate" type="hidden" />
+                   <input id="prddatesearch" name="prddate" type="hidden" />
                   <button type="button" value="today1">오늘</button>
                   <button type="button" value="onew1">1주일</button>
                   <button type="button" value="onem1">1개월</button>
@@ -163,94 +163,94 @@
           
           <script>
           
-          	$("#category1").change(function(){
-          		var state = $('#category1 option:selected').val();
-          		$("#categorysemi1").show();
-          		
-          		if(state == 'top'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(4)').hide();
-          			$('#categorysemi1 option:eq(5)').hide();
-          			$('#categorysemi1 option:eq(6)').hide();
-          			$('#categorysemi1 option:eq(7)').hide();
-          			$('#categorysemi1 option:eq(8)').hide();
-          			$('#categorysemi1 option:eq(9)').hide();
-          			$('#categorysemi1 option:eq(10)').hide();
-          			
-          		}else if(state == 'bottom'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(1)').hide();
-          			$('#categorysemi1 option:eq(2)').hide();
-          			$('#categorysemi1 option:eq(3)').hide();
-          			$('#categorysemi1 option:eq(7)').hide();
-          			$('#categorysemi1 option:eq(8)').hide();
-          			$('#categorysemi1 option:eq(9)').hide();
-          			$('#categorysemi1 option:eq(10)').hide();
-          		}else if(state == 'outter'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(3)').hide();
-          			$('#categorysemi1 option:eq(4)').hide();
-          			$('#categorysemi1 option:eq(5)').hide();
-          			$('#categorysemi1 option:eq(6)').hide();
-          			$('#categorysemi1 option:eq(7)').hide();
-          			$('#categorysemi1 option:eq(8)').hide();
-          			$('#categorysemi1 option:eq(9)').hide();
-          			$('#categorysemi1 option:eq(10)').hide();
-          		}else if(state == 'dress'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(1)').hide();
-          			$('#categorysemi1 option:eq(2)').hide();
-          			$('#categorysemi1 option:eq(3)').hide();
-          			$('#categorysemi1 option:eq(4)').hide();
-          			$('#categorysemi1 option:eq(6)').hide();
-          			$('#categorysemi1 option:eq(7)').hide();
-          			$('#categorysemi1 option:eq(8)').hide();
-          			$('#categorysemi1 option:eq(9)').hide();
-          			$('#categorysemi1 option:eq(10)').hide();
-          		}else if(state == 'shirts'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(1)').hide();
-          			$('#categorysemi1 option:eq(2)').hide();
-          			$('#categorysemi1 option:eq(3)').hide();
-          			$('#categorysemi1 option:eq(4)').hide();
-          			$('#categorysemi1 option:eq(5)').hide();
-          			$('#categorysemi1 option:eq(6)').hide();
-          			$('#categorysemi1 option:eq(7)').hide();
-          			$('#categorysemi1 option:eq(8)').hide();
-          			$('#categorysemi1 option:eq(9)').hide();
-          		
-          		}else if(state == 'other'){
-          			$('#categorysemi1 >option').show();
-          			$('#categorysemi1 option:eq(0)').prop("selected",true);
-          			$('#categorysemi1 option:eq(1)').hide();
-          			$('#categorysemi1 option:eq(2)').hide();
-          			$('#categorysemi1 option:eq(3)').hide();
-          			$('#categorysemi1 option:eq(4)').hide();
-          			$('#categorysemi1 option:eq(5)').hide();
-          			$('#categorysemi1 option:eq(6)').hide();
-          			
-          		}
-          	});    
-          	
-          	$(document).ready(function(){
-          		$("div.searchbutton button").click(function(){
-          			$("div.searchbutton button").removeClass("ssidang3");
-          			$(this).addClass("ssidang3");
-          			$("#prddatesearch").val($(this).val());
-          		});
-          	});
+             $("#category1").change(function(){
+                var state = $('#category1 option:selected').val();
+                $("#categorysemi1").show();
+                
+                if(state == 'top'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(4)').hide();
+                   $('#categorysemi1 option:eq(5)').hide();
+                   $('#categorysemi1 option:eq(6)').hide();
+                   $('#categorysemi1 option:eq(7)').hide();
+                   $('#categorysemi1 option:eq(8)').hide();
+                   $('#categorysemi1 option:eq(9)').hide();
+                   $('#categorysemi1 option:eq(10)').hide();
+                   
+                }else if(state == 'bottom'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(1)').hide();
+                   $('#categorysemi1 option:eq(2)').hide();
+                   $('#categorysemi1 option:eq(3)').hide();
+                   $('#categorysemi1 option:eq(7)').hide();
+                   $('#categorysemi1 option:eq(8)').hide();
+                   $('#categorysemi1 option:eq(9)').hide();
+                   $('#categorysemi1 option:eq(10)').hide();
+                }else if(state == 'outter'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(3)').hide();
+                   $('#categorysemi1 option:eq(4)').hide();
+                   $('#categorysemi1 option:eq(5)').hide();
+                   $('#categorysemi1 option:eq(6)').hide();
+                   $('#categorysemi1 option:eq(7)').hide();
+                   $('#categorysemi1 option:eq(8)').hide();
+                   $('#categorysemi1 option:eq(9)').hide();
+                   $('#categorysemi1 option:eq(10)').hide();
+                }else if(state == 'dress'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(1)').hide();
+                   $('#categorysemi1 option:eq(2)').hide();
+                   $('#categorysemi1 option:eq(3)').hide();
+                   $('#categorysemi1 option:eq(4)').hide();
+                   $('#categorysemi1 option:eq(6)').hide();
+                   $('#categorysemi1 option:eq(7)').hide();
+                   $('#categorysemi1 option:eq(8)').hide();
+                   $('#categorysemi1 option:eq(9)').hide();
+                   $('#categorysemi1 option:eq(10)').hide();
+                }else if(state == 'shirts'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(1)').hide();
+                   $('#categorysemi1 option:eq(2)').hide();
+                   $('#categorysemi1 option:eq(3)').hide();
+                   $('#categorysemi1 option:eq(4)').hide();
+                   $('#categorysemi1 option:eq(5)').hide();
+                   $('#categorysemi1 option:eq(6)').hide();
+                   $('#categorysemi1 option:eq(7)').hide();
+                   $('#categorysemi1 option:eq(8)').hide();
+                   $('#categorysemi1 option:eq(9)').hide();
+                
+                }else if(state == 'other'){
+                   $('#categorysemi1 >option').show();
+                   $('#categorysemi1 option:eq(0)').prop("selected",true);
+                   $('#categorysemi1 option:eq(1)').hide();
+                   $('#categorysemi1 option:eq(2)').hide();
+                   $('#categorysemi1 option:eq(3)').hide();
+                   $('#categorysemi1 option:eq(4)').hide();
+                   $('#categorysemi1 option:eq(5)').hide();
+                   $('#categorysemi1 option:eq(6)').hide();
+                   
+                }
+             });    
+             
+             $(document).ready(function(){
+                $("div.searchbutton button").click(function(){
+                   $("div.searchbutton button").removeClass("ssidang3");
+                   $(this).addClass("ssidang3");
+                   $("#prddatesearch").val($(this).val());
+                });
+             });
           </script> 
           <style>
-           	#categorysemi1{
-          		display:none;
+              #categorysemi1{
+                display:none;
             }
             .searchbutton{
-				padding-left: 5%;
-			}
+            padding-left: 5%;
+         }
             
           </style>

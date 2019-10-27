@@ -38,7 +38,7 @@ public class NoticeService {
 		if(pageNo <= totalPage) {
 			pageNavi += "<a class='btn' href='/noticeList?reqPage="+pageNo+ "'>다음</a>";
 		}
-		PageData pd = new PageData(pageNavi, list, null, null, null);
+		PageData pd = new PageData(pageNavi, list, null, null, null,null,null);
 		
 		JDBCTemplate.close(conn);
 		return pd;

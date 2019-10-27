@@ -7,7 +7,10 @@ body{
 /* 	border: 1px solid black; */
 	width:  943px;
 }
-
+#miu-pwChkMsg{
+	border: 1px solid black;
+	
+}
 .miu-div-1>h3{
 	margin-top: 18px;
 	margin-bottom: 20px;
@@ -42,6 +45,15 @@ body{
 	border-radius: 5px;
 	width:  128px;
 
+}
+#mif-pwChkMsg{
+/* 	border: 1px solid black; */
+	width: 150px;
+	
+	font-size :11px;
+	padding: 14px;
+	background-color: #fafafa;
+	
 }
 #phone3, #phone2{
 	width:  42px;
@@ -95,7 +107,26 @@ body{
 .miu-div-3-li2{
 	background-color: #888888;
 }
-
+.miu-div-3-li1>button{
+	background-color:  #444444;
+	border: 0;
+	outline: 0;
+	color: white;
+	
+}
+.miu-div-3-li2>button{
+	background-color: #888888;
+		border: 0;
+	outline: 0;
+	color: white;
+}
+.miu-div-3-li3>button{
+	    background-color: white;
+		border: 0;
+	outline: 0;
+	color: black;
+	    font-size: 13px;
+}
 .miu-div-3-li3{
 	font-size: 13px;
 	display: inline-block;
@@ -105,6 +136,7 @@ body{
 	float: right;
 	margin-top: 5px;
 	margin-right: 3px;
+	
 }
 
 .mif-table-addr{
@@ -121,7 +153,7 @@ body{
 	border: 1px solid #d7d7d7;
 	border-radius: 5px;
 }
-#mif-postCode{
+#addr_postcode{
 	width:55px; 
 	height: 20px;
 	margin-bottom : 3px;
@@ -129,20 +161,26 @@ body{
 	
 }
 
-#mif-addrSearchBtn{
+#addr_btn{
 	padding: 2px 8px;
 	border: 1px solid #888888;
 	font-size: 11px;
 	background-color: white;
 
 }
-#mif-roadAddr{
-		width:270px; 
+#addr_address{
+	width:270px; 
 	height: 20px;
 	margin-bottom : 3px;
 	display:inline-block;
 }
-#mif-detailAddr{
+#addr_extraAddress{
+	width:270px; 
+	height: 20px;
+	margin-bottom : 3px;
+	display:inline-block;
+}
+#addr_detailAddress{
 		width:270px; 
 	height: 20px;
 	margin-bottom : 3px;

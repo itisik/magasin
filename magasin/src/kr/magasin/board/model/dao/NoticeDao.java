@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import kr.magasin.board.model.vo.Notice;
 import kr.magasin.common.JDBCTemplate;
 
