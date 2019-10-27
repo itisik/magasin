@@ -18,6 +18,15 @@
 <title>***notice***</title>
 <link rel="stylesheet" href="/css/board_css/notice.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
+<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
+</style>
 </head>
 <body id="body1">
 	<header>

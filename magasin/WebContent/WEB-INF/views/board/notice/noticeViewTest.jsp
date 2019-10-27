@@ -57,13 +57,7 @@
 						<tbody>
 							<tr>
 								<td colspan="2">
-								<style>
-									.noticeContents{
-										margin: 0 auto;
-										border-radius : 10px;
-										width:90%;
-									}
-								</style>
+							
 								<div class="noticeContents">
 									<%=n.getNoticeCont() %>
 								</div>

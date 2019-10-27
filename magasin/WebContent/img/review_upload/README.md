@@ -1,2 +1,0 @@
-# magasin
- Team 3
