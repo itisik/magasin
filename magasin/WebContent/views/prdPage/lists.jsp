@@ -1,6 +1,8 @@
+
 <%@page import="java.util.HashMap"%>
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="kr.magasin.prdPaging.model.vo.ProductLee"%>
+
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,6 +14,7 @@
         String pageNavi = (String)request.getAttribute("pageNavi");
         ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
         ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
+
         
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,8 +41,10 @@
                 <div class="title-category">     
                 <ul class="subCategory">  
                 <%for(String sub : subCtgr) {%>
-                   <li><span><%=sub%></span></li>      
+                   <li><span><%=sub%></span></li>
+           
                 <%} %>
+
                 </ul>
                 </div>
             </div>
@@ -52,10 +57,12 @@
              <div class="sub-top"  >new arrivalcategory have <strong><%=lists.size() %></strong> product</div> 
         </div> 
         <%for(int i=0; i<lists.size()/4; i++){ %>
+
         <div class="cate-window">
 			<%for(int j=0; j<4; j++){ %>
             <div class="window-cloths">
             <div class="cloths-event" style="display: none;"></div>
+
             <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>">
             	<img src="/img/product/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a>
             </div>
@@ -82,6 +89,7 @@
             <div class="color4"></div> -->
             </div>
             <div class="cloths-new">
+
             <div class="cloths-review">Review : <span></span></div>
             </div> </div>       
          <%} %>
