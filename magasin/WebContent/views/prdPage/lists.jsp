@@ -38,7 +38,8 @@
                 <div class="title-category">     
                 <ul class="subCategory">  
                 <%for(String sub : subCtgr) {%>
-                   <li><span><%=sub%></span></li>      
+                   <li><span><%=sub%></span></li>
+           
                 <%} %>
                 </ul>
                 </div>

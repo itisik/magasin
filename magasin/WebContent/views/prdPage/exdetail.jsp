@@ -47,7 +47,7 @@
 							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
 						</div>
 						<div class="detailInfor">	
-						<form id="expSub" action="/productExpay?prdId=<%=pdI.getPrdId()%>" method="post">
+						<form name="expSub" id="Sub" action="/productExpay?prdId=<%=pdI.getPrdId()%>" method="post">
 							<div class="table-wrapper">
 								<p><%=pdI.getPrdName()%></p>
 								<table class="table detail-table">
@@ -61,7 +61,7 @@
 										<td class="color">
 										<%for( ProductDtl p : prdDtl ){ %>
 											<%if(pdI.getPrdId()==p.getPrdId()){ %>
-											<div class="color1" name = "color1" value="<%=p.getPrdDtlColor()%>" style="background-color:<%=p.getPrdDtlColor()%>;" onclick="btncolor();"></div>
+											<div class="color1" name = "color1" value="<%=p.getPrdDtlColor()%>"style="background-color:<%=p.getPrdDtlColor()%>;" onclick="btncolor();"></div>
 											<%} 
 									}%>
 										</td>
@@ -81,7 +81,7 @@
 									</tr>
 								</table>
 								<div class="detailTotal">
-									  총 상품금액(수량): <input id = "totals" type="number" name="total" min="1" style="width:40px;"><span><%=pdI.getPrdPrice()%></span>(won)
+									  총 상품금액(수량): <input id = "totals" type="number" name="total" min="1" value="1"  style="width:40px;"><span><%=pdI.getPrdPrice()%></span>(won)
 								</div>
 								<div class="detailBag">
 									<div><a href="#"><img src="/img/product/topCartBtn.gif">ADD
@@ -100,7 +100,7 @@
 							</div>
 						</div>
 							<div style="display:none;">
-								<input type="submit" name="realSm">
+								<input type="submit">
 							</div>
 					   </form>
 					</div>
@@ -156,7 +156,6 @@
 			$(this).addValue()
 		});
 	});
-
 	
 	</script>
 </body>
