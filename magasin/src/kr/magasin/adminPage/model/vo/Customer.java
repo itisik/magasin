@@ -7,14 +7,23 @@ public class Customer {
 	private String cusPrdCount;
 	private String cusPurDate;
 	private String cusOutDate;
+	private String cusComDate;
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getCusComDate() {
+		return cusComDate;
+	}
+
+	public void setCusComDate(String cusComDate) {
+		this.cusComDate = cusComDate;
+	}
 
 	public Customer(String cusId, String cusName, String cusPrdName, String cusPrdCount, String cusPurDate,
-			String cusOutDate) {
+			String cusOutDate, String cusComDate) {
 		super();
 		this.cusId = cusId;
 		this.cusName = cusName;
@@ -22,8 +31,8 @@ public class Customer {
 		this.cusPrdCount = cusPrdCount;
 		this.cusPurDate = cusPurDate;
 		this.cusOutDate = cusOutDate;
+		this.cusComDate = cusComDate;
 	}
-
 	public String getCusId() {
 		return cusId;
 	}

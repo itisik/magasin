@@ -367,9 +367,9 @@
 //ㅇ	2. 아이디 바로바로 있는건지없는지 확인되게 (옆에 '사용중인 아이디입니다' 이런식으로 뜸)
 //ㅇ	3. 주소 우편번호만 빼고 세개 붙여서 디비에 저장되게
 //ㅇ	4. 이메일 양식 안맞으면 확인되게
-//	5. 이메일 인증누르면 인증번호치는 창뜨고(3분유효시간) 이메일로 인증번호 전송된거 입력하면 '인증되었습니다' 옆에 뜨게.
-//  6. 주소, 생년월일, 성별 입력안해도 가입되도록. (따로 만들어줘야됨)
-//	7. 아이디/비밀번호 찾기 구현(창떠서 탭메뉴로)
+//ㅇ	5. 이메일 인증누르면 인증번호치는 창뜨고 이메일로 인증번호 전송된거 입력하면 인증버튼 있고 누르면 꺼짐
+//ㅇ 6. 주소, 생년월일, 성별 입력안해도 가입되도록. (따로 만들어줘야됨)
+//ㅇ	7. 아이디/비밀번호 찾기 (디자인)
 
 
         function sample6_execDaumPostcode() {
@@ -516,7 +516,6 @@
 		});
 	
 	
-		//아직 하는중
 		//인증번호 전송 누르면 뜨는 창 (인증번호 치는 칸과 시간제한있음)
 		function sendEmailWindow(){
 			var email = document.getElementById("email").value;
@@ -641,16 +640,17 @@
 	   //=======================================================================================//
 	   // submit 유효성 검사 //
 	   function checkz(){
-		   var getName = RegExp(/^[가-힣]+$/)
-		   var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/)
-		   //var getCheck= RegExp(/^[a-z0-9]{8,15}$/)
-		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/)
-		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/)
-		   var getPw = RegExp(/^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/)
-		   //var getPw = RegExp(/^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&+=]).{6,}$/)
-		   var getPhone = RegExp(/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/)
+		   var getName = RegExp(/^[가-힣]+$/);
+		   var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		   //var getCheck= RegExp(/^[a-z0-9]{8,15}$/);
+		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/);
+		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/);
+		   var getPw = RegExp(/^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/);
+		   //var getPw = RegExp(/^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&+=]).{6,}$/);
+		   var getPhone = RegExp(/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/);
 		   //var agreeSerChk = document.getElementById("agreeSerChk").value;
 		   //var agreePrvChk = document.getElementById("agreePrvChk").value;
+		   
 		   
 		   //id 공백 확인
 		   if($("#id").val()==""){
@@ -665,6 +665,7 @@
 			   $("#id").focus();
 			   return false;
 		   } */
+
 		   //비밀번호 유효성 검사
 		   if(!getPw.test($("#pw").val())){
 			   alert("형식에 맞춰서 pw를 입력해주세요");
@@ -726,7 +727,34 @@
 			   return false;
 		   }
 		   
-		   var check1 = $("input[id=agreeSerChk]");
+
+		   
+		   //이용약관 동의 유효성 검사
+		   if(!($("#agreeSerChk").is(':checked'))){
+			   $("#agreeSerChk").focus();
+			   alert("이용약관에 동의하여 주시기 바랍니다.");
+			   return false;
+		   }else if(!($("#agreePrvChk").is(':checked'))){
+			   $("#agreePrvChk").focus();
+			   alert("개인정보 수집 및 이용에 동의하여 주시기 바랍니다.");
+			   return false;
+		   }
+		   
+		   
+		   
+		   
+		   /* if(check2.prop("checked")==false){
+			   check2.focus();
+			   return false;
+		   }
+		   if(check1.prop("checked")==false && check2.prop("checked")==false){
+			   $("#agreeChkAll").focus();
+			   return false;
+		   } */
+		   
+		 /*   var check1 = $("input[id=agreeSerChk]");
+		   
+
 		   var check2 = $("input[id=agreePrvChk]");
 		   
 		   if(check1.prop("checked")==false){
@@ -741,11 +769,9 @@
 			   $("#agreeChkAll").focus();
 			   return false;
 		   }
-		   
-		   
-		   
-		   
-		   
+
+		    */
+
 		   
 		   /*
 		   //이용약관 동의 유효성 검사
@@ -856,13 +882,14 @@
 		   
 		   
 		   
-		   //이메일 인증번호 확인안했을 때도 검사 --빨리하자
+
+		  /*  //이메일 인증번호 확인안했을 때도 검사 --빨리하자
 		   if($('#chkAfter').val().equals("인증하기")) { //팝업창에서 인증번호 제대로 쓰고 인증하기 눌렀을 때
 			   alert("이메일 '인증번호 발송'을 누르셔서 인증번호를 입력해주시기 바랍니다.");
 		   		$("#email_btn").focus();
 		  		return false;
-		   }
-	   }
+
+		   } */
 	</script>
 </body>
 

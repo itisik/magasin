@@ -91,28 +91,29 @@
 					</div>
 					<div class="mainContent" style="width: 943px;">
 					<div class="main">
+						<form action="/searchId" onsubmit="return checkz();" method="post" id="searchId">
 						 <div class="main_h3"><h3>아이디 찾기</h3></div>
 						 	<div class="container">
 								<table class="search-id-table">
 									<tr>
 										<th>아이디 찾기</th>
 										<td>
-											<input type="radio" name="SearchId" id="email" value="0" checked><label for="email"><span>이메일</span></label>&nbsp;
-											<input type="radio" name="SearchId" id="phone" value="1"><label for="phone"><span>휴대폰번호</span></label>
+											<input type="radio" name="SearchId" id="showEmail" onclick="showEmail()" checked><label for="email"><span>이메일</span></label>&nbsp;
+											<input type="radio" name="SearchId" id="showPhone" onclick="showPhone()"><label for="phone"><span>휴대폰번호</span></label>
 										</td>
 									</tr>
 									<tr>
 										<th>이름 </th>
 										<td><input type="text" name="name" id="name" class="form-control"></td>
 									</tr>
-									<tr id="showEmail">
+									<tr id="viewEmail" style="display:;">
 										<th>이메일로 찾기 </th>
-										<td><input type="text" name="email" id="email" class="form-control" onchange="setDisplay()"></td>
+										<td><input type="text" name="email" id="email" class="form-control"></td><!-- onchange="setDisplay()" -->
 									</tr>
-									<tr id="showPhone">
-										<th>휴대전화로 찾기</th>
-										<td><input type="text" name="phone" id="phone" class="form-control" onchange="setDisplay()"></td>
-									</tr>    
+									<tr id="viewPhone" style="display:none;">
+										<th>휴대전화로 찾기 </th>
+										<td><input type="hidden" name="phone" id="phone" class="form-control"></td><!--onchange="setDisplay()"  -->
+									</tr>
 								</table>
 				            </div>
 							<br>
@@ -123,9 +124,8 @@
 									<div class="btn_main"><a href="/index.html"><button>메인으로 이동</button></a></div>
 								</div>	
 							</div>
+						</form>
 					</div>
-	
-	
 				</div>
 			</div>
 		</section>
@@ -137,6 +137,54 @@
 	</div>
 	<script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+//	$('#id').attr('style', "display:'';");  //나타내기
+//	$('#id').attr('style', "display:none;");  //숨기기	
+	
+	 $(document).ready(function(){
+		$("#showPhone").click(function(){
+			$("#viewPhone").css("display", ""); 
+			$("#viewEmail").css("display", "none");
+			var p = document.getElementById("phone");
+			var e = document.getElementById("email");
+			p.type="text";
+			e.type="hidden";
+		});
+		
+		$("#showEmail").click(function(){
+			$("#viewEmail").css("display", ""); 
+			$("#viewPhone").css("display", "none");
+			var p = document.getElementById("phone");
+			var e = document.getElementById("email");
+			p.type="hidden";
+			e.type="text";
+		});
+	});
+	
+	 
+
+		/* 
+		$("#viewPhone").click(function(){
+			$('#viewPhone').attr('style',"display:'';");
+			$('#viewEmail').attr('style',"display:none;");
+		});
+
+		$("#viewEmail").click(function(){
+			$('#viewEmail').attr('style',"display:'';");
+			$('#viewPhone').attr('style',"display:none;");
+		});
+	 */
+	
+	/* $(document).ready(function(){
+		$("#viewEmail").click(function(){
+			status = $("#viewPhone").css("display"); 
+			if (status == "none") {
+				$("#viewPhone").css("display", ""); 
+			} else { 
+				$("#viewPhone").css("display", "none"); 
+			}
+		});
+	});  */
+	
 /* 		$(document).ready(function(){ 
 		    // 라디오버튼 클릭시 이벤트 발생
 		    $("input:radio[name=radio]").click(function(){
@@ -152,7 +200,7 @@
 		    });
 		}); */
 		
-		function setDisplay(){
+/* 		function setDisplay(){
 			if($('input:radio[id=email]').is(':checked')){
 				$('#showEmail').show();
 				$('#showPhone').hide();
@@ -160,24 +208,24 @@
 				$('#showEmail').hide();
 				$('#showPhone').show();
 			}
+		} */
+/* 		
+		//input에 적용할때임  tr에 적용해야돼 이거 필요없으
+		function showEmail(){
+			var p = document.getElementById("phone");
+			var e = document.getElementById("email");
+			p.type="hidden";
+			e.type="text";
 		}
-
-	
+		function showPhone(){
+			var p = document.getElementById("phone");
+			var e = document.getElementById("email");
+			p.type="text";
+			e.type="hidden";
+		}
+	 */
 	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 </body>

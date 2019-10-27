@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>매거진</title>
+<title>**INCLUDE 틀**</title>
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
 <body id="body1">
@@ -22,7 +22,7 @@
 				</div>
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					<%@include file="/views/prdPage/lists.html" %>
+					
 				</div>
 			</div>
 		</section>

@@ -1,5 +1,7 @@
+<%@page import="kr.magasin.board.model.vo.QPrd"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% QPrd q = (QPrd)request.getAttribute("q"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +14,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/board_css/qna.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+<body id="body1">
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -21,13 +24,27 @@
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 상품 문의 수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-	<section>
+	
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+	
 			<div class="qnaContainer">
 			
 				<ul id="qna">
 					<li>Q&A</li>
 				</ul>
+				<form action="/qUpdateEnd" method="post">
 				<div class="table-wrapper">
 					<table class="table qna-view-table">
 						<thead>
@@ -35,17 +52,32 @@
 								<th>Category</th>
 								<td>
 								<!-- qCategory 값 받아오기 -->
-								상품 관련 문의 (fix!!!)
+								<script>
+								$(document).ready(function(){
+									for(var i=0; i<$(".sel").length; i++){
+										if($(".sel").eq(i).attr("value")=='<%=q.getqCtgr()%>'){
+											$(".sel").eq(i).attr("selected","selected");
+										}
+									}
+								});
+								</script>
+								<input type="hidden" name="qNo" value="<%=q.getqNo()%>">
+								<input type="hidden" name="ctgr" value="prd">
+								<select name="qCtgr">
+									<option value="사이즈" class="sel">사이즈</option>
+									<option value="컬러" class="sel">컬러</option>
+									<option value="기타" class="sel">기타</option>
+								</select>
 								</td>
 							</tr>
 							<tr>
 								<th>subject</th>
-								<td><input type="text" name="qTitle" class="inputText"></td>
+								<td><input type="text" name="qTitle" class="inputText" value="<%=q.getqTitle()%>"></td>
 							</tr>
 							<tr>
 								<th>Writer</th>
-								<td> 글쓴놈
-									<input type="hidden" name="qWriter" value="몰라이놈아">
+								<td><%=q.getqWriter() %>
+									<input type="hidden" name="qWriter" value="<%=q.getqWriter()%>">
 								</td>
 							</tr>
 							
@@ -55,14 +87,14 @@
 							<td>
 								<div class="product-div">
 							
-							<img src="/views/test_board/test_img/testimg.png" width="150"><br>
-							<span>product명</span>
+							<img src="/img/product/<%=q.getPrdSnImg() %>" width="150"><br>
+							<span><%=q.getPrdName() %></span>
 							
 							</div>
 							</td>
 							<td>
 								<div>
-								<textarea name="qContent" placeholder="내용 써" cols="100" rows="10"></textarea>
+								<textarea name="qContent" cols="100" rows="10"><%=q.getqCont() %></textarea>
 								</div>
 								
 								</td>
@@ -71,16 +103,23 @@
 				</div>
 				<div class="qna-btn">
 					<br>
-					<a href="/views/test_board/qna/qnaListTest.jsp" class="btn btn-default btn-md" >List</a>
-					<!-- 관리자일때 -->
-					<a href="#" class="btn btn-default btn-md" >답변</a>
-					<!-- 글쓴이 일때 -->
-					<a href="#" class="btn btn-default btn-md" >삭제</a>
-					<a href="#" class="btn btn-default btn-md" >수정</a>
+					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
+					<button type="submit" class="btn btn-default btn-md" >수정</button>
 					
 				</div>
+				</form>
+			</div>	
+							
+				</div>
+				
 			</div>
-	</section>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 	
 </body>
 </html>

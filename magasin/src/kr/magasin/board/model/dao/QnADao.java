@@ -348,4 +348,319 @@ public class QnADao {
 		return aList;
 	}*/
 
+	public int aEtcInsert(Connection conn, AEtc a) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="insert into a_etc values(a_etc_seq.nextval,?,?,?,sysdate)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, a.getaQEtcNoRef());
+			pstmt.setString(2, a.getaTitle());
+			pstmt.setString(3, a.getaCont());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int aPrdInsert(Connection conn, APrd a) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="insert into a_prd values(a_prd_seq.nextval,?,?,?,sysdate)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, a.getaQPrdNoRef());
+			pstmt.setString(2, a.getaTitle());
+			pstmt.setString(3, a.getaCont());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int uEtcIsA(Connection conn, int aEtcQNoRef) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="update q_etc set q_is_a=1 where q_no =?" ;
+		try {
+			pstmt =conn.prepareStatement(query);
+			pstmt.setInt(1, aEtcQNoRef);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public int uPrdIsA(Connection conn, int aPrdQNoRef) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="update q_prd set q_is_a=1 where q_no =?" ;
+		try {
+			pstmt =conn.prepareStatement(query);
+			pstmt.setInt(1, aPrdQNoRef);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public AEtc aEtcOne(Connection conn, int aNo) {
+		// TODO Auto-generated method stub
+		AEtc a =null;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String query = "select * from a_etc where a_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, aNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				a = new AEtc();
+				a.setaCont(rset.getString("a_cont"));
+				a.setaDate(rset.getDate("a_date"));
+				a.setaNo(rset.getInt("a_no"));
+				a.setaQEtcNoRef(rset.getInt("a_etc_q_no_ref"));
+				a.setaTitle(rset.getString("a_title"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return a;
+	}
+	public APrd aPrdOne(Connection conn, int aNo) {
+		// TODO Auto-generated method stub
+		APrd a =null;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String query = "select * from a_prd where a_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, aNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				a = new APrd();
+				a.setaCont(rset.getString("a_cont"));
+				a.setaDate(rset.getDate("a_date"));
+				a.setaNo(rset.getInt("a_no"));
+				a.setaQPrdNoRef(rset.getInt("a_prd_q_no_ref"));
+				a.setaTitle(rset.getString("a_title"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return a;
+	}
+	public int qEtcDelete(Connection conn, int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt=null;
+		String query = "delete from q_etc where q_no =?";
+		try {
+			pstmt= conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int qPrdDelete(Connection conn, int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt=null;
+		String query = "delete from q_Prd where q_no =?";
+		try {
+			pstmt= conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int qEtcUpdate(Connection conn, QEtc q) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query = "update q_etc set q_title = ? , q_cont =? , q_ctgr = ? where q_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, q.getqTitle());
+			pstmt.setString(2, q.getqCont());
+			pstmt.setString(3, q.getqCtgr());
+			pstmt.setInt(4,q.getqNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+	public int qPrdUpdate(Connection conn, QPrd q) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query = "update q_prd set q_title = ? , q_cont =? , q_ctgr = ? where q_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, q.getqTitle());
+			pstmt.setString(2, q.getqCont());
+			pstmt.setString(3, q.getqCtgr());
+			pstmt.setInt(4,q.getqNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int aEtcDelete(Connection conn, int aNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "delete from a_etc where a_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, aNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int aPrdDelete(Connection conn, int aNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "delete from a_prd where a_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, aNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	public int qEtcQIsADown(Connection conn,int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update q_etc set q_is_a=0 where q_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public int qPrdQIsADown(Connection conn,int qNo) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update q_prd set q_is_a=0 where q_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, qNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	public int aEtcUpdate(Connection conn, AEtc a) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query="update a_etc set a_Title=? , a_Cont =? where a_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, a.getaTitle());
+			pstmt.setString(2, a.getaCont());
+			pstmt.setInt(3, a.getaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result ;
+	}
+	public int aPrdUpdate(Connection conn, APrd a) {
+		// TODO Auto-generated method stub
+		int result =0;
+		PreparedStatement pstmt = null;
+		String query="update a_prd set a_Title=? , a_Cont =? where a_no =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, a.getaTitle());
+			pstmt.setString(2, a.getaCont());
+			pstmt.setInt(3, a.getaNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result ;
+	}
+
+
 }

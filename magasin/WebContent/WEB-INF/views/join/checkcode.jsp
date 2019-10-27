@@ -51,11 +51,12 @@
 			var hi = document.getElementById("hi");
 			hi.type="hidden";
 		} */
-		function sameCode(){
+
+		/* function sameCode(){
 			opener.document.getElementById("chkAfter").value = document.getElementById("hi").value;
 			
 			window.close();
-		}
+		} */
 	</script>
 </body>
 </html>

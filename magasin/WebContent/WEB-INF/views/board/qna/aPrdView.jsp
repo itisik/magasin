@@ -1,22 +1,22 @@
-<%@page import="kr.magasin.board.model.vo.QEtc"%>
+<%@page import="kr.magasin.board.model.vo.APrd"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% QEtc q = (QEtc)request.getAttribute("qEtc"); %>
+    <% APrd a = (APrd)request.getAttribute("a"); %>
+    <%  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>***Quewstion View***</title>
+<title>***Answer View***</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/board_css/qna.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-
 <body id="body1">
 	<div class="wrapper">
 		<header>
@@ -31,16 +31,9 @@
 				</div>
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 일반 문의 View!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-	<section>
-			<div class="qnaContainer">
+				<!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 --><!-- 답변 -->
+				
+				<div class="qnaContainer">
 			
 				<ul id="qna">
 					<li>Q&A</li>
@@ -49,30 +42,27 @@
 					<table class="table qna-view-table">
 						<thead>
 							<tr>
-								<th>Category</th>
+								<th>subject</th>
 								<td>
-								<!-- qCategory 값 받아오기 -->
-								<%=q.getqCtgr() %>
+									<img src="/img/board_img/realRe.png"><%=a.getaTitle() %>
 								</td>
 							</tr>
 							<tr>
-								<th>subject</th>
-								<td><%=q.getqTitle() %></td>
-							</tr>
-							<tr>
 								<th>Writer</th>
-								<td><%=q.getqWriter() %></td>
+								<td><img src="/img/common_img/footerlogo2.png" height="27">
+								<input type="hidden" name="aWriter" class="inputText"
+								value="admin"></td>
 							</tr>
 							<tr>
 								<th>Date</th>
-								<td><%=q.getqDate()%></td>
+								<td><%=a.getaDate() %></td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 							<td colspan="2">
-								<div>
-									<%=q.getqCont() %>
+								<div style="text-align:center; width:800px; height:300px; margin: 0 auto; padding-top:30px;">
+									<%=a.getaCont() %>
 								</div>
 								
 								</td>
@@ -81,22 +71,15 @@
 				</div>
 				<div class="qna-btn">
 					<br>
-
 					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
-					<%if(m!=null){ %>
-					<!-- 관리자일때 -->
-					<%if(m.getId().equals("admin")){ %>
-					<a href="#" class="btn btn-default btn-md" >답변</a>
-					<%}else if(m.getId().equals(q.getqWriter())){ %>
-					<!-- 글쓴이 일때 -->
-					<a href="#" class="btn btn-default btn-md" >삭제</a>
-					<a href="#" class="btn btn-default btn-md" >수정</a>
+					<%if(m!=null&& m.getId().equals("admin")){ %>
+					<!-- 관리자 일때만 보이게~ -->
+					<a href="/aDelete?ctgr=prd&aNo=<%=a.getaNo() %>&qNo=<%=a.getaQPrdNoRef() %>" class="btn btn-default btn-md" >삭제</a>
+					<a href="/aUpdate?ctgr=prd&aNo=<%=a.getaNo() %>" class="btn btn-default btn-md" >수정</a>
+					<%} %>
 					
-					<%}
-					}%>
 				</div>
 			</div>
-	</section>
 				</div>
 			</div>
 		</section>
@@ -106,6 +89,7 @@
 			</div>
 		</footer>
 	</div>
+
 	
 </body>
 </html>

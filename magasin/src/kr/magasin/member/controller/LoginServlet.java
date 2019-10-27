@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("로그인 Servlet 시작");
-		//1. 인코딩s
+		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
 		//2. 변수저장
 		String id = request.getParameter("id");
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", m);
 			request.setAttribute("msg", "로그인 성공");
-			String url = request.getRequestURI();
+			String url = "/";
 			request.setAttribute("loc", url);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			rd.forward(request, response);

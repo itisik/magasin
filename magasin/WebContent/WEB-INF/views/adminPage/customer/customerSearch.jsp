@@ -9,16 +9,15 @@
 			<div class="top-title">조회기간</div>
 			<div class="top-select">
 				<select name="searchIndex" class="searchIndex">
-					<option>---선택---</option>
-					<option value="none">전체기간</option>
+					<option value="none">--선택--</option>
+					<option value="all">전체기간</option>
 					<option value="purchaseDate">결제일</option>
 					<option value="outDate">발송일</option>
 				</select>
 			</div>
+			
 			<div class="top-date-select" style="display: none;">
-				<input id="dateSelect" name="dateSelect" class="dateSelect"
-					type="hidden" />
-				<button value="99999" type="button">전체기간</button>
+				<input id="dateSelect" name="dateSelect" class="dateSelect" type="hidden" />
 				<button value="7" type="button">1주일</button>
 				<button value="14" type="button">2주일</button>
 				<button value="30" type="button">1달</button>
@@ -45,21 +44,20 @@
 	</div>
 	<div class="customer-bottom">
 		<div class="bottom-title">
-			목록 (총 <span>0</span>개)
+			<div>목록 (총 <span id="countList">0</span>개)</div>
 		</div>
 		<div class="bottom-list">
 			<div class="list-title">
 				<table>
 					<thead>
 						<tr>
-							<td><input type="checkbox"></td>
-							<td>고객 아이디</td>
-							<td>고객 이름</td>
-							<td>상품 이름</td>
-							<td>상품 개수</td>
-							<td>결제일</td>
-							<td>발송일</td>
-							<td>배송완료일</td>
+							<td>고객아이디</td>
+							<td>고객이름</td>
+							<td>상품이름</td>
+							<td>상품개수</td>
+							<td>결제일시</td>
+							<td>발송일시</td>
+							<td>배송완료일시</td>
 						</tr>
 					</thead>
 				</table>
@@ -75,3 +73,14 @@
 </div>
 
 <script type="text/javascript" src="/js/adminPage/customerAjax.js"></script>
+
+<script>
+	$(".searchIndex").change(function() {
+		var isAll = $(".searchIndex>option:selected").val();
+		if (isAll != "all" && isAll != "none") {
+			$(".top-date-select").show();
+		} else {
+			$(".top-date-select").hide();
+		}
+	});
+</script>
