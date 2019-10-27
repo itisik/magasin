@@ -7,9 +7,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.magasin.common.JDBCTemplate;
+import kr.magasin.orderP.model.vo.Order;
 import kr.magasin.orderP.model.vo.OrderP2;
 
 public class OrderPDao {
+	
+	public ArrayList<Order> orderAll(Connection conn, String id){
+		Order op = null;
+		 ArrayList<Order> list = new ArrayList<Order>();
+		 PreparedStatement pstmt = null;
+		 ResultSet rset = null;
+		 String query = "select * FROM order_P where order_USER_id=?"; 
+		 
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, id);
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					op= new Order();
+					op.setOrderStatus(rset.getInt("order_status"));
+					op.setOrderUserId(rset.getString("order_user_id"));
+					list.add(op);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+		return list;
+		 
+		
+	}
 	 public ArrayList<OrderP2> selectAll(Connection conn, String id){
 		 OrderP2 oP = null;
 		 ArrayList<OrderP2> list = new ArrayList<OrderP2>();
