@@ -36,6 +36,7 @@
 			int count3 = 0;
 			int count4 = 0;
 			int count5 = 0;%>
+			
 	<%for(Order op : lists){
 		if(op.getOrderStatus()==2){
 			count1 +=1;
