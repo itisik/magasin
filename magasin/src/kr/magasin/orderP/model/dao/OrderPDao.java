@@ -141,7 +141,11 @@ public class OrderPDao {
 		 
 		 try {
 			pstmt = conn.prepareStatement(query);
+
 			pstmt.setInt(1, 0);
+
+
+
 			pstmt.setInt(2, orderNum);
 			result = pstmt.executeUpdate();
 			

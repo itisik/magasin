@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
@@ -22,12 +23,14 @@ public class ProductLeeService {
 		return list;
 	}
 
-	public Product ProductdetailId(int prdId) {
-		Connection conn = JDBCTemplate.getConnection();
-		Product pdI = dao.ProductdetailId(conn,prdId);
-		JDBCTemplate.close(conn);
-		return pdI;
-	}
+	
+	  public int ProductdetailId(ArrayList<BasketT> list) {
+		  Connection conn =	  JDBCTemplate.getConnection(); 
+		  Product pay = dao.ProductdetailId(conn, list);
+		  JDBCTemplate.close(conn); 
+		  return pay; 
+		  }
+	
 
 /*
   가격과 신상으로 정렬

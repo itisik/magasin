@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
@@ -53,7 +54,7 @@ public class ProductLeeDao {
 	}
 
 	// 상품번호로 페이지 이동 //
-	public Product ProductdetailId(Connection conn, int prdId) {
+	public Product ProductdetailId(Connection conn, ArrayList<BasketT>list) {
 		Product pdI = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
