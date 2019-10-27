@@ -5,9 +5,60 @@
 	<div>
 	<form method="post" action="/prdInsert" enctype="multipart/form-data" name="myForm">
 	<div class="enter1">
-			
+			<style>
+			.producttable{
+				background-color: white;
+			}
+			#categorysemi2 {
+			  height: 30px;
+			  border-radius: 4px;
+			}
+			#legendenter ,#optionenterspan{ 
+				font-size: 20px;
+			    font-weight: bold;
+			}
+			#btn1{
+				height: 30px;
+				width: 150px;
+			  	border-radius: 4px;
+			  	background-color: #4c4c4e;
+			  	color:white;
+			}
+			#prdinsert{
+				height: 30px;
+				width: 150px;
+			  	border-radius: 4px;
+			  	background-color: #4c4c4e;
+			  	color:white;
+			}
+			#input1,#input2{
+				 height: 30px;
+			 	 border-radius: 4px;
+			}
+			.cntinput{
+				height: 20px;
+			 	border-radius: 4px;
+			 	background-color: #ababab;
+			 	color : white;
+			}
+			.tdsize{
+				padding-left: 30px;	
+				color : #5D5D5D;		
+			}
+			.tdcolor{
+				padding-left: 30px;	
+				
+			}
+			.enter2 {
+			  border: 1px solid #ababab;
+			  width: 100%;
+			  background-color: white;
+			  padding-top: 20px;
+			  padding-bottom: 20px;
+			}
+			</style>
              <table class="producttable">
-                 <legend> <i class="fas fa-list"></i><b>상품등록</b></legend>
+                 <legend id="legendenter"> <i class="fas fa-list"></i><b>상품등록</b></legend>
               <tr>
                   <th>
                       <div class="thdiv">
@@ -29,8 +80,9 @@
                   </th>
                   <td>
                       <select id="gender" name="prdGender">
-                          <option value="여">여자</option>
-                          <option value="남">남자</option>
+                          <option value="w">여자</option>
+                          <option value="m">남자</option>
+                          <option value="c">공통</option>
                       </select>
                   </td>
               </tr> 
@@ -44,27 +96,42 @@
                   <td>
                       <select id="category" name="prdCtgr">
                           <option selected="selected">-선택-</option>
-                          <option value="상의">상의</option>
-                          <option value="하의">하의</option>
-                          <option value="아우터">아우터</option>
-                          <option value="드레스">드레스</option>
-                          <option value="셔츠">셔츠</option>
-                          <option value="기타">기타</option>
+                          
+                          <option value="outterw">아우터</option>
+                          <option value="outterm">아우터</option>
+                          <option value="topw">상의</option>
+                          <option value="topm">상의</option>
+                          <option value="bottomw">하의</option>
+                          <option value="bottomm">하의</option>
+                          <option value="dress">드레스</option>
+                          <option value="common">기타</option>
                       </select>
                       
                       <span id="sebuspan1">세부 카테고리 선택</span>
                       <select id="categorysemi2" name="prdSubCtrg">
-                          <option selected="selected">-선택-</option>
-                          <option value="가디건" name="cardigan">가디건</option>
-                          <option value="가죽자켓">가죽자켓</option>
-                          <option value="맨투맨">맨투맨</option>
-                          <option value="청바지">청바지</option>
-                          <option value="스커트">스커트</option>
-                          <option value="면바지">면바지</option>
-                          <option value="쥬얼리">쥬얼리</option>
-                          <option value="가방">가방</option>
-                          <option value="신발">신발</option>
-                          <option value="기타">기타</option>
+                         <option selected="selected">-선택-</option>
+                         
+                          <option value="jacket">자켓</option>
+                          <option value="coats">코트</option>
+                          <option value="cardigan" name="cardigan">가디건</option>
+                          <option value="etcoutter">기타</option>
+                          
+                          <option value="tw">티셔츠</option>
+                          <option value="blouse">블라우스</option>
+                          <option value="etctw">etc</option>
+                          <option value="tm">티셔츠</option>
+                          <option value="shirts">셔츠</option>
+                          <option value="etctm">etc</option>
+                          <option value="pants">여자바지</option>
+                          <option value="skirt">스커트</option>
+                          <option value="etcbw">etc</option>
+                          <option value="slacks">슬랙스</option>
+                          <option value="jeans">청바지</option>
+                          <option value="etcbm">etc</option>
+                          <option value="bag">백</option>
+                          <option value="shoese">신발</option>
+                          <option value="acc">악세사리</option>
+                          <option value="dress">드레스</option>
                       </select>
                       
                   </td>
@@ -114,13 +181,15 @@
               </table>
               
           </div>
-          <div class="enter1">
-           <i class="fas fa-list"></i><span> 상품 옵션 등록</span>
+          <br>
+          <i class="fas fa-list"><span id="optionenterspan"> 상품 옵션 등록</span></i>
+          <div class="enter2">
+          
           	<div>
           		<input type="text" name="size" id="input1" placeholder="상품 사이즈 입력 ex) S,M,L" style="width:300px;">
           		<input type="text" name="color" id="input2" placeholder="상품 컬러 입력 ex) red,black,white" style="width:300px;">
           		<button id="btn1" type="button">상품 재고 입력하기</button>
-          		<button id="prdinsert">상품등록하기!!!!</button>
+          		<button id="prdinsert">상품 최종 등록하기</button>
           		<table id="tbl" border="1">
           		
           			<tbody>
@@ -166,23 +235,23 @@
             			for(var j=0;j<textArr2.length;j++){
             				var sizeHidden = ("<input type='hidden'  name='sizee"+index1 +"' value='"+textArr1[i]+"'>");
                 			var colorHidden = ("<input type='hidden'  name='colorr"+index1 +"' value='"+textArr2[j]+"'>");
-                			var input2 = $("<input type='text' name='count"+ index1 +"' placeholder ='재고입력'>");
+                			var input2 = $("<input type='text' class='cntinput' name='count"+ index1 +"' placeholder ='재고입력'>");
             				if(j==0){ 
             					//첫번째 출력은 tr을 추가할 필요가 없는데  두번째 세번째부턴 tr을 추가해야된다. 그래서 첫번째랑 두번째랑 나눈 것
-            					var td2=$("<td>");
+            					var td2=$("<td class='tdsize'>");
             					td2.append(textArr2[j]);
-            					var td3=$("<td>");            					
+            					var td3=$("<td class='tdcolor'>");            					
             					td3.append(sizeHidden).append(colorHidden).append(input2);
-            					tr.append(td2).append(td3);
+            					tr.append("사이즈").append(td2).append(td3);
             					$("#tbl>tbody").append(tr);
             				}else{
             					
             					var tr1=$("<tr>");
-            					var td2=$("<td>");
+            					var td2=$("<td class='tdsize'>");
             					td2.append(textArr2[j]);
-            					var td3=$("<td>");            					
+            					var td3=$("<td class='tdcolor'>");            					
             					td3.append(sizeHidden).append(colorHidden).append(input2);
-            					tr1.append(td2).append(td3);
+            					tr1.append("사이즈").append(td2).append(td3);
             					$("#tbl>tbody").append(tr1);
             				}
             				
@@ -227,56 +296,81 @@
             			reader.readAsDataURL(value.files[0]);
             		}
             	}
+            	$("#gender").change(function(){
+            		var state2 = $('#gender option:selected').val();
+            		$("#category").show();
+            		
+            		if(state2 == 'w'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(2)").hide();
+      					$("#category option:eq(4)").hide();
+      					$("#category option:eq(6)").hide();
+      					
+      				}else if(state2 =='m'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(1)").hide();
+      					$("#category option:eq(3)").hide();
+      					$("#category option:eq(5)").hide();
+      					$("#category option:eq(7)").hide();
+
+      				}else if(state2 =='c'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(1)").hide();
+      					$("#category option:eq(2)").hide();
+      					$("#category option:eq(3)").hide();
+      					$("#category option:eq(4)").hide();
+      					$("#category option:eq(5)").hide();
+      					$("#category option:eq(6)").hide();
+      					$("#category option:eq(7)").hide();
+      				}
+      			});
             	
             	$("#category").change(function(){
               		var state = $('#category option:selected').val();
               		$("#categorysemi2").show();
               		
-              		if(state == '상의'){
+              		if(state == 'outterm'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
-              			$('#categorysemi2 option:eq(4)').hide();
               			$('#categorysemi2 option:eq(5)').hide();
               			$('#categorysemi2 option:eq(6)').hide();
               			$('#categorysemi2 option:eq(7)').hide();
               			$('#categorysemi2 option:eq(8)').hide();
               			$('#categorysemi2 option:eq(9)').hide();
               			$('#categorysemi2 option:eq(10)').hide();
-              			
-              		}else if(state == '하의'){
-              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'topm'){
+              			('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
               			$('#categorysemi2 option:eq(2)').hide();
-              			$('#categorysemi2 option:eq(3)').hide();
-              			$('#categorysemi2 option:eq(7)').hide();
-              			$('#categorysemi2 option:eq(8)').hide();
-              			$('#categorysemi2 option:eq(9)').hide();
-              			$('#categorysemi2 option:eq(10)').hide();
-              		}else if(state == '아우터'){
-              			$('#categorysemi2 >option').show();
-              			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(3)').hide();
               			$('#categorysemi2 option:eq(4)').hide();
               			$('#categorysemi2 option:eq(5)').hide();
               			$('#categorysemi2 option:eq(6)').hide();
               			$('#categorysemi2 option:eq(7)').hide();
-              			$('#categorysemi2 option:eq(8)').hide();
-              			$('#categorysemi2 option:eq(9)').hide();
-              			$('#categorysemi2 option:eq(10)').hide();
-              		}else if(state == '드레스'){
-              			$('#categorysemi2 >option').show();
-              			$('#categorysemi2 option:eq(0)').prop("selected",true);
-              			$('#categorysemi2 option:eq(1)').hide();
-              			$('#categorysemi2 option:eq(2)').hide();
-              			$('#categorysemi2 option:eq(3)').hide();
-              			$('#categorysemi2 option:eq(4)').hide();
-              			$('#categorysemi2 option:eq(6)').hide();
-              			$('#categorysemi2 option:eq(7)').hide();
-              			$('#categorysemi2 option:eq(8)').hide();
-              			$('#categorysemi2 option:eq(9)').hide();
-              			$('#categorysemi2 option:eq(10)').hide();
-              		}else if(state == '셔츠'){
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              		}else if(state == 'bottomm'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -288,8 +382,75 @@
               			$('#categorysemi2 option:eq(7)').hide();
               			$('#categorysemi2 option:eq(8)').hide();
               			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'common'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
               		
-              		}else if(state == '기타'){
+              		}else if(state == 'outterw'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();	
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'topw'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'bottomw'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -298,13 +459,49 @@
               			$('#categorysemi2 option:eq(4)').hide();
               			$('#categorysemi2 option:eq(5)').hide();
               			$('#categorysemi2 option:eq(6)').hide();
-              			
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'dress'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
               		}
               	});    
+            	
             </script>
             
              <style>
            	#categorysemi2{
           		display:none;
+            }
+            #category{
+            	display:none;
             }
             </style>
