@@ -65,6 +65,7 @@
         	switch((Integer.parseInt(oP.getOrderStatus()))){
             case 0:status="주문완료"; break;
             case -1:status="취소처리중"; break;
+            
             case 1:status="취소"; break;
             case 2:status="배송준비중"; break;
             case 3:status="배송중"; break;
