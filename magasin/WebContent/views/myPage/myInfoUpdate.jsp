@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/myPage/myInfoUpdate.css">
-
+   <script type="text/javascript"       src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body id="body1">
 	<div class="wrapper">

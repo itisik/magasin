@@ -103,7 +103,7 @@ public class OrderPDao {
 		return list;
 		 
 	 }
-	 
+	 //취소신청
 	 public int update(Connection conn, int orderNum) {
 		 int result = 0;
 		 PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class OrderPDao {
 		 
 		 try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "취소접수");
+			pstmt.setInt(1, 0);
 			pstmt.setInt(2, orderNum);
 			result = pstmt.executeUpdate();
 			
@@ -130,7 +130,7 @@ public class OrderPDao {
 		}
 		 return result;
 	 }
-	 
+	 //반품신청
 	 public int update1(Connection conn, int orderNum) {
 		 int result = 0;
 		 PreparedStatement pstmt = null;
@@ -138,7 +138,7 @@ public class OrderPDao {
 		 
 		 try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "반품접수");
+			pstmt.setInt(1, 5);
 			pstmt.setInt(2, orderNum);
 			result = pstmt.executeUpdate();
 			

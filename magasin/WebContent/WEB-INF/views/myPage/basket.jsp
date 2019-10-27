@@ -131,7 +131,6 @@
 			<li class="bsk-f-ul-li-1" ><button type="button" name="button"  onclick="tempBasketAll();">전체상품주문</button></li>
 			<li class="bsk-f-ul-li-2" ><button type="button" onclick="tempBasket();">선택상품주문</button></li>
 
-		
 			<li class="bsk-f-ul-li-3" ><a href="#">쇼핑계속하기</a></li>
 		</ul>
 

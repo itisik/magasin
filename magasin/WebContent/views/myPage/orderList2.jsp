@@ -34,7 +34,15 @@
 	<tbody  class ="ol-tbody">
 	
 	<%for(OrderP2 oP : list){ %>
- <% if(oP.getOrderStatus().equals("반품") || oP.getOrderStatus().equals("취소")){%>
+ <%
+ String status = "";
+ if(Integer.parseInt(oP.getOrderStatus())== 7 ||Integer.parseInt(oP.getOrderStatus())== -1){
+ 	if(Integer.parseInt(oP.getOrderStatus())== 7 ){
+ 		status = "반품";
+ 	}else{
+ 		status = "취소";
+ 	}
+ %>
 	
 	
 	<tr>
@@ -50,7 +58,7 @@
         <td class="ol-list-4"><%=oP.getOrderPrdCount() %>	</td>
         <td class="ol-list-5"><%=oP.getOrderMoney() %></td>
         
-          <td class="ol-list-7"><%=oP.getOrderStatus() %></td>
+          <td class="ol-list-7"><%= status  %></td>
       <%} %>
    
 	</tr>

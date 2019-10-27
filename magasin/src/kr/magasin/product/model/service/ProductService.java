@@ -11,10 +11,15 @@ public class ProductService {
 
 
 
-	public ArrayList<Product> productList() {
+	/*
+	  public ArrayList<Product> productList() {
+	
 		Connection conn = JDBCTemplate.getConnection();
 		ProductDao dao = new ProductDao();
 		ArrayList<Product> list = dao.productList(conn);
+	
+	}
+	 */
 	public ArrayList<Product> productList(int prdId) {
 		Connection conn = JDBCTemplate.getConnection();
 		ProductDao dao = new ProductDao();

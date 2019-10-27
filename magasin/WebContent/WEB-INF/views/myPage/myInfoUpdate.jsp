@@ -85,16 +85,16 @@
 		
 			</tr>
 						<tr>
-				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" name="emailList1"  value="<%=emailList[1] %>">
-					<select id="mif-email">
+				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" id="emailList1" name="emailList1"  value="<%=emailList[1] %>">
+					<!-- <select id="mif-email">
 					<option value="naver.com">naver.com</option>
 					<option value="daum.net">daum.net</option>
 					<option value="nate.com">nate.com</option>
 					<option value="hotmail.com">hotmail.com</option>
 					<option value="yahoo.com">yahoo.com</option>
-					<option value="gmail.com">gmail.com</option>
+					<option value="1">gmail.com</option>
 					<option value="etc">직접입력</option>
-				</select></td>
+				</select> --></td>
 
 			</tr> 
 
@@ -189,8 +189,6 @@
 				}
 			});
 		});
-
-
 
 </script>
 </html>

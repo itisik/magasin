@@ -52,23 +52,42 @@
         <td class="ol-list-4"><%=oP.getOrderPrdCount() %>	</td>
         <td class="ol-list-5"><%=oP.getOrderMoney() %></td>
         
-        <%if(oP.getOrderStatus().equals("배송완료")){ %>
-          <td class="ol-list-6"><%=oP.getOrderStatus() %><br>
+        <!-- 
+        주문 완료 / 취소요청 가능 
+   	배송완료/반품신청 OR 리뷰쓰기      
+        
+        -->
+        <% String status = ""; %>
+	   <% if(Integer.parseInt(oP.getOrderStatus())==4){ status="배송완료";%>        	
+          <td class="ol-list-6"><%= status %><br>
           <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
-        <%}else{ %>
-          <td class="ol-list-6"><%=oP.getOrderStatus() %></td>
+        <%}else{
+        	switch((Integer.parseInt(oP.getOrderStatus()))){
+            case 0:status="주문완료"; break;
+            case -1:status="취소처리중"; break;
+            case 1:status="취소"; break;
+            case 2:status="배송준비중"; break;
+            case 3:status="배송중"; break;
+            case 4:status="배송완료"; break;
+            case 5:status="반품처리중"; break;//반품신청
+            case 6:status="반품처리중"; break;
+            case 7:status="반품"; break;
+            }
+        	%>
+          <td class="ol-list-6"><%=status%></td>
         <%} %>
-         <%if(oP.getOrderStatus().equals("결제완료")){ %>
+         <%if(Integer.parseInt(oP.getOrderStatus())==0){  %>
          <td class="ol-list-7"><a href="/updateOrder?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>" >주문취소</a></td>
-            <%}else if(oP.getOrderStatus().equals("배송완료")){ %>
-                <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품요청</a></td>
+            <%}else if(Integer.parseInt(oP.getOrderStatus())==4){ %>
+                <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품신청</a></td>
                 <%}else {%>
                   <td class="ol-list-7"></td>
                 <%} %>
-        
+   
 	</tr>
  
 	<%} %>
+	
 	</tbody>
 	</table>
 		<div class ="ol-pageNavi">

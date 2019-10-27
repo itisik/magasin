@@ -1,5 +1,5 @@
 <%@page import="kr.magasin.orderP.model.service.OrderPService"%>
-<%@page import="kr.magasin.orderP.model.vo.OrderP"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
