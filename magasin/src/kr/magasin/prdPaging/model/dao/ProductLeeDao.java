@@ -308,7 +308,9 @@ public class ProductLeeDao {
 		return list;
 	}
 
+
 	public ArrayList<String> subCtgr(Connection conn,String ctgr,String gender) {
+
 		ArrayList<String> sub = new ArrayList<String>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -318,7 +320,7 @@ public class ProductLeeDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, ctgr);
 			pstmt.setString(2, gender);
-			
+
 			rset=pstmt.executeQuery();
 			
 			while(rset.next()) {

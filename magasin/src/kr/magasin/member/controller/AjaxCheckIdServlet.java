@@ -31,6 +31,7 @@ public class AjaxCheckIdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* ID 유효성 체크 */
 		String id = request.getParameter("id");
 		MemberService service = new MemberService();
 		Member m = service.selectOne(id);

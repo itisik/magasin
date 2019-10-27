@@ -31,9 +31,11 @@ public class AjaxCheckEmailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* email 유효성체크  */
 		String email = request.getParameter("email");
 		MemberService service = new MemberService();
-		Member m = service.selectOne(email);
+		Member m = service.selectOne2(email);
+
 		PrintWriter out = response.getWriter();
 		if(m==null) {
 			out.print(1);

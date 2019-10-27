@@ -2,9 +2,9 @@ package kr.magasin.board.model.vo;
 
 import java.sql.Date;
 
-public class Question {
-
+public class QPrd {
 	private int qNo;
+	private String qCtgr;
 	private String qTitle;
 	private String qWriter;
 	private String qCont;
@@ -12,16 +12,17 @@ public class Question {
 	private int qIsA;
 	private String qFilename;
 	private String qFilepath;
-	private String prdId;
+	private String prdName;
 	private String prdSnImg;
-	public Question() {
+	public QPrd() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Question(int qNo, String qTitle, String qWriter, String qCont, Date qDate, int qIsA, String qFilename,
-			String qFilepath, String prdId, String prdSnImg) {
+	public QPrd(int qNo, String qCtgr, String qTitle, String qWriter, String qCont, Date qDate, int qIsA,
+			String qFilename, String qFilepath, String prdName, String prdSnImg) {
 		super();
 		this.qNo = qNo;
+		this.qCtgr = qCtgr;
 		this.qTitle = qTitle;
 		this.qWriter = qWriter;
 		this.qCont = qCont;
@@ -29,7 +30,7 @@ public class Question {
 		this.qIsA = qIsA;
 		this.qFilename = qFilename;
 		this.qFilepath = qFilepath;
-		this.prdId = prdId;
+		this.prdName = prdName;
 		this.prdSnImg = prdSnImg;
 	}
 	public int getqNo() {
@@ -37,6 +38,12 @@ public class Question {
 	}
 	public void setqNo(int qNo) {
 		this.qNo = qNo;
+	}
+	public String getqCtgr() {
+		return qCtgr;
+	}
+	public void setqCtgr(String qCtgr) {
+		this.qCtgr = qCtgr;
 	}
 	public String getqTitle() {
 		return qTitle;
@@ -80,11 +87,11 @@ public class Question {
 	public void setqFilepath(String qFilepath) {
 		this.qFilepath = qFilepath;
 	}
-	public String getPrdId() {
-		return prdId;
+	public String getPrdName() {
+		return prdName;
 	}
-	public void setPrdId(String prdId) {
-		this.prdId = prdId;
+	public void setPrdName(String prdName) {
+		this.prdName = prdName;
 	}
 	public String getPrdSnImg() {
 		return prdSnImg;

@@ -113,8 +113,6 @@
 
 .customer-bottom > .bottom-list > .list-title td,
 .customer-bottom > .bottom-list > .list-content td {
-  max-width: 275px;
-  min-width: 275px;
   height: 40px;
   line-height: 40px;
 }
@@ -126,4 +124,9 @@
 
 .search-bottom > .bottom-input > input {
   height: 19px;
+}
+
+.customer-bottom > .bottom-list > .list-title td,
+.customer-bottom > .bottom-list > .list-content td {
+  width: 14.285714%;
 }

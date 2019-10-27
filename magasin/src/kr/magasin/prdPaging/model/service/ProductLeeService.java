@@ -110,6 +110,7 @@ public class ProductLeeService {
 	public ArrayList<String> subCtgr(String ctgr,String gender) {
 		Connection conn = JDBCTemplate.getConnection();
 		ArrayList<String> sub = dao.subCtgr(conn,ctgr,gender);
+
 		JDBCTemplate.close(conn);
 		return sub;
 	}

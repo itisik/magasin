@@ -49,15 +49,3 @@ $(document).ready(function() {
     $("#" + tab_id).addClass("current");
   });
 });
-///////////////////////////////////////////////////////////////////////////////////////
-const activeBtn = document.querySelector("#activeOption");
-
-function myFunc() {
-  console.log("!!!!");
-}
-
-function init() {
-  activeBtn.addEventListener("click", myFunc());
-}
-
-init();

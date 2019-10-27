@@ -1,11 +1,15 @@
+
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
 			Product pdI = (Product)request.getAttribute("productId");
+
 			ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdCol");
+
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,7 +45,9 @@
 				<%@include file="/WEB-INF/views/common/nav.html"%>
 			</div>
 			<div class="mainContent" style="width: 943px;">
+
 				<div class="detailContainr">			
+
 					<div class="detailBorder">
 						<div class="detailImg">
 							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
@@ -81,6 +87,7 @@
 									</tr>
 								</table>
 								<div class="detailTotal">
+
 									  총 상품금액(수량): <input id = "totals" type="number" name="total" min="1" value="1"  style="width:40px;"><span><%=pdI.getPrdPrice()%></span>(won)
 								</div>
 								<div class="detailBag">
@@ -92,6 +99,7 @@
 											<img src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW
 										</a>
 										</div>
+
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
 								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>
@@ -153,7 +161,7 @@
 		$('.color1').click(function(){
 			$(".color1").removeClass(PIEKEDCOLOR); <!-- 얇게 만드는과정  -->
 			$(this).addClass(PIEKEDCOLOR);
-			$(this).addValue()
+			$(this).addValue();
 		});
 	});
 	
