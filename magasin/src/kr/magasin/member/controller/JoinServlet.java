@@ -57,7 +57,7 @@ public class JoinServlet extends HttpServlet {
 		}
 		String gender = request.getParameter("gender");
 		String email = request.getParameter("email");
-		//String grade = request.getParameter("grade");
+		String grade = request.getParameter("grade");
 		System.out.println(id);
 		System.out.println(pw);
 		System.out.println(name);
@@ -66,7 +66,7 @@ public class JoinServlet extends HttpServlet {
 		System.out.println(birthdate);
 		System.out.println(gender);
 		System.out.println(email);
-		Member m =new Member(id, pw, name, addr, phone, birthdate, gender, null, email, null);
+		Member m =new Member(id, pw, name, addr, phone, birthdate, gender, grade, email, null);
 		
 		//3. 비지니스로직
 		MemberService service = new MemberService();

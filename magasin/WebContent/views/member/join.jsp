@@ -1,39 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%!
-			public int getRandom(){
-				int random = 0;
-				random = (int)Math.floor((Math.random()*(99999-10000+1)))+10000;
-				return random;
-		}
-	%>
+	pageEncoding="UTF-8"%>
+<%!public int getRandom() {
+		int random = 0;
+		random = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
+		return random;
+	}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/myPage/basket.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/member/join.css">
+
+<style>
+.join-main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+}
+</style>
+
 </head>
 <body id="body1">
-	<div class="wrapper">
-		<header>
+	<div class=join-main>
+		<div class="wrapper">
+			<header>
 			<div class="header">
 				<%@include file="/WEB-INF/views/common/header.jsp"%>
 			</div>
-		</header>
-		<section>
+			</header>
+			<section>
 			<div class="mainContainer">
 				<div class="side-nav">
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">
 				    <div id="join-wrapper" style="margin:0 auto; width:800px; color:black; text-align:center;">
-					    <form name="checkIdFrm"> <!-- 숨겨서 처리할거 -->
-	    					<input type="hidden" name="checkId">
+					    <form name="checkNumFrm"> <!-- 인증번호 숨겨서 처리 -->
+	    					<input type="hidden" name="checkNum">
 	    				</form>
 					    <form action="/join" onsubmit="return checkz();" method="post" id="memberJoin">
 					        <h3 class="join-div-h3">회원가입</h3>
@@ -42,58 +50,48 @@
 					    	<table class="join-div-table" style="width:100%;">
 					    		<tr>
 								    <th><label for="id">아이디 <img src="img/ico_required_blue.gif"></label></th>
-								    <td><input type="text" name="id" id="id" class="form-control" required><span>(영문 소문자/숫자 조합 8~15자)</span><span id="idChkMsg"></span></td>
+								    <td><input type="text" name="id" id="id" class="form-control"><span>(영문 소문자/숫자 조합 8~15자)</span><span id="idChkMsg"></span></td>
 					    		</tr>
 								<tr>
 									<th><label for="pw">비밀번호 <img src="img/ico_required_blue.gif"></label></th>
-									<td><input type="password" name="pw" id="pw" class="form-control" required><span>(영문 소문자/숫자/특수문자 포함한 7자 이상)</span><span id="pwChk"></span></td>
+									<td><input type="password" name="pw" id="pw" class="form-control"><span>(영문 소문자/숫자/특수문자 포함한 7자 이상)</span><span id="pwChk"></span></td>
 								</tr>
 								<tr>
 									<th><label for="pw2">비밀번호확인 <img src="img/ico_required_blue.gif"></label></th>
-									<td><input type="password" id="pw2" class="form-control" required><span id="pwChkMsg"></span></td> <!-- 데이터넘길 필요없으니까 name속성안줌 -->
+									<td><input type="password" id="pw2" class="form-control"><span id="pwChkMsg"></span></td> <!-- 데이터넘길 필요없으니까 name속성안줌 -->
 								</tr>
 								<tr>
 									<th><label for="name">이름 <img src="img/ico_required_blue.gif"></label></th>
-									<td><input type="text" name="name" id="name" class="form-control" required></td> <!-- 이름글자눌러도 클릭되도록할려고 name씀 -->
+									<td><input type="text" name="name" id="name" class="form-control"></td> <!-- 이름글자눌러도 클릭되도록할려고 name씀 -->
 								</tr>
-					            <tr>
-					                <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
-					                <td>
-					                    <input type="text" name="addr_4" id="addr_postcode"  placeholder="우편번호" readonly="readonly">
-					                    <button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
-					                    <input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
-					                    <input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
-					                    <input type="text" name="addr_3" id="addr_extraAddress" placeholder="참고항목">
-					                </td>
-					            </tr>
 								<tr>
 									<th>생년월일</th>
-									<td><input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="ex)19970112"></td> 
-									<td><input type="hidden" name="grade" id="grade"/></td>
+									<td><input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="ex)19970112"><input type="hidden" name="grade" id="grade"/></td> 
 								</tr>
-					            <tr>
-					                <th>성별</th>
-					                <td>
-					                    <input type="radio" name="gender" id="female" value="w" class="form-control">&nbsp;<label for="female">여성</label>&nbsp;&nbsp;&nbsp;
-					                    <input type="radio" name="gender" id="male" value="m" class="form-control">&nbsp;<label for="male">남성</label>
-					                </td>
-					            </tr>
-					            <tr>
+								<tr>
+									<th>성별</th>
+									<td><input type="radio" name="gender" id="female"
+										value="w" class="form-control">&nbsp;<label
+										for="female">여성</label>&nbsp;&nbsp;&nbsp; <input type="radio"
+										name="gender" id="male" value="m" class="form-control">&nbsp;<label
+										for="male">남성</label></td>
+								</tr>
+								<tr>
 									<th>휴대전화 <img src="img/ico_required_blue.gif"></th>
-									<td><input type="text" name="phone" id="phone" class="form-control" placeholder="'-'빼고 작성" required></td>
-									
+									<td><input type="text" name="phone" id="phone" class="form-control" placeholder="'-'빼고 작성"></td>
 								</tr>
 								<tr>
 									<th>이메일 <img src="img/ico_required_blue.gif"></th>
 									<td>
-									<!-- <form action="/sendEmail" method="post" id="form1"> -->
+										<div>				
 											<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@naver.com"> 
 											<input type="button" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
-											<span id="emailChkMsg"></span> <!--클릭하면 창뜨고 3분내로 입력하도록 시계뜨고 이메일로 인증번호 날려주고 그 값 입력하면 인증되었습니다 뜨게하기-->
+											<span id="emailChkMsg"></span> <!-- 이메일 중복된건지 체크 -->
 											<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
-											<input type="hidden" readonly="readonly" id="chkAfter"/>
-											<!-- 인증 확인 버튼 눌러서 넘겨온 값이 1이면 회원가입되게. -->										
-									<!-- </form> -->
+											<input type="hidden" readonly="readonly" id="chkAfter" name="chkAfter"/>
+											<div id="chkAfterMsg"></div>
+											<!-- 인증하기 버튼 눌러서 넘겨온 값이 1이면 회원가입되게. -->						
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -109,11 +107,11 @@
 					                    <h3>[필수] 이용약관 동의</h3>
 					                    <div class="area_content">
 					                    <p>제1조(목적)
-					이 약관은 (전자상거래 사업자)가 운영하는 슬로우앤드(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
+					이 약관은 (전자상거래 사업자)가 운영하는 MAGASIN(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
 					※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
 					
 					제2조(정의)
-					① “몰”이란 슬로우앤드가 재화 또는 용역(이하 “재화 등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
+					① “몰”이란 MAGASIN 재화 또는 용역(이하 “재화 등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
 					② “이용자”란 “몰”에 접속하여 이 약관에 따라 “몰”이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
 					③ ‘회원’이라 함은 “몰”에 (삭제) 회원등록을 한 자로서, 계속적으로 “몰”이 제공하는 서비스를 이용할 수 있는 자를 말합니다.
 					④ ‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.
@@ -349,18 +347,21 @@
 								<button type="submit" class="btn_join">회원가입</button>
 								<button type="reset" class="btn_join">초기화</button>
 							</div>
-					   </form>
+						</form>
 					</div>
 				</div>
 			</div>
-		</section>
-		<footer>
+			</section>
+			<footer>
 			<div class="footer">
 				<%@include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
-		</footer>
+			</footer>
+		</div>
+
 	</div>
-	<script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 
 //ㅇ	1. 비밀번호 두개 안맞으면 비밀번호 다 리셋되고 커서이동
@@ -522,7 +523,7 @@
 			var code_check = document.getElementById("code_check").value;
 			var closetime = 10;
 
-			alert(email);
+			//alert(email);
 			if(email == ""){
 				alert("이메일을 입력해주세요.");
 				return;
@@ -530,9 +531,18 @@
 
 			//email, code_check(랜덤숫자)값 넘겨줌
 			var url = "/sendEmail?email="+email+"&code_check="+code_check+""; //요청 서블릿 url
-			var title = "numChkWindow";
+			var title = "checkNumWindow";
 			var status = "left=500px, top=100px, width=300px, height=200px, menubar=no, status=no, scrollbar=yes";
-			/*var numChkWindow = */window.open(url,title,status);
+			window.open(url,title,status);
+			
+			//var popup = window.open("",title,status);
+			//checkNumFrm.checkNum.value = code_check;
+			//checkNumFrm.target = title;
+			//checkNumFrm.action = url;
+			//checkNumFrm.method ="post";
+			//checkNumFrm.submit();
+			//alert(code_check);
+			
 			//자동으로 닫히는 시간 설정 -되는지 확인하기
 			//if(closetime) setTimeout("numChkWindow.close();", closetime*1000);
 //			var popup = window.open(url,title,status);
@@ -640,6 +650,7 @@
 	   //=======================================================================================//
 	   // submit 유효성 검사 //
 	   function checkz(){
+		   var getId = RegExp(/^[0-9a-z].{8,15}$/);
 		   var getName = RegExp(/^[가-힣]+$/);
 		   var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 		   //var getCheck= RegExp(/^[a-z0-9]{8,15}$/);
@@ -654,33 +665,40 @@
 		   
 		   //id 공백 확인
 		   if($("#id").val()==""){
-			   alert("아이디를 입력해주세요");
+			   alert("아이디를 입력해주세요.");
 			   $("#id").focus();
 			   return false;
 		   }
-		/*    //id의 유효성 검사
-		   if(!getCheck.test($("#id").val())){
-			   alert("형식에 맞게 입력해주세요");
+
+		   //id의 유효성 검사
+		   if(!getId.test($("#id").val())){
+			   alert("아이디 형식에 맞게 입력해주세요.");
 			   $("#id").val("");
 			   $("#id").focus();
 			   return false;
-		   } */
+		   }
+		   //비밀번호 공백확인
+		   if($("#pw").val()==""){
+			   alert("비밀번호를 입력해주세요.");
+			   $("#pw").focus();
+			   return false;
+		   }
 
 		   //비밀번호 유효성 검사
 		   if(!getPw.test($("#pw").val())){
-			   alert("형식에 맞춰서 pw를 입력해주세요");
+			   alert("비밀번호 형식에 맞게 입력해주세요.");
 			   $("#pw").val("");
 			   $("#pw").focus();
 			   return false;
 		   }
 		   //아이디랑 비밀번호가 같으면 안돼
 		   if($("#id").val()==($("#pw").val())){
-			   alert("비밀번호와 id가 같으면 안돼요");
+			   alert("비밀번호와 id는 다르게 입력해주세요.");
 			   $("#pw").val("");
 			   $("#pw").focus();
 			   return false;
 		   }
-		   //비밀번호 같은지
+		   //비밀번호 재입력 확인 같은지
 		   if($("#pw").val()!=($("#pw2").val())){
 			   alert("비밀번호 확인란을 다시 입력해주세요.");
 			   $("#pw").val("");
@@ -688,9 +706,34 @@
 			   $("#pw").focus();
 			   return false;
 		   }
+		   //이름 공백 확인
+		   if($("#name").val()==""){
+			   alert("이름을 입력해주세요.");
+			   $("#name").focus();
+			   return false;
+		   }
+		   //이름 유효성 검사
+		   if(!getName.test($("#name").val())){
+			   alert("이름은 한글만 됩니다.");
+			   $("#name").val("");
+			   $("#name").focus();
+			   return false;
+		   }
+		   //전화번호 공백확인
+		   if($("#phone").val()==""){
+			   alert("전화번호를 입력해주세요.");
+			   $("#phone").focus();
+			   return false;
+		   }
+		   //전화번호 유효성 검사
+		   if(!getPhone.test($("#phone").val())){
+			   alert("전화번호 형식에 맞춰서 입력해주세요. ex)01012345678");
+			   $("#phone").focus();
+			   return false;
+		   }
 		   //이메일 공백 확인
 		   if($("#email").val()==""){
-			   alert("이메일을 입력하고 인증번호를 입력해주세요.");
+			   alert("이메일을 입력해주세요.");
 			   $("#email").focus();
 			   return false;
 		   }
@@ -701,35 +744,16 @@
 			   $("#email").focus();
 			   return false;
 		   }
-		   //이름 공백 확인
-		   if(("#name").val()==""){
-			   alert("이름을 입력해주세요.");
-			   $("#name").focus();
-			   return false;
-		   }
-		   //이름 유효성
-		   if(!getName.test($("#name").val())){
-			   alert("이름은 한글만 됩니다.");
-			   $("#name").val("");
-			   $("#name").focus();
-			   return false;
-		   }
-		   //전화번호 공백확인
-		   if(("#phone").val()==""){
-			   alert("전화번호를 입력해주세요.");
-			   $("#phone").focus();
-			   return false;
-		   }
-		   //전화번호 유효성
-		   if(!getPhone.test($("#phone").val())){
-			   alert("전화번호 형식에 맞춰서 입력해주세요. ex)01012345678");
-			   $("#phone").focus();
-			   return false;
-		   }
-		   
 
-		   
-		   //이용약관 동의 유효성 검사
+		   //이메일 인증 했는지 체크
+		   var chkAfter = document.getElementById("chkAfter");
+		   //alert(chkAfter.value);
+		   if(chkAfter.value != '1'){
+			   alert("이메일 인증번호를 인증해주세요.");
+			   return false;
+		   }
+
+		   //이용약관 동의 했는지 검사
 		   if(!($("#agreeSerChk").is(':checked'))){
 			   $("#agreeSerChk").focus();
 			   alert("이용약관에 동의하여 주시기 바랍니다.");
@@ -739,9 +763,7 @@
 			   alert("개인정보 수집 및 이용에 동의하여 주시기 바랍니다.");
 			   return false;
 		   }
-		   
-		   
-		   
+
 		   
 		   /* if(check2.prop("checked")==false){
 			   check2.focus();

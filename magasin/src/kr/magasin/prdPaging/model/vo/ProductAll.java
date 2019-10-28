@@ -1,5 +1,6 @@
 package kr.magasin.prdPaging.model.vo;
 
+
 import java.sql.Date;
 
 public class ProductAll {
@@ -93,8 +94,5 @@ public class ProductAll {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
-	
-	
-	
+
 }

@@ -16,6 +16,7 @@ public class OrderProgressService {
 
 		if (orderStatus > 0) {
 			result = dao.OrderProgressOne(conn, orderStatus, orderNum);
+			
 			if(orderStatus == 2) {
 				result += dao.OrderProgressOutDate(conn, orderStatus, orderNum);
 			}

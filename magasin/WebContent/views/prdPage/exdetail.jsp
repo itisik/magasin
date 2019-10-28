@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 	<%
 			Product pdI = (Product)request.getAttribute("productId");
+
 			ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdCol");
 
 	%>
@@ -52,7 +53,9 @@
 							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
 						</div>
 						<div class="detailInfor">	
+
 						<form id="Sub" action="/productExpay" method="post">
+
 							<div class="table-wrapper">
 								<p><%=pdI.getPrdName()%></p>
 								 <input type="hidden" name="prdId" value="<%=pdI.getPrdId()%>">
@@ -69,8 +72,10 @@
 										<td class="color">
 										<%for( ProductDtl p : prdDtl ){ %>
 											<%if(pdI.getPrdId()==p.getPrdId()){ %>
+
 											<div class="color1" name ="color1" value="<%=p.getPrdDtlColor()%>"style="background-color:<%=p.getPrdDtlColor()%>;"></div>
 											<input type="hidden" name="prdDtlColor" value="<%=p.getPrdDtlColor()%>">
+
 											<%} 
 									}%>
 										</td>
@@ -93,7 +98,9 @@
 								</table>
 								<div class="detailTotal">
 
+
 									  총 상품금액(수량): <input id = "amount" type="number" name="total" min="1" value="1" style="width:40px;"><span id="total"><%=pdI.getPrdPrice()%></span>(won)
+
 								</div>
 								<script>
 									$("#amount").change(function(){
@@ -111,7 +118,7 @@
 											<img src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW
 										</button>
 										</div>
-									
+
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
 								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>
@@ -119,6 +126,7 @@
                                <div>100원을 사도 무료배송!!</div>
 							</div>
 						</div>
+
 					   </form>
 					</div>
 				</div>
@@ -183,12 +191,14 @@
 		$('.color1').click(function(){
 			$(".color1").removeClass(PIEKEDCOLOR); 
 			$(this).addClass(PIEKEDCOLOR);
+
 			/* $(this).addValue(); */
 			index = $(".color1").index(this);
 			console.log(index);
 
 			});
 		});
+
 	
 	</script>
 </body>

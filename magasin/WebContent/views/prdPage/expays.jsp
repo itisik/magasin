@@ -1,5 +1,7 @@
+
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +11,6 @@
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,6 +53,7 @@
             <h3>order start</h3>
         </div>
         <div class="order-wrapper">
+        <% int sum=0; %>
             <table class="order-table">
                 <thead class="order-thead">
                     <tr>
@@ -63,28 +65,37 @@
                         <th>합계</th>
                     </tr>
                 </thead>
+                <%for(ProductAll pay : list){ %> 
                 <tbody class="order-tbody">
+                
+             
                     <tr>
-                        <td class="order-list-1"><a href="#"><img src="/img/product/<%=pay.getPrdFilepath()%>"></a></td>
+                        <td class="order-list-1"><a href="#"><img src="/img/product/<%=pay.getPrdSnImgpath()%>"></a></td>
                         <td class="order-list-2">
                             <ul>
                                 <li class="order-list-2-li-1"><strong><%=pay.getPrdName() %></strong></li>
-                                <li class="order-list-2-li-2">[옵션:<span>아이보리</span>/<span>Free</span>]</li>
+                                <li class="order-list-2-li-2">[옵션:<span><%=pay.getPrdDtlColor() %></span>/<span><%=pay.getPrdDtlSize() %></span>]</li>
                             </ul>
                         </td>
                         <td class="order-list-3"><span><%=pay.getPrdPrice() %></span></td>
-                        <td class="order-list-4"><span>1</span></td>
+                        <td class="order-list-4"><span><%= pay.getCount() %></span></td>
                         <td class="order-list-5">[무료]</td>
-                        <td class="order-list-6"><span><%=pay.getPrdPrice() %></span></td>
+                        <% int tempSum = 0;
+                        tempSum = pay.getPrdPrice()* pay.getCount();
+                        %>
+                        <td class="order-list-6"><span><%= tempSum %></span></td>
                     </tr>
+                     <% sum += pay.getCount()*pay.getPrdPrice(); %>
+                    <%} %>
                 </tbody>
             </table>
             <tfoot class="order-tfoot">
                 <tr>
                     <th colspan="7">
-                        <p class="order-foot">상품구매금액&nbsp;<span><b><%=pay.getPrdPrice() %>&nbsp;</b></span>
+                   
+                        <p class="order-foot">상품구매금액&nbsp;<span><b><%=sum %>&nbsp;</b></span>
                             배송비&nbsp;<b>0</b>
-                            (무료)=합계&nbsp;&nbsp;<span><b><%=pay.getPrdPrice() %></b></span></p>
+                            (무료)=합계&nbsp;&nbsp;<span><b><%=sum %></b></span></p>
                     </th>
                 </tr>
             </tfoot>
@@ -160,9 +171,9 @@
                 <td>총 결제 내역</td>
             </tr>
             <tr>
-                <td><span><%=pay.getPrdPrice() %></span></td>
-                <td><span><%=pay.getPrdPrice() %></span> + <span>0</span></td>
-                <td><span><%=pay.getPrdPrice() %></span></td>
+                <td><span><%=sum %></span></td>
+                <td><span><%=sum %></span> + <span>0</span></td>
+                <td><span><%=sum %></span></td>
             </tr>
         </table>
         <div class="orderpays">
@@ -170,7 +181,7 @@
         </div>
         <table class="table-bordered order-pays">
             <tr id="payy" >
-                <th><label><input type="radio" value="<%=pay.getPrdPrice() %>"></label>카드결제</th>
+                <th><label><input type="radio" value="<%=sum %>"></label>카드결제</th>
                 <td rowspan="3"><p>카드결제 최종금액</p>
                                 <span></span><br>
                                 <button class="btn" >결제하기</button><br>
@@ -186,63 +197,63 @@
             </tr>
         </table>
     </div>
-	</div>
+   </div>
 <script>
-	// 주소 처리 모듈
-	function addrSearch(){
-		new daum.Postcode({
-			oncomplete:function(data){
-				$("#postCode").val(data.zonecode);
-				$("#roadAddr").val(data.roadAddress);
-				$("#jibunAddr").val(data.jibunAddress);
-				$("#addr_extraAddress").val(data.addr_extraAddress);
-			}
-		}).open();
-	}
-	
-	
-	// 결제 처리 모듈
-	$(document).ready(function(){
-		var totalPay=0;
-		$("#payy input").change(function(){
-			if($(this).is(":checked")){
-				totalPay += (Number)($(this).val());
-			}else{
-				totalPay -= (Number)($(this).val());
-			}
-			$("#payy span").html(totalPay);
-		});
-		$("#payy button").click(function(){
-			var price = $("#payy span").html();
-			
-			//상품명 현재시간
-			var d = new Date();
-			var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
-			IMP.init('imp11221274');
-			IMP.request_pay({
-				merchant_uid : '상품명_'+date,
-				name : '결제테스트',
-				amount : price,
-				buyer_email : 'kyoung_pil@naver.com',
-				buyer_name : '구매자',
-				buyer_tel : '010-1234-4567',
-				buyer_addr : '안양시 만안구',
-				buyer_postcode : '123-456',
-			}, function(rsp){
-				if(rsp.success){
-					var msg='결제가 완료되었습니다.';
-					var r1 = '고유아이디: ' +rsp.imp_uid;
-					var r2 = '상점 거래 아이디 :' +rsp.merchant_uid;
-					var r3 = '결제 금액 :' +rsp.paid_amout;
-					var r4 = '카드 승인 번호' +rsp.apply_num;
-					alert(msg);
-					$("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
-				}else{
-					$("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
-			    }
-			});
-		});
-	});
+   // 주소 처리 모듈
+   function addrSearch(){
+      new daum.Postcode({
+         oncomplete:function(data){
+            $("#postCode").val(data.zonecode);
+            $("#roadAddr").val(data.roadAddress);
+            $("#jibunAddr").val(data.jibunAddress);
+            $("#addr_extraAddress").val(data.addr_extraAddress);
+         }
+      }).open();
+   }
+   
+   
+   // 결제 처리 모듈
+   $(document).ready(function(){
+      var totalPay=0;
+      $("#payy input").change(function(){
+         if($(this).is(":checked")){
+            totalPay += (Number)($(this).val());
+         }else{
+            totalPay -= (Number)($(this).val());
+         }
+         $("#payy span").html(totalPay);
+      });
+      $("#payy button").click(function(){
+         var price = $("#payy span").html();
+         
+         //상품명 현재시간
+         var d = new Date();
+         var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
+         IMP.init('imp11221274');
+         IMP.request_pay({
+            merchant_uid : '상품명_'+date,
+            name : '결제테스트',
+            amount : price,
+            buyer_email : 'kyoung_pil@naver.com',
+            buyer_name : '구매자',
+            buyer_tel : '010-1234-4567',
+            buyer_addr : '안양시 만안구',
+            buyer_postcode : '123-456',
+         }, function(rsp){
+            if(rsp.success){
+               var msg='결제가 완료되었습니다.';
+               var r1 = '고유아이디: ' +rsp.imp_uid;
+               var r2 = '상점 거래 아이디 :' +rsp.merchant_uid;
+               var r3 = '결제 금액 :' +rsp.paid_amout;
+               var r4 = '카드 승인 번호' +rsp.apply_num;
+               alert(msg);
+               $("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
+            }else{
+               $("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
+             }
+         });
+      });
+   });
 </script>
 			</div>
 		</section>
@@ -252,6 +263,7 @@
 			</div>
 		</footer>
 	</div>
+
 
 </body>
 

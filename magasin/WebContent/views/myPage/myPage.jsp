@@ -23,7 +23,7 @@
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">
-					<%@include file="/WEB-INF/views/myPage/myPage.jsp" %>
+			
 				</div>
 			</div>
 		</section>

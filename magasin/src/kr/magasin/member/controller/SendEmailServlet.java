@@ -72,11 +72,11 @@ public class SendEmailServlet extends HttpServlet {
 			msg.setRecipient(Message.RecipientType.TO, to);
 			
 			//이메일 제목
-			msg.setSubject("[MAGASIN] (비밀번호)인증번호입니다.","UTF-8");
+			msg.setSubject("[MAGASIN] 인증번호입니다.","UTF-8");
 			
 			//이메일 내용
 			String code = request.getParameter("code_check"); //인증번호 값 받기
-			request.setAttribute("code", code);
+			request.setAttribute("code", code); //인증번호 저장
 			msg.setText(code, "UTF-8");
 			
 			//이메일 헤더

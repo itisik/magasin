@@ -54,16 +54,19 @@ public class ProductPageServlet extends HttpServlet {
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
 		ArrayList<ProductDtl> list = service.searchColor();
 
-		ArrayList<String> subCtgr = service.subCtgr(ctgr,gender);
 
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
-		
+		ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
+
+		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);
+		request.setAttribute("count", subCtgrCount);
+
 		request.setAttribute("lists", pd.getLists());
 		request.setAttribute("pageNavi",pd.getPageNavi());
 		request.setAttribute("prdDtl", list);
 		request.setAttribute("sub", subCtgr);
 		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		rd.forward(request, response);
 		
 	}

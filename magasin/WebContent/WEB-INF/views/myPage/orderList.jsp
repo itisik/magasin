@@ -11,14 +11,31 @@
 <html>
 <head>
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/myPage/orderList.css"> 
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+	<div class="myPage-main">
+	<div class="mainContent">
+		<div class="myp-wrapper">
 <div class="ol-wrapper">
 
 <% if( !lists.isEmpty() ) {%>
-<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(1).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
+<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(0).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
 <% }%>
 <h3 class="ol-wrapper-h3">주문내역</h3>
 <table class="ol-table">
@@ -63,10 +80,9 @@
           <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
         <%}else{
         	switch((Integer.parseInt(oP.getOrderStatus()))){
-            case 0:status="주문완료"; break;
-            case -1:status="취소처리중"; break;
-
-            case 1:status="취소"; break;
+            case 1:status="주문완료"; break;
+            case 0:status="취소처리중"; break;
+            case -1:status="취소"; break;
             case 2:status="배송준비중"; break;
             case 3:status="배송중"; break;
             case 4:status="배송완료"; break;
@@ -77,7 +93,7 @@
         	%>
           <td class="ol-list-6"><%=status%></td>
         <%} %>
-         <%if(Integer.parseInt(oP.getOrderStatus())==0){  %>
+         <%if(Integer.parseInt(oP.getOrderStatus())==1){  %>
          <td class="ol-list-7"><a href="/updateOrder?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>" >주문취소</a></td>
             <%}else if(Integer.parseInt(oP.getOrderStatus())==4){ %>
                 <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품신청</a></td>
@@ -101,9 +117,20 @@
 		</div>
 
 	</div>
-
-
-
+</div>
+		</div>
+	</div>
+	</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
+
+
+
 
 </html>

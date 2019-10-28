@@ -100,42 +100,53 @@
                   <td>
                       <select id="category" name="prdCtgr">
                           <option selected="selected">-선택-</option>
-                          
-                          <option value="outterw">아우터</option>
-                          <option value="outterm">아우터</option>
-                          <option value="topw">상의</option>
-                          <option value="topm">상의</option>
-                          <option value="bottomw">하의</option>
-                          <option value="bottomm">하의</option>
-                          <option value="dress">드레스</option>
-                          <option value="common">기타</option>
+                          <option value="outer_w">아우터</option>
+                          <option value="outer_m">아우터</option>
+                          <option value="top_w">상의</option>
+                          <option value="top_m">상의</option>
+                          <option value="bottom_w">하의</option>
+                          <option value="bottom_m">하의</option>
 
+                          <option value="dress">드레스</option>
+                          <option value="bag">가방</option>
+                          <option value="shoes">신발</option>
+                          <option value="acc">악세사리</option>
+<!--                           
+                          <option value="common">기타</option>
+ -->
                       </select>
                       
                       <span id="sebuspan1">세부 카테고리 선택</span>
                       <select id="categorysemi2" name="prdSubCtrg">
                          <option selected="selected">-선택-</option>
-                         
+                         <!-- outer -->
                           <option value="jacket">자켓</option>
                           <option value="coats">코트</option>
-                          <option value="cardigan" name="cardigan">가디건</option>
-                          <option value="etcoutter">기타</option>
-                          
-                          <option value="tw">티셔츠</option>
+                          <option value="cardigan">가디건</option>
+                          <option value="etc">기타</option>
+                          <!-- woman top -->
+                          <option value="t">티셔츠</option>
+
                           <option value="blouse">블라우스</option>
-                          <option value="etctw">etc</option>
-                          <option value="tm">티셔츠</option>
+                          <option value="etc">etc</option>
+                          <!-- man top -->
+                          <option value="t">티셔츠</option>
                           <option value="shirts">셔츠</option>
-                          <option value="etctm">etc</option>
+                          <option value="etc">etc</option>
+                          <!-- woman bottom -->
                           <option value="pants">여자바지</option>
                           <option value="skirt">스커트</option>
-                          <option value="etcbw">etc</option>
+                          <option value="etc">etc</option>
+                          <!-- man bottom -->
                           <option value="slacks">슬랙스</option>
                           <option value="jeans">청바지</option>
-                          <option value="etcbm">etc</option>
-                          <option value="bag">백</option>
-                          <option value="shoese">신발</option>
+
+                          <option value="etc">etc</option>
+                          <!-- common  -->
+                          <option value="bag">가방</option>
+                          <option value="shoes">신발</option>
                           <option value="acc">악세사리</option>
+                          <!-- woman dress -->
                           <option value="dress">드레스</option>
 
                       </select>
@@ -214,6 +225,7 @@
             </div>
             
             <script>
+            
             	$("#btn1").click(function(){
             		var text1 = $("#input1").val();
             		var text2 = $("#input2").val();
@@ -346,7 +358,9 @@
               		var state = $('#category option:selected').val();
               		$("#categorysemi2").show();
               		
-              		if(state == 'outterm'){
+
+              		if(state == 'outer_m'){
+
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();
@@ -365,7 +379,7 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
-              		}else if(state == 'topm'){
+              		}else if(state == 'top_m'){
               			('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -384,7 +398,8 @@
               			$('#categorysemi2 option:eq(17)').hide();
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
-              		}else if(state == 'bottomm'){
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'bottom_m'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -404,7 +419,7 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
-              		}else if(state == 'common'){
+              		}else if(state == 'bag'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -423,9 +438,57 @@
               			$('#categorysemi2 option:eq(14)').hide();
               			$('#categorysemi2 option:eq(15)').hide();
               			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();	
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'shoes'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();	
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'acc'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();	
+              			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
               		
-              		}else if(state == 'outterw'){
+
+              		}else if(state == 'outer_w'){
+
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();
@@ -444,7 +507,7 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();	
               			$('#categorysemi2 option:eq(20)').hide();
-              		}else if(state == 'topw'){
+              		}else if(state == 'top_w'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -464,7 +527,7 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
-              		}else if(state == 'bottomw'){
+              		}else if(state == 'bottom_w'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
@@ -507,8 +570,8 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
               		}
-              	});    
             	
+              	});    
             </script>
             
              <style>

@@ -9,10 +9,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import kr.magasin.basket.model.vo.BasketT;
+import kr.magasin.member.model.service.MemberService;
+import kr.magasin.member.model.vo.Member;
 import kr.magasin.prdPaging.model.service.ProductLeeService;
+
+
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
+
+
 
 /**
  * Servlet implementation class ProductExpayServlet
@@ -33,9 +41,10 @@ public class ProductExpayServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	///주문창으로 넘어가는 페이지 
 		request.setCharacterEncoding("utf-8");
+
 
 		int prdId = Integer.parseInt(request.getParameter("prdId"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
@@ -60,6 +69,7 @@ public class ProductExpayServlet extends HttpServlet {
 			
 			
 			rd.forward(request, response);
+
 	}
 
 	/**
