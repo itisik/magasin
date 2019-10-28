@@ -101,8 +101,8 @@
                       <select id="category" name="prdCtgr">
                           <option selected="selected">-선택-</option>
                           
-                          <option value="outterw">아우터</option>
-                          <option value="outterm">아우터</option>
+                          <option value="outerw">아우터</option>
+                          <option value="outerm">아우터</option>
                           <option value="topw">상의</option>
                           <option value="topm">상의</option>
                           <option value="bottomw">하의</option>
@@ -119,7 +119,7 @@
                           <option value="jacket">자켓</option>
                           <option value="coats">코트</option>
                           <option value="cardigan" name="cardigan">가디건</option>
-                          <option value="etcoutter">기타</option>
+                          <option value="etcouter">기타</option>
                           
                           <option value="tw">티셔츠</option>
                           <option value="blouse">블라우스</option>
@@ -134,7 +134,7 @@
                           <option value="jeans">청바지</option>
                           <option value="etcbm">etc</option>
                           <option value="bag">백</option>
-                          <option value="shoese">신발</option>
+                          <option value="shoes">신발</option>
                           <option value="acc">악세사리</option>
                           <option value="dress">드레스</option>
 
@@ -214,6 +214,7 @@
             </div>
             
             <script>
+            
             	$("#btn1").click(function(){
             		var text1 = $("#input1").val();
             		var text2 = $("#input2").val();
@@ -346,7 +347,7 @@
               		var state = $('#category option:selected').val();
               		$("#categorysemi2").show();
               		
-              		if(state == 'outterm'){
+              		if(state == 'outerm'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();
@@ -425,7 +426,7 @@
               			$('#categorysemi2 option:eq(16)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
               		
-              		}else if(state == 'outterw'){
+              		}else if(state == 'outerw'){
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();
@@ -507,8 +508,8 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(19)').hide();
               		}
-              	});    
             	
+              	});    
             </script>
             
              <style>
