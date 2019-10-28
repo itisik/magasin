@@ -8,6 +8,7 @@ import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
+
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
@@ -25,8 +26,9 @@ public class ProductLeeService {
 
 	/*
 	  public int ProductdetailId(ArrayList<BasketT> list) {
+
 		  Connection conn =	  JDBCTemplate.getConnection(); 
-		  Product pay = dao.ProductdetailId(conn, list);
+		  pay = dao.ProductdetailId(conn, list, count);
 		  JDBCTemplate.close(conn); 
 		  return pay; 
 		  }

@@ -5,6 +5,8 @@ import java.sql.Date;
 public class OrderP2 {
 	private int prdId;
 	private int prdDtlId;
+	private String orderBuyerName;
+	private String orderBuyerphone;
 	private String prdName;
 	private String prdDtlSize;
 	private String prdDtlColor;
@@ -27,13 +29,16 @@ public class OrderP2 {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderP2(int prdId, int prdDtlId, String prdName, String prdDtlSize, String prdDtlColor, int prdPrice,
-			String prdSnImgname, String prdSnImgpath, String prdFilename, String prdFilepath, int orderPrdCount,
-			int orderMoney, String orderAddr, String orderStatus, String orderPay, Date orderDate, Date orderOutDate,
-			int orderNum, String orderUserId, int orderPrdDtlId) {
+	public OrderP2(int prdId, int prdDtlId, String orderBuyerName, String orderBuyerphone, String prdName,
+			String prdDtlSize, String prdDtlColor, int prdPrice, String prdSnImgname, String prdSnImgpath,
+			String prdFilename, String prdFilepath, int orderPrdCount, int orderMoney, String orderAddr,
+			String orderStatus, String orderPay, Date orderDate, Date orderOutDate, int orderNum, String orderUserId,
+			int orderPrdDtlId) {
 		super();
 		this.prdId = prdId;
 		this.prdDtlId = prdDtlId;
+		this.orderBuyerName = orderBuyerName;
+		this.orderBuyerphone = orderBuyerphone;
 		this.prdName = prdName;
 		this.prdDtlSize = prdDtlSize;
 		this.prdDtlColor = prdDtlColor;
@@ -64,6 +69,18 @@ public class OrderP2 {
 	}
 	public void setPrdDtlId(int prdDtlId) {
 		this.prdDtlId = prdDtlId;
+	}
+	public String getOrderBuyerName() {
+		return orderBuyerName;
+	}
+	public void setOrderBuyerName(String orderBuyerName) {
+		this.orderBuyerName = orderBuyerName;
+	}
+	public String getOrderBuyerphone() {
+		return orderBuyerphone;
+	}
+	public void setOrderBuyerphone(String orderBuyerphone) {
+		this.orderBuyerphone = orderBuyerphone;
 	}
 	public String getPrdName() {
 		return prdName;
@@ -173,5 +190,6 @@ public class OrderP2 {
 	public void setOrderPrdDtlId(int orderPrdDtlId) {
 		this.orderPrdDtlId = orderPrdDtlId;
 	}
+	
 	
 }

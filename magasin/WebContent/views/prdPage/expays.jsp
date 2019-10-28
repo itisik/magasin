@@ -1,9 +1,12 @@
+<%@page import="kr.magasin.prdPaging.model.vo.ProductAll"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.magasin.member.model.vo.Member"%>
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%
-     Product pay = (Product)request.getAttribute("pays");
- 	int sum = (Integer)(request.getAttribute("sum"));
+	    Member member = (Member)request.getAttribute("member");
+     ArrayList<ProductAll> list  = ( ArrayList<ProductAll>)request.getAttribute("ProductAll");
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,6 +53,7 @@
             <h3>order start</h3>
         </div>
         <div class="order-wrapper">
+        <% int sum=0; %>
             <table class="order-table">
                 <thead class="order-thead">
                     <tr>
@@ -61,28 +65,37 @@
                         <th>합계</th>
                     </tr>
                 </thead>
+                <%for(ProductAll pay : list){ %> 
                 <tbody class="order-tbody">
+                
+             
                     <tr>
-                        <td class="order-list-1"><a href="#"><img src="/img/product/<%=pay.getPrdFilepath()%>"></a></td>
+                        <td class="order-list-1"><a href="#"><img src="/img/product/<%=pay.getPrdSnImgpath()%>"></a></td>
                         <td class="order-list-2">
                             <ul>
                                 <li class="order-list-2-li-1"><strong><%=pay.getPrdName() %></strong></li>
-                                <li class="order-list-2-li-2">[옵션:<span>아이보리</span>/<span>Free</span>]</li>
+                                <li class="order-list-2-li-2">[옵션:<span><%=pay.getPrdDtlColor() %></span>/<span><%=pay.getPrdDtlSize() %></span>]</li>
                             </ul>
                         </td>
                         <td class="order-list-3"><span><%=pay.getPrdPrice() %></span></td>
-                        <td class="order-list-4"><span>1</span></td>
+                        <td class="order-list-4"><span><%= pay.getCount() %></span></td>
                         <td class="order-list-5">[무료]</td>
-                        <td class="order-list-6"><span><%=pay.getPrdPrice() %></span></td>
+                        <% int tempSum = 0;
+                        tempSum = pay.getPrdPrice()* pay.getCount();
+                        %>
+                        <td class="order-list-6"><span><%= tempSum %></span></td>
                     </tr>
+                     <% sum += pay.getCount()*pay.getPrdPrice(); %>
+                    <%} %>
                 </tbody>
             </table>
             <tfoot class="order-tfoot">
                 <tr>
                     <th colspan="7">
-                        <p class="order-foot">상품구매금액&nbsp;<span><b><%=pay.getPrdPrice() %>&nbsp;</b></span>
+                   
+                        <p class="order-foot">상품구매금액&nbsp;<span><b><%=sum %>&nbsp;</b></span>
                             배송비&nbsp;<b>0</b>
-                            (무료)=합계&nbsp;&nbsp;<span><b><%=pay.getPrdPrice() %></b></span></p>
+                            (무료)=합계&nbsp;&nbsp;<span><b><%=sum %></b></span></p>
                     </th>
                 </tr>
             </tfoot>
@@ -158,9 +171,9 @@
                 <td>총 결제 내역</td>
             </tr>
             <tr>
-                <td><span><%=pay.getPrdPrice() %></span></td>
-                <td><span><%=pay.getPrdPrice() %></span> + <span>0</span></td>
-                <td><span><%=pay.getPrdPrice() %></span></td>
+                <td><span><%=sum %></span></td>
+                <td><span><%=sum %></span> + <span>0</span></td>
+                <td><span><%=sum %></span></td>
             </tr>
         </table>
         <div class="orderpays">
@@ -168,7 +181,7 @@
         </div>
         <table class="table-bordered order-pays">
             <tr id="payy" >
-                <th><label><input type="radio" value="<%=pay.getPrdPrice() %>"></label>카드결제</th>
+                <th><label><input type="radio" value="<%=sum %>"></label>카드결제</th>
                 <td rowspan="3"><p>카드결제 최종금액</p>
                                 <span></span><br>
                                 <button class="btn" >결제하기</button><br>

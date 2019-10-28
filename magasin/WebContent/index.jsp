@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/common_css/slideShow.css">
 </head>
 <body id="body1">
+
 		<div class="wrapper">
 			<header>
 				<div class="header">
