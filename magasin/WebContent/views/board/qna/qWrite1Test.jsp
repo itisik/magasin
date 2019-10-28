@@ -11,6 +11,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script> 
 <link rel="stylesheet" href="/css/board_css/qna.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 
@@ -59,7 +60,7 @@
 				<ul id="qna">
 					<li>Q&A</li>
 				</ul>
-				<form action="/qEtcInsert" method="post">
+				<form action="/qEtcInsert" method="post" id="frm">
 				<div class="table-wrapper">
 					
 					<table class="table qna-view-table">
@@ -91,19 +92,47 @@
 						</thead>
 						<tbody>
 							<tr>
-							<td colspan="2">
-								<div>
-								<textarea name="qContent" placeholder="문의하실 내용을 입력해주세요" cols="100" rows="10" id="cont"></textarea>
-								</div>
-								
-								</td>
-							</tr>
+
+							<td colspan="2" style="padding-left:100px;">
+									<textarea id="ir1" name="qContent" cols="100" rows="10"></textarea>
+										<script type="text/javascript">
+											$(document).ready(function(){
+											var oEditors = [];
+											nhn.husky.EZCreator.createInIFrame({
+											 oAppRef: oEditors,
+											 elPlaceHolder: "ir1",
+											 sSkinURI: "/se2/SmartEditor2Skin.html",
+											 fCreator: "createSEditor2"
+											});
+
+											$("#insertBtn").click(function(){
+												 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+												  if($("#title").val()==""){
+														alert("제목을 입력하세요");
+														return false;
+													}else if($("#ir1").val()=="<p><br></p>"){
+														alert("내용을 입력하세요");
+														return false;
+													} 
+												 // 에디터의 내용에 대한 값 검증은 이곳에서
+												 // document.getElementById("ir1").value를 이용해서 처리한다.
+												 try {
+												     $("#frm").submit();
+												     
+												 } catch(e) {}
+											});											
+											
+
+										});
+											 </script>
+									</td>							
+								</tr>
 					</table>
 				</div>
 				<div class="qna-btn">
 					<br>
 					<a href="/views/test_board/qna/qnaListTest.jsp" class="btn btn-default btn-md" >List</a>
-					<button type="submit" class="btn btn-default btn-md insert-btn">등록</button>
+					<button type="button" class="btn btn-default btn-md insert-btn" id="insertBtn">등록</button>
 					
 				</div>
 				</form>
