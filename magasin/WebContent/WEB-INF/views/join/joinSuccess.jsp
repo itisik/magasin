@@ -124,7 +124,7 @@
 							</div>
 							<br>
 							<div>
-							<%=m.getName() %> 님은 [<%=m.getGrade() %>] 회원이십니다.
+							<%=m.getName() %> 님은 [member] 회원이십니다.
 								<div id="btn_join_success">
 									<div class="btn_login"><a href="/views/member/login.jsp"><button>로그인</button></a></div>
 									<div class="btn_main"><a href="/index.html"><button>메인으로 이동</button></a></div>
