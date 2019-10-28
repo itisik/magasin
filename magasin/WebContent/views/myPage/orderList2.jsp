@@ -14,8 +14,25 @@
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/myPage/orderList.css"> 
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+
+
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+	<div class="myPage-main">
+	<div class="mainContent">
+		<div class="myp-wrapper">
 <div class="ol-wrapper">
 
 <h2 class="ol-wrapper-h2">주문내역조회</h2>
@@ -34,7 +51,15 @@
 	<tbody  class ="ol-tbody">
 	
 	<%for(OrderP2 oP : list){ %>
- <% if(oP.getOrderStatus().equals("반품") || oP.getOrderStatus().equals("취소")){%>
+ <%
+ String status = "";
+ if(Integer.parseInt(oP.getOrderStatus())== 7 ||Integer.parseInt(oP.getOrderStatus())==-1 ){
+ 	if(Integer.parseInt(oP.getOrderStatus())== 7 ){
+ 		status = "반품";
+ 	}else{
+ 		status = "취소";
+ 	}
+ %>
 	
 	
 	<tr>
@@ -50,7 +75,7 @@
         <td class="ol-list-4"><%=oP.getOrderPrdCount() %>	</td>
         <td class="ol-list-5"><%=oP.getOrderMoney() %></td>
         
-          <td class="ol-list-7"><%=oP.getOrderStatus() %></td>
+          <td class="ol-list-7"><%= status  %></td>
       <%} %>
    
 	</tr>
@@ -68,8 +93,18 @@
 
 	</div>
 
-
-
+</div>
+	</div>
+	</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
+
+
 
 </html>

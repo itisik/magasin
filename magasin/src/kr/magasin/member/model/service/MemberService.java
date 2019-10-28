@@ -40,6 +40,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
+
 	public Member searchPw(String name, String id, String email) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
@@ -54,6 +55,7 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
+
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();

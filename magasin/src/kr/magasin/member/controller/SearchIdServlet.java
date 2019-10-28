@@ -9,15 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
+
 
 /**
  * Servlet implementation class SearchIdServlet
  */
 @WebServlet(name = "SearchId", urlPatterns = { "/searchId" })
 public class SearchIdServlet extends HttpServlet {
+
    private static final long serialVersionUID = 1L;
+
        
     /**
      * @see HttpServlet#HttpServlet()

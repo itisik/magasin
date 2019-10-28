@@ -18,8 +18,19 @@
 <title>***notice***</title>
 <link rel="stylesheet" href="/css/board_css/notice.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
+<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
+</style>
 </head>
 <body id="body1">
+	
+		<div class="wrapper">
 	<header>
 		<div class="header">
 				<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -85,6 +96,6 @@
 				<%@include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
 	</footer>
-
+</div>
 </body>
 </html>

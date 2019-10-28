@@ -40,6 +40,13 @@
 	margin-left: 15px;
 	border: 1px solid white;
 }
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
 </style>
 <script>
 									
@@ -96,7 +103,7 @@
 								</th>
 								<th style="width: 10%;">Writer</th>
 								<th style="width: 5%;">Date</th>
-								<th style="width: 10%;">조회</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -116,15 +123,15 @@
 							
 								<!-- contents 보이기 -->
 							
-								<div class="review-contents">	
+								<div class="review-contents" style="width:100%;">	
 								<hr>	
 									<div class="review-con">
 									<p style="text-align:center;"><%=r.getReviewCont() %>
-									어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ...
+									
 									</p>
 									</div>
 									<%if(r.getReviewFilepath1()!=null||r.getReviewFilepath2()!=null){ %>
-									<div class="review-img-container">
+									<div class="review-img-container" style="width:80%;margin-left:45px;">
 									<!-- 리뷰작성때 업로드한 이미지 있으면, 없으면 안생김 또는 사진 없음 X표시 -->
 										<%if(r.getReviewFilepath1()!=null){ %>
 										<div class="review-img-div">
@@ -146,9 +153,9 @@
 											color:purple;
 										}
 									</style>
-									<%if(m!=null&&(m.getId().equals(r.getReviewWriter())||m.getId().equals("admin"))){
+									<%if(m!=null&&(m.getId().equals(r.getReviewWriter()))){
 										%>
-									<div class="review-ud" style="width:100%; text-align:right;">
+									<div class="review-ud" style="width:100%; text-align:right; clear:both;">
 									<a href="/reviewUpdate?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">수정</a>
 									<a href="/reviewDelete?reviewNo=<%=r.getReviewNo()%>&reviewFilepath1=<%=r.getReviewFilepath1() %>&reviewFilepath2=<%=r.getReviewFilepath2() %>" class="btn btn-sm">삭제</a>
 									</div>
@@ -162,7 +169,7 @@
 								</td>
 								<td style="width: 10%;"><%=r.getReviewWriter() %></td>
 								<td style="width: 5%;"><%=r.getReviewDate() %></td>
-								<td style="width: 10%;"><%=r.getReviewCount() %></td>
+								
 							</tr>
 								
 							<%

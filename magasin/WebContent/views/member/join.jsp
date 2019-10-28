@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%!
-			public int getRandom(){
-				int random = 0;
-				random = (int)Math.floor((Math.random()*(99999-10000+1)))+10000;
-				return random;
-		}
-	%>
+	pageEncoding="UTF-8"%>
+<%!public int getRandom() {
+		int random = 0;
+		random = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
+		return random;
+	}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,15 +14,26 @@
 <link rel="stylesheet" href="/css/myPage/basket.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/member/join.css">
+
+<style>
+.join-main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+}
+</style>
+
 </head>
 <body id="body1">
-	<div class="wrapper">
-		<header>
+	<div class=join-main>
+		<div class="wrapper">
+			<header>
 			<div class="header">
 				<%@include file="/WEB-INF/views/common/header.jsp"%>
 			</div>
-		</header>
-		<section>
+			</header>
+			<section>
 			<div class="mainContainer">
 				<div class="side-nav">
 					<%@include file="/WEB-INF/views/common/nav.html"%>
@@ -55,31 +64,21 @@
 									<th><label for="name">이름 <img src="img/ico_required_blue.gif"></label></th>
 									<td><input type="text" name="name" id="name" class="form-control"></td> <!-- 이름글자눌러도 클릭되도록할려고 name씀 -->
 								</tr>
-					            <tr>
-					                <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
-					                <td>
-					                    <input type="text" name="addr_4" id="addr_postcode"  placeholder="우편번호" readonly="readonly">
-					                    <button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
-					                    <input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
-					                    <input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
-					                    <input type="text" name="addr_3" id="addr_extraAddress" placeholder="참고항목">
-					                </td>
-					            </tr>
 								<tr>
 									<th>생년월일</th>
 									<td><input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="ex)19970112"><input type="hidden" name="grade" id="grade"/></td> 
 								</tr>
-					            <tr>
-					                <th>성별</th>
-					                <td>
-					                    <input type="radio" name="gender" id="female" value="w" class="form-control">&nbsp;<label for="female">여성</label>&nbsp;&nbsp;&nbsp;
-					                    <input type="radio" name="gender" id="male" value="m" class="form-control">&nbsp;<label for="male">남성</label>
-					                </td>
-					            </tr>
-					            <tr>
+								<tr>
+									<th>성별</th>
+									<td><input type="radio" name="gender" id="female"
+										value="w" class="form-control">&nbsp;<label
+										for="female">여성</label>&nbsp;&nbsp;&nbsp; <input type="radio"
+										name="gender" id="male" value="m" class="form-control">&nbsp;<label
+										for="male">남성</label></td>
+								</tr>
+								<tr>
 									<th>휴대전화 <img src="img/ico_required_blue.gif"></th>
 									<td><input type="text" name="phone" id="phone" class="form-control" placeholder="'-'빼고 작성"></td>
-									
 								</tr>
 								<tr>
 									<th>이메일 <img src="img/ico_required_blue.gif"></th>
@@ -348,18 +347,21 @@
 								<button type="submit" class="btn_join">회원가입</button>
 								<button type="reset" class="btn_join">초기화</button>
 							</div>
-					   </form>
+						</form>
 					</div>
 				</div>
 			</div>
-		</section>
-		<footer>
+			</section>
+			<footer>
 			<div class="footer">
 				<%@include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
-		</footer>
+			</footer>
+		</div>
+
 	</div>
-	<script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 
 //ㅇ	1. 비밀번호 두개 안맞으면 비밀번호 다 리셋되고 커서이동
@@ -762,7 +764,6 @@
 			   return false;
 		   }
 
-		   
 		   
 		   /* if(check2.prop("checked")==false){
 			   check2.focus();

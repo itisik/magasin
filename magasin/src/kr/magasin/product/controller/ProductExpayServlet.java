@@ -33,15 +33,29 @@ public class ProductExpayServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		int prdId = Integer.parseInt(request.getParameter("prdId"));
+		int count = Integer.parseInt(request.getParameter("count0"));
+		System.out.println(count);
+		for(int i=0;i<count; i++) {
+		String prdDtlId = request.getParameter("prdDtlId"+i);
+		String prdDtlSize = request.getParameter("prdDtlSize"+i);
+		String prdDtlColor = request.getParameter("prdDtlColor"+i);
+		String prdCount = request.getParameter("prdCount"+i);
+		String prdPrice = request.getParameter("prdPrice"+i);
+		
+		System.out.println(prdDtlId+"/"+prdDtlSize+"/"+prdDtlColor+"/"+prdCount+"/"+prdPrice);
+		}
+		System.out.println("결제창");
+		
 		
 		ProductService service = new ProductService();
 		
-		Product pay = service.ProductdetailId(prdId);
+	/*	Product pay = service.ProductdetailId();
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
 		request.setAttribute("pays", pay);
+		
 		rd.forward(request, response);
+		*/
 	}
 
 	/**

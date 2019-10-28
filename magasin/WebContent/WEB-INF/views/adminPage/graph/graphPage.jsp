@@ -80,11 +80,10 @@
 					<i class="fas fa-edit"></i><span>상품 썸네일 수정</span>
 				</div>
 				<div class="updatecon6-2">
-					<img id="img-view3" width="50" height="50">
+					<img id="img-view3" width="50"	height="50">
 				</div>
 				<div class="updatecon6-3" id="img-viewer5">
-					<input type="file" name="updatepicturesum"
-						onchange="loadImg3(this)" id="awefawef">
+					<input type="file" name="updatepicturesum" onchange="loadImg3(this)" id="awefawef">
 
 				</div>
 
@@ -115,3 +114,26 @@
 		</div>
 	</div>
 </div>
+	<script>
+		function loadImg3(value){
+			if(value.files && value.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$('#img-view3').attr('src',e.target.result);
+					
+				}
+				reader.readAsDataURL(value.files[0]);
+			}
+		}
+		
+		function loadImg4(value){
+    		if(value.files && value.files[0]){
+    			var reader = new FileReader();
+    			reader.onload = function(e){
+    				$('#img-view4').attr('src',e.target.result);
+    				
+    			}
+    			reader.readAsDataURL(value.files[0]);
+    		}
+    	}
+	</script>

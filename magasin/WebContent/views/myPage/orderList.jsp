@@ -1,5 +1,5 @@
 <%@page import="kr.magasin.orderP.model.service.OrderPService"%>
-<%@page import="kr.magasin.orderP.model.vo.OrderP"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,8 +24,10 @@
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">
+
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					<%@ include file="/WEB-INF/views/myPage/orderList.jsp" %>
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 				</div>
 			</div>
 		</section>

@@ -14,7 +14,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<title>***review***</title>
+<script type="text/javascript" src="/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script> 
 <link rel="stylesheet" href="/css/board_css/review.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
@@ -37,14 +37,14 @@
 		<ul id="review">
 			<li>review</li>
 		</ul>
-		<form action="/reviewInsert" method="post" enctype="multipart/form-data">
+		<form action="/reviewInsert" method="post" enctype="multipart/form-data" id="frm">
 
 			<div class="table-wrapper">
 				<table class="table review-write-table">
 					<thead>
 						<tr>
 							<th>subject</th>
-							<td><input type="text" name="reviewTitle" class="inputText"></td>
+							<td><input type="text" name="reviewTitle" class="inputText" id="title"></td>
 						</tr>
 						<tr>
 							<th>Writer</th>
@@ -91,8 +91,43 @@
 							</th>
 							<td>
 
-								<div class="review-content-div">
-									<textarea placeholder="내용을 입력하세요" name="reviewContent" cols="90" rows="10"></textarea>
+								<div class="review-content-div" style="width:100%;">
+									
+									<textarea id="ir1" name="reviewContent" cols="90" rows="10"></textarea>
+										<script type="text/javascript">
+											$(document).ready(function(){
+											var oEditors = [];
+											nhn.husky.EZCreator.createInIFrame({
+											 oAppRef: oEditors,
+											 elPlaceHolder: "ir1",
+											 sSkinURI: "/se2/SmartEditor2Skin.html",
+											 fCreator: "createSEditor2"
+											});
+
+											$("#insertBtn").click(function(){
+												 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+												  if($("#title").val()==""){
+														alert("제목을 입력하세요");
+														return false;
+													}else if($("#ir1").val()=="<p><br></p>"){
+														alert("내용을 입력하세요");
+														return false;
+													}else if(count ==0){
+														alert("별점을 입력하세요");
+														return false;
+													} 
+												 // 에디터의 내용에 대한 값 검증은 이곳에서
+												 // document.getElementById("ir1").value를 이용해서 처리한다.
+												 try {
+												     $("#frm").submit();
+												     
+												 } catch(e) {}
+											});											
+											
+
+										});
+											 </script>
+								
 								</div>
 							</td>
 						</tr>
@@ -111,10 +146,9 @@
 
 					<a href="/reviewList"
 						class="btn btn-default btn-md">List</a> 
-						<button type="submit"
-						class="btn btn-default btn-md">등록</button>
-
-
+						<button type="button"
+						class="btn btn-default btn-md insertBtn" id="insertBtn">등록</button>
+				
 				</div>
 
 			</form>

@@ -17,7 +17,9 @@ import kr.magasin.member.model.vo.Member;
  */
 @WebServlet(name = "SearchPw", urlPatterns = { "/searchPw" })
 public class SearchPwServlet extends HttpServlet {
+
    private static final long serialVersionUID = 1L;
+
        
     /**
      * @see HttpServlet#HttpServlet()
