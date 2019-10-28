@@ -15,8 +15,10 @@ import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
 import kr.magasin.prdPaging.model.service.ProductLeeService;
-import kr.magasin.prdPaging.model.vo.ProductAll;
+
+
 import kr.magasin.product.model.vo.Product;
+
 
 
 /**
@@ -43,6 +45,7 @@ public class ProductExpayServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 
+
 	      int prdId = Integer.parseInt(request.getParameter("prdId"));
 
 	      ProductLeeService service = new ProductLeeService();
@@ -52,6 +55,7 @@ public class ProductExpayServlet extends HttpServlet {
 	         RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
 	         request.setAttribute("pays", pay);
 	         rd.forward(request, response);
+
 
 	}
 

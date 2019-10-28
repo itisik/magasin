@@ -29,6 +29,8 @@
 </style>
 </head>
 <body id="body1">
+	
+		<div class="wrapper">
 	<header>
 		<div class="header">
 				<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -94,6 +96,6 @@
 				<%@include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
 	</footer>
-
+</div>
 </body>
 </html>

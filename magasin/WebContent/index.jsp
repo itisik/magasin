@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/css/common_css/slideShow.css">
 </head>
 <body id="body1">
-	<div class="index-main">
+
 		<div class="wrapper">
 			<header>
 				<div class="header">
@@ -55,7 +55,7 @@
 				</div>
 			</footer>
 		</div>
-	</div>
+
 </body>
 <!-- 슬라이드 쇼를 위한 스크립트 -->
 <script>

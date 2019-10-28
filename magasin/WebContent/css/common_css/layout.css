@@ -10,6 +10,8 @@ div {
 }
 
 .wrapper {
+	margin-left:150px;
+
 	padding: 0;
 	width: 1150px;
 	height: 100%;
@@ -58,9 +60,12 @@ div {
 	clear: both;
 }
 
+/* 
 .index-main{
+	overflow-y: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 90vh;
-}
+	height: 100%;
+} */
+

@@ -95,6 +95,7 @@ public class ProductLeeDao {
 
 	public ArrayList<ProductAll> insertBasket(Connection conn, ArrayList<BasketT> list, int count) {
 
+
 		   System.out.println("productLEE DAO페이지 도착 !");
 		ProductAll pa = null;
 		ArrayList<ProductAll> lists =  new ArrayList<ProductAll>();
@@ -381,6 +382,107 @@ public class ProductLeeDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return sub;
+	}
+
+	public int subTotalCount(Connection conn, String subCtgr, String gender) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select count(*) as total from Product where prd_sub_ctgr=? and prd_gender=? order by prd_up_date desc";
+		int result =0 ;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, subCtgr);
+			pstmt.setString(2, gender);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("total");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public ArrayList<ProductLee> subCtgrSearch(Connection conn, int start, int end, String subCtgr, String gender) {
+		// TODO Auto-generated method stub
+		ArrayList<ProductLee> list = new ArrayList<ProductLee>();
+		ProductLee prd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select* from"+
+						"(select ROWNUM as rnum, n. * from"
+						+ "(select * from product where prd_sub_ctgr=? and prd_gender=? order by prd_up_date desc) n )"
+						+ " where rnum between ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, subCtgr);
+			pstmt.setString(2, gender);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				prd = new ProductLee();
+				prd.setRnum(rset.getInt("rnum"));
+				prd.setPrdId(rset.getInt("prd_Id"));
+				prd.setPrdName(rset.getString("prd_Name"));
+				prd.setPrdGender(rset.getString("prd_gender"));
+				prd.setPrdCtgr(rset.getString("prd_ctgr"));
+				prd.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+				prd.setPrdPrice(rset.getInt("prd_price"));
+				prd.setPrdUpDate(rset.getDate("prd_up_date"));
+				prd.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+				prd.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+				prd.setPrdFilename(rset.getString("prd_filename"));
+				prd.setPrdFilepath(rset.getString("prd_filepath"));
+				list.add(prd);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+
+	}
+
+	public ArrayList<Integer> subCtgrCount(Connection conn, String ctgr, ArrayList<String> subCtgr) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> subCtgrCount = new ArrayList<Integer>();
+		int count = 0;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String query="select count(*) as count from product where prd_ctgr=? and prd_sub_ctgr =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			for(String sub : subCtgr) {
+				pstmt.setString(1, ctgr);
+				pstmt.setString(2, sub);
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					count = rset.getInt("count");
+					subCtgrCount.add(count);
+				}
+				
+			}
+			System.out.println(subCtgrCount);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return subCtgrCount;
 	}
 
 	

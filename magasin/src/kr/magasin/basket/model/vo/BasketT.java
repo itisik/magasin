@@ -26,11 +26,9 @@ public class BasketT {
 		this.prdPrice = prdPrice;
 	}
 
-
 	public String getPrdDtlId() {
 		return prdDtlId;
 	}
-
 
 	public void setPrdDtlId(String prdDtlId) {
 		this.prdDtlId = prdDtlId;
@@ -41,7 +39,6 @@ public class BasketT {
 		return prdDtlSize;
 	}
 
-
 	public void setPrdDtlSize(String prdDtlSize) {
 		this.prdDtlSize = prdDtlSize;
 	}
@@ -50,7 +47,6 @@ public class BasketT {
 	public String getPrdDtlColor() {
 		return prdDtlColor;
 	}
-
 
 	public void setPrdDtlColor(String prdDtlColor) {
 		this.prdDtlColor = prdDtlColor;
@@ -80,7 +76,6 @@ public class BasketT {
 	public int getPrdCount() {
 		return prdCount;
 	}
-
 
 	public void setPrdCount(int prdCount) {
 		this.prdCount = prdCount;
