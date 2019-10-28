@@ -15,6 +15,7 @@
         ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
 
         ArrayList<Integer> subCtgrCount = (ArrayList<Integer>)request.getAttribute("count");
+
    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,7 +54,6 @@
                 <h3><%=lists.get(0).getPrdCtgr().substring(0,lists.get(0).getPrdCtgr().indexOf("_")).toUpperCase() %></h3>
                 <%} 
                 }%>
-                
                 </div>
                 
                 <div class="title-category">     
@@ -124,8 +124,7 @@
        <%} %>
     </div>
      <div class="move"><%=pageNavi %></div> 
-
-</div>               
+</div>            
             </div>
             </div>
       </section>

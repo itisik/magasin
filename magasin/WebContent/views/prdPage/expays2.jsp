@@ -6,13 +6,14 @@
     pageEncoding="UTF-8"%>
  <%
 
-
- Product pay = (Product)request.getAttribute("pays");
-
+	 Member member = (Member)request.getAttribute("member");
+     ArrayList<ProductAll> list  = ( ArrayList<ProductAll>)request.getAttribute("ProductAll");
+ 
 
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,20 +36,20 @@
     <title>Insert title here</title>
 </head>
 <body id="body1">
-   <div class="wrapper">
-      <header>
-         <div class="header">
-            <%@include file="/WEB-INF/views/common/header.jsp"%>
-         </div>
-      </header>
-      <section>
-         <div class="mainContainer">
-            <div class="side-nav">
-               <%@include file="/WEB-INF/views/common/nav.html"%>
-            </div>
-            <div class="mainContent" style="width: 943px;">
-               <!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-      
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+		
     <div class="orderContainer">
         <div class="orderText">
             <p><a href="#">home</a>> order start</p>
@@ -199,72 +200,72 @@
             </tr>
         </table>
     </div>
-   </div>
+	</div>
 <script>
-   // 주소 처리 모듈
-   function addrSearch(){
-      new daum.Postcode({
-         oncomplete:function(data){
-            $("#postCode").val(data.zonecode);
-            $("#roadAddr").val(data.roadAddress);
-            $("#jibunAddr").val(data.jibunAddress);
-            $("#addr_extraAddress").val(data.addr_extraAddress);
-         }
-      }).open();
-   }
-   
-   
-   // 결제 처리 모듈
-   $(document).ready(function(){
-      var totalPay=0;
-      $("#payy input").change(function(){
-         if($(this).is(":checked")){
-            totalPay += (Number)($(this).val());
-         }else{
-            totalPay -= (Number)($(this).val());
-         }
-         $("#payy span").html(totalPay);
-      });
-      $("#payy button").click(function(){
-         var price = $("#payy span").html();
-         
-         //상품명 현재시간
-         var d = new Date();
-         var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
-         IMP.init('imp11221274');
-         IMP.request_pay({
-            merchant_uid : '상품명_'+date,
-            name : '결제테스트',
-            amount : price,
-            buyer_email : 'kyoung_pil@naver.com',
-            buyer_name : '구매자',
-            buyer_tel : '010-1234-4567',
-            buyer_addr : '안양시 만안구',
-            buyer_postcode : '123-456',
-         }, function(rsp){
-            if(rsp.success){
-               var msg='결제가 완료되었습니다.';
-               var r1 = '고유아이디: ' +rsp.imp_uid;
-               var r2 = '상점 거래 아이디 :' +rsp.merchant_uid;
-               var r3 = '결제 금액 :' +rsp.paid_amout;
-               var r4 = '카드 승인 번호' +rsp.apply_num;
-               alert(msg);
-               $("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
-            }else{
-               $("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
-             }
-         });
-      });
-   });
+	// 주소 처리 모듈
+	function addrSearch(){
+		new daum.Postcode({
+			oncomplete:function(data){
+				$("#postCode").val(data.zonecode);
+				$("#roadAddr").val(data.roadAddress);
+				$("#jibunAddr").val(data.jibunAddress);
+				$("#addr_extraAddress").val(data.addr_extraAddress);
+			}
+		}).open();
+	}
+	
+	
+	// 결제 처리 모듈
+	$(document).ready(function(){
+		var totalPay=0;
+		$("#payy input").change(function(){
+			if($(this).is(":checked")){
+				totalPay += (Number)($(this).val());
+			}else{
+				totalPay -= (Number)($(this).val());
+			}
+			$("#payy span").html(totalPay);
+		});
+		$("#payy button").click(function(){
+			var price = $("#payy span").html();
+			
+			//상품명 현재시간
+			var d = new Date();
+			var date = d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate()+''+d.getHours()+''+d.getMinutes()+''+d.getSeconds();
+			IMP.init('imp11221274');
+			IMP.request_pay({
+				merchant_uid : '상품명_'+date,
+				name : '결제테스트',
+				amount : price,
+				buyer_email : 'kyoung_pil@naver.com',
+				buyer_name : '구매자',
+				buyer_tel : '010-1234-4567',
+				buyer_addr : '안양시 만안구',
+				buyer_postcode : '123-456',
+			}, function(rsp){
+				if(rsp.success){
+					var msg='결제가 완료되었습니다.';
+					var r1 = '고유아이디: ' +rsp.imp_uid;
+					var r2 = '상점 거래 아이디 :' +rsp.merchant_uid;
+					var r3 = '결제 금액 :' +rsp.paid_amout;
+					var r4 = '카드 승인 번호' +rsp.apply_num;
+					alert(msg);
+					$("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
+				}else{
+					$("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
+			    }
+			});
+		});
+	});
 </script>
-         </div>
-      </section>
-      <footer>
-         <div class="footer">
-            <%@include file="/WEB-INF/views/common/footer.jsp"%>
-         </div>
-      </footer>
-   </div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 
 </body>
 

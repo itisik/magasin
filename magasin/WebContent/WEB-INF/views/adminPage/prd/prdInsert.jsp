@@ -106,6 +106,7 @@
                           <option value="top_m">상의</option>
                           <option value="bottom_w">하의</option>
                           <option value="bottom_m">하의</option>
+
                           <option value="dress">드레스</option>
                           <option value="bag">가방</option>
                           <option value="shoes">신발</option>
@@ -125,6 +126,7 @@
                           <option value="etc">기타</option>
                           <!-- woman top -->
                           <option value="t">티셔츠</option>
+
                           <option value="blouse">블라우스</option>
                           <option value="etc">etc</option>
                           <!-- man top -->
@@ -138,6 +140,7 @@
                           <!-- man bottom -->
                           <option value="slacks">슬랙스</option>
                           <option value="jeans">청바지</option>
+
                           <option value="etc">etc</option>
                           <!-- common  -->
                           <option value="bag">가방</option>
@@ -355,7 +358,9 @@
               		var state = $('#category option:selected').val();
               		$("#categorysemi2").show();
               		
+
               		if(state == 'outer_m'){
+
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();
@@ -481,7 +486,9 @@
               			$('#categorysemi2 option:eq(18)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
               		
+
               		}else if(state == 'outer_w'){
+
               			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(5)').hide();

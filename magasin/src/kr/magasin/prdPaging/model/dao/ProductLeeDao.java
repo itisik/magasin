@@ -52,12 +52,12 @@ public class ProductLeeDao {
 		}
 		return list;
 	}
+
 /*
 	// 상품번호로 페이지 이동 //
 
 	public Product ProductdetailId(Connection conn, ArrayList<BasketT> list) {
 		Product pdI = null;
-
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "select a.prd_Id, a.prd_Sn_Imgname, prd_Sn_Imgpath, prd_Dtl_Count from product a, product_dtl b where  a.prd_id = b.prd_id and prd_dtl_id=?";

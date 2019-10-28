@@ -147,12 +147,12 @@
 	
 	function tempBasket(){
 	
-		var form =$("<form action='/productExpay' method='post'></form>");
+		var form =$("<form action='/addOrder' method='post'></form>");
 	 	var last =  $("[name=chk]:checked").length;
 	 	alert(last);
 		for(var i = 0;i<last;i++){
 		//	alert($("[name=chk]:checked").length);
-			
+
 			var prdId = $("[name=chk]:checked").eq(i).siblings().eq(0).val();
 		 	var size =  $("[name=chk]:checked").eq(i).siblings().eq(1).val();
 		 	var color =  $("[name=chk]:checked").eq(i).siblings().eq(2).val();
@@ -171,6 +171,7 @@
 			form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
 			form.append($("<input type='text' name='basketUserId"+i+"' value='"+userId+"'>"));
 			form.append($("<input type='text' name='prdName"+i+"' value='"+prdName+"'>"));
+
 		
 	}
 		$('.bsk-wrapper').append(form);
@@ -180,7 +181,7 @@
 	
 	function tempBasketAll(){
 		
-		var form =$("<form action='/productExpay' method='post'></form>");
+		var form =$("<form action='/addOrder' method='post'></form>");
 	 	var last =  $("[name=chk]").length;
 	 	alert(last);
 		for(var i = 0;i<last;i++){

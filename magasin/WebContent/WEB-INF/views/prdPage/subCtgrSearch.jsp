@@ -42,6 +42,7 @@
             <div class="title-middle">
                 <div class="title-text">
                 
+
                 <%if(!list.isEmpty()){
                		if(list.get(0).getPrdCtgr().indexOf("_")==-1){ %>
                 	<h3><%=list.get(0).getPrdCtgr().toUpperCase() %></h3>
@@ -49,6 +50,7 @@
                 <h3><%=list.get(0).getPrdCtgr().substring(0,list.get(0).getPrdCtgr().indexOf("_")).toUpperCase() %></h3>
                 <%} 
                 }%>
+
                 </div>
 
                 <div class="title-category">     

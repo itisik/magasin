@@ -53,6 +53,7 @@ public class ProductPageServlet extends HttpServlet {
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
 		ArrayList<ProductDtl> list = service.searchColor();
+
 		ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
 
 		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);

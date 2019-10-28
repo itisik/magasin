@@ -24,15 +24,18 @@ public class ProductLeeService {
 		return list;
 	}
 
+
 	/*
 	  public int ProductdetailId(ArrayList<BasketT> list) {
 
 		  Connection conn =	  JDBCTemplate.getConnection(); 
-		  pay = dao.ProductdetailId(conn, list, count);
+		  pay = dao.insertBasket(conn, list, count);
+
 		  JDBCTemplate.close(conn); 
 		  return pay; 
 		  }
 	*/
+
 
 /*
   가격과 신상으로 정렬
