@@ -1,6 +1,7 @@
 package kr.magasin.basket.model.vo;
 
 public class BasketT {
+	private int basketId;
 	private String prdDtlId;
 	private String prdDtlSize;
 	private String prdDtlColor;
@@ -14,9 +15,10 @@ public class BasketT {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BasketT(String prdDtlId, String prdDtlSize, String prdDtlColor, String basketUserId, String prdName,
-			int prdCount, int prdPrice) {
+	public BasketT(int basketId, String prdDtlId, String prdDtlSize, String prdDtlColor, String basketUserId,
+			String prdName, int prdCount, int prdPrice) {
 		super();
+		this.basketId = basketId;
 		this.prdDtlId = prdDtlId;
 		this.prdDtlSize = prdDtlSize;
 		this.prdDtlColor = prdDtlColor;
@@ -24,6 +26,14 @@ public class BasketT {
 		this.prdName = prdName;
 		this.prdCount = prdCount;
 		this.prdPrice = prdPrice;
+	}
+
+	public int getBasketId() {
+		return basketId;
+	}
+
+	public void setBasketId(int basketId) {
+		this.basketId = basketId;
 	}
 
 	public String getPrdDtlId() {
@@ -34,7 +44,6 @@ public class BasketT {
 		this.prdDtlId = prdDtlId;
 	}
 
-
 	public String getPrdDtlSize() {
 		return prdDtlSize;
 	}
@@ -42,7 +51,6 @@ public class BasketT {
 	public void setPrdDtlSize(String prdDtlSize) {
 		this.prdDtlSize = prdDtlSize;
 	}
-
 
 	public String getPrdDtlColor() {
 		return prdDtlColor;
@@ -52,26 +60,21 @@ public class BasketT {
 		this.prdDtlColor = prdDtlColor;
 	}
 
-
 	public String getBasketUserId() {
 		return basketUserId;
 	}
-
 
 	public void setBasketUserId(String basketUserId) {
 		this.basketUserId = basketUserId;
 	}
 
-
 	public String getPrdName() {
 		return prdName;
 	}
 
-
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
 	}
-
 
 	public int getPrdCount() {
 		return prdCount;
@@ -81,16 +84,13 @@ public class BasketT {
 		this.prdCount = prdCount;
 	}
 
-
 	public int getPrdPrice() {
 		return prdPrice;
 	}
 
-
 	public void setPrdPrice(int prdPrice) {
 		this.prdPrice = prdPrice;
 	}
-
 
 	
 }

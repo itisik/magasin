@@ -50,6 +50,7 @@
 			<input type="hidden" class="prdPrice" value="<%=b2.getPrdPrice() %>" >
 			<input type="hidden" class="basketUserId" value="<%=b2.getBasketUserId() %>" >
 			<input type="hidden" class="prdName" value="<%=b2.getPrdName()%>" >
+			<input type="hidden" class="basketId" value="<%=b2.getBasketId()%>" >
 			
 			
  		</td>
@@ -160,8 +161,9 @@
 		 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
 		 	var userId =  $("[name=chk]:checked").eq(i).siblings().eq(5).val();
 		 	var prdName = $("[name=chk]:checked").eq(i).siblings().eq(6).val();
+		 	var basketId = $("[name=chk]:checked").eq(i).siblings().eq(7).val();
 		 	
-		 	var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName ;
+		 	var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
 		 	alert(url);
 			form.append($("<input type='number' name='count' value='"+last+"'>"));//갯수
 		 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+prdId+"'>"));
@@ -171,7 +173,7 @@
 			form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
 			form.append($("<input type='text' name='basketUserId"+i+"' value='"+userId+"'>"));
 			form.append($("<input type='text' name='prdName"+i+"' value='"+prdName+"'>"));
-
+			form.append($("<input type='text' name='basketId"+i+"' value='"+basketId+"'>"));
 		
 	}
 		$('.bsk-wrapper').append(form);
@@ -187,23 +189,26 @@
 		for(var i = 0;i<last;i++){
 		//	alert($("[name=chk]:checked").length);
 			
-	 	var prdId = $("[name=chk]:checked").eq(i).siblings().eq(0).val();
-	 	var size =  $("[name=chk]:checked").eq(i).siblings().eq(1).val();
-	 	var color =  $("[name=chk]:checked").eq(i).siblings().eq(2).val();
-	 	var count =  $("[name=chk]:checked").eq(i).siblings().eq(3).val();
-	 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
-	 	var userId =  $("[name=chk]:checked").eq(i).siblings().eq(5).val();
-	 	var prdName = $("[name=chk]:checked").eq(i).siblings().eq(6).val();
-		var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName ;
-	 	alert(url);
-		form.append($("<input type='number' name='count' value='"+last+"'>"));//갯수
-	 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+prdId+"'>"));
-		form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
-		form.append($("<input type='text' name='prdDtlColor"+i+"' value='"+color+"'>"));
-		form.append($("<input type='text' name='prdCount"+i+"' value='"+count+"'>"));
-		form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
-		form.append($("<input type='text' name='basketUserId"+i+"' value='"+userId+"'>"));
-		form.append($("<input type='text' name='prdName"+i+"' value='"+prdName+"'>"));
+			var prdId = $("[name=chk]:checked").eq(i).siblings().eq(0).val();
+		 	var size =  $("[name=chk]:checked").eq(i).siblings().eq(1).val();
+		 	var color =  $("[name=chk]:checked").eq(i).siblings().eq(2).val();
+		 	var count =  $("[name=chk]:checked").eq(i).siblings().eq(3).val();
+		 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
+		 	var userId =  $("[name=chk]:checked").eq(i).siblings().eq(5).val();
+		 	var prdName = $("[name=chk]:checked").eq(i).siblings().eq(6).val();
+		 	var basketId = $("[name=chk]:checked").eq(i).siblings().eq(7).val();
+		 	
+		 	var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
+		 	alert(url);
+			form.append($("<input type='number' name='count' value='"+last+"'>"));//갯수
+		 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+prdId+"'>"));
+			form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
+			form.append($("<input type='text' name='prdDtlColor"+i+"' value='"+color+"'>"));
+			form.append($("<input type='text' name='prdCount"+i+"' value='"+count+"'>"));
+			form.append($("<input type='text' name='prdPrice"+i+"' value='"+price+"'>"));
+			form.append($("<input type='text' name='basketUserId"+i+"' value='"+userId+"'>"));
+			form.append($("<input type='text' name='prdName"+i+"' value='"+prdName+"'>"));
+			form.append($("<input type='text' name='basketId"+i+"' value='"+basketId+"'>"));
 		
 	}
 		$('.bsk-wrapper').append(form);

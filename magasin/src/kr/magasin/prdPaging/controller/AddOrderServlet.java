@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.magasin.basket.model.service.BasketService;
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
@@ -44,6 +45,7 @@ public class AddOrderServlet extends HttpServlet {
 		//basket.jsp에서 받아온 값 
 		for(int i=0;i<count;i++) {
 			bt = new BasketT();
+			int basketId = Integer.parseInt(request.getParameter("basketId"+i));
 			String prdDtlId = request.getParameter("prdDtlId"+i);
 			String prdDtlSize = request.getParameter("prdDtlSize"+i);
 			String prdDtlColor =request.getParameter("prdDtlColor"+i);
@@ -52,7 +54,7 @@ public class AddOrderServlet extends HttpServlet {
 			int prdCount = Integer.parseInt(request.getParameter("prdCount"+i));
 			int prdPrice = Integer.parseInt(request.getParameter("prdPrice"+i));	
 			
-			bt = new BasketT(prdDtlId, prdDtlSize, prdDtlColor, basketUserId, prdName, prdCount, prdPrice);
+			bt = new BasketT(basketId, prdDtlId, prdDtlSize, prdDtlColor, basketUserId, prdName, prdCount, prdPrice);
 			list.add(bt);
 		}
 		if(!list.isEmpty()) {
@@ -69,7 +71,9 @@ public class AddOrderServlet extends HttpServlet {
 		ProductLeeService service = new ProductLeeService();
 		ArrayList<ProductAll> pay = service.insertBasket(list, count);
 		MemberService service2 = new MemberService();
-	
+		BasketService service3 = new BasketService(); 
+		int result = service3.deleteBasket(list,count);
+		
 		Member m = service2.selectOne(list.get(0).getBasketUserId());	
 		HttpSession session = request.getSession(false);
 		session.setAttribute("member", m);
