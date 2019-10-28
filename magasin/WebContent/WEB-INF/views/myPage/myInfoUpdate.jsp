@@ -9,24 +9,35 @@
  	 String[] emailList = (String[])request.getAttribute("emailList");
  	 String[] phoneArr = (String[])request.getAttribute("phoneArr");
  %>
+ 
 <!DOCTYPE html>
 <html>
 
 <head>
-<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
  <link rel="stylesheet" href="/css/myPage/myInfoUpdate.css"> 
+ <link rel="stylesheet" href="/css/common_css/layout.css">
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-<style>
-
-
-
-
-</style>
-<body>
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+	<div class="myPage-main">
+	<div class="mainContent">
+		<div class="myp-wrapper">
 
 <form action="/updateMember" method="post" >
 	<div class="miu-wrapper">
@@ -65,8 +76,15 @@
 			</tr>
 
 			<tr>
+			<% for(int i=0;i<addrList.length;i++){
+				if(addrList[i].equals("0")){
+					addrList[i] = "";
+				}
+			} %>
                 <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
+              
                 <td>
+                
                     <!--addr_1,addr_2,addr_3 합쳐서 DB에 넣어주기 -->
                     <input type="text" name="addrList3" id="addr_postcode"   value="<%=addrList[3]%>" readonly="readonly">
                     <button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
@@ -85,16 +103,16 @@
 		
 			</tr>
 						<tr>
-				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" name="emailList1"  value="<%=emailList[1] %>">
-					<select id="mif-email">
+				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" id="emailList1" name="emailList1"  value="<%=emailList[1] %>">
+					<!-- <select id="mif-email">
 					<option value="naver.com">naver.com</option>
 					<option value="daum.net">daum.net</option>
 					<option value="nate.com">nate.com</option>
 					<option value="hotmail.com">hotmail.com</option>
 					<option value="yahoo.com">yahoo.com</option>
-					<option value="gmail.com">gmail.com</option>
+					<option value="1">gmail.com</option>
 					<option value="etc">직접입력</option>
-				</select></td>
+				</select> --></td>
 
 			</tr> 
 
@@ -111,7 +129,21 @@
 	</div>
 	</div>
 	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
+	
+
 
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -189,8 +221,6 @@
 				}
 			});
 		});
-
-
 
 </script>
 </html>

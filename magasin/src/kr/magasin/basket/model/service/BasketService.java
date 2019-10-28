@@ -5,9 +5,19 @@ import java.util.ArrayList;
 
 import kr.magasin.basket.model.dao.BasketDao;
 import kr.magasin.basket.model.vo.Basket;
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 
 public class BasketService {
+	public int deleteBasket(ArrayList<BasketT> list, int count) {
+		int result = 0;
+		Connection conn = JDBCTemplate.getConnection();
+		BasketDao dao = new BasketDao();
+		result = dao.deleteBasket(conn, list, count);
+		JDBCTemplate.close(conn);		
+		return result;
+		
+	}
 	public ArrayList<Basket> basketList(String id){
 		ArrayList<Basket>list = new ArrayList<Basket>();
 		Connection conn = JDBCTemplate.getConnection();

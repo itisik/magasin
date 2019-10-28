@@ -11,14 +11,6 @@
          width: 943px;
 /*       border: 5px solid red;*/
      }
-     .detailContainr p{
-         font-size: 12px;
-     }
-     .detailContainr p>a{
-         font-size: 12px;
-         padding: 0px 2px;
-         color: #000000;
-     }
      p{
         text-align: right;
         color : black;
@@ -68,6 +60,7 @@
      }
      .color div:hover{
      	cursor: pointer;
+     	border: 2px solid black;
      }
      .color1{
          background: #EFE8D8;
@@ -128,11 +121,13 @@
      .detailBag{
          border-top: 1px solid black;
          margin-top: 50px;
+         display:flex;
+         justify-content:space-between;
      }
-     .detailBag>a{
+     .detailBag div>a{
          padding: 0px 3px 0px 12px;
          color: black;
-         font-size: 18Px;
+         font-size: 19Px;
          font-weight: bold;
      }
      .detailBorderSize{
@@ -174,4 +169,8 @@
          color: darkorange;
          font-size: 20px;
          font-weight: bold;
+     }
+     
+     .piekedColor{
+     	border: 2px solid black	!important;
      }

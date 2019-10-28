@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.magasin.basket.model.vo.Basket;
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 
 public class BasketDao {
@@ -45,6 +46,33 @@ public class BasketDao {
 	 
 	 return list;
  }
+ 	//구매페이지로 들어갔을떄 장바구니 삭제하는 로직 
+ 	public int deleteBasket(Connection conn, ArrayList<BasketT> list, int count) {
+ 		 int result = 0;
+		 PreparedStatement pstmt = null;
+		 String query = "delete from basket where basket_id =?";
+		 
+		 try {
+			for(int i = 0; i<count;i++) {
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, list.get(i).getBasketId());
+			result = pstmt.executeUpdate();
+			if(result > 0) {
+				conn.commit();
+						
+			}else {
+				conn.rollback();
+			}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}	 
+		 return result;
+ 	}
  
 	 public int deleteOne(Connection conn, int basketId) {
 		 int result = 0;

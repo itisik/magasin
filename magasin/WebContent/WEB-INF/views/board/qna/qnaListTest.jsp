@@ -25,6 +25,23 @@
 <link rel="stylesheet" href="/css/board_css/qna.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <title>***Q&A***</title>
+<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
+.a-title{
+	color:navy;
+}
+.a-title:hover{
+	font-weight:bold;
+	text-decoration:none;
+}
+</style>
+
 </head>
 <body id="body1">
 	<div class="wrapper">
@@ -99,13 +116,13 @@
 									<td>
 									<!-- 제목 -->
 									<img src="/img/board_img/realRe.png">
-									<a href="/aView?ctgr=etc&aNo=<%=a.getaNo()%>&id=<%=m.getId()%>"><%=a.getaTitle() %></a>
+									<a href="/aView?ctgr=etc&aNo=<%=a.getaNo()%>&id=<%=m.getId()%>" class="a-title"><%=a.getaTitle() %></a>
 									</td>
 									<%}else{ %>
 									<td>
 									<!-- 제목 -->
 									<img src="/img/board_img/realRe.png">
-									<a href="/views/member/login.jsp"><%=a.getaTitle() %></a>
+									<a href="/views/member/login.jsp" class="a-title"><%=a.getaTitle() %></a>
 
 									</td>
 									<%} %>
@@ -217,12 +234,12 @@
 									%>
 									<td>
 									<img src="/img/board_img/realRe.png">
-									<a href="/aView?ctgr=prd&aNo=<%=a.getaNo()%>&id=<%=m.getId()%>"><%=a.getaTitle() %></a>
+									<a href="/aView?ctgr=prd&aNo=<%=a.getaNo()%>&id=<%=m.getId()%>" class="a-title"><%=a.getaTitle() %></a>
 									</td>
 									<%}else{%>
 									<td>
 									<img src="/img/board_img/realRe.png">
-									<a href="/views/member/login.jsp"><%=a.getaTitle() %></a>
+									<a href="/views/member/login.jsp" class="a-title"><%=a.getaTitle() %></a>
 
 									</td>
 									

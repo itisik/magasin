@@ -105,6 +105,7 @@ public class MemberDao {
 		}
 		return m;
 	}
+
 	//이름,이메일로 아이디 찾기
 	public Member searchId(Connection conn, String name, String email) {
 		Member m = null;
@@ -137,6 +138,7 @@ public class MemberDao {
 		}
 		return m;
 	}
+
 	//이름,휴대전화로 아이디찾기
 	public Member searchId2(Connection conn, String name, String phone) {
 		Member m = null;

@@ -36,19 +36,19 @@ public class QnAService {
 		int pageNo1 = ((reqPage1-1) / pageNaviSize) * pageNaviSize + 1;
 		
 		if(pageNo1!=1) {
-			pageNavi1 += "<a class='btn' href='/qnaList?reqPage1="+(pageNo1-1)+"'>이전</a>";
+			pageNavi1 += "<a class='btn paging-btn' href='/qnaList?reqPage1="+(pageNo1-1)+"'>이전</a>";
 		}
 		int i= 1;
 		while(!(i++>pageNaviSize|| pageNo1>totalPage1)) {
 			if(reqPage1 == pageNo1) {
 				pageNavi1 += "<span class='selectPage'>"+pageNo1+"</span>";
 			}else {
-				pageNavi1 += "<a class='btn' href='/qnaList?reqPage1="+pageNo1+"'>"+pageNo1+"</a>";
+				pageNavi1 += "<a class='btn paging-btn' href='/qnaList?reqPage1="+pageNo1+"'>"+pageNo1+"</a>";
 			}
 			pageNo1++;
 		}
 		if(pageNo1 <= totalPage1) {
-			pageNavi1 += "<a class='btn' href='/qnaList?reqPage1="+pageNo1+ "'>다음</a>";
+			pageNavi1 += "<a class='btn paging-btn' href='/qnaList?reqPage1="+pageNo1+ "'>다음</a>";
 		}
 		
 		PageData pd = new PageData(pageNavi1, null,null, qEtcList, aEtcList,qPrdList,aPrdList);

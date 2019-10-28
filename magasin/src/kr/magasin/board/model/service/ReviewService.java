@@ -24,19 +24,19 @@ public class ReviewService {
 		int pageNaviSize = 5;
 		int pageNo = ((reqPage-1) / pageNaviSize) * pageNaviSize + 1;
 		if(pageNo!=1) {
-			pageNavi += "<a class='btn' href='/reviewList?reqPage="+(pageNo-1)+"'>이전</a>";
+			pageNavi += "<a class='btn paging-btn' href='/reviewList?reqPage="+(pageNo-1)+"'>이전</a>";
 		}
 		int i= 1;
 		while(!(i++>pageNaviSize|| pageNo>totalPage)) {
 			if(reqPage == pageNo) {
 				pageNavi += "<span class='selectPage'>"+pageNo+"</span>";
 			}else {
-				pageNavi += "<a class='btn' href='/reviewList?reqPage="+pageNo+"'>"+pageNo+"</a>";
+				pageNavi += "<a class='btn paging-btn' href='/reviewList?reqPage="+pageNo+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
 		if(pageNo <= totalPage) {
-			pageNavi += "<a class='btn' href='/reviewList?reqPage="+pageNo+ "'>다음</a>";
+			pageNavi += "<a class='btn paging-btn' href='/reviewList?reqPage="+pageNo+ "'>다음</a>";
 		}
 		PageData pd = new PageData(pageNavi, null, list, null, null,null,null);
 		

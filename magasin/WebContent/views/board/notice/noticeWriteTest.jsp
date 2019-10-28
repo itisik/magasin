@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- ckEditor links -->
-<script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<!-- naver smartEditor links -->
+<script type="text/javascript" src="/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="/css/board_css/notice.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <!-- BootStrab links -->
@@ -35,14 +35,14 @@
 				<ul id="notice">
 					<li>Notice</li>
 				</ul>
-				<form action="/noticeInsert" method="post">
+				<form action="/noticeInsert" method="post" id="frm">
 				
 				<div class="table-wrapper">
 					<table class="table write-table">
 						<thead>
 							<tr>
 								<th>subject</th>
-								<td><input type="text" name="noticeTitle" class="inputText"></td>
+								<td><input type="text" name="noticeTitle" class="inputText" id="title"></td>
 							</tr>
 							<tr>
 								<th>Writer</th>
@@ -55,8 +55,38 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="2">
-									<textarea id="editor" name="noticeContent" cols="100" rows="10" style="text-align:center;"></textarea>
+								<td colspan="2" style="padding-left:100px;">
+									<textarea id="ir1" name="noticeContent" cols="100" rows="10"></textarea>
+										<script type="text/javascript">
+											$(document).ready(function(){
+											var oEditors = [];
+											nhn.husky.EZCreator.createInIFrame({
+											 oAppRef: oEditors,
+											 elPlaceHolder: "ir1",
+											 sSkinURI: "/se2/SmartEditor2Skin.html",
+											 fCreator: "createSEditor2"
+											});
+
+											$("#insertBtn").click(function(){
+												 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+												  if($("#title").val()==""){
+														alert("제목을 입력하세요");
+														return false;
+													}else if($("#ir1").val()=="<p><br></p>"){
+														alert("내용을 입력하세요");
+														return false;
+													} 
+												 // 에디터의 내용에 대한 값 검증은 이곳에서
+												 // document.getElementById("ir1").value를 이용해서 처리한다.
+												 try {
+												     $("#frm").submit();
+												     
+												 } catch(e) {}
+											});											
+											
+
+										});
+											 </script>
 								</td>
 							</tr>
 					</table>
@@ -65,8 +95,10 @@
 					<br>
 					
 					<a href="/noticeList" class="btn btn-md" >List</a>
-					<button type="submit" class="btn btn-md" id="insertBtn" >등록</button>
+					<button type="button" class="btn btn-md" id="insertBtn" >등록</button>
 				</div>
+			
+				
 				</form>
 			</div>
 		</div>

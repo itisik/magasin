@@ -64,12 +64,6 @@
   width: 115px;
 }
 
-.search-top > .top-date-select > button {
-  cursor: pointer;
-  height: 28px;
-  width: 70px;
-}
-
 .customer-bottom {
   margin-top: 10px;
   height: 440px;
@@ -113,8 +107,6 @@
 
 .customer-bottom > .bottom-list > .list-title td,
 .customer-bottom > .bottom-list > .list-content td {
-  max-width: 20%;
-  max-width: 20%;
   height: 40px;
   line-height: 40px;
 }
@@ -128,12 +120,7 @@
   height: 19px;
 }
 
-.customer-bottom > .bottom-list > .list-title td:first-child,
-.customer-bottom > .bottom-list > .list-content td:first-child {
-  width: 50px;
-}
-
-.customer-bottom > .bottom-list > .list-title td:not(:first-child),
-.customer-bottom > .bottom-list > .list-content td:not(:first-child) {
-  width: 14%;
+.customer-bottom > .bottom-list > .list-title td,
+.customer-bottom > .bottom-list > .list-content td {
+  width: 14.285714%;
 }

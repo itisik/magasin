@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.orderP.model.dao.OrderPDao;
+import kr.magasin.orderP.model.vo.Order;
 import kr.magasin.orderP.model.vo.OrderP2;
 
 public class OrderPService {
@@ -44,5 +45,13 @@ public class OrderPService {
 		result = dao.update1(conn, orderNum);
 		JDBCTemplate.close(conn);
 		return result;
+	}
+	public ArrayList<Order> orderAll(String id){
+		ArrayList<Order> list = new ArrayList<Order>();
+		Connection conn = JDBCTemplate.getConnection();
+		OrderPDao dao = new OrderPDao();
+		list = dao.orderAll(conn, id);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 }
