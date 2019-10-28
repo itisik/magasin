@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/css/myPage/basket.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/member/join.css">
+
 <style>
 .join-main {
 	display: flex;
@@ -23,6 +24,7 @@
 	height: 90vh;
 }
 </style>
+
 </head>
 <body id="body1">
 	<div class=join-main>

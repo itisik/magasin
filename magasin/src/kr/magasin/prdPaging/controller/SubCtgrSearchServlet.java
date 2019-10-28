@@ -49,7 +49,9 @@ public class SubCtgrSearchServlet extends HttpServlet {
 		}
 		PageDataLee pd = service.subCtgrSearch(reqPage,subCtgr,gender);
 		ArrayList<ProductDtl> prdDtllist = service.searchColor();
-		ArrayList<String> subCtgrList = service.subCtgr(ctgr);
+
+		ArrayList<String> subCtgrList = service.subCtgr(ctgr,gender);
+
 		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgrList);
 		request.setAttribute("count", subCtgrCount);
 		request.setAttribute("subList", pd.getLists());

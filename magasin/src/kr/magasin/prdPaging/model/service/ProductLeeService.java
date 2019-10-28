@@ -8,7 +8,7 @@ import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
-import kr.magasin.prdPaging.model.vo.ProductAll;
+
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
@@ -25,25 +25,17 @@ public class ProductLeeService {
 	}
 
 
+	/*
+	  public int ProductdetailId(ArrayList<BasketT> list) {
 
-
-	  public ArrayList<ProductAll> insertBasket(ArrayList<BasketT> list,int count) {
-		   System.out.println("productLEE 서비스페이지 도착 !");
-		  ArrayList<ProductAll> pay = new ArrayList<ProductAll>();
 		  Connection conn =	  JDBCTemplate.getConnection(); 
 		  pay = dao.insertBasket(conn, list, count);
 
 		  JDBCTemplate.close(conn); 
 		  return pay; 
 		  }
-	  
-	  public Product ProductdetailId(int prdId) {
-	      Connection conn = JDBCTemplate.getConnection();
-	      Product pdI = dao.ProductdetailId(conn,prdId);
-	      JDBCTemplate.close(conn);
-	      return pdI;
-	   }
-	
+	*/
+
 
 /*
   가격과 신상으로 정렬

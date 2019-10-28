@@ -42,8 +42,15 @@
             <div class="title-middle">
                 <div class="title-text">
                 
-                <h3><%=list.get(0).getPrdCtgr().toUpperCase() %></h3>
-                
+
+                <%if(!list.isEmpty()){
+               		if(list.get(0).getPrdCtgr().indexOf("_")==-1){ %>
+                	<h3><%=list.get(0).getPrdCtgr().toUpperCase() %></h3>
+                <%}else{ %>
+                <h3><%=list.get(0).getPrdCtgr().substring(0,list.get(0).getPrdCtgr().indexOf("_")).toUpperCase() %></h3>
+                <%} 
+                }%>
+
                 </div>
 
                 <div class="title-category">     
@@ -74,20 +81,20 @@
     <div class="sub-title">
              <div class="sub-top">new arrivalcategory have <strong><%=list.size() %></strong> product</div> 
         </div> 
-        <%for(int i=0; i<list.size()/2; i++){ %>
+        <%for(int i=0; i<list.size()/4; i++){ %>
 
         <div class="cate-window">
-         <%for(int j=0; j<2; j++){ %>
+         <%for(int j=0; j<4; j++){ %>
 	            <div class="window-cloths">
 	            <div class="cloths-event" style="display: none;"></div>
 	
-	            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(2*i+j).getPrdId() %>">
-	               <img src="/img/product/<%=list.get(2*i+j).getPrdSnImgpath()%>"></a>
+	            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>">
+	               <img src="/img/product/<%=list.get(4*i+j).getPrdSnImgpath()%>"></a>
 	            </div>
 	            <div class="cloths-title">
-	               <a href="/productExdetail?prdId=<%=list.get(2*i+j).getPrdId() %>"><%=list.get(2*i+j).getPrdName()%></a>
+	               <a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><%=list.get(4*i+j).getPrdName()%></a>
 	            </div>
-	            <div class="cloths-price"><span><%=list.get(2*i+j).getPrdPrice() %></span></div>
+	            <div class="cloths-price"><span><%=list.get(4*i+j).getPrdPrice() %></span></div>
 	            <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
 	            <div class="cloths-color">
 	            

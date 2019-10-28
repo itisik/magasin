@@ -9,7 +9,6 @@ import java.util.HashMap;
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.orderP.model.vo.OrderP2;
-import kr.magasin.prdPaging.model.vo.ProductAll;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
@@ -53,52 +52,12 @@ public class ProductLeeDao {
 		}
 		return list;
 	}
-	
-	public Product ProductdetailId(Connection conn, int prdId) {
-	      Product pdI = null;
-	      PreparedStatement pstmt = null;
-	      ResultSet rset = null;
-	      String query = "select * from product where prd_Id=?";
-	      
-	      try {
-	         pstmt = conn.prepareStatement(query);
-	         pstmt.setInt(1, prdId);
-	         
-	         rset = pstmt.executeQuery();
-	         
-	         if(rset.next()) {
-	            pdI = new Product();
-	            pdI.setPrdId(prdId);
-	            pdI.setPrdName(rset.getString("prd_Name"));
-	            pdI.setPrdGender(rset.getString("prd_gender"));
-	            pdI.setPrdCtgr(rset.getString("prd_ctgr"));
-	            pdI.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
-	            pdI.setPrdPrice(rset.getInt("prd_price"));
-	            pdI.setPrdUpDate(rset.getDate("prd_up_date"));
-	            pdI.setPrdSnImgname(rset.getString("prd_sn_imgname"));
-	            pdI.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
-	            pdI.setPrdFilename(rset.getString("prd_filename"));
-	            pdI.setPrdFilepath(rset.getString("prd_filepath"));
-	         }
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      }finally {
-	         JDBCTemplate.close(rset);
-	         JDBCTemplate.close(pstmt);
-	      }
-	      return pdI;   
-	   }
 
+/*
 	// 상품번호로 페이지 이동 //
 
-
-	public ArrayList<ProductAll> insertBasket(Connection conn, ArrayList<BasketT> list, int count) {
-
-
-		   System.out.println("productLEE DAO페이지 도착 !");
-		ProductAll pa = null;
-		ArrayList<ProductAll> lists =  new ArrayList<ProductAll>();
+	public Product ProductdetailId(Connection conn, ArrayList<BasketT> list) {
+		Product pdI = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "select a.prd_Id, a.prd_Sn_Imgname, prd_Sn_Imgpath, prd_Dtl_Count from product a, product_dtl b where  a.prd_id = b.prd_id and prd_dtl_id=?";
@@ -136,7 +95,7 @@ public class ProductLeeDao {
 		System.out.println(list.get(0).getPrdDtlColor());
 		return lists;
 	}
-
+*/
 /*
  	
  	가격과 신상으로 조회

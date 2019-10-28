@@ -59,14 +59,14 @@
 				<select name="detailIndex" class="detailIndex">
 					<option value="none3">--선택--</option>
 					<option value = "1">신규주문</option>
-					<option value = "0">주문취소요청</option>
-					<option value = "-1">주문취소완료</option>
 					<option value = "2">배송준비중</option>
 					<option value = "3">배송중</option>
 					<option value = "4">배송완료</option>
 					<option value = "5">반품신청</option>
 					<option value = "6">반품중</option>
 					<option value = "7">반품완료</option>
+					<option value = "0">주문취소요청</option>
+					<option value = "-1">주문취소완료</option>
 					<option value = "customerName2">고객 이름</option>
 					<option value = "customerId2">고객 아이디</option>
 					<option value = "prdName2">구매상품이름</option>
