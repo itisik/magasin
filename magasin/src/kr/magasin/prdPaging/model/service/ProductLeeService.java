@@ -24,7 +24,6 @@ public class ProductLeeService {
 		return list;
 	}
 
-	
 	  public ArrayList<ProductAll> ProductdetailId(ArrayList<BasketT> list,int count) {
 		   System.out.println("productLEE 서비스페이지 도착 !");
 		  ArrayList<ProductAll> pay = new ArrayList<ProductAll>();

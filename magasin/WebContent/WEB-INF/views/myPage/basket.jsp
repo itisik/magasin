@@ -172,7 +172,6 @@
 			form.append($("<input type='text' name='basketUserId"+i+"' value='"+userId+"'>"));
 			form.append($("<input type='text' name='prdName"+i+"' value='"+prdName+"'>"));
 		
-		
 	}
 		$('.bsk-wrapper').append(form);
 		form.submit();

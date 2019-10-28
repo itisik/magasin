@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
@@ -41,9 +39,6 @@ public class ProductExpayServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
-		
-
 		
 		int count = Integer.parseInt(request.getParameter("count"));
 		System.out.println("결제확인페이지 도착!!!!");
@@ -77,6 +72,13 @@ public class ProductExpayServlet extends HttpServlet {
 	
 		//총가격
 	/*	int sum= 0;
+			int prdCount = Integer.parseInt(request.getParameter("prdCount"+i));
+			int prdPrice = Integer.parseInt(request.getParameter("prdPrice"+i));	
+			bt = new BasketT(prdDtlId, prdDtlSize, prdDtlColor, prdCount, prdPrice);
+			list.add(bt);
+		}
+		//총가격
+		int sum= 0;
 		for(int i =0;i<count;i++) {
 			int result = list.get(i).getPrdCount()*list.get(i).getPrdPrice();
 			sum += result;
@@ -98,6 +100,7 @@ public class ProductExpayServlet extends HttpServlet {
 		System.out.println("member 잘들어왔는지 확인"+m.getId());
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
 		rd.forward(request, response);
+
 	}
 
 	/**
