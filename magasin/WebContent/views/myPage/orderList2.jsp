@@ -36,7 +36,7 @@
 	<%for(OrderP2 oP : list){ %>
  <%
  String status = "";
- if(Integer.parseInt(oP.getOrderStatus())== 7 ||Integer.parseInt(oP.getOrderStatus())== -1){
+ if(Integer.parseInt(oP.getOrderStatus())== 7 ||Integer.parseInt(oP.getOrderStatus())==-1 ){
  	if(Integer.parseInt(oP.getOrderStatus())== 7 ){
  		status = "반품";
  	}else{

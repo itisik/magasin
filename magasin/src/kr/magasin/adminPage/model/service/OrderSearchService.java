@@ -40,49 +40,32 @@ public class OrderSearchService {
 			if (detailIndex.equals("customerName2")) {
 				// 고객이름 기준
 				list = dao.OrderSearchPurByName(conn, dateSelect2, order);
-				return list;
 			} else if (detailIndex.equals("customerId2")) {
 				// 고객아이디 기준
 				list = dao.OrderSearchPurById(conn, dateSelect2, order);
-				return list;
 			} else if (detailIndex.equals("prdName2")) {
 				// 제품명
 				list = dao.OrderSearchPurByPrd(conn, dateSelect2, order);
-				return list;
-			}else {
+			} else {
 				// 주문 상태와 결제일에 따른 모든 검색.
 				// detailIndex가 orderStatus의 역할을 함.
 				list = dao.OrderSearchAllByPurNStatus(conn, dateSelect2, detailIndex);
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				return list;
-				
 			}
 		} /*else if (timeIndex.equals("outDate2")) {
 			// 기간 : 발송일 기준.
-			if (detailIndex.equals("orderName")) {
+			if (detailIndex.equals("customerName2")) {
 				// 고객이름 기준
 				list = dao.OrderSearchOutByName(conn, dateSelect2, order);
-				return list;
-			} else if (detailIndex.equals("orderId")) {
+			} else if (detailIndex.equals("cunstomerId2")) {
 				// 고객아이디 기준
 				list = dao.OrderSearchOutById(conn, dateSelect2, order);
-				return list;
 			} else if (detailIndex.equals("prdName")) {
 				// 제품명
 				list = dao.OrderSearchOutByPrd(conn, dateSelect2, order);
-				return list;
 			}
 		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	*/
+		*/
+		
 		try {
 			conn.close();
 		} catch (SQLException e) {

@@ -55,6 +55,7 @@ public class OrderSearchServlet extends HttpServlet {
 		
 		OrderSearchService service = new OrderSearchService();
 		ArrayList<Order> list = service.OrderSearch(timeIndex, dateSelect2, detailIndex, order);
+		
 		if(list.isEmpty()) {
 			list = new ArrayList<Order>();
 			list.set(0, new Order(999, "", "", "", "", "", "", "", "", 999));

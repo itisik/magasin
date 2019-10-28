@@ -12,8 +12,9 @@
         String pageNavi = (String)request.getAttribute("pageNavi");
         ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
         ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
+
         ArrayList<Integer> subCtgrCount = (ArrayList<Integer>)request.getAttribute("count");
-        
+
    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,6 +25,7 @@
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
 <body id="body1">
+
    <div class="wrapper">
       <header>
          <div class="header">
@@ -37,7 +39,6 @@
             </div>
             <div class="mainContent" style="width: 943px;">
                <!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-               
 
    <div class="windowContainer">
    
@@ -52,6 +53,7 @@
                 </div>
                 
                 <div class="title-category">     
+
                              <ul class="subCategory">  
                 
                 <%int c=0;
@@ -64,6 +66,7 @@
                 <% c++;
                    }%>
 				
+
                 </ul>
 
                 </div>
@@ -117,8 +120,7 @@
        <%} %>
     </div>
      <div class="move"><%=pageNavi %></div> 
-</div>
-               
+</div>               
             </div>
             </div>
       </section>
@@ -128,5 +130,6 @@
          </div>
       </footer>
    </div>
+
 </body>
 </html>

@@ -156,7 +156,7 @@
 	 	var price =  $("[name=chk]:checked").eq(i).siblings().eq(4).val();
 	 	
 	 	
-		form.append($("<input type='number' name='count"+i+"' value='"+last+"'>"));
+		form.append($("<input type='number' name='count' value='"+last+"'>"));
 	 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+id+"'>"));
 		form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
 		form.append($("<input type='text' name='prdDtlColor"+i+"' value='"+color+"'>"));

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
@@ -53,7 +54,7 @@ public class ProductLeeDao {
 	}
 
 	// 상품번호로 페이지 이동 //
-	public Product ProductdetailId(Connection conn, int prdId) {
+	public Product ProductdetailId(Connection conn, ArrayList<BasketT>list) {
 		Product pdI = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -308,16 +309,19 @@ public class ProductLeeDao {
 		return list;
 	}
 
-	public ArrayList<String> subCtgr(Connection conn,String ctgr) {
+
+	public ArrayList<String> subCtgr(Connection conn,String ctgr,String gender) {
+
 		ArrayList<String> sub = new ArrayList<String>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "SELECT DISTINCT PRD_CTGR, PRD_SUB_CTGR FROM PRODUCT WHERE PRD_CTGR =?";
+		String query = "SELECT DISTINCT PRD_CTGR, PRD_SUB_CTGR FROM PRODUCT WHERE PRD_CTGR =? and PRD_GENDER=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, ctgr);
-			
+			pstmt.setString(2, gender);
+
 			rset=pstmt.executeQuery();
 			
 			while(rset.next()) {
