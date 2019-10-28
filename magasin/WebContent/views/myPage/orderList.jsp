@@ -24,8 +24,10 @@
 					<%@include file="/WEB-INF/views/common/nav.html"%>
 				</div>
 				<div class="mainContent" style="width: 943px;">
+
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					<%@ include file="/WEB-INF/views/myPage/orderList.jsp" %>
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 				</div>
 			</div>
 		</section>

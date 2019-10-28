@@ -11,10 +11,27 @@
 <html>
 <head>
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/myPage/orderList.css"> 
+<link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
-<body>
+
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+	<div class="myPage-main">
+	<div class="mainContent">
+		<div class="myp-wrapper">
 <div class="ol-wrapper">
 
 <% if( !lists.isEmpty() ) {%>
@@ -100,9 +117,20 @@
 		</div>
 
 	</div>
-
-
-
+</div>
+		</div>
+	</div>
+	</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
+
+
+
 
 </html>

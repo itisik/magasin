@@ -20,9 +20,24 @@
 <title>Insert title here</title>
 
  <link rel="stylesheet" href="/css/myPage/myInfoUpdate.css"> 
+ <link rel="stylesheet" href="/css/common_css/layout.css">
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-<body>
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+	<div class="myPage-main">
+	<div class="mainContent">
+		<div class="myp-wrapper">
 
 <form action="/updateMember" method="post" >
 	<div class="miu-wrapper">
@@ -114,7 +129,21 @@
 	</div>
 	</div>
 	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
 </body>
+	
+
 
 <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">

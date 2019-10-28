@@ -20,10 +20,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/myPage/myPage.css">
+<link rel="stylesheet" href="/css/common_css/layout.css">
+
 
 </head>
-<body>
+<body id="body1">
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
 	<div class="myPage-main">
+	<div class="mainContent">
 		<div class="myp-wrapper">
 			<div class="myp-div1">
 
@@ -118,6 +132,15 @@
 				</ul>
 			</div>
 		</div>
+		</div>
+	</div>
+	</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
 	</div>
 </body>
 
