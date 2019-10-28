@@ -1,6 +1,7 @@
 package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.prdPaging.model.service.ProductLeeService;
 import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 /**
  * Servlet implementation class ProductExpayServlet
@@ -36,13 +38,27 @@ public class ProductExpayServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		int prdId = Integer.parseInt(request.getParameter("prdId"));
-
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		String prdName = request.getParameter("prdName");
+		int prdPrice = Integer.parseInt(request.getParameter("prdPrice"));
+		String prdDtlColor = request.getParameter("prdDtrlColor");
+		String prdDtlSize = request.getParameter("prdDtlSize");
+		
+		
+		
+		
 		ProductLeeService service = new ProductLeeService();
 
 		Product pay = service.ProductdetailId(prdId);
 		
+		
+		
+		
+		
 			RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
 			request.setAttribute("pays", pay);
+			
+			
 			rd.forward(request, response);
 	}
 
