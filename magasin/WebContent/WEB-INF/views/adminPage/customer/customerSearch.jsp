@@ -18,7 +18,6 @@
 			
 			<div class="top-date-select" style="display: none;">
 				<input id="dateSelect" name="dateSelect" class="dateSelect" type="hidden" />
-				<button value="all" type="button">전체기간</button>
 				<button value="7" type="button">1주일</button>
 				<button value="14" type="button">2주일</button>
 				<button value="30" type="button">1달</button>
@@ -45,7 +44,7 @@
 	</div>
 	<div class="customer-bottom">
 		<div class="bottom-title">
-			목록 (총 <span id="countList">0</span>개)
+			<div>목록 (총 <span id="countList">0</span>개)</div>
 		</div>
 		<div class="bottom-list">
 			<div class="list-title">
@@ -58,7 +57,7 @@
 							<td>상품개수</td>
 							<td>결제일시</td>
 							<td>발송일시</td>
-							<td>배송완료일</td>
+							<td>배송완료일시</td>
 						</tr>
 					</thead>
 				</table>

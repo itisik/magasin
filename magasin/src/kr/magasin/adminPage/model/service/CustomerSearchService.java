@@ -14,7 +14,7 @@ public class CustomerSearchService {
 		CustomerSearchDao dao = new CustomerSearchDao();
 		ArrayList<Customer> list = new ArrayList<Customer>();
 
-		if (searchIndex.equals("all") && dateSelect == -1) {
+		if (searchIndex.equals("all")) {
 			// 전체 기간 검색.
 			if (selectIndex.equals("customerName")) {
 				// 고객이름 기준

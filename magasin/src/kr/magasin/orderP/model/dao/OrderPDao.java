@@ -7,9 +7,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.magasin.common.JDBCTemplate;
+import kr.magasin.orderP.model.vo.Order;
 import kr.magasin.orderP.model.vo.OrderP2;
 
 public class OrderPDao {
+	
+	public ArrayList<Order> orderAll(Connection conn, String id){
+		Order op = null;
+		 ArrayList<Order> list = new ArrayList<Order>();
+		 PreparedStatement pstmt = null;
+		 ResultSet rset = null;
+		 String query = "select * FROM order_P where order_USER_id=?"; 
+		 
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, id);
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					op= new Order();
+					op.setOrderStatus(rset.getInt("order_status"));
+					op.setOrderUserId(rset.getString("order_user_id"));
+					list.add(op);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+		return list;
+		 
+		
+	}
 	 public ArrayList<OrderP2> selectAll(Connection conn, String id){
 		 OrderP2 oP = null;
 		 ArrayList<OrderP2> list = new ArrayList<OrderP2>();
@@ -103,7 +133,7 @@ public class OrderPDao {
 		return list;
 		 
 	 }
-	 
+	 //취소신청
 	 public int update(Connection conn, int orderNum) {
 		 int result = 0;
 		 PreparedStatement pstmt = null;
@@ -111,7 +141,9 @@ public class OrderPDao {
 		 
 		 try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "취소접수");
+
+			pstmt.setInt(1, -1);
+
 			pstmt.setInt(2, orderNum);
 			result = pstmt.executeUpdate();
 			
@@ -130,7 +162,7 @@ public class OrderPDao {
 		}
 		 return result;
 	 }
-	 
+	 //반품신청
 	 public int update1(Connection conn, int orderNum) {
 		 int result = 0;
 		 PreparedStatement pstmt = null;
@@ -138,7 +170,7 @@ public class OrderPDao {
 		 
 		 try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "반품접수");
+			pstmt.setInt(1, 5);
 			pstmt.setInt(2, orderNum);
 			result = pstmt.executeUpdate();
 			

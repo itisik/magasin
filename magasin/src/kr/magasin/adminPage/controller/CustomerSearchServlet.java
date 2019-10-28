@@ -43,27 +43,26 @@ public class CustomerSearchServlet extends HttpServlet {
 
 		int dateSelect = -1;
 		// 조회기간 : -1, 7, 14, 30, 90
-		
+
 		if (!searchIndex.equals("all") && !searchIndex.equals("none")) {
 			// 전체기간이 아니면, 조회 기간을 숫자로 변환한다.
 			dateSelect = Integer.parseInt(request.getParameter("dateSelect"));
 		}
-		System.out.println(dateSelect);
 		String selectIndex = request.getParameter("selectIndex");
 		// 상세조건 : 고객이름, 고객아이디, 구매상품이름
-		
+
 		String customer = request.getParameter("customer");
 		// 검색 키워드
 
 		CustomerSearchService service = new CustomerSearchService();
 		ArrayList<Customer> list = service.CustomerSearch(searchIndex, dateSelect, selectIndex, customer);
-		
-		if (!list.isEmpty()) {
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			new Gson().toJson(list, response.getWriter());
-			System.out.println(searchIndex + "/" + selectIndex + "/" + dateSelect + "/" + customer);
+		if(list.isEmpty()) {
+			list = new ArrayList<Customer>();
+			list.set(0, new Customer("", "", "", "", "", "", ""));
 		}
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

@@ -92,9 +92,10 @@
   padding-left: 100px;
 }
 .searchname-1 > select,
-#category1,
+#category,
 #categorysemi1,
-#cal {
+#cal,
+#categorysemi2 {
   height: 30px;
   border-radius: 4px;
 }

@@ -9,6 +9,7 @@
  	 String[] emailList = (String[])request.getAttribute("emailList");
  	 String[] phoneArr = (String[])request.getAttribute("phoneArr");
  %>
+ 
 <!DOCTYPE html>
 <html>
 
@@ -21,12 +22,6 @@
  <link rel="stylesheet" href="/css/myPage/myInfoUpdate.css"> 
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-<style>
-
-
-
-
-</style>
 <body>
 
 <form action="/updateMember" method="post" >
@@ -66,8 +61,15 @@
 			</tr>
 
 			<tr>
+			<% for(int i=0;i<addrList.length;i++){
+				if(addrList[i].equals("0")){
+					addrList[i] = "";
+				}
+			} %>
                 <th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
+              
                 <td>
+                
                     <!--addr_1,addr_2,addr_3 합쳐서 DB에 넣어주기 -->
                     <input type="text" name="addrList3" id="addr_postcode"   value="<%=addrList[3]%>" readonly="readonly">
                     <button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
@@ -86,16 +88,16 @@
 		
 			</tr>
 						<tr>
-				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" name="emailList1"  value="<%=emailList[1] %>">
-					<select id="mif-email">
+				<th>이메일 </th><td><input type="text" name="emailList0" value="<%=emailList[0] %>"> @ <input type="text" id="emailList1" name="emailList1"  value="<%=emailList[1] %>">
+					<!-- <select id="mif-email">
 					<option value="naver.com">naver.com</option>
 					<option value="daum.net">daum.net</option>
 					<option value="nate.com">nate.com</option>
 					<option value="hotmail.com">hotmail.com</option>
 					<option value="yahoo.com">yahoo.com</option>
-					<option value="gmail.com">gmail.com</option>
+					<option value="1">gmail.com</option>
 					<option value="etc">직접입력</option>
-				</select></td>
+				</select> --></td>
 
 			</tr> 
 
@@ -190,8 +192,6 @@
 				}
 			});
 		});
-
-
 
 </script>
 </html>

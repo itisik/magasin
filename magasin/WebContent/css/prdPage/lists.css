@@ -14,12 +14,19 @@
         .sub-title{
         	padding-top:10px;
         }
+        .sub-top{
+        	float : right;
+        	font-size: 13px;
+        }
         .window-cloths{
             width: 25%;
            /* height: 250px;*/ /* 수정 처리  오류가 있어서 이부분 필요가 없어서 삭제 합니다.*/  
         }
         .window-cloths img {
              width: 100%;
+        }
+        .cloths-img{
+        	width: 215px;
         }
         .cloths-img>img{
             width: 100%;
@@ -31,11 +38,8 @@
             text-align: right;
         }
         .title-text>h3{
-            font-size: 15px;
-        }
-        .title-top a{
-            color: #000000;
-            font-size: 12px;
+            font-size: 18px;
+            padding-left: 40px;
         }
         .cloths-title,.cloths-price,.cloths-color{
             padding: 5px 0px;
@@ -57,14 +61,15 @@
         }
         .subCategory>li{
             padding-right: 15px;
+            padding-top : 20px;
             font-size: 13px;
+            padding-left: 0px;
         }
         .subCategory>li a{
             color: #000000;      
         }
         .cloths-new{
-            display: flex;
-            justify-content: space-between;
+            float: left;
         }
         .imgs>img{
             width: 40px;
@@ -79,24 +84,6 @@
             border: 0.1px solid #aaa;
             width: 10px;
             height: 10px;
-            background: #EFE8D8;
-        }
-        .color2{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #cc6f34;
-        }
-        .color3{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #718f39;
-        }.color4{
-            border: 0.1px solid #aaa;
-            width: 10px;
-            height: 10px;
-            background: #595f79;
         }        
         .cloths-color{
             display: flex;
@@ -112,36 +99,13 @@
             border-top: 1px solid black;
             padding-top: 5px;
         }
-        .sub-top{
-            display: flex;
-            justify-content: space-between;
-        }
-        .sub-top>div:first-child{
-            padding: 3px 9px 0px ;
-            font-size: 12px;
-        }
-        .sub-top>div:nth-child(2){
-            font-size: 11px;
-        }
-        .sub-top>div:nth-child(2)>a{
-            padding: 0px 6px;
-            margin:  0px 10px;
-            text-decoration: none;
-            color: #000000;
-            font-size: 11px;
-        }
         .cate-window{
             display: flex;
+            margin-top: 30px;
         }
         .move{
 /*            border: 5px solid black;*/
             text-align: center;
-        }
-        .move a{
-            text-decoration: none;
-            margin: 12px 0px 0px 14px;
-            color: #000000;
-            font-size: 11px;
         }
         .move img{
           position: relative;

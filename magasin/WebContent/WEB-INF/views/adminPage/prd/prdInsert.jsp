@@ -1,139 +1,522 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<div class="enter1">
-	<table class="producttable">
-		<legend>
-			<b>상품등록</b>
-		</legend>
-		<tr>
-			<th>
-				<div class="thdiv">
-					<i class="far fa-plus-square"></i><span> 상품명</span>
-				</div>
-			</th>
 
-			<td><input type="text" id="product-input" class="productinput">
-			</td>
-		</tr>
+    pageEncoding="UTF-8"%>
+    <script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<div>
+	<form method="post" action="/prdInsert" enctype="multipart/form-data" name="myForm">
+	<div class="enter1">
 
-		<tr>
+			<style>
+			.producttable{
+				background-color: white;
+			}
+			#categorysemi2 {
+			  height: 30px;
+			  border-radius: 4px;
+			}
+			#legendenter ,#optionenterspan{ 
+				font-size: 20px;
+			    font-weight: bold;
+			}
+			#btn1{
+				height: 30px;
+				width: 150px;
+			  	border-radius: 4px;
+			  	background-color: #4c4c4e;
+			  	color:white;
+			}
+			#prdinsert{
+				height: 30px;
+				width: 150px;
+			  	border-radius: 4px;
+			  	background-color: #4c4c4e;
+			  	color:white;
+			}
+			#input1,#input2{
+				 height: 30px;
+			 	 border-radius: 4px;
+			}
+			.cntinput{
+				height: 20px;
+			 	border-radius: 4px;
+			 	background-color: #ababab;
+			 	color : white;
+			}
+			.tdsize{
+				padding-left: 30px;	
+				color : #5D5D5D;		
+			}
+			.tdcolor{
+				padding-left: 30px;	
+				
+			}
+			.enter2 {
+			  border: 1px solid #ababab;
+			  width: 100%;
+			  background-color: white;
+			  padding-top: 20px;
+			  padding-bottom: 20px;
+			}
+			</style>
+             <table class="producttable">
+                 <legend id="legendenter"> <i class="fas fa-list"></i><b>상품등록</b></legend>
+              <tr>
+                  <th>
+                      <div class="thdiv">
+                          <i class="far fa-plus-square"></i><span> 상품명</span>
+                      </div>    
+                  </th>
+                 
+                  <td>
+                      <input type="text" id="product-input" class="productinput" name="prdName">
+                  </td>
+              </tr>    
+              
+              <tr>
+              
+                  <th>
+                      <div class="thdiv">
+                              <i class="fas fa-venus-mars"></i><span> 상품 성별</span>
+                      </div>
+                  </th>
+                  <td>
+                      <select id="gender" name="prdGender">
 
-			<th>
-				<div class="thdiv">
-					<i class="fas fa-venus-mars"></i><span> 상품 성별</span>
-				</div>
-			</th>
-			<td><select id="gender">
-					<option>여자</option>
-					<option>남자</option>
-			</select></td>
-		</tr>
+                          <option value="w">여자</option>
+                          <option value="m">남자</option>
+                          <option value="c">공통</option>
 
-		<tr>
-			<th>
-				<div class="thdiv">
-					<i class="fas fa-align-justify"></i><span>상품 카테고리 선택</span>
-				</div>
-			</th>
-			<td><select id="category">
-					<option>상의</option>
-					<option>하의</option>
-					<option>아우터</option>
-					<option>기타</option>
-			</select>
-				<div id="asdfasdfasdf">
-					<span id="sebuspan1">세부 카테고리 선택</span> <select id="categorysemi2">
-						<option>123</option>
-						<option>456</option>
-						<option>789</option>
-						<option>125</option>
-					</select>
-				</div></td>
-		</tr>
-		<tr>
-			<th>
-				<div class="thdiv">
-					<i class="fas fa-won-sign"></i><span>상품 가격 설정</span>
-				</div>
-			</th>
-			<td><input type="text" id="priceinput" class="productinput">
-			</td>
-		</tr>
-		<div id="thumbnaildiv">
-			<tr id="thumbnail">
-				<th id="thimg1">
-					<div class="thdiv">
-						<i class="fas fa-camera"></i><span>상품 썸네일 업로드</span>
-					</div>
-				</th>
-				<td id="tdimg1"><input type="file" name="filesumname"
-					onchange="loadImg2(this)" id="estsetse">
-					<div id="img-viewer">
-						<img id="img-view" width="50" height="50">
-					</div></td>
-			</tr>
-		</div>
-		<div id="productpicturediv">
-			<tr id="productpicture">
-				<th id="thimg2">
-					<div class="thdiv">
-						<i class="far fa-image"></i><span>상품 사진 업로드</span>
-					</div>
-				</th>
-				<td id="tdimg2"><input type="file" name="filename"
-					onchange="loadImg(this)" id="imgfile5">
-					<div id="img-viewer2">
-						<img id="img-view2" width="50" height="50">
-					</div></td>
-			</tr>
-		</div>
+                      </select>
+                  </td>
+              </tr> 
+                 
+              <tr>
+                  <th>
+                      <div class="thdiv">
+                          <i class="fas fa-align-justify"></i><span>상품 카테고리 선택</span>
+                      </div> 
+                  </th> 
+                  <td>
+                      <select id="category" name="prdCtgr">
+                          <option selected="selected">-선택-</option>
+                          
+                          <option value="outterw">아우터</option>
+                          <option value="outterm">아우터</option>
+                          <option value="topw">상의</option>
+                          <option value="topm">상의</option>
+                          <option value="bottomw">하의</option>
+                          <option value="bottomm">하의</option>
+                          <option value="dress">드레스</option>
+                          <option value="common">기타</option>
 
-	</table>
+                      </select>
+                      
+                      <span id="sebuspan1">세부 카테고리 선택</span>
+                      <select id="categorysemi2" name="prdSubCtrg">
+                         <option selected="selected">-선택-</option>
+                         
+                          <option value="jacket">자켓</option>
+                          <option value="coats">코트</option>
+                          <option value="cardigan" name="cardigan">가디건</option>
+                          <option value="etcoutter">기타</option>
+                          
+                          <option value="tw">티셔츠</option>
+                          <option value="blouse">블라우스</option>
+                          <option value="etctw">etc</option>
+                          <option value="tm">티셔츠</option>
+                          <option value="shirts">셔츠</option>
+                          <option value="etctm">etc</option>
+                          <option value="pants">여자바지</option>
+                          <option value="skirt">스커트</option>
+                          <option value="etcbw">etc</option>
+                          <option value="slacks">슬랙스</option>
+                          <option value="jeans">청바지</option>
+                          <option value="etcbm">etc</option>
+                          <option value="bag">백</option>
+                          <option value="shoese">신발</option>
+                          <option value="acc">악세사리</option>
+                          <option value="dress">드레스</option>
 
-</div>
-<div class="enter1">
-	<table class="producttable">
-		<legend>상품 상세 등록</legend>
-		<tr name="addoptiontr">
-			<th id="thdiv1">
-				<div class="thdiv">
-					<i class="fas fa-cubes"></i><span>상품 옵션 입력</span>
-				</div>
-			</th>
-			<td>옵션명 : <input type="text" id="optioncolor"
-				class="productinput" placeholder="예시 : 컬러" name="optioncolor">
-				옵션값 : <input type="text" id="optionvalue" class="productinput"
-				placeholder="예시 : 빨강,노랑 (,로 구분)" name="optionvalue">
-				<button name="addoption" id="addoption">+</button> <br>
-			</td>
-		</tr>
+                      </select>
+                      
+                  </td>
+              </tr>
+              <tr>
+                  <th>
+                      <div class="thdiv">
+                          <i class="fas fa-won-sign"></i><span>상품 가격 설정</span>  
+                      </div>
+                  </th>   
+                  <td>
+                       <input type="text" id="priceinput" class="productinput" name="prdPrice">
+                  </td>
+              </tr>
+              <div id="thumbnaildiv">
+              <tr id="thumbnail">
+                  <th id="thimg1">
+                      <div class="thdiv">
+                          <i class="fas fa-camera"></i><span>상품 썸네일 업로드</span>
+                      </div>
+                  </th>
+                  <td id="tdimg1">
+                      <input type="file" name="prdSnImgname" onchange="loadImg2(this)"
+                             id="estsetse">
+                      <div id="img-viewer">
+                  <img id="img-view" width="50" height="50">
+                      </div>
+                  </td>
+              </tr>   
+              </div>
+              <div id="productpicturediv">
+              <tr id="productpicture">
+                  <th id="thimg2">
+                      <div class="thdiv">
+                          <i class="far fa-image" ></i><span>상품 사진 업로드</span>
+                      </div>
+                  </th> 
+                  <td id="tdimg2">
+                      <input type="file" name="prdImgname" onchange="loadImg(this)" id="imgfile5">
+                      <div id="img-viewer2">
+                          <img id="img-view2" width="50" height="50">
+                      </div>
+                  </td>
+              </tr>
+              </div>    
+  
+              </table>
+              
+          </div>
+          <br>
+          <i class="fas fa-list"><span id="optionenterspan"> 상품 옵션 등록</span></i>
+          <div class="enter2">
+          
 
-		<tr>
-			<th></th>
-			<td>
-				<button name="activeoption" id="activeoption">옵션 목록으로 적용</button>
-			</td>
-		</tr>
-	</table>
+          	<div>
+          		<input type="text" name="size" id="input1" placeholder="상품 사이즈 입력 ex) S,M,L" style="width:300px;">
+          		<input type="text" name="color" id="input2" placeholder="상품 컬러 입력 ex) red,black,white" style="width:300px;">
+          		<button id="btn1" type="button">상품 재고 입력하기</button>
 
-	<br>
-	<div class="enter1" id="optiondiv">
-		<table class="optiontable">
-			<tr>
-				<th style='width: 5%' id="thoption1"><input type="checkbox"></th>
-				<th>Month</th>
-				<th style='width: 50%' id="thoption2">재고 수량 변경</th>
-				<th style='width: 5%'>삭제</th>
-			</tr>
-			<tr>
-				<td style="width: 5%"><input type="checkbox"></td>
-				<td>January</td>
-				<td style='width: 50%'><input type="text" style="width: 99%;"></td>
-				<td style='width: 5%'>$50</td>
-			</tr>
+          		<button id="prdinsert">상품 최종 등록하기</button>
 
-		</table>
-	</div>
+          		<table id="tbl" border="1">
+          		
+          			<tbody>
+          				
+          			</tbody>
+          		
+          		</table>
+          	</div>   
+          </div>
+          <input type="hidden" name="length1" id="length1" class="length1">
+          <input type="hidden" name="length2" id="length2" class="length2">
+            </form>
+            </div>
+            
+            <script>
+            	$("#btn1").click(function(){
+            		var text1 = $("#input1").val();
+            		var text2 = $("#input2").val();
+            		
+            		var textArr1 = text1.split(",");
+            		var textArr2 = text2.split(",");
 
+            		$(".length1").val(textArr1.length);
+            		//val()
+            		$(".length2").val(textArr2.length);
+            		//val()
+            		
+            		var length = $("#length").val();
+            		
+            		var index1 = 0;
+            		var index2 = 0;
+            		var index3 = 0;
+            		for(var i=0; i<textArr1.length; i++){
+            			
+            			var tr=$("<tr>");
+            			var td=$("<td rowspan='"+textArr2.length+"'>");
+            			td.html(textArr1[i]);
+            			tr.append(td);
+            			
+            			//td1.html(textArr2[i]);
+            			
+            			$("#tbl>tbody").append(tr);
+            			for(var j=0;j<textArr2.length;j++){
+            				var sizeHidden = ("<input type='hidden'  name='sizee"+index1 +"' value='"+textArr1[i]+"'>");
+                			var colorHidden = ("<input type='hidden'  name='colorr"+index1 +"' value='"+textArr2[j]+"'>");
 
-</div>
+                			var input2 = $("<input type='text' class='cntinput' name='count"+ index1 +"' placeholder ='재고입력'>");
+            				if(j==0){ 
+            					//첫번째 출력은 tr을 추가할 필요가 없는데  두번째 세번째부턴 tr을 추가해야된다. 그래서 첫번째랑 두번째랑 나눈 것
+            					var td2=$("<td class='tdsize'>");
+            					td2.append(textArr2[j]);
+            					var td3=$("<td class='tdcolor'>");            					
+            					td3.append(sizeHidden).append(colorHidden).append(input2);
+            					tr.append("사이즈").append(td2).append(td3);
+
+            					$("#tbl>tbody").append(tr);
+            				}else{
+            					
+            					var tr1=$("<tr>");
+
+            					var td2=$("<td class='tdsize'>");
+            					td2.append(textArr2[j]);
+            					var td3=$("<td class='tdcolor'>");            					
+            					td3.append(sizeHidden).append(colorHidden).append(input2);
+            					tr1.append("사이즈").append(td2).append(td3);
+
+            					$("#tbl>tbody").append(tr1);
+            				}
+            				
+            				
+            				index1++;
+            			}
+            		}
+            		console.log(index1);
+            		console.log(index2);
+            		console.log(index3);
+            		
+            	});	
+            
+            	function mySubmit(index){
+            		if(index==1){
+            			document.myForm.action='/prdInsert';
+            		}
+            		if(index==2){
+            			document.myForm.action='/prddtlInsert';
+            		}
+            		document.myForm.submit();
+            	}
+            	
+            	function loadImg(value){
+            		if(value.files && value.files[0]){
+            			var reader = new FileReader();
+            			reader.onload = function(e){
+            				$('#img-view2').attr('src',e.target.result);
+            				
+            			}
+            			reader.readAsDataURL(value.files[0]);
+            		}
+            	}
+            	
+            	function loadImg2(value){
+            		if(value.files && value.files[0]){
+            			var reader = new FileReader();
+            			reader.onload = function(e){
+            				$('#img-view').attr('src',e.target.result);
+            				
+            			}
+            			reader.readAsDataURL(value.files[0]);
+            		}
+            	}
+
+            	$("#gender").change(function(){
+            		var state2 = $('#gender option:selected').val();
+            		$("#category").show();
+            		
+            		if(state2 == 'w'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(2)").hide();
+      					$("#category option:eq(4)").hide();
+      					$("#category option:eq(6)").hide();
+      					
+      				}else if(state2 =='m'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(1)").hide();
+      					$("#category option:eq(3)").hide();
+      					$("#category option:eq(5)").hide();
+      					$("#category option:eq(7)").hide();
+
+      				}else if(state2 =='c'){
+      					$('#category >option').show();
+      					$("#category option:eq(0)").prop("selected",true);
+      					$("#category option:eq(1)").hide();
+      					$("#category option:eq(2)").hide();
+      					$("#category option:eq(3)").hide();
+      					$("#category option:eq(4)").hide();
+      					$("#category option:eq(5)").hide();
+      					$("#category option:eq(6)").hide();
+      					$("#category option:eq(7)").hide();
+      				}
+      			});
+            	
+            	$("#category").change(function(){
+              		var state = $('#category option:selected').val();
+              		$("#categorysemi2").show();
+              		
+              		if(state == 'outterm'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'topm'){
+              			('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              		}else if(state == 'bottomm'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'common'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		
+              		}else if(state == 'outterw'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();	
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'topw'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'bottomw'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              			$('#categorysemi2 option:eq(20)').hide();
+              		}else if(state == 'dress'){
+              			$('#categorysemi2 >option').show();
+              			$('#categorysemi2 option:eq(0)').prop("selected",true);
+              			$('#categorysemi2 option:eq(1)').hide();
+              			$('#categorysemi2 option:eq(2)').hide();
+              			$('#categorysemi2 option:eq(3)').hide();
+              			$('#categorysemi2 option:eq(4)').hide();
+              			$('#categorysemi2 option:eq(5)').hide();
+              			$('#categorysemi2 option:eq(6)').hide();
+              			$('#categorysemi2 option:eq(7)').hide();
+              			$('#categorysemi2 option:eq(8)').hide();
+              			$('#categorysemi2 option:eq(9)').hide();
+              			$('#categorysemi2 option:eq(10)').hide();
+              			$('#categorysemi2 option:eq(11)').hide();
+              			$('#categorysemi2 option:eq(12)').hide();
+              			$('#categorysemi2 option:eq(13)').hide();
+              			$('#categorysemi2 option:eq(14)').hide();
+              			$('#categorysemi2 option:eq(15)').hide();
+              			$('#categorysemi2 option:eq(16)').hide();
+              			$('#categorysemi2 option:eq(17)').hide();
+              			$('#categorysemi2 option:eq(18)').hide();
+              			$('#categorysemi2 option:eq(19)').hide();
+              		}
+              	});    
+            	
+            </script>
+            
+             <style>
+           	#categorysemi2{
+          		display:none;
+            }
+
+            #category{
+            	display:none;
+            }
+            </style>
