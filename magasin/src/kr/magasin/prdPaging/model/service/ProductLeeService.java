@@ -24,15 +24,22 @@ public class ProductLeeService {
 		return list;
 	}
 
-	
-	  public ArrayList<ProductAll> ProductdetailId(ArrayList<BasketT> list,int count) {
+
+	  public ArrayList<ProductAll> insertBasket(ArrayList<BasketT> list,int count) {
 		   System.out.println("productLEE 서비스페이지 도착 !");
 		  ArrayList<ProductAll> pay = new ArrayList<ProductAll>();
 		  Connection conn =	  JDBCTemplate.getConnection(); 
-		  pay = dao.ProductdetailId(conn, list, count);
+		  pay = dao.insertBasket(conn, list, count);
 		  JDBCTemplate.close(conn); 
 		  return pay; 
 		  }
+	  
+	  public Product ProductdetailId(int prdId) {
+	      Connection conn = JDBCTemplate.getConnection();
+	      Product pdI = dao.ProductdetailId(conn,prdId);
+	      JDBCTemplate.close(conn);
+	      return pdI;
+	   }
 	
 
 /*

@@ -188,7 +188,7 @@
 	
 	<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
 	<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
-	<script type="text/javascript" src="/js/adminPage/graph.js"></script>
+	<script type="text/javascript" src="/js/adminPage/chart.js"></script>
 	<script type="text/javascript" src="/js/adminPage/prdSearch.js"></script>
 	<script type="text/javascript" src="/js/adminPage/prdInsert.js"></script>
 	<script type="text/javascript" src="/js/adminPage/customerSearch.js"></script>
