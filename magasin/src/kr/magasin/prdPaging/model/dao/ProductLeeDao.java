@@ -52,9 +52,9 @@ public class ProductLeeDao {
 		}
 		return list;
 	}
-
+/*
 	// 상품번호로 페이지 이동 //
-	public Product ProductdetailId(Connection conn, ArrayList<BasketT>list) {
+	public Product ProductdetailId(Connection conn, ArrayList<BasketT> list) {
 		Product pdI = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -89,7 +89,7 @@ public class ProductLeeDao {
 		}
 		return pdI;	
 	}
-
+*/
 /*
  	
  	가격과 신상으로 조회

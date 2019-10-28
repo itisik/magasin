@@ -55,8 +55,6 @@ public class ProductPageServlet extends HttpServlet {
 		ArrayList<ProductDtl> list = service.searchColor();
 
 		ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);
 		request.setAttribute("count", subCtgrCount);
 		request.setAttribute("lists", pd.getLists());
@@ -65,6 +63,7 @@ public class ProductPageServlet extends HttpServlet {
 		request.setAttribute("sub", subCtgr);
 		
 		
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		rd.forward(request, response);
 		
 	}

@@ -48,7 +48,13 @@
             <div class="title-middle">
                 <div class="title-text">
                 
-                <h3><%=lists.get(0).getPrdCtgr().toUpperCase() %></h3>
+                <%if(!lists.isEmpty()){
+               		if(lists.get(0).getPrdCtgr().indexOf("_")==-1){ %>
+                	<h3><%=lists.get(0).getPrdCtgr().toUpperCase() %></h3>
+                <%}else{ %>
+                <h3><%=lists.get(0).getPrdCtgr().substring(0,lists.get(0).getPrdCtgr().indexOf("_")).toUpperCase() %></h3>
+                <%} 
+                }%>
                 
                 </div>
                 

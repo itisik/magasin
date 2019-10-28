@@ -23,14 +23,14 @@ public class ProductLeeService {
 		return list;
 	}
 
-	
+	/*
 	  public int ProductdetailId(ArrayList<BasketT> list) {
 		  Connection conn =	  JDBCTemplate.getConnection(); 
 		  Product pay = dao.ProductdetailId(conn, list);
 		  JDBCTemplate.close(conn); 
 		  return pay; 
 		  }
-	
+	*/
 
 /*
   가격과 신상으로 정렬
