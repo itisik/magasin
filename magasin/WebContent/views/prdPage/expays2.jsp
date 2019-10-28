@@ -250,6 +250,7 @@
 					var r3 = '결제 금액 :' +rsp.paid_amout;
 					var r4 = '카드 승인 번호' +rsp.apply_num;
 					alert(msg);
+					//location.href="/" 결제가 승인된후 count 갯수 줄여야함
 					$("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
 				}else{
 					$("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);

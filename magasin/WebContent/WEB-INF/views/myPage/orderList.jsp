@@ -18,7 +18,7 @@
 <div class="ol-wrapper">
 
 <% if( !lists.isEmpty() ) {%>
-<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(1).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
+<h2 class="ol-wrapper-h2">주문내역조회 <span ><a href="/orderList2?orderUserId=<%=lists.get(0).getOrderUserId()%>">취소/반품/교환내역</a></span> </h2>
 <% }%>
 <h3 class="ol-wrapper-h3">주문내역</h3>
 <table class="ol-table">

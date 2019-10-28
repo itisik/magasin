@@ -73,8 +73,10 @@ public class AddOrderServlet extends HttpServlet {
 		MemberService service2 = new MemberService();
 		BasketService service3 = new BasketService(); 
 		int result = service3.deleteBasket(list,count);
+		//int result2 = service.deleteCountProduct(list, count);
+		Member m =  service2.selectOne(list.get(0).getBasketUserId());
 		
-		Member m = service2.selectOne(list.get(0).getBasketUserId());	
+			
 		HttpSession session = request.getSession(false);
 		session.setAttribute("member", m);
 		request.setAttribute("ProductAll", pay);

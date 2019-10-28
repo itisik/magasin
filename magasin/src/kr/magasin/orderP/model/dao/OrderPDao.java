@@ -95,7 +95,7 @@ public class OrderPDao {
 		 ArrayList<OrderP2> list = new ArrayList<OrderP2>();
 		 PreparedStatement pstmt = null;
 		 ResultSet rset = null;
-		 String query = "select A.prd_id,  B.prd_Dtl_Id, A.prd_Name, B.prd_Dtl_Size, B.prd_Dtl_Color,A.prd_Price, a.prd_Sn_Imgname, a.prd_Sn_Imgpath, a.prd_filename, a.prd_filepath, c.order_Prd_Count, c.order_Money, order_Addr, order_Status, order_Pay, order_Date, order_Out_Date, order_Num, order_User_Id, order_Prd_Dtl_Id , ORDER_BUYER_NAME,ORDER_BUYER_PHONE FROM PRODUCT A ,PRODUCT_Dtl B ,order_p c where A.PRD_ID= B.PRD_ID AND b.PRD_DTL_ID = c.ORDER_PRd_DTL_ID and order_USER_id=?"; 
+		 String query = "select A.prd_id,  B.prd_Dtl_Id, A.prd_Name, B.prd_Dtl_Size, B.prd_Dtl_Color,A.prd_Price, a.prd_Sn_Imgname, a.prd_Sn_Imgpath, a.prd_filename, a.prd_filepath, c.order_Prd_Count, c.order_Money, order_Addr, order_Status, order_Pay, order_Date, order_Out_Date, order_Num, order_User_Id, order_Prd_Dtl_Id, ORDER_BUYER_NAME,ORDER_BUYER_PHONE  FROM PRODUCT A ,PRODUCT_Dtl B ,order_p c where A.PRD_ID= B.PRD_ID AND b.PRD_DTL_ID = c.ORDER_PRd_DTL_ID and order_USER_id=?"; 
 
 		 
 			try {
@@ -122,9 +122,10 @@ public class OrderPDao {
 					oP.setOrderDate(rset.getDate("order_date"));
 					oP.setOrderOutDate(rset.getDate("order_out_date"));
 					oP.setOrderNum(rset.getInt("order_num"));
+					oP.setOrderUserId(rset.getString("order_user_id"));
 					oP.setOrderPrdDtlId(rset.getInt("order_prd_dtl_id"));
 					oP.setOrderBuyerName(rset.getString("ORDER_BUYER_NAME"));
-					oP.setOrderBuyerphone(rset.getString("ORDER_BUYER_PHONE "));
+					oP.setOrderBuyerphone(rset.getString("ORDER_BUYER_PHONE"));
 					list.add(oP);
 				}
 			} catch (SQLException e) {
