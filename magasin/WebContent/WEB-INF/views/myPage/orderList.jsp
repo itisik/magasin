@@ -63,10 +63,9 @@
           <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
         <%}else{
         	switch((Integer.parseInt(oP.getOrderStatus()))){
-            case 0:status="주문완료"; break;
-            case -1:status="취소처리중"; break;
-
-            case 1:status="취소"; break;
+            case 1:status="주문완료"; break;
+            case 0:status="취소처리중"; break;
+            case -1:status="취소"; break;
             case 2:status="배송준비중"; break;
             case 3:status="배송중"; break;
             case 4:status="배송완료"; break;
@@ -77,7 +76,7 @@
         	%>
           <td class="ol-list-6"><%=status%></td>
         <%} %>
-         <%if(Integer.parseInt(oP.getOrderStatus())==0){  %>
+         <%if(Integer.parseInt(oP.getOrderStatus())==1){  %>
          <td class="ol-list-7"><a href="/updateOrder?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>" >주문취소</a></td>
             <%}else if(Integer.parseInt(oP.getOrderStatus())==4){ %>
                 <td class="ol-list-7"><a href="/updateOrder1?orderNum=<%=oP.getOrderNum() %>&orderUserId=<%=oP.getOrderUserId() %>">반품신청</a></td>

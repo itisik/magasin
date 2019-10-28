@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
+import kr.magasin.prdPaging.model.vo.ProductAll;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
@@ -22,12 +24,15 @@ public class ProductLeeService {
 		return list;
 	}
 
-	public Product ProductdetailId(int prdId) {
-		Connection conn = JDBCTemplate.getConnection();
-		Product pdI = dao.ProductdetailId(conn,prdId);
-		JDBCTemplate.close(conn);
-		return pdI;
-	}
+	  public ArrayList<ProductAll> ProductdetailId(ArrayList<BasketT> list,int count) {
+		   System.out.println("productLEE 서비스페이지 도착 !");
+		  ArrayList<ProductAll> pay = new ArrayList<ProductAll>();
+		  Connection conn =	  JDBCTemplate.getConnection(); 
+		  pay = dao.ProductdetailId(conn, list, count);
+		  JDBCTemplate.close(conn); 
+		  return pay; 
+		  }
+	
 
 /*
   가격과 신상으로 정렬
@@ -107,9 +112,10 @@ public class ProductLeeService {
 		return list;
 	}
 
-	public ArrayList<String> subCtgr(String ctgr) {
+	public ArrayList<String> subCtgr(String ctgr,String gender) {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<String> sub = dao.subCtgr(conn,ctgr);
+		ArrayList<String> sub = dao.subCtgr(conn,ctgr,gender);
+
 		JDBCTemplate.close(conn);
 		return sub;
 	}

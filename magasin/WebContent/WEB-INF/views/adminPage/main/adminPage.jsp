@@ -54,7 +54,7 @@
                 ,changeYear: true //콤보박스에서 년 선택 가능
                 ,changeMonth: true //콤보박스에서 월 선택 가능                
                 ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+                ,buttonText: "날짜선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
                 ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
                 ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
                 ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
@@ -62,7 +62,7 @@
                 ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
                 ,minDate: "-3M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
                 ,maxDate: "+0D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                
-            }); 
+            });
         });                  
             
 	  $(function() {
@@ -128,11 +128,11 @@
 								</select>
 							</div>
 							<div class="top-interval">
-								<p>조회기간&nbsp;&nbsp;<input type="text" id="datepicker1" style="height: 21px"> ~ <input type="text" id="datepicker2" style="height: 21px"></p>
+								<p>조회기간&nbsp;&nbsp;<input type="text" id="datepicker1" name="datepicker1" style="height: 21px; width: 100px;"> ~ <input type="text" id="datepicker2" name="datepicker2" style="height: 21px; width: 100px;"></p>
 							</div>
 						</div>
 							<div class="search-btn">
-							<button>검색</button>
+							<button id="chartSearchBtn">검색</button>
 						</div>
 					</div>
 					<div class="chart-top">
@@ -149,6 +149,7 @@
 							연령별 구매 비율</div>
 					</div>
 				</div>
+			<script type="text/javascript" src="/js/adminPage/chartAjax.js"></script>
 
 			</div>
 			
@@ -187,7 +188,7 @@
 	
 	<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
 	<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
-	<script type="text/javascript" src="/js/adminPage/graph.js"></script>
+	<script type="text/javascript" src="/js/adminPage/chart.js"></script>
 	<script type="text/javascript" src="/js/adminPage/prdSearch.js"></script>
 	<script type="text/javascript" src="/js/adminPage/prdInsert.js"></script>
 	<script type="text/javascript" src="/js/adminPage/customerSearch.js"></script>
