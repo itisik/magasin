@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.member.model.service.MemberService;
 import kr.magasin.member.model.vo.Member;
@@ -43,6 +42,7 @@ public class ProductExpayServlet extends HttpServlet {
 	///주문창으로 넘어가는 페이지 
 		request.setCharacterEncoding("utf-8");
 
+
 	      int prdId = Integer.parseInt(request.getParameter("prdId"));
 
 	      ProductLeeService service = new ProductLeeService();
@@ -52,6 +52,7 @@ public class ProductExpayServlet extends HttpServlet {
 	         RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
 	         request.setAttribute("pays", pay);
 	         rd.forward(request, response);
+
 	}
 
 	/**

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.orderP.model.vo.OrderP2;
@@ -93,7 +92,9 @@ public class ProductLeeDao {
 
 	// 상품번호로 페이지 이동 //
 
+
 	public ArrayList<ProductAll> insertBasket(Connection conn, ArrayList<BasketT> list, int count) {
+
 		   System.out.println("productLEE DAO페이지 도착 !");
 		ProductAll pa = null;
 		ArrayList<ProductAll> lists =  new ArrayList<ProductAll>();

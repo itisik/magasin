@@ -14,7 +14,6 @@ public class BasketT {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public BasketT(String prdDtlId, String prdDtlSize, String prdDtlColor, String basketUserId, String prdName,
 			int prdCount, int prdPrice) {
 		super();
@@ -96,7 +95,6 @@ public class BasketT {
 	public void setPrdPrice(int prdPrice) {
 		this.prdPrice = prdPrice;
 	}
-
 
 
 	
