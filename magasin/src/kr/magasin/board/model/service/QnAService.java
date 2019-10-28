@@ -98,5 +98,156 @@ public class QnAService {
 		JDBCTemplate.close(conn);
 		return q;
 	}
+	public int aEtcInsert(AEtc a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aEtcInsert(conn,a);
+		if(result>0) {
+			int uIsA = dao.uEtcIsA(conn,a.getaQEtcNoRef());
+			if(uIsA>0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		}else {
+			System.out.println("등록 실패");
+		}
+		return result;
+	}
+	public int aPrdInsert(APrd a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aPrdInsert(conn,a);
+		if(result>0) {
+			int uIsA = dao.uPrdIsA(conn,a.getaQPrdNoRef());
+			if(uIsA>0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		}else {
+			System.out.println("등록 실패");
+		}
+		return result;
+	}
+	public AEtc aEtcOne(int aNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		AEtc a = dao.aEtcOne(conn,aNo);
+		JDBCTemplate.close(conn);
+		return a;
+	}
+	public APrd aPrdOne(int aNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		APrd a = dao.aPrdOne(conn,aNo);
+		JDBCTemplate.close(conn);
+		return a;
+	}
+	public int qEtcDelete(int qNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.qEtcDelete(conn, qNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public int qPrdDelete(int qNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.qPrdDelete(conn, qNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public int qEtcUpdate(QEtc q) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.qEtcUpdate(conn, q);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	public int qPrdUpdate(QPrd q) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.qPrdUpdate(conn, q);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aEtcDelete(int aNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aEtcDelete(conn, aNo);
+		if(result>0) {
+			int qNo = aEtcOne(aNo).getaQEtcNoRef();
+			int result2 = dao.qEtcQIsADown(conn, qNo);
+			if(result2>0) {
+				JDBCTemplate.commit(conn);	
+			}
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aPrdDelete(int aNo) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aPrdDelete(conn, aNo);
+		if(result>0) {
+			int qNo = aPrdOne(aNo).getaQPrdNoRef();
+			int result2 = dao.qPrdQIsADown(conn,qNo);
+			if(result2>0) {
+				JDBCTemplate.commit(conn);	
+			}
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aEtcUpdate(AEtc a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aEtcUpdate(conn, a);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+	public int aPrdUpdate(APrd a) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.aPrdUpdate(conn, a);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);		
+		return result;
+	}
+
 
 }

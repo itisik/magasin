@@ -92,14 +92,15 @@
 				
 					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
 					<%if(m!=null){ 
-						if(m.getId().equals("admin")){
+						if(m.getId().equals("admin")&&q.getqIsA()==0){
 					%>
 					<!-- 관리자일때 -->
-					<a href="/aPrdWrite" class="btn btn-default btn-md" >답변</a>
+					<a href="/aWrite?ctgr=prd&qNo=<%=q.getqNo()%>" class="btn btn-default btn-md" >답변</a>
 					<%}else if(m.getId().equals(q.getqWriter())){ %>
 					<!-- 글쓴이 일때 -->
-					<a href="/qPrdDelete?qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >삭제</a>
-					<a href="/qPrdUpdate?qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >수정</a>
+					<a href="/qDelete?ctgr=prd&qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >삭제</a>
+					<a href="/qUpdate?ctgr=prd&qNo=<%=q.getqNo() %>" class="btn btn-default btn-md" >수정</a>
+
 					<%} 
 					}%>
 				</div>

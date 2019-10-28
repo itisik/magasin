@@ -38,10 +38,14 @@ public class QPrdViewServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		QnAService service = new QnAService();
 		QPrd q = service.qPrdOne(qNo);
-		if(q!=null && (q.getqWriter().equals(id)||id.equals("admin"))) {
+
+		if(q!=null && id!=null&&(q.getqWriter().equals(id)||id.equals("admin"))) {
 			request.setAttribute("qPrd", q);
 			RequestDispatcher rd =  request.getRequestDispatcher("/WEB-INF/views/board/qna/qView2Test.jsp");
 			rd.forward(request, response);
+		}else if(id==null){
+			response.sendRedirect("/views/member/login.jsp");
+
 		}else {
 			request.setAttribute("msg", "접근권한이 없습니다.");
 			request.setAttribute("loc", "/qnaList");

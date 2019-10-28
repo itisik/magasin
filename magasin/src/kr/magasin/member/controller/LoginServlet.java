@@ -40,6 +40,8 @@ public class LoginServlet extends HttpServlet {
 		//2. 변수저장
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String uniq = request.getParameter("uniq");
+		System.out.println(uniq);
 		//3. 비지니스로직처리
 		MemberService service = new MemberService();
 		Member m = service.login(id, pw); //서비스라는 객체에 로그인메소드 없음

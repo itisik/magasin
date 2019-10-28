@@ -127,3 +127,13 @@
 .search-bottom > .bottom-input > input {
   height: 19px;
 }
+
+.customer-bottom > .bottom-list > .list-title td:first-child,
+.customer-bottom > .bottom-list > .list-content td:first-child {
+  width: 50px;
+}
+
+.customer-bottom > .bottom-list > .list-title td:not(:first-child),
+.customer-bottom > .bottom-list > .list-content td:not(:first-child) {
+  width: 14%;
+}
