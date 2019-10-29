@@ -65,6 +65,16 @@
 									<td><input type="text" name="name" id="name" class="form-control"></td> <!-- 이름글자눌러도 클릭되도록할려고 name씀 -->
 								</tr>
 								<tr>
+                               		<th><label for="jibunAddress">주소</label></th><!-- label id로 넘겨줌-->
+                               		<td>
+                                   		<input type="text" name="addr_4" id="addr_postcode"  placeholder="우편번호" readonly="readonly">
+                                   		<button type="button" id="addr_btn" class="btn-box" onclick="sample6_execDaumPostcode()" value="우편번호찾기">우편번호찾기</button><br>
+                                   		<input type="text" name="addr_1" id="addr_address" placeholder="기본 도로명 주소"><br>
+                                   		<input type="text" name="addr_2" id="addr_detailAddress" placeholder="상세주소">
+                                   		<input type="text" name="addr_3" id="addr_extraAddress" placeholder="참고항목">
+                               		</td>
+                           		</tr>
+								<tr>
 									<th>생년월일</th>
 									<td><input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="ex)19970112"><input type="hidden" name="grade" id="grade"/></td> 
 								</tr>
@@ -84,7 +94,7 @@
 									<th>이메일 <img src="img/ico_required_blue.gif"></th>
 									<td>
 										<div>				
-											<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@naver.com"> 
+											<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@gmail.com"> 
 											<input type="button" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
 											<span id="emailChkMsg"></span> <!-- 이메일 중복된건지 체크 -->
 											<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
@@ -458,6 +468,7 @@
 					}else{
 						msg.html('이미 사용중인 이메일 입니다.');
 						msg.css('color','red');
+						return false;
 					}
 				},
 				error:function(){
@@ -523,10 +534,15 @@
 			var code_check = document.getElementById("code_check").value;
 			var closetime = 10;
 
-			//alert(email);
 			if(email == ""){
 				alert("이메일을 입력해주세요.");
 				return;
+			}
+			//인증번호 눌렀을 때 사용중인 이메일이면 전송 안되게.
+			if($("#emailChkMsg").html()=='이미 사용중인 이메일입니다.'){
+				$("#emailChkMsg").val("");
+				$("#emailChkMsg").focus();
+				return false;
 			}
 
 			//email, code_check(랜덤숫자)값 넘겨줌
@@ -677,6 +693,13 @@
 			   $("#id").focus();
 			   return false;
 		   }
+		   //id 중복 검사
+		   if($("#idChkMsg").html()=='이미 사용중인 아이디입니다.'){
+			   alert("이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.");
+			   $("#id").val("");
+			   $("#id").focus();
+			   return false;
+		   }
 		   //비밀번호 공백확인
 		   if($("#pw").val()==""){
 			   alert("비밀번호를 입력해주세요.");
@@ -740,6 +763,13 @@
 		   //이메일 유효성 검사
 		   if(!getMail.test($("#email").val())){
 			   alert("이메일 형식에 맞게 입력해주세요.");
+			   $("#email").val("");
+			   $("#email").focus();
+			   return false;
+		   }
+		 	//이메일 중복 검사
+		   if($("#emailChkMsg").html()=='이미 사용중인 이메일 입니다.'){
+			   alert("이미 사용중인 이메일 입니다. 다른 이메일을 입력해주세요.");
 			   $("#email").val("");
 			   $("#email").focus();
 			   return false;
