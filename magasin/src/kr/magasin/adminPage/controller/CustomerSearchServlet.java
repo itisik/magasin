@@ -43,7 +43,7 @@ public class CustomerSearchServlet extends HttpServlet {
 
 		int dateSelect = -1;
 		// 조회기간 : -1, 7, 14, 30, 90
-
+		
 		if (!searchIndex.equals("all") && !searchIndex.equals("none")) {
 			// 전체기간이 아니면, 조회 기간을 숫자로 변환한다.
 			dateSelect = Integer.parseInt(request.getParameter("dateSelect"));

@@ -29,6 +29,7 @@ $("#customerSearchBtn").click(function() {
 									countList.html('0');
 								} else {
 									tbody.html('');
+									
 									for (let index in data) {
 										const tr = $("<tr>");
 										const idTd = $("<td style='width: 14.285714%;'>").html(data[index].cusId);
@@ -59,3 +60,4 @@ $("#customerSearchBtn").click(function() {
 						});
 					}
 				});
+		

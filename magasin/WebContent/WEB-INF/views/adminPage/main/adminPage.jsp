@@ -1,5 +1,16 @@
+<%@page import="kr.magasin.product.model.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+%>
+<%
+	int prdId = 50;
+	ProductService pservice = new ProductService();
+	Product p = pservice.searchOne(prdId);
+	request.setAttribute("product", p);
+	
+%>
+	
+	
 <!DOCTYPE html>
 <html lang="ko">
 <head>

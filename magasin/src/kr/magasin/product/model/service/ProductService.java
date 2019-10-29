@@ -7,6 +7,7 @@ import kr.magasin.common.JDBCTemplate;
 import kr.magasin.product.model.dao.ProductDao;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
+import oracle.sql.converter.JdbcCharacterConverters;
 
 public class ProductService {
 
@@ -73,39 +74,53 @@ public class ProductService {
             }
          }
          JDBCTemplate.commit(conn);
+         JDBCTemplate.close(conn);
          return 1;
       }else {
          JDBCTemplate.rollback(conn);
+         JDBCTemplate.close(conn);
          return -1;
       }
    }
 
-//   public int selectSequenNo() {
-//      Connection conn = JDBCTemplate.getConnection();
-//      ProductDao dao = new ProductDao();
-//      int refKey = dao.selectSequenNo(conn);
-//      return refKey;
-//   }
-//   public int insertProductdtl(ArrayList<ProductDtl> list){
-//      Connection conn = JDBCTemplate.getConnection();
-//      ProductDao dao = new ProductDao();
-//      int result =0;
-//      int refKey = selectSequenNo();
-//      int totalResult =0;
-//      for(int i=0; i<list.size(); i++){
-//         result = dao.insertProductdtl(conn, refKey, list.get(i));
-//         if(result>0){
-//            totalResult++;
-//            JDBCTemplate.commit(conn);
-//         }
-//         
-//      }
-//      if(totalResult == list.size()){
-//         
-//      }else{
-//         
-//      }
-//      return result;
-//   }
+   public ArrayList<Product> productSearch(String productnamesearch, String prdCtgr, String prdSubCtrg,int prddatesearch) {
+		Connection conn = JDBCTemplate.getConnection();
+	    ProductDao dao = new ProductDao();
+	    ArrayList<Product> list = new ArrayList<Product>();
+	    list = dao.productList(conn,productnamesearch,prdCtgr,prdSubCtrg,prddatesearch);
+	    if(list.isEmpty()){
+	    	JDBCTemplate.rollback(conn);
+	    }else {
+	    	JDBCTemplate.commit(conn);
+	    }
+	    return list;
+	}
+
+public Product searchOne(int prdId) {
+	Connection conn = JDBCTemplate.getConnection();
+	ProductDao dao = new ProductDao();
+	Product p = dao.searchOne(conn, prdId);
+	
+	if(p !=null){
+		ArrayList<ProductDtl> list = dao.searchdtl(conn, prdId);
+		JDBCTemplate.commit(conn);
+	}
+	JDBCTemplate.rollback(conn);
+	return p;
+}
+
+public int updateProduct(Product p) {
+	Connection conn = JDBCTemplate.getConnection();
+	ProductDao dao = new ProductDao();
+	int result = dao.updateProduct(conn,p);
+	if(result>0){
+		JDBCTemplate.commit(conn);
+	}else {
+		JDBCTemplate.rollback(conn);
+	}
+	return result;
+}
+
+
       
 }
