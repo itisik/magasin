@@ -38,7 +38,7 @@
 		<div class="header">
 			<%@include file="/WEB-INF/views/common/header.jsp"%>
 		</div>
-		
+
 		</header>
 		<section>
 		<div class="mainContainer">
@@ -78,11 +78,13 @@
 										<td class="color">
 										<%for( String color : colors ){ %>
 
+
 											<div class="color1" style="background-color:<%=color%>;">
 											</div>
 											<span style="display:none;" class="colors"><%=color %></span>
 											<%}%>
 											<input type="hidden" id="prdDtlColor" name="prdDtlColor">
+
 										</td>
 									</tr>
 									<tr>
@@ -90,8 +92,10 @@
 										<td><select id="sizes" name ="size">
 												<option value="no">-필수 옵션을 선택해주세요-</option>
 									<%for(String size : sizes) {%>
+
 												<!--필수옵션에 사이즈 상세추가함-->
 												<option value="<%=size%>"><%=size.toUpperCase()%></option>
+
 									<%} %>
 										</select>
 										</td>

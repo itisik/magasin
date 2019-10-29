@@ -53,6 +53,7 @@ public class ProductPageServlet extends HttpServlet {
 		
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
+
 		if(!pd.getLists().isEmpty()) {
 			
 			ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
@@ -77,6 +78,7 @@ public class ProductPageServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			rd.forward(request, response);
 		}
+
 		
 	}
 	

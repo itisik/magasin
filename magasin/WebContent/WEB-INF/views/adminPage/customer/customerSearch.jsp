@@ -51,13 +51,13 @@
 				<table>
 					<thead>
 						<tr>
-							<td>고객아이디</td>
-							<td>고객이름</td>
-							<td>상품이름</td>
-							<td>상품개수</td>
-							<td>결제일시</td>
-							<td>발송일시</td>
-							<td>배송완료일시</td>
+							<td style='width: 10%;'>고객아이디</td>
+							<td style='width: 10%;'>고객이름</td>
+							<td style='width: 10%;'>고객성별</td>
+							<td style='width: 30%;'>고객주소</td>
+							<td style='width: 10%;'>연락처</td>
+							<td style='width: 10%;'>생년월일</td>
+							<td style='width: 20%;'>이메일</td>
 						</tr>
 					</thead>
 				</table>

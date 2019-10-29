@@ -14,8 +14,25 @@ public class MemberGrade {
 		super();
 	}
 	
+	public MemberGrade(String memId, String tCount, String tMoney) {
+		super();
+		this.memId = memId;
+		this.tCount = tCount;
+		this.tMoney = tMoney;
+	}
+
+	public MemberGrade(String memId, String memName, String enrollDate, String recentOrderDate, String grade) {
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.enrollDate = enrollDate;
+		this.recentOrderDate = recentOrderDate;
+		this.grade = grade;
+	}
+
 	public MemberGrade(String memId, String memName, String enrollDate, String recentOrderDate, String tCount, String tMoney,
 			String grade) {
+		
 		super();
 		this.memId = memId;
 		this.memName = memName;
