@@ -72,8 +72,8 @@
 										
 							 		</td>
 									
-							        <td class="bkt-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
-							      
+							        <td class="bkt-list-2"><a href="/locationPrd?prdDtlId=<%=b2.getBasketPrdDtlId()%>"><img src="/img/myPage/product1.jpg"></a></td>
+							   
 							        <td class="bkt-list-3">
 							        	<ul>
 							        		<li class="bkt-list-3-li-1" ><strong><%=b2.getPrdName() %></strong></li>

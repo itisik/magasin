@@ -147,5 +147,25 @@ public class BasketDao {
 			}
 		 return result;
 	 }
+	 public int locationPrd(Connection conn, int prdDtlId) {
+		 int result = 0;
+		 ResultSet rset = null;
+		 PreparedStatement pstmt = null;
+		 String query = "select prd_id from product_dtl where prd_dtl_id=?";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, prdDtlId);
+				rset = pstmt.executeQuery();
+				while(rset.next()) {
+					result = rset.getInt("prd_id");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+		  return result;
+	 }
 		 
 }

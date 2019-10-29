@@ -9,6 +9,14 @@ import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 
 public class BasketService {
+	public int locationPrd(int prdDtlId) {
+		int result =0;
+		Connection conn = JDBCTemplate.getConnection();
+		BasketDao dao = new BasketDao();
+		result = dao.locationPrd(conn, prdDtlId);
+		JDBCTemplate.close(conn);		
+		return result;
+	}
 	public int deleteBasket(ArrayList<BasketT> list, int count) {
 		int result = 0;
 		Connection conn = JDBCTemplate.getConnection();
