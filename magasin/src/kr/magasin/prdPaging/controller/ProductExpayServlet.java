@@ -51,21 +51,21 @@ public class ProductExpayServlet extends HttpServlet {
 	            request.setAttribute("loc", "/views/member/login.jsp"); // 회원가입창 이동
 	            rd.forward(request, response);
 	         }else {// 로그인이 되어있으면
-	            int prdId = Integer.parseInt(request.getParameter("prdId"));
+	         int prdId = Integer.parseInt(request.getParameter("prdId"));
 	         int amount = Integer.parseInt(request.getParameter("total"));
 	         String prdName = request.getParameter("prdName");
 	         int prdPrice = Integer.parseInt(request.getParameter("prdPrice"));
-	         String prdDtlColor = request.getParameter("prdDtrlColor");
-	         String prdDtlSize = request.getParameter("prdDtlSize");
-	         String prdSnImgpath = request.getParameter("PrdSnImgpath");
-	         System.out.println("여기들어왔어");
-	         
-	         
+	         String prdDtlColor = request.getParameter("prdDtlColor");
+	         System.out.println(prdDtlColor);
+	         String prdDtlSize = request.getParameter("size");
+	         System.out.println(prdDtlSize);
+	         String prdSnImgpath = request.getParameter("prdSnImgpath");
 	         
 	         PaydcutLee pay = new PaydcutLee(prdId, amount, prdName, prdPrice, prdDtlColor, prdDtlSize, prdSnImgpath);
 	         
 	         
 	         request.setAttribute("pays", pay);
+	         System.out.println(pay.getPrdSnImgpath());
 	         
 	         RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp"); // 결제페이지 이동
 	         rd.forward(request, response);

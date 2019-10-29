@@ -38,9 +38,7 @@
 		<div class="header">
 			<%@include file="/WEB-INF/views/common/header.jsp"%>
 		</div>
-		 <%if(m!=null){ %>
-		<input type="hidden" class="memberId" value="<%=m.getId()%>" >
-		<%} %>
+		
 		</header>
 		<section>
 		<div class="mainContainer">
@@ -58,16 +56,21 @@
 						<div class="detailInfor">	
 
 						<form id="Sub" action="/productExpay" method="post">
-
+							 <%if(m!=null){ %>
+									<input type="hidden" class="memberId" value="<%=m.getId()%>" >
+									<%} %>
 							<div class="table-wrapper">
 								<p><%=pdI.getPrdName()%></p>
-								 <input type="hidden" class="prdId" name="prdId" value="<%=pdI.getPrdId()%>">
-								 <input type="hidden" class="prdName" name="prdName" value="<%=pdI.getPrdName()%>">	
+								 <input type="hidden" name="prdId" value="<%=pdI.getPrdId()%>">
+								 <input type="hidden" name="prdName" value="<%=pdI.getPrdName()%>">	
+								 <input type="hidden" name="prdPrice" value="<%=pdI.getPrdPrice()%>">
+								 <input type="hidden" name="prdSnImgpath" value="<%=pdI.getPrdSnImgpath()%>">
+								 
 								<table class="table detail-table">
 									<tr>
 										<th>Price</th>
 										<td><span><%=pdI.getPrdPrice()%></span>원</td>
-										<input type="hidden" class="prdPrice"name="prdPrice" value="<%=pdI.getPrdPrice()%>">
+									
 										<!--sale가격에 대한 테이블삭제-->
 									</tr>
 									<tr>
@@ -75,11 +78,11 @@
 										<td class="color">
 										<%for( String color : colors ){ %>
 
-											<div class="color1" name ="color1" value="<%=color%>"style="background-color:<%=color%>;"></div>
-											<input type="hidden" class="prdDtlColor" name="prdDtlColor" value="<%=color%>">
-
-											<%
-									}%>
+											<div class="color1" style="background-color:<%=color%>;">
+											</div>
+											<span style="display:none;" class="colors"><%=color %></span>
+											<%}%>
+											<input type="hidden" id="prdDtlColor" name="prdDtlColor">
 										</td>
 									</tr>
 									<tr>
@@ -87,12 +90,8 @@
 										<td><select id="sizes" name ="size">
 												<option value="no">-필수 옵션을 선택해주세요-</option>
 									<%for(String size : sizes) {%>
-										
 												<!--필수옵션에 사이즈 상세추가함-->
-												<option value="<%=size%>"><%=size%></option>
-												
-												
-										<% %>
+												<option value="<%=size%>"><%=size.toUpperCase()%></option>
 									<%} %>
 										</select>
 										</td>
@@ -100,9 +99,7 @@
 								</table>
 								<div class="detailTotal">
 
-
 									  총 상품금액(수량): <input class="amount" id = "amount" type="number" name="total" min="1" value="1" style="width:40px;"><span id="total"><%=pdI.getPrdPrice()%></span>(won)
-
 								</div>
 								<script>
 									$("#amount").change(function(){
@@ -136,6 +133,7 @@
 
 						<div class="detailAllImg" style="width:100%;">
 							<img src="/upload/photo/<%=pdI.getPrdFilepath()%>" width="100%;">
+							
 						</div>
 					</div>
 					<!-- <div class="detailSize">
@@ -226,11 +224,11 @@
 		$('.color1').click(function(){
 			$(".color1").removeClass(PIEKEDCOLOR); 
 			$(this).addClass(PIEKEDCOLOR);
-
 			/* $(this).addValue(); */
 			index = $(".color1").index(this);
-			console.log(index);
-
+			
+			$("#prdDtlColor").attr("value",$(".colors").eq(index).text());
+			
 			});
 		});
 

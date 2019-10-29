@@ -18,8 +18,9 @@
         background-color: rgb(246,246,246);
     }
     .main{
-       text-align: center;
-          width: 80%;
+        text-align: center;
+      	width:350px;
+      	margin: 0 auto;
     }
    .main_h3{
       text-align: left;
@@ -62,7 +63,7 @@
        font-size: 12px;
     }
    #search-pw-btn {
-      text-align: left;
+      text-align: center;
    }
     #search-pw-btn button {
     font-size: 13px;

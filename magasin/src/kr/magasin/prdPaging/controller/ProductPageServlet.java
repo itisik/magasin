@@ -53,22 +53,30 @@ public class ProductPageServlet extends HttpServlet {
 		
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
-		ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
-		request.setAttribute("prdDtl", colors);
-
-		
-		ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
-
-		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);
-		request.setAttribute("count", subCtgrCount);
-		
-		
-		request.setAttribute("lists", pd.getLists());
-		request.setAttribute("pageNavi",pd.getPageNavi());
-		request.setAttribute("sub", subCtgr);
-	
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
-		rd.forward(request, response);
+		if(!pd.getLists().isEmpty()) {
+			
+			ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
+			request.setAttribute("prdDtl", colors);
+			
+			
+			ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
+			
+			ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);
+			request.setAttribute("count", subCtgrCount);
+			
+			
+			request.setAttribute("lists", pd.getLists());
+			request.setAttribute("pageNavi",pd.getPageNavi());
+			request.setAttribute("sub", subCtgr);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
+			rd.forward(request, response);
+		}else {
+			request.setAttribute("msg", "등록된 상품이 없습니다.");
+			request.setAttribute("loc", "/");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+			rd.forward(request, response);
+		}
 		
 	}
 	

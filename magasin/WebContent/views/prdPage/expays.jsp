@@ -76,7 +76,7 @@
                         <td class="order-list-2">
                             <ul>
                                 <li class="order-list-2-li-1"><strong><%=pay.getPrdName() %></strong></li>
-                                <li class="order-list-2-li-2">[옵션:<span><%=pay.getPrdDtlColor() %></span>/<span><%=pay.getPrdDtlSize() %></span>]</li>
+                                <li class="order-list-2-li-2">[옵션 : <span><%=pay.getPrdDtlColor().toUpperCase() %></span> / <span><%=pay.getPrdDtlSize().toUpperCase() %></span>]</li>
                             </ul>
                         </td>
                         <td class="order-list-3"><span><%=pay.getPrdPrice() %></span></td>

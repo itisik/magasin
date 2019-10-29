@@ -6,7 +6,7 @@
 <%
 	ArrayList<ProductLee> list = (ArrayList<ProductLee>)request.getAttribute("subList");
 	String pageNavi = (String)request.getAttribute("pageNavi");
-    ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
+	ArrayList<ArrayList<ProductDtl>> dtlList  = (ArrayList<ArrayList<ProductDtl>>)request.getAttribute("dtlList");
     ArrayList<String> subCtgrList = (ArrayList<String>)request.getAttribute("subCtgrList");
     ArrayList<Integer> subCtgrCount = (ArrayList<Integer>)request.getAttribute("count");
 %>
@@ -81,48 +81,44 @@
     <div class="sub-title">
              <div class="sub-top">new arrivalcategory have <strong><%=list.size() %></strong> product</div> 
         </div> 
-        <%for(int i=0; i<list.size()/4; i++){ %>
+         <div style="width:100%;">
+	    <%int n=1;
+        for(int i=0; i<list.size(); i++){ %>
+        
+        <div class="cate-window" style="float:left;">  
+            <div class="window-cloths" style="float:left; width:230px;">
 
-        <div class="cate-window">
-         <%for(int j=0; j<4; j++){ %>
-	            <div class="window-cloths">
-	            <div class="cloths-event" style="display: none;"></div>
-	
-	            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>">
-	               <img src="/upload/photo/<%=list.get(4*i+j).getPrdSnImgpath()%>"></a>
-	            </div>
-	            <div class="cloths-title">
-	               <a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><%=list.get(4*i+j).getPrdName()%></a>
-	            </div>
-	            <div class="cloths-price"><span><%=list.get(4*i+j).getPrdPrice() %></span></div>
-	            <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
-	            <div class="cloths-color">
-	            
-	 			 <%
-	            for(int k=0; k<prdDtl.size(); k++){
-	 
-	               if(list.get(4*i+j).getPrdId() == prdDtl.get(k).getPrdId()){
-	            %>
-	            
-	            <div class="color1" style="background-color:<%=prdDtl.get(k).getPrdDtlColor()%>"></div>
-	           
-	            <% 
-	            }
-	            }%> 
-	           <!--  <div class="color2"></div>
-	            <div class="color3"></div>
-	            <div class="color4"></div> -->
-	            </div>
-	            <div class="cloths-new">
-
-            	<div class="cloths-review">Review : <span></span></div>
-            	</div> 
-            </div>       
-         <%} %>
+            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(i).getPrdId() %>">
+               <img src="/upload/photo/<%=list.get(i).getPrdSnImgpath()%>"></a>
+            </div>
+            <div class="cloths-title">
+               <a href="/productExdetail?prdId=<%=list.get(i).getPrdId() %>"><%=list.get(i).getPrdName()%></a>
+            </div>
+            <div class="cloths-price"><span><%=list.get(i).getPrdPrice() %></span></div>
+            <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
+            <div class="cloths-color">
+            
+            <%
+            for(int k=0; k<dtlList.get(i).size(); k++){
+            	if(list.get(i).getPrdId() == dtlList.get(i).get(k).getPrdId()){
+            %>
+            
+            <div class="color1" style="background-color:<%=dtlList.get(i).get(k).getPrdDtlColor()%>"></div>
+           
+            <%}
+               }%>
+           </div>
+            </div>
         </div>
-       <%} %>
-    </div>
-     <div class="move"><%=pageNavi %></div> 
+       	 <%if(i==4*n-1){ %>
+			<div style="clear:both; width:100%;"></div>
+			<%++n;} %>
+		 
+        <%} %>
+   	</div>
+    
+     <div class="move" style="clear:both;"><%=pageNavi %></div> 
+
 </div>
                
             </div>

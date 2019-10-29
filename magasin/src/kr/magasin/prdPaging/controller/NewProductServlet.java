@@ -49,12 +49,13 @@ public class NewProductServlet extends HttpServlet {
 		String gender = request.getParameter("gender");
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.newPrdList(reqPage,gender);
-		ArrayList<ProductDtl> dtlList = service.searchColor();
+
+		ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
+		request.setAttribute("dtlList", colors);
 		
 		/*ArrayList<ProductLee> list = service.newPrdList(gender);*/
 		request.setAttribute("newList", pd.getLists());
 		request.setAttribute("pageNavi", pd.getPageNavi());
-		request.setAttribute("dtlList", dtlList);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/prdPage/newPrd.jsp");
 		rd.forward(request, response);
 		

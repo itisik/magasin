@@ -92,49 +92,43 @@
              <div class="sub-top"  >new arrivalcategory have <strong><%=lists.size() %></strong> product</div> 
         </div> 
         
-        <%for(int i=0; i<lists.size()/4; i++){ %>
-		<div class="cate-window">
+             
+    <div style="width:100%;">
+	    <%int n=1;
+        for(int i=0; i<lists.size(); i++){ %>
         
-         <%for(int j=0; j<4; j++){ %>
-            <div class="window-cloths">
-            <div class="cloths-event" style="display: none;"></div>
+        <div class="cate-window" style="float:left;">  
+            <div class="window-cloths" style="float:left; width:230px;">
 
-            <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>">
-               <img src="/upload/photo/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a>
+            <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(i).getPrdId() %>">
+               <img src="/upload/photo/<%=lists.get(i).getPrdSnImgpath()%>"></a>
             </div>
             <div class="cloths-title">
-               <a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>"><%=lists.get(4*i+j).getPrdName()%></a>
+               <a href="/productExdetail?prdId=<%=lists.get(i).getPrdId() %>"><%=lists.get(i).getPrdName()%></a>
             </div>
-            <div class="cloths-price"><span><%=lists.get(4*i+j).getPrdPrice() %></span></div>
+            <div class="cloths-price"><span><%=lists.get(i).getPrdPrice() %></span></div>
             <%-- <input type="hidden" name="prdId" value="<%=list.get(4*i+j).getPrdId() %>"> --%>
             <div class="cloths-color">
             
             <%
-            for(int k=0; k<prdDtl.get(4*i+j).size(); k++){
- 
-               if(lists.get(4*i+j).getPrdId() == prdDtl.get(4*i+j).get(k).getPrdId()){
+            for(int k=0; k<prdDtl.get(i).size(); k++){if(lists.get(i).getPrdId() == prdDtl.get(i).get(k).getPrdId()){
             %>
             
-            <div class="color1" style="background-color:<%=prdDtl.get(4*i+j).get(k).getPrdDtlColor()%>"></div>
+            <div class="color1" style="background-color:<%=prdDtl.get(i).get(k).getPrdDtlColor()%>"></div>
            
-            <% 
-            }
-            }%>
-           <!--  <div class="color2"></div>
-            <div class="color3"></div>
-            <div class="color4"></div> -->
+            <%}
+               }%>
+           </div>
             </div>
-            <div class="cloths-new">
-
-            <div class="cloths-review">Review : <span></span></div>
-            </div> </div>       
-         <%} %>
-       </div> 
-       <%} %>
-       
-    </div>
-     <div class="move"><%=pageNavi %></div> 
-
+        </div>
+       	 <%if(i==4*n-1){ %>
+			<div style="clear:both; width:100%;"></div>
+			<%++n;} %>
+		 
+        <%} %>
+   	</div>
+    
+     <div class="move" style="clear:both;"><%=pageNavi %></div> 
 </div>            
             </div>
             </div>

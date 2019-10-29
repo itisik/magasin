@@ -14,6 +14,9 @@
     }
     .main{
        text-align: center;
+      	width:350px;
+      	margin: 0 auto;
+      	
     }
    .main_h3{
       text-align: left;
@@ -56,7 +59,8 @@
        font-size: 12px;
     }
    #search-id-btn{
-      text-align: left;
+      text-align: center;
+
    }
     #search-id-btn button {
             font-size: 13px;
@@ -66,6 +70,7 @@
             background-color: #444;
             color: white;
             border-radius: 3px;
+           
     }
     .btn_searchId{
        display: inline;

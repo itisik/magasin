@@ -48,7 +48,9 @@ public class SubCtgrSearchServlet extends HttpServlet {
 			reqPage = 1;
 		}
 		PageDataLee pd = service.subCtgrSearch(reqPage,subCtgr,gender);
-		ArrayList<ProductDtl> prdDtllist = service.searchColor();
+
+		ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
+		request.setAttribute("dtlList", colors);
 
 		ArrayList<String> subCtgrList = service.subCtgr(ctgr,gender);
 
@@ -56,7 +58,6 @@ public class SubCtgrSearchServlet extends HttpServlet {
 		request.setAttribute("count", subCtgrCount);
 		request.setAttribute("subList", pd.getLists());
 		request.setAttribute("pageNavi", pd.getPageNavi());
-		request.setAttribute("prdDtl", prdDtllist);
 		request.setAttribute("subCtgrList", subCtgrList);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/prdPage/subCtgrSearch.jsp");
 		rd.forward(request, response);
