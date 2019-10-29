@@ -53,7 +53,7 @@ public class ProductLeeDao {
 		return list;
 	}
 
-/*
+
 	// 상품번호로 페이지 이동 //
 
 	public Product ProductdetailId(Connection conn, ArrayList<BasketT> list) {
@@ -95,7 +95,7 @@ public class ProductLeeDao {
 		System.out.println(list.get(0).getPrdDtlColor());
 		return lists;
 	}
-*/
+
 /*
  	
  	가격과 신상으로 조회
@@ -342,6 +342,7 @@ public class ProductLeeDao {
 		}
 		return sub;
 	}
+
 
 	public int subTotalCount(Connection conn, String subCtgr, String gender) {
 		// TODO Auto-generated method stub

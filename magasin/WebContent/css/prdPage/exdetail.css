@@ -99,7 +99,7 @@
      }
      .detailTotal>span{
      	font-size : 21px;
-     	padding-left: 40px; 
+     	padding-left: 30px;
      }
      .table-wrapper>p{
          text-align: left;
@@ -124,11 +124,12 @@
          display:flex;
          justify-content:space-between;
      }
-     .detailBag div>a{
+     .detailBag div>a ,#pay-btn{
          padding: 0px 3px 0px 12px;
          color: black;
          font-size: 19Px;
          font-weight: bold;
+         display:inline-block;
      }
      .detailBorderSize{
          margin: 50px 0px;
