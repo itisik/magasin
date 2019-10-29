@@ -72,7 +72,7 @@
                 	
                 %>
                    
-                   <li><a href="/subCtgrSearch?ctgr=<%=lists.get(0).getPrdCtgr() %>&subCtgr=<%=sub%>&gender=<%=lists.get(0).getPrdGender()%>"><%=sub%></a>(<span class="subCtgr-count"><%=subCtgrCount.get(c) %></span>)</li>
+                   <li><a href="/subCtgrSearch?ctgr=<%=lists.get(0).getPrdCtgr() %>&subCtgr=<%=sub%>&gender=<%=lists.get(0).getPrdGender()%>"><%=sub.toUpperCase()%></a>(<span class="subCtgr-count"><%=subCtgrCount.get(c) %></span>)</li>
            
                 <% c++;
                    }%>
@@ -91,15 +91,16 @@
     <div class="sub-title">
              <div class="sub-top"  >new arrivalcategory have <strong><%=lists.size() %></strong> product</div> 
         </div> 
+        
         <%for(int i=0; i<lists.size()/4; i++){ %>
-
-        <div class="cate-window">
+		<div class="cate-window">
+        
          <%for(int j=0; j<4; j++){ %>
             <div class="window-cloths">
             <div class="cloths-event" style="display: none;"></div>
 
             <div class="cloths-img"><a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>">
-               <img src="/img/product/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a>
+               <img src="/upload/photo/<%=lists.get(i*4+j).getPrdSnImgpath()%>"></a>
             </div>
             <div class="cloths-title">
                <a href="/productExdetail?prdId=<%=lists.get(4*i+j).getPrdId() %>"><%=lists.get(4*i+j).getPrdName()%></a>
@@ -128,8 +129,9 @@
             <div class="cloths-review">Review : <span></span></div>
             </div> </div>       
          <%} %>
-        </div>
+       </div> 
        <%} %>
+       
     </div>
      <div class="move"><%=pageNavi %></div> 
 

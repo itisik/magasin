@@ -1,8 +1,8 @@
 <%@page import="kr.magasin.board.model.vo.AEtc"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% AEtc a = (AEtc)request.getAttribute("a");
-    %>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +44,8 @@
 							<tr>
 								<th>subject</th>
 								<td>
-									<img src="/img/board_img/realRe.png"><%=a.getaTitle() %>
+									<img src="/img/board_img/realRe.png">${a.aTitle }
+									
 								</td>
 							</tr>
 							<tr>
@@ -55,14 +56,14 @@
 							</tr>
 							<tr>
 								<th>Date</th>
-								<td><%=a.getaDate() %></td>
+								<td>${a.aDate }</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 							<td colspan="2">
 								<div style="text-align:center; width:800px; height:300px; margin: 0 auto; padding-top:30px;">
-								<%=a.getaCont()%>
+								${a.aCont }
 								</div>
 								
 								</td>
@@ -72,11 +73,12 @@
 				<div class="qna-btn">
 					<br>
 					<a href="/qnaList" class="btn btn-default btn-md" >List</a>
-					<%if(m!=null&& m.getId().equals("admin")){ %>
-					<!-- 관리자 일때만 보이게~ -->
-					<a href="/aDelete?ctgr=etc&aNo=<%=a.getaNo() %>&qNo=<%=a.getaQEtcNoRef() %>" class="btn btn-default btn-md" >삭제</a>
-					<a href="/aUpdate?ctgr=etc&aNo=<%=a.getaNo() %>" class="btn btn-default btn-md" >수정</a>
-					<%} %>
+					<c:if test="${not empty sessionScope.member && sessionScope.member.id == 'admin' }">
+						<a href="/aDelete?ctgr=etc&aNo=${a.aNo }&qNo=${a.aQEtcNoRef}" class="btn btn-default btn-md" >삭제</a>
+						<a href="/aUpdate?ctgr=etc&aNo=${a.aNo }" class="btn btn-default btn-md" >수정</a>
+						
+					</c:if>
+					
 				</div>
 			</div>
 				</div>

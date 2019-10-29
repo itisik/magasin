@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>**INCLUDE 틀**</title>
+<link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/common_css/slideShow.css">
+
 </head>
 <body id="body1">
 

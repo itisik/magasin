@@ -56,6 +56,8 @@ public class ProductService {
 //      }else{
 //         
 //      }
+      JDBCTemplate.close(conn);
+
       return result;
    }
    
@@ -75,13 +77,14 @@ public class ProductService {
             }
          }
          JDBCTemplate.commit(conn);
-         JDBCTemplate.close(conn);
+ 		JDBCTemplate.close(conn);
          return 1;
       }else {
          JDBCTemplate.rollback(conn);
-         JDBCTemplate.close(conn);
+ 		JDBCTemplate.close(conn);
          return -1;
       }
+      
    }
 
 //   public int selectSequenNo() {

@@ -84,7 +84,6 @@ public class NoticeService {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
-			
 		}
 		JDBCTemplate.close(conn);
 		return result;
@@ -98,7 +97,6 @@ public class NoticeService {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
-			
 		}
 		JDBCTemplate.close(conn);
 		return result;

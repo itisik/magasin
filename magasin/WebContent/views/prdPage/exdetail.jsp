@@ -52,7 +52,7 @@
 
 					<div class="detailBorder">
 						<div class="detailImg">
-							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
+							<img src="/upload/photo/<%=pdI.getPrdSnImgpath() %>">
 						</div>
 						<div class="detailInfor">	
 
@@ -134,11 +134,11 @@
 				</div>
 					<div class="detailView">
 
-						<div class="detailAllImg">
-							<img src="/img/product/<%=pdI.getPrdFilepath()%>">
+						<div class="detailAllImg" style="width:100%;">
+							<img src="/upload/photo/<%=pdI.getPrdFilepath()%>" width="100%;">
 						</div>
 					</div>
-					<div class="detailSize">
+					<!-- <div class="detailSize">
 						<div class="detailBorderSize">
 							<table class="table detail-Size">
 								<tr>
@@ -161,7 +161,7 @@
 								</tr>
 							</table>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

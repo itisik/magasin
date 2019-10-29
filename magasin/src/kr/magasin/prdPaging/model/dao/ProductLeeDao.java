@@ -92,6 +92,44 @@ public class ProductLeeDao {
 	}
 
 
+	// 상품번호로 페이지 이동 //
+public Product ProductdetailId(Connection conn, int prdId) {
+      Product pdI = null;
+      PreparedStatement pstmt = null;
+      ResultSet rset = null;
+      String query = "select * from product where prd_Id=?";
+      
+      try {
+         pstmt = conn.prepareStatement(query);
+         pstmt.setInt(1, prdId);
+         
+         rset = pstmt.executeQuery();
+         
+         if(rset.next()) {
+            pdI = new Product();
+            pdI.setPrdId(prdId);
+            pdI.setPrdName(rset.getString("prd_Name"));
+            pdI.setPrdGender(rset.getString("prd_gender"));
+            pdI.setPrdCtgr(rset.getString("prd_ctgr"));
+            pdI.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+            pdI.setPrdPrice(rset.getInt("prd_price"));
+            pdI.setPrdUpDate(rset.getDate("prd_up_date"));
+            pdI.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+            pdI.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+            pdI.setPrdFilename(rset.getString("prd_filename"));
+            pdI.setPrdFilepath(rset.getString("prd_filepath"));
+         }
+      } catch (SQLException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }finally {
+         JDBCTemplate.close(rset);
+         JDBCTemplate.close(pstmt);
+      }
+      return pdI;   
+   }
+
+
 
 	//은지 장바구니에서 결체로 넘어각게 만든 페이지 건들지 마세요 !!!!!!
 	public ArrayList<ProductAll> insertBasket(Connection conn, ArrayList<BasketT> list, int count) {
@@ -133,6 +171,7 @@ public class ProductLeeDao {
 		System.out.println(list.get(0).getPrdDtlColor());
 		return lists;
 	}
+
 
 /*
  	
@@ -481,6 +520,73 @@ public class ProductLeeDao {
 			e.printStackTrace();
 		}
 		return subCtgrCount;
+	}
+
+	public ArrayList<ProductLee> newPrdList(Connection conn,int start, int end, String gender) {
+		// TODO Auto-generated method stub
+		ArrayList<ProductLee> list = new ArrayList<ProductLee>();
+		ProductLee prd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select* from"+
+								"(select ROWNUM as rnum, n. * from"
+								+ "(select * from product where prd_gender=? order by prd_up_date desc) n )"
+								+ " where rnum between ? and ?";
+		
+			try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, gender);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				prd = new ProductLee();
+				prd.setPrdCtgr(rset.getString("prd_ctgr"));
+				prd.setPrdGender(rset.getString("prd_gender"));
+				prd.setPrdId(rset.getInt("prd_id"));
+				prd.setPrdName(rset.getString("prd_name"));
+				prd.setPrdPrice(rset.getInt("prd_price"));
+				prd.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+				prd.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+				prd.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+				prd.setPrdUpDate(rset.getDate("prd_up_date"));
+				list.add(prd);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		 }
+		
+		return list;
+	}
+
+
+	public int newPrdtotalCount(Connection conn, String gender) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select count(*) as total from product where prd_gender=? order by prd_up_date desc";
+		int result =0 ;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, gender);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("total");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 	

@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* qnaList.css */
-	
+*{
+	font: 13px 'Poppins',"맑은 고딕",'MalgunGothic',Helvetica,sans-serif;
+}
 .qnaContainer {
 	width: 943px;
 	height:100%;
@@ -123,6 +125,23 @@
 	margin-left: 5px;
 	float: right;
 }
+select {
+width: 120px;
+padding: .5em .5em;
+border: 1px solid #999;
+font-family: inherit;
+background: url('/img/board_img/arrow1.png') no-repeat 95% 50%;
+border-radius: 0px;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+									
+
 
 /* qView2.css */
 /* qWrite1.css */
