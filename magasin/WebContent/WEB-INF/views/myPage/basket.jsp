@@ -183,7 +183,7 @@
 	
 		var form =$("<form action='/addOrder' method='post'></form>");
 	 	var last =  $("[name=chk]:checked").length;
-	 	alert(last);
+	 	//alert(last);
 		for(var i = 0;i<last;i++){
 		//	alert($("[name=chk]:checked").length);
 
@@ -196,8 +196,8 @@
 		 	var prdName = $("[name=chk]:checked").eq(i).siblings().eq(6).val();
 		 	var basketId = $("[name=chk]:checked").eq(i).siblings().eq(7).val();
 		 	
-		 	var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
-		 	alert(url);
+		 	//var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
+		 	//alert(url);
 			form.append($("<input type='number' name='count' value='"+last+"'>"));//갯수
 		 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+prdId+"'>"));
 			form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
@@ -218,7 +218,7 @@
 		
 		var form =$("<form action='/addOrder' method='post'></form>");
 	 	var last =  $("[name=chk]").length;
-	 	alert(last);
+	 	//alert(last);
 		for(var i = 0;i<last;i++){
 		//	alert($("[name=chk]:checked").length);
 			
@@ -231,8 +231,8 @@
 		 	var prdName = $("[name=chk]:checked").eq(i).siblings().eq(6).val();
 		 	var basketId = $("[name=chk]:checked").eq(i).siblings().eq(7).val();
 		 	
-		 	var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
-		 	alert(url);
+		 	//var url =prdId +"/"+size+"/"+color+"/"+count+"/"+price+"/"+userId+"/"+prdName+"/"+basketId ;
+		 	//alert(url);
 			form.append($("<input type='number' name='count' value='"+last+"'>"));//갯수
 		 	form.append($("<input type='text' name='prdDtlId"+i+"' value='"+prdId+"'>"));
 			form.append($("<input type='text' name='prdDtlSize"+i+"' value='"+size+"'>"));
