@@ -53,14 +53,22 @@ public class UpdateServlet extends HttpServlet {
 			 phoneArr[2] = phoneStr.substring(7); 
 
 			String addrStr = m.getAddr();
-			
 			String[] addrList = new String[4];
+			if(addrStr == null) {
+				addrStr="0,0,0,0";
+				System.out.println("널이다!!!!");
+				StringTokenizer str = new StringTokenizer(addrStr,",");
+				int countTokens = str.countTokens();
+				for(int i = 0;i<countTokens;i++) {
+					addrList[i] = str.nextToken();}
+			}else {
+				
 			StringTokenizer str = new StringTokenizer(addrStr,",");
 			int countTokens = str.countTokens();
 			for(int i = 0;i<countTokens;i++) {
 				addrList[i] = str.nextToken();
 			}
-		
+			}
 			String emailStr = m.getEmail();
 			String[] emailList = new String[2];
 			StringTokenizer str1 = new StringTokenizer(emailStr,"@");

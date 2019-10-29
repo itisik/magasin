@@ -40,7 +40,7 @@ public class UpdateMemberServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
-		
+
 		addrList[0] = request.getParameter("addrList0");
 		addrList[1] = request.getParameter("addrList1");
 		addrList[2] = request.getParameter("addrList2");

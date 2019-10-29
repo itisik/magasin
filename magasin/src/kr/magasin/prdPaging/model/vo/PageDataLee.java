@@ -28,6 +28,4 @@ public class PageDataLee {
 		this.pageNavi = pageNavi;
 	}
 	
-	
-	
 }

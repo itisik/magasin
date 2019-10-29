@@ -84,41 +84,41 @@ public class ProductService {
    }
 
    public ArrayList<Product> productSearch(String productnamesearch, String prdCtgr, String prdSubCtrg,int prddatesearch) {
-		Connection conn = JDBCTemplate.getConnection();
-	    ProductDao dao = new ProductDao();
-	    ArrayList<Product> list = new ArrayList<Product>();
-	    list = dao.productList(conn,productnamesearch,prdCtgr,prdSubCtrg,prddatesearch);
-	    if(list.isEmpty()){
-	    	JDBCTemplate.rollback(conn);
-	    }else {
-	    	JDBCTemplate.commit(conn);
-	    }
-	    return list;
-	}
+      Connection conn = JDBCTemplate.getConnection();
+       ProductDao dao = new ProductDao();
+       ArrayList<Product> list = new ArrayList<Product>();
+       list = dao.productList(conn,productnamesearch,prdCtgr,prdSubCtrg,prddatesearch);
+       if(list.isEmpty()){
+          JDBCTemplate.rollback(conn);
+       }else {
+          JDBCTemplate.commit(conn);
+       }
+       return list;
+   }
 
 public Product searchOne(int prdId) {
-	Connection conn = JDBCTemplate.getConnection();
-	ProductDao dao = new ProductDao();
-	Product p = dao.searchOne(conn, prdId);
-	
-	if(p !=null){
-		ArrayList<ProductDtl> list = dao.searchdtl(conn, prdId);
-		JDBCTemplate.commit(conn);
-	}
-	JDBCTemplate.rollback(conn);
-	return p;
+   Connection conn = JDBCTemplate.getConnection();
+   ProductDao dao = new ProductDao();
+   Product p = dao.searchOne(conn, prdId);
+   
+   if(p !=null){
+      ArrayList<ProductDtl> list = dao.searchdtl(conn, prdId);
+      JDBCTemplate.commit(conn);
+   }
+   JDBCTemplate.rollback(conn);
+   return p;
 }
 
 public int updateProduct(Product p) {
-	Connection conn = JDBCTemplate.getConnection();
-	ProductDao dao = new ProductDao();
-	int result = dao.updateProduct(conn,p);
-	if(result>0){
-		JDBCTemplate.commit(conn);
-	}else {
-		JDBCTemplate.rollback(conn);
-	}
-	return result;
+   Connection conn = JDBCTemplate.getConnection();
+   ProductDao dao = new ProductDao();
+   int result = dao.updateProduct(conn,p);
+   if(result>0){
+      JDBCTemplate.commit(conn);
+   }else {
+      JDBCTemplate.rollback(conn);
+   }
+   return result;
 }
 
 

@@ -59,14 +59,14 @@
 				<select name="detailIndex" class="detailIndex">
 					<option value="none3">--선택--</option>
 					<option value = "1">신규주문</option>
-					<option value = "0">주문취소요청</option>
-					<option value = "-1">주문취소완료</option>
 					<option value = "2">배송준비중</option>
 					<option value = "3">배송중</option>
 					<option value = "4">배송완료</option>
 					<option value = "5">반품신청</option>
 					<option value = "6">반품중</option>
 					<option value = "7">반품완료</option>
+					<option value = "0">주문취소요청</option>
+					<option value = "-1">주문취소완료</option>
 					<option value = "customerName2">고객 이름</option>
 					<option value = "customerId2">고객 아이디</option>
 					<option value = "prdName2">구매상품이름</option>
@@ -84,7 +84,7 @@
 	<div class="order-bottom">
 		<div class="bottom-title">
 			<div>목록 (총 <span id="countList2">0</span>개)</div>
-			<div><button class="oneShotForOrder" style="display: none;">일괄처리</button></div>
+			<div><button id="oneShotForOrder" class="oneShotForOrder" style="display: none;">일괄처리</button></div>
 		</div>
 		<div class="bottom-list">
 			<div class="list-title">
@@ -130,10 +130,10 @@
 
 
 <script type="text/javascript" src="/js/adminPage/orderAjax.js"></script>
-
 <script>
 	$(".timeIndex").change(function() {
 		var isAll = $(".timeIndex>option:selected").val();
+		
 		if (isAll != "all2" && isAll != "none2") {
 			$(".top-date-select").show();
 		} else {
@@ -159,5 +159,50 @@
 				}
 		});
 	});
-
+	
+	$(document).on('click', '.orderProgress', function(){
+		let detailIndex = $("[name = detailIndex]").val();
+		let msg = "";
+		
+		if(detailIndex == 0){
+			msg = "주문 취소 요청을 수락";
+		} else if (detailIndex == 1){
+			msg = "신규주문에 대한 배송을 준비";
+		} else if (detailIndex == 2){
+			msg = "발송처리";
+		} else if (detailIndex == 3){
+			msg = "배송완료 처리";
+		} else if (detailIndex == 4){
+			msg = "반품처리";
+		} else if (detailIndex == 5){
+			msg = "반품 요청을 수락";
+		} else if (detailIndex == 6){
+			msg = "반품완료 처리";
+		} else {
+			alert("잘못된 요청입니다.");
+			return;
+		}
+		isGo = confirm(msg + "하시겠습니까?");
+		
+		if(isGo){
+			$.ajax({
+				url : "/orderProgress",
+				type : "get",
+				data : {
+					orderStatus : $(this).attr("status"),
+					orderNum : $(this).attr("id")
+				},
+				success : function(data) {
+					if(data > 0){
+						$("#orderSearchBtn").trigger('click');
+					} else {
+						alert("주문 처리가 비정상적으로 종료되었습니다.");
+					}
+				},
+				error : function(){
+					alert("주문 처리가 비정상적으로 종료되었습니다.");
+					}
+			})
+		}
+1	});
 </script>

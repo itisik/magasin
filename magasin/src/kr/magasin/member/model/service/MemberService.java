@@ -40,13 +40,22 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
-	/*public Member searchPw(String email) {
+
+	public Member searchPw(String name, String id, String email) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();
-		Member m = dao.selectOne2(conn,email);
+		Member m = dao.searchPw(conn,name,id,email);
 		JDBCTemplate.close(conn);
 		return m;
-	}*/
+	}
+	public Member searchPw2(String name, String id, String phone) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		Member m = dao.searchPw2(conn,name,id,phone);
+		JDBCTemplate.close(conn);
+		return m;
+	}
+
 	public int insertMember(Member m) {
 		Connection conn = JDBCTemplate.getConnection();
 		MemberDao dao = new MemberDao();

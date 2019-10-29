@@ -45,6 +45,7 @@ public class ProductPageServlet extends HttpServlet {
 		
 		try {
 		reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		
 		}catch(NumberFormatException e) {
 			reqPage = 1;
 		}
@@ -52,17 +53,21 @@ public class ProductPageServlet extends HttpServlet {
 		
 		ProductLeeService service = new ProductLeeService();
 		PageDataLee pd = service.selectList(reqPage,ctgr,gender);
-		ArrayList<ProductDtl> list = service.searchColor();
+		ArrayList<ArrayList<ProductDtl>> colors = service.searchColor(pd.getLists());
+		request.setAttribute("prdDtl", colors);
+
 		
-		ArrayList<String> subCtgr = service.subCtgr(ctgr);
+		ArrayList<String> subCtgr = service.subCtgr(ctgr, gender);
+
+		ArrayList<Integer> subCtgrCount = service.subCtgrCount(ctgr, subCtgr);
+		request.setAttribute("count", subCtgrCount);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		
 		request.setAttribute("lists", pd.getLists());
 		request.setAttribute("pageNavi",pd.getPageNavi());
-		request.setAttribute("prdDtl", list);
 		request.setAttribute("sub", subCtgr);
-		
+	
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/lists.jsp");
 		rd.forward(request, response);
 		
 	}

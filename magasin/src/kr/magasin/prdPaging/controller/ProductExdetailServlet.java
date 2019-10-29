@@ -33,6 +33,7 @@ public class ProductExdetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//리스트에서 상세페이지를 넘어가는 페이지 
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
@@ -40,13 +41,15 @@ public class ProductExdetailServlet extends HttpServlet {
 		
 		
 		ProductLeeService service = new ProductLeeService();
-		Product prd = service.ProductdetailId(prdId);
+		Product prd = service.ProductdetailId(prdId);//경필 결제페이지 가는 로직
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/exdetail.jsp");
 		
-		ArrayList<ProductDtl> prdDtl = service.searchColor();
+		ArrayList<String> colors = service.selectColor(prdId);
+		ArrayList<String> sizes = service.selectSize(prdId);
 		
-		request.setAttribute("prdCol", prdDtl);
+		request.setAttribute("colors", colors);
+		request.setAttribute("sizes", sizes);
 		request.setAttribute("productId", prd);
 		rd.forward(request, response);
 		

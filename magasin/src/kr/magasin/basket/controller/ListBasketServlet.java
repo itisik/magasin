@@ -34,6 +34,7 @@ public class ListBasketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
+		System.out.println("장바구니에 아이디 잘 들어오나?"+id);
 		BasketService service = new BasketService();
 		ArrayList<Basket> list = service.basketList(id);
 		RequestDispatcher rd  = request.getRequestDispatcher("/WEB-INF/views/myPage/basket.jsp");

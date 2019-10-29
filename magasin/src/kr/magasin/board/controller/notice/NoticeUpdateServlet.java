@@ -36,7 +36,7 @@ public class NoticeUpdateServlet extends HttpServlet {
 		NoticeService service = new NoticeService();
 		Notice n = service.noticeOne(noticeNo);
 		request.setAttribute("notice", n);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeUpdateTest.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/notice/noticeUpdate.jsp");
 		rd.forward(request, response);
 	}
 

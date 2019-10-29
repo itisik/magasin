@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%
     	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("reviewList");
     	String pageNavi = (String)request.getAttribute("pageNavi");
@@ -40,6 +41,13 @@
 	margin-left: 15px;
 	border: 1px solid white;
 }
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
 </style>
 <script>
 									
@@ -74,13 +82,7 @@
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 								<div class="reviewContainer">
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<a href="/reviewWrite" class="btn writeBtn">Write</a>
+				
 				<ul id="review">
 					<li>review</li>
 				</ul>
@@ -96,7 +98,7 @@
 								</th>
 								<th style="width: 10%;">Writer</th>
 								<th style="width: 5%;">Date</th>
-								<th style="width: 10%;">조회</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -108,7 +110,7 @@
 							<tr>
 								<td style="width: 8%;">No.<%=r.getReviewNo() %></td>
 								<td style="width: 10%;">
-								<img src="/img/product/<%=r.getPrdSnImg() %>" width="100">
+								<img src="/upload/photo/<%=r.getPrdSnImg() %>" width="100">
 								<%=r.getPrdName() %>
 								</td>
 								<td style="width: 42%;"><span><%=r.getReviewTitle() %></span> &nbsp;&nbsp;
@@ -116,15 +118,15 @@
 							
 								<!-- contents 보이기 -->
 							
-								<div class="review-contents">	
+								<div class="review-contents" style="width:100%;">	
 								<hr>	
 									<div class="review-con">
 									<p style="text-align:center;"><%=r.getReviewCont() %>
-									어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ... 저쩌구..어쩌구 ...
+									
 									</p>
 									</div>
 									<%if(r.getReviewFilepath1()!=null||r.getReviewFilepath2()!=null){ %>
-									<div class="review-img-container">
+									<div class="review-img-container" style="width:80%;margin-left:45px;">
 									<!-- 리뷰작성때 업로드한 이미지 있으면, 없으면 안생김 또는 사진 없음 X표시 -->
 										<%if(r.getReviewFilepath1()!=null){ %>
 										<div class="review-img-div">
@@ -146,9 +148,9 @@
 											color:purple;
 										}
 									</style>
-									<%if(m!=null&&(m.getId().equals(r.getReviewWriter())||m.getId().equals("admin"))){
+									<%if(m!=null&&(m.getId().equals(r.getReviewWriter()))){
 										%>
-									<div class="review-ud" style="width:100%; text-align:right;">
+									<div class="review-ud" style="width:100%; text-align:right; clear:both;">
 									<a href="/reviewUpdate?reviewNo=<%=r.getReviewNo()%>" class="btn btn-sm">수정</a>
 									<a href="/reviewDelete?reviewNo=<%=r.getReviewNo()%>&reviewFilepath1=<%=r.getReviewFilepath1() %>&reviewFilepath2=<%=r.getReviewFilepath2() %>" class="btn btn-sm">삭제</a>
 									</div>
@@ -162,7 +164,7 @@
 								</td>
 								<td style="width: 10%;"><%=r.getReviewWriter() %></td>
 								<td style="width: 5%;"><%=r.getReviewDate() %></td>
-								<td style="width: 10%;"><%=r.getReviewCount() %></td>
+								
 							</tr>
 								
 							<%

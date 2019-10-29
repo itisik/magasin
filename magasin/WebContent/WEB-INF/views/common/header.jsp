@@ -30,7 +30,7 @@
           <li><a href="/logout">Logout</a></li>
           <li><a href="/mypage?id=<%= m.getId() %>">mypage</a></li>
           <li>
-            <a href="#" id="cart-img"
+            <a href="/views/prdPage/prdSearch.jsp" id="cart-img"
               >cart<img src="/img/common_img/jang.png" width="20"
             /></a>
           </li>
@@ -40,14 +40,14 @@
       </div>
 
       <div class="header-search">
-        <input type="text" name="headerSearch" class="searchBar" />
+     <!--    
         <a href="#"
           ><img
             src="/img/common_img/searchIcon.png"
             width="30"
             height="28"
             id="searchIcon"
-        /></a>
+        /></a> -->
       </div>
     </div>
   </body>
