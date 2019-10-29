@@ -72,7 +72,7 @@
                 
              
                     <tr>
-                        <td class="order-list-1"><a href="#"><img src="/img/product/<%=pay.getPrdSnImgpath()%>"></a></td>
+                        <td class="order-list-1"><a href="#"><img src="/upload/photo/<%=pay.getPrdSnImgpath()%>"></a></td>
                         <td class="order-list-2">
                             <ul>
                                 <li class="order-list-2-li-1"><strong><%=pay.getPrdName() %></strong></li>

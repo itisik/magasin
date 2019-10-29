@@ -7,9 +7,8 @@
 	pageEncoding="UTF-8"%>
 	<%
 			Product pdI = (Product)request.getAttribute("productId");
-
-			ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdCol");
-
+			ArrayList<String> colors =(ArrayList<String>)request.getAttribute("colors");
+			ArrayList<String> sizes = (ArrayList<String>)request.getAttribute("sizes");
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +38,9 @@
 		<div class="header">
 			<%@include file="/WEB-INF/views/common/header.jsp"%>
 		</div>
+		 <%if(m!=null){ %>
 		<input type="hidden" class="memberId" value="<%=m.getId()%>" >
+		<%} %>
 		</header>
 		<section>
 		<div class="mainContainer">
@@ -72,13 +73,12 @@
 									<tr>
 										<td>color</td>
 										<td class="color">
-										<%for( ProductDtl p : prdDtl ){ %>
-											<%if(pdI.getPrdId()==p.getPrdId()){ %>
+										<%for( String color : colors ){ %>
 
-											<div class="1" name ="color1" value="<%=p.getPrdDtlColor()%>"style="background-color:<%=p.getPrdDtlColor()%>;"></div>
-											<input type="hidden" class="prdDtlColor" name="prdDtlColor" value="<%=p.getPrdDtlColor()%>">
+											<div class="color1" name ="color1" value="<%=color%>"style="background-color:<%=color%>;"></div>
+											<input type="hidden" class="prdDtlColor" name="prdDtlColor" value="<%=color%>">
 
-											<%} 
+											<%
 									}%>
 										</td>
 									</tr>
@@ -86,13 +86,13 @@
 										<th>size</th>
 										<td><select id="sizes" name ="size">
 												<option value="no">-필수 옵션을 선택해주세요-</option>
-									<%for(ProductDtl p : prdDtl) {%>
-										<%if(pdI.getPrdId()==p.getPrdId()) {%>
+									<%for(String size : sizes) {%>
+										
 												<!--필수옵션에 사이즈 상세추가함-->
-												<option value="<%=p.getPrdDtlSize()%>"><%=p.getPrdDtlSize()%></option>
+												<option value="<%=size%>"><%=size%></option>
 												
 												
-										<%} %>
+										<% %>
 									<%} %>
 										</select>
 										</td>

@@ -11,7 +11,7 @@
          
         ArrayList<ProductLee> lists = (ArrayList<ProductLee>)request.getAttribute("lists");
         String pageNavi = (String)request.getAttribute("pageNavi");
-        ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
+        ArrayList<ArrayList<ProductDtl>> prdDtl = (ArrayList<ArrayList<ProductDtl>>)request.getAttribute("prdDtl");
         ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
 
 
@@ -110,12 +110,12 @@
             <div class="cloths-color">
             
             <%
-            for(int k=0; k<prdDtl.size(); k++){
+            for(int k=0; k<prdDtl.get(4*i+j).size(); k++){
  
-               if(lists.get(4*i+j).getPrdId() == prdDtl.get(k).getPrdId()){
+               if(lists.get(4*i+j).getPrdId() == prdDtl.get(4*i+j).get(k).getPrdId()){
             %>
             
-            <div class="color1" style="background-color:<%=prdDtl.get(k).getPrdDtlColor()%>"></div>
+            <div class="color1" style="background-color:<%=prdDtl.get(4*i+j).get(k).getPrdDtlColor()%>"></div>
            
             <% 
             }

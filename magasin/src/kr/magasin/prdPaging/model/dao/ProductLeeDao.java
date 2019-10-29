@@ -91,46 +91,6 @@ public class ProductLeeDao {
 		return list;
 	}
 
-
-	// 상품번호로 페이지 이동 //
-public Product ProductdetailId(Connection conn, int prdId) {
-      Product pdI = null;
-      PreparedStatement pstmt = null;
-      ResultSet rset = null;
-      String query = "select * from product where prd_Id=?";
-      
-      try {
-         pstmt = conn.prepareStatement(query);
-         pstmt.setInt(1, prdId);
-         
-         rset = pstmt.executeQuery();
-         
-         if(rset.next()) {
-            pdI = new Product();
-            pdI.setPrdId(prdId);
-            pdI.setPrdName(rset.getString("prd_Name"));
-            pdI.setPrdGender(rset.getString("prd_gender"));
-            pdI.setPrdCtgr(rset.getString("prd_ctgr"));
-            pdI.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
-            pdI.setPrdPrice(rset.getInt("prd_price"));
-            pdI.setPrdUpDate(rset.getDate("prd_up_date"));
-            pdI.setPrdSnImgname(rset.getString("prd_sn_imgname"));
-            pdI.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
-            pdI.setPrdFilename(rset.getString("prd_filename"));
-            pdI.setPrdFilepath(rset.getString("prd_filepath"));
-         }
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }finally {
-         JDBCTemplate.close(rset);
-         JDBCTemplate.close(pstmt);
-      }
-      return pdI;   
-   }
-
-
-
 	//은지 장바구니에서 결체로 넘어각게 만든 페이지 건들지 마세요 !!!!!!
 	public ArrayList<ProductAll> insertBasket(Connection conn, ArrayList<BasketT> list, int count) {
 		ProductAll pa = null;
@@ -362,24 +322,29 @@ public Product ProductdetailId(Connection conn, int prdId) {
 		return result;
 	}
 
-	public ArrayList<ProductDtl> searchColor(Connection conn){
-		ArrayList<ProductDtl> list = new ArrayList<ProductDtl>();
+	public ArrayList<ArrayList<ProductDtl>> searchColor(Connection conn,ArrayList<ProductLee> list){
+		ArrayList<ArrayList<ProductDtl>> list2 = new ArrayList<ArrayList<ProductDtl>>();
+		ArrayList<ProductDtl> colors = new ArrayList<ProductDtl>();
 		ProductDtl prdDtl = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from product_dtl order by prd_id desc";
+		String query = "SELECT DISTINCT(PRD_DTL_COLOR) FROM PRODUCT_DTL WHERE PRD_ID = ?";
 		try {
-			pstmt = conn.prepareStatement(query);
-			rset = pstmt.executeQuery();
-			while(rset.next()) {
-				prdDtl = new ProductDtl();
-				prdDtl.setPrdDtlColor(rset.getString("prd_dtl_color"));
-				prdDtl.setPrdDtlId(rset.getInt("prd_dtl_id"));
-				prdDtl.setPrdId(rset.getInt("prd_id"));
-				prdDtl.setPrdDtlSize(rset.getString("prd_dtl_size"));
-				prdDtl.setPrdDtlCount(rset.getInt("prd_dtl_count"));
-				list.add(prdDtl);
-			}
+	        pstmt = conn.prepareStatement(query); 
+			for(int i=0; i<list.size();i++) {
+	            
+	            pstmt.setInt(1, list.get(i).getPrdId());
+	            rset = pstmt.executeQuery();
+	            while(rset.next()) {
+	               
+	            	prdDtl = new ProductDtl();
+	                prdDtl.setPrdDtlColor(rset.getString("PRD_DTL_COLOR"));
+	                prdDtl.setPrdId(list.get(i).getPrdId());
+	                colors.add(prdDtl);
+	             }
+	            list2.add(colors);
+	         }
+			System.out.println(list2.get(0).get(0).getPrdDtlColor());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -388,11 +353,9 @@ public Product ProductdetailId(Connection conn, int prdId) {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		
-		return list;
+		return list2;
 	}
-
-
+	
 	public ArrayList<String> subCtgr(Connection conn,String ctgr,String gender) {
 
 		ArrayList<String> sub = new ArrayList<String>();
@@ -587,6 +550,63 @@ public Product ProductdetailId(Connection conn, int prdId) {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+
+
+	public ArrayList<String> selectColor(Connection conn, int prdId) {
+		// TODO Auto-generated method stub
+		ArrayList<String> colors = new ArrayList<String>();
+		String color = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT DISTINCT(PRD_DTL_COLOR) FROM PRODUCT_DTL WHERE PRD_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, prdId);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				color = rset.getString("prd_dtl_color");
+				colors.add(color);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return colors;
+	}
+
+
+
+	public ArrayList<String> selectSize(Connection conn, int prdId) {
+		// TODO Auto-generated method stub
+		ArrayList<String> sizes = new ArrayList<String>();
+		String size = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT DISTINCT(PRD_DTL_size) FROM PRODUCT_DTL WHERE PRD_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, prdId);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				size = rset.getString("prd_dtl_size");
+				sizes.add(size);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return sizes;
 	}
 
 	

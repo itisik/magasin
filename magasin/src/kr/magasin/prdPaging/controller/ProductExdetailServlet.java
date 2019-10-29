@@ -45,9 +45,11 @@ public class ProductExdetailServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/exdetail.jsp");
 		
-		ArrayList<ProductDtl> prdDtl = service.searchColor();
+		ArrayList<String> colors = service.selectColor(prdId);
+		ArrayList<String> sizes = service.selectSize(prdId);
 		
-		request.setAttribute("prdCol", prdDtl);
+		request.setAttribute("colors", colors);
+		request.setAttribute("sizes", sizes);
 		request.setAttribute("productId", prd);
 		rd.forward(request, response);
 		

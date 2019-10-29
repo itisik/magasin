@@ -114,13 +114,18 @@ public class ProductLeeService {
 		return pd;
 	}
 	
-	public ArrayList<ProductDtl> searchColor(){
+	public ArrayList<ArrayList<ProductDtl>> searchColor(ArrayList<ProductLee> list){
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<ProductDtl> list = dao.searchColor(conn);
+		ArrayList<ArrayList<ProductDtl>> colors = dao.searchColor(conn,list);
 		JDBCTemplate.close(conn);
-		return list;
+		return colors;
 	}
-
+	/*public ArrayList<ProductDtl> colSize(ArrayList<Product> list) {
+	      Connection conn = JDBCTemplate.getConnection();
+	      ArrayList<ProductDtl> colorS = dao.colSize(conn,list);
+	      JDBCTemplate.close(conn);
+	      return colorS;
+	   }*/
 	public ArrayList<String> subCtgr(String ctgr,String gender) {
 		Connection conn = JDBCTemplate.getConnection();
 		ArrayList<String> sub = dao.subCtgr(conn,ctgr,gender);
@@ -232,6 +237,23 @@ public class ProductLeeService {
 		
 		JDBCTemplate.close(conn);
 		return pd;
+	}
+
+	public ArrayList<String> selectColor(int prdId) {
+		// TODO Auto-generated method stub
+		Connection conn= JDBCTemplate.getConnection();
+		ArrayList<String> colors = dao.selectColor(conn,prdId);
+		
+		
+		return colors;
+	}
+	public ArrayList<String> selectSize(int prdId) {
+		// TODO Auto-generated method stub
+		Connection conn= JDBCTemplate.getConnection();
+		ArrayList<String> sizes = dao.selectSize(conn,prdId);
+		
+		
+		return sizes;
 	}
 	
 }
