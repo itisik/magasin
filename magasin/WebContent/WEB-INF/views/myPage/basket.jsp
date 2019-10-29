@@ -34,72 +34,7 @@
 			<div class="myPage-main">
 				<div class="mainContent">
 					<div class="myp-wrapper">
-	<%for(Basket b2 : lists){ %>
-	<tr>
-	
-		<td class="bkt-list-1">
-			<input type="checkbox" name="chk">
-			<input type="hidden" class="prdDtlId" value="<%=b2.getBasketPrdDtlId() %>" >
-			<input type="hidden" class="prdDtlSize" value="<%=b2.getPrdDtlSize() %>" >
-			<input type="hidden" class="prdDtlColor" value="<%=b2.getPrdDtlColor() %>" >
-			<input type="hidden" class="prdCount" value="<%=b2.getBasketPrdCount() %>" >
-			<input type="hidden" class="prdPrice" value="<%=b2.getPrdPrice() %>" >
-			<input type="hidden" class="basketUserId" value="<%=b2.getBasketUserId() %>" >
-			<input type="hidden" class="prdName" value="<%=b2.getPrdName()%>" >
-			<input type="hidden" class="basketId" value="<%=b2.getBasketId()%>" >
-			
-			
- 		</td>
-		
-        <td class="bkt-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
-      
-        <td class="bkt-list-3">
-        	<ul>
-        		<li class="bkt-list-3-li-1" ><strong><%=b2.getPrdName() %></strong></li>
-        		<li class="bkt-list-3-li-2" >[사이즈 : <%=b2.getPrdDtlSize() %> / 컬러 : <%=b2.getPrdDtlColor() %>]</li>
-        		<!-- 창 하나 띄어서 처리할 것임  나중에 안바쁠떄 -->
-        	<!-- 	<li><a class="bkt-list-3-chg-btn" onclick="window.open('/views/join/joinSuceess/jsp','','width=430,height=300,location=no');">옵션변경</a></li> -->
-        	</ul>
-        </td>
-        <td class="bkt-list-4"><%=b2.getPrdPrice() %></td>
-        <td class="bkt-list-5">
-			<ul>
-				<li>
-					<span class="bkt-list-5-span">
-					<% int count =  Integer.parseInt(b2.getBasketPrdCount());%>
-						<input type="hidden"  class="basketUserId" value="<%= b2.getBasketUserId() %>">
-						<input type="hidden"  class="basketId" value="<%= b2.getBasketId() %>">
-						<input size="2" class="numberUpDown"  placeholder="<%=count %>" type="number" min="1">
-						
-					</span>
-				</li>
-				<li class="bkt-list-5-li"><button class="countBtn" type="button" onclick="countBtn(this,'<%= b2.getBasketUserId() %>','<%= b2.getBasketId() %>');" >변경</button></li>
-				
-			</ul>
-		</td>
-		<% int price = Integer.parseInt(b2.getBasketPrdCount())*Integer.parseInt(b2.getPrdPrice()); %>
-        <td class="bkt-list-6"><%=price %></td>
-        <td class="bkt-list-7">
-		<ul>
-            	<li> <a href="#" class="bkt-list-7-btn1">주문하기</a></li>
-            	<li class="bkt-list-7-li"> <a href="/deleteBasket?basketId=<%=b2.getBasketId()%>&basketUserId=<%=b2.getBasketUserId() %>" class="bkt-list-7-btn2">삭제</a></li>
-            </ul>
-		</td>
-	</tr>
-	<% sum	+= price; %>
-	
-	
-	<%} %>	
-	</tbody>
-	<tfoot class="bkt-tfoot">
-	<tr class="bkt-foot-tr">
-	<% if(sum != 0){%>
-		<th colspan="7"><%=sum %></th>
-		<%}else{ %>
-		<th colspan="7">장바구니가 비었습니다.</th>
-		<%} %>
-	</tr>
-	</tfoot>
+
 
 							<div class="bsk-wrapper">
 							<h2 class="bsk-wrapper-h2">장바구니 <span ><a href="/views/preBasket.jsp">최근 본 상품</a></span> </h2>
@@ -137,8 +72,8 @@
 										
 							 		</td>
 									
-							        <td class="bkt-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
-							      
+							        <td class="bkt-list-2"><a href="/locationPrd?prdDtlId=<%=b2.getBasketPrdDtlId()%>"><img src="/img/myPage/product1.jpg"></a></td>
+							   
 							        <td class="bkt-list-3">
 							        	<ul>
 							        		<li class="bkt-list-3-li-1" ><strong><%=b2.getPrdName() %></strong></li>
@@ -167,7 +102,7 @@
 							        <td class="bkt-list-6"><%=price %></td>
 							        <td class="bkt-list-7">
 									<ul>
-							            	<li> <a href="#" class="bkt-list-7-btn1">주문하기</a></li>
+							            	
 							            	<li class="bkt-list-7-li"> <a href="/deleteBasket?basketId=<%=b2.getBasketId()%>&basketUserId=<%=b2.getBasketUserId() %>" class="bkt-list-7-btn2">삭제</a></li>
 							            </ul>
 									</td>

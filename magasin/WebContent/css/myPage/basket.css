@@ -274,16 +274,36 @@ color: white;
 background-color: #444444;
 
 }
+.bsk-f-ul-li-1> button{
+	border : 0;
+	outline: 0;
+	background-color: #444444;
+	color : white;
+}
 .bsk-f-ul-li-2{
 color: white;
 background-color: #888888;
 
+}
+.bsk-m-div-li-3>a{
+	text-decoration: none;
+}
+.bsk-f-ul-li-2>button{
+	border : 0;
+	outline: 0;
+	color : white;
+	background-color: #888888;
 }
 .bsk-f-ul-li-3{
 float: right;
 color: #666666;
 background-color: white;
 }
+.bsk-f-ul-li-3>a{
+	text-decoration: none;
+	color: black;
+}
+
 .bsk-wrapper-h2{
 color:  rgb(246,246,246);
 margin-bottom: 0px;
