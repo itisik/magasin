@@ -19,11 +19,7 @@ public class CustomerSearchService {
 			if (selectIndex.equals("customerName")) {
 				// 고객이름 기준
 				list = dao.CustomerSearchAllByName(conn, customer);
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				JDBCTemplate.close(conn);
 				return list;
 			} else if (selectIndex.equals("customerId")) {
 				// 고객아이디 기준
@@ -37,12 +33,7 @@ public class CustomerSearchService {
 			} else if (selectIndex.equals("prdName")) {
 				// 제품명
 				list = dao.CustomerSearchAllByPrd(conn, customer);
-
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				JDBCTemplate.close(conn);
 				return list;
 			}
 		} else if (searchIndex.equals("purchaseDate")) {
@@ -50,14 +41,17 @@ public class CustomerSearchService {
 			if (selectIndex.equals("customerName")) {
 				// 고객이름 기준
 				list = dao.CustomerSearchPurByName(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 			} else if (selectIndex.equals("customerId")) {
 				// 고객아이디 기준
 				list = dao.CustomerSearchPurById(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 			} else if (selectIndex.equals("prdName")) {
 				// 제품명
 				list = dao.CustomerSearchPurByPrd(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 
 			}
@@ -66,22 +60,21 @@ public class CustomerSearchService {
 			if (selectIndex.equals("customerName")) {
 				// 고객이름 기준
 				list = dao.CustomerSearchOutByName(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 			} else if (selectIndex.equals("customerId")) {
 				// 고객아이디 기준
 				list = dao.CustomerSearchOutById(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 			} else if (selectIndex.equals("prdName")) {
 				// 제품명
 				list = dao.CustomerSearchOutByPrd(conn, dateSelect, customer);
+				JDBCTemplate.close(conn);
 				return list;
 			}
 		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		JDBCTemplate.close(conn);
 		return null;
 	}
 }

@@ -11,19 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.basket.model.service.BasketService;
-import kr.magasin.basket.model.vo.Basket;
+import kr.magasin.prdPaging.model.service.ProductLeeService;
+import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 /**
- * Servlet implementation class ListBasketServlet
+ * Servlet implementation class LocationPrdServlet
  */
-@WebServlet(name = "ListBasket", urlPatterns = { "/listBasket" })
-public class ListBasketServlet extends HttpServlet {
+@WebServlet(name = "LocationPrd", urlPatterns = { "/locationPrd" })
+public class LocationPrdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListBasketServlet() {
+    public LocationPrdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +35,22 @@ public class ListBasketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		System.out.println("장바구니에 아이디 잘 들어오나?"+id);
+		int prdDtlId = Integer.parseInt(request.getParameter("prdDtlId"));
+		System.out.println("이미지 눌러서 상품 이동하려 할떄 들어오는 prdDtlId 확인"+prdDtlId);
 		BasketService service = new BasketService();
-		ArrayList<Basket> list = service.basketList(id);
-		RequestDispatcher rd  = request.getRequestDispatcher("/WEB-INF/views/myPage/basket.jsp");
-		request.setAttribute("basket", list);
-		rd.forward(request, response);
+		int prdId = service.locationPrd(prdDtlId);
+		System.out.println("locationPrd 타고 넘어온 prdId :"+prdId);
 		
+		ProductLeeService service2 = new ProductLeeService();
+		Product prd = service2.ProductdetailId(prdId);//경필 결제페이지 가는 로직
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/exdetail.jsp");
+		
+		ArrayList<ProductDtl> prdDtl = service2.searchColor();
+		
+		request.setAttribute("prdCol", prdDtl);
+		request.setAttribute("productId", prd);
+		rd.forward(request, response);
 		
 	}
 

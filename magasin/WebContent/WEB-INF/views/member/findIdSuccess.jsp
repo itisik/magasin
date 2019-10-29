@@ -110,7 +110,7 @@
                      <div>
                         <div id="btn_join_success">
                            <div class="btn_login"><a href="/views/member/login.jsp"><button>로그인</button></a></div>
-                           <div class="btn_main"><a href="/views/member/findPwSuccess.jsp"><button>비밀번호 찾기</button></a></div>
+                           <div class="btn_main"><a href="/views/member/searchPw.jsp"><button>비밀번호 찾기</button></a></div>
                         </div>   
                      </div>
                </div>

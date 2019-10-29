@@ -65,12 +65,8 @@ public class OrderSearchService {
 			}
 		}
 		*/
-		
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+		JDBCTemplate.close(conn);
 		return list;
 	}
 }

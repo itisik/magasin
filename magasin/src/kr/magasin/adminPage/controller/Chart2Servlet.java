@@ -1,29 +1,30 @@
-package kr.magasin.basket.controller;
+package kr.magasin.adminPage.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.magasin.basket.model.service.BasketService;
-import kr.magasin.basket.model.vo.Basket;
+import com.google.gson.Gson;
+
+import kr.magasin.adminPage.model.service.ChartService;
+import kr.magasin.adminPage.model.vo.Chart2;
 
 /**
- * Servlet implementation class ListBasketServlet
+ * Servlet implementation class Chart2Servlet
  */
-@WebServlet(name = "ListBasket", urlPatterns = { "/listBasket" })
-public class ListBasketServlet extends HttpServlet {
+@WebServlet(name = "Chart2", urlPatterns = { "/chart2" })
+public class Chart2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListBasketServlet() {
+    public Chart2Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +33,22 @@ public class ListBasketServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		System.out.println("장바구니에 아이디 잘 들어오나?"+id);
-		BasketService service = new BasketService();
-		ArrayList<Basket> list = service.basketList(id);
-		RequestDispatcher rd  = request.getRequestDispatcher("/WEB-INF/views/myPage/basket.jsp");
-		request.setAttribute("basket", list);
-		rd.forward(request, response);
+		// 성별별 차트 그릭
+		String chartIndex = request.getParameter("chartIndex");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
 		
+		ChartService service = new ChartService();
+		ArrayList<Chart2> chartList2 = service.ChartList2(chartIndex, startDate, endDate);
 		
-	}
+		if(chartList2 == null) {
+			return;
+		}
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		new Gson().toJson(chartList2, response.getWriter());
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
