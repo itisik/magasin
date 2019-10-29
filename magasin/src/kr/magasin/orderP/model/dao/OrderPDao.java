@@ -17,6 +17,7 @@ public class OrderPDao {
 		 ArrayList<Order> list = new ArrayList<Order>();
 		 PreparedStatement pstmt = null;
 		 ResultSet rset = null;
+		 
 		 String query = "select * FROM order_P where order_USER_id=?"; 
 		 
 			try {
@@ -28,6 +29,7 @@ public class OrderPDao {
 					op.setOrderStatus(rset.getInt("order_status"));
 					op.setOrderUserId(rset.getString("order_user_id"));
 					list.add(op);
+				
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -36,6 +38,7 @@ public class OrderPDao {
 				JDBCTemplate.close(rset);
 				JDBCTemplate.close(pstmt);
 			}
+			
 		return list;
 		 
 		

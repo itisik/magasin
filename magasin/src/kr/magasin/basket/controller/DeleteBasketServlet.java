@@ -34,13 +34,14 @@ public class DeleteBasketServlet extends HttpServlet {
 		
 		String basketUserId = request.getParameter("basketUserId");
 		int basketId = Integer.parseInt(request.getParameter("basketId"));
+		System.out.println("장바구니아이디 무어야??"+basketId);
 		BasketService service = new BasketService();
 		int result = service.deleteOne(basketId);
 		if(result>0) {
 			RequestDispatcher rd = request.getRequestDispatcher("/listBasket?id="+basketUserId);
 			rd.forward(request, response);
 		}else {
-			System.out.println("장바구니 전체 삭제 실패 ");
+			System.out.println("장바구니 하나 삭제 실패 ");
 		}
 		
 	}

@@ -8,7 +8,7 @@ import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
-
+import kr.magasin.prdPaging.model.vo.ProductAll;
 import kr.magasin.prdPaging.model.vo.ProductLee;
 import kr.magasin.product.model.vo.Product;
 import kr.magasin.productDtl.model.vo.ProductDtl;
@@ -23,18 +23,22 @@ public class ProductLeeService {
 		JDBCTemplate.close(conn);
 		return list;
 	}
+	  public Product ProductdetailId(int prdId) {
+          Connection conn = JDBCTemplate.getConnection();
+          Product pdI = dao.ProductdetailId(conn,prdId);
+          JDBCTemplate.close(conn);
+          return pdI;
+       }
 
-
-	/*
-	  public int ProductdetailId(ArrayList<BasketT> list) {
-
+	//장바구니에 담긴 물건 결제 창으로 가는 로직 (은지) 수정금지 !!
+	  public ArrayList<ProductAll> insertBasket(ArrayList<BasketT> list, int count) {
+		  ArrayList<ProductAll> lists = new ArrayList<ProductAll>();
 		  Connection conn =	  JDBCTemplate.getConnection(); 
-		  pay = dao.insertBasket(conn, list, count);
-
+		  lists = dao.insertBasket(conn, list, count);
 		  JDBCTemplate.close(conn); 
-		  return pay; 
-		  }
-	*/
+		  return lists; 
+	  }
+	
 
 
 /*
