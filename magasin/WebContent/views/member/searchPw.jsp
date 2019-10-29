@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%!public int getRandom() {
+		int random = 0;
+		random = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
+		return random;
+	}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,7 +104,7 @@
                               <th>비밀번호 찾기</th>
                               <td>
                                  <input type="radio" name="SearchPw" id="showEmail" onclick="showEmail()" checked><label for="email"><span>이메일</span></label>&nbsp;
-                                 <input type="radio" name="SearchPw" id="showPhone" onclick="showPhone()"><label for="phone"><span>휴대폰번호</span></label>
+                                 <!-- <input type="radio" name="SearchPw" id="showPhone" onclick="showPhone()"><label for="phone"><span>휴대폰번호</span></label> -->
                               </td>
                            </tr>
                            <tr>
@@ -112,12 +117,19 @@
                            </tr>
                            <tr id="viewEmail" style="display:;">
                               <th>이메일로 찾기 </th>
-                              <td><input type="text" name="email" id="email" class="form-control"></td>
+                              <td>
+                              		<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@naver.com"> 
+									<input type="button" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
+									<span id="emailChkMsg"></span> <!-- 이메일 중복된건지 체크 -->
+									<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
+									<input type="hidden" readonly="readonly" id="chkAfter" name="chkAfter"/>
+									<div id="chkAfterMsg"></div>
+                              </td>
                            </tr>
-                           <tr id="viewPhone" style="display:none;">
+                           <!-- <tr id="viewPhone" style="display:none;">
                               <th>휴대전화로 찾기</th>
                               <td><input type="hidden" name="phone" id="phone" class="form-control"></td>
-                           </tr>    
+                           </tr>  -->   
                         </table>
                         </div>
                      <br>
@@ -170,11 +182,11 @@
 			   $("#name").focus();
 			   return false;
 		   }
-    	if($("#phone").val()==""){
+    	/* if($("#phone").val()==""){
 			   alert("전화번호를 입력해주세요.");
 			   $("#phone").focus();
 			   return false;
-		   }
+		   } */
     	if($("#email").val()==""){
 			   alert("이메일을 확인해주세요.");
 			   $("#email").focus();
