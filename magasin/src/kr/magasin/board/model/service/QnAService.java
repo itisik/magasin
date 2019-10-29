@@ -112,6 +112,7 @@ public class QnAService {
 		}else {
 			System.out.println("등록 실패");
 		}
+		JDBCTemplate.close(conn);
 		return result;
 	}
 	public int aPrdInsert(APrd a) {
@@ -128,6 +129,7 @@ public class QnAService {
 		}else {
 			System.out.println("등록 실패");
 		}
+		JDBCTemplate.close(conn);
 		return result;
 	}
 	public AEtc aEtcOne(int aNo) {

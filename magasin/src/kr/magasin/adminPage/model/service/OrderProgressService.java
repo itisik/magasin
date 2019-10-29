@@ -36,15 +36,9 @@ public class OrderProgressService {
 				System.out.println("실패");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			JDBCTemplate.close(conn);
 		}
 		return result;
 	}

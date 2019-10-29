@@ -1,4 +1,6 @@
 
+<%@page import="javax.print.attribute.standard.PDLOverrideSupported"%>
+<%@page import="kr.magasin.prdPaging.model.vo.PaydcutLee"%>
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -6,8 +8,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%
-     Product pay = (Product)request.getAttribute("pays");
-	 
+     PaydcutLee pay = (PaydcutLee)request.getAttribute("pays");
+ 
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,20 +35,20 @@
     <title>Insert title here</title>
 </head>
 <body id="body1">
-	<div class="wrapper">
-		<header>
-			<div class="header">
-				<%@include file="/WEB-INF/views/common/header.jsp"%>
-			</div>
-		</header>
-		<section>
-			<div class="mainContainer">
-				<div class="side-nav">
-					<%@include file="/WEB-INF/views/common/nav.html"%>
-				</div>
-				<div class="mainContent" style="width: 943px;">
-					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-		
+   <div class="wrapper">
+      <header>
+         <div class="header">
+            <%@include file="/WEB-INF/views/common/header.jsp"%>
+         </div>
+      </header>
+      <section>
+         <div class="mainContainer">
+            <div class="side-nav">
+               <%@include file="/WEB-INF/views/common/nav.html"%>
+            </div>
+            <div class="mainContent" style="width: 943px;">
+               <!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+      
     <div class="orderContainer">
         <div class="orderText">
             <p><a href="#">home</a>> order start</p>
@@ -65,7 +67,7 @@
                         <th>합계</th>
                     </tr>
                 </thead>
-                <%for(ProductAll pay : list){ %> 
+                 
                 <tbody class="order-tbody">
                 
              
@@ -78,16 +80,17 @@
                             </ul>
                         </td>
                         <td class="order-list-3"><span><%=pay.getPrdPrice() %></span></td>
-                        <td class="order-list-4"><span><%= pay.getCount() %></span></td>
+                        <td class="order-list-4"><span><%= pay.getAmount() %></span></td>
                         <td class="order-list-5">[무료]</td>
                         <% int tempSum = 0;
-                        tempSum = pay.getPrdPrice()* pay.getCount();
+                        tempSum = pay.getPrdPrice()* pay.getAmount();
                         %>
                         <td class="order-list-6"><span><%= tempSum %></span></td>
                     </tr>
-                     <% sum += pay.getCount()*pay.getPrdPrice(); %>
-                    <%} %>
+                     <% sum += pay.getAmount()*pay.getPrdPrice(); %>
+                    
                 </tbody>
+               
             </table>
             <tfoot class="order-tfoot">
                 <tr>
@@ -108,26 +111,28 @@
             <table class="table-bordered orderorder">
                 <tr>
                     <td>주문하시는분<img src="/img/product/ico_required.gif"></td>
-                    <td><input type="text" name="name1" value=""></td>
+                    <td><input type="text" name="name1" value="<%=m.getName() %>"></td>
                 </tr>
+  
+                
                 <tr>
                     <td>주소<img src="/img/product/ico_required.gif"></td>
-
+   
                              <td>
-                                <input type="text" name="addr1" > <br>
+                                <input type="text" name="addr1"  > <br>
                                 <input  type="text" name="addr2" ><br>
-                                <input  type="text" name="addr3"><br>
-                                <input  type="text" name="addr4">
+                                <input  type="text" name="addr3" ><br>
+                                <input  type="text" name="addr4" >
                             </td>
 
                 </tr>
                 <tr>
                     <td>휴대전화<img src="/img/product/ico_required.gif"></td>
-                    <td><input type="text" name="phone1" value=""></td>
+                    <td><input type="text" name="phone1" value="<%=m.getPhone()%>"></td>
                 </tr>
                 <tr>
                     <td>이메일<img src="/img/product/ico_required.gif"></td>
-                    <td><input type="email" name="email" value=""></td>
+                    <td><input type="email" name="email" value="<%=m.getEmail()%>"></td>
                 </tr>
             </table>
         </div>
@@ -255,14 +260,14 @@
       });
    });
 </script>
-			</div>
-		</section>
-		<footer>
-			<div class="footer">
-				<%@include file="/WEB-INF/views/common/footer.jsp"%>
-			</div>
-		</footer>
-	</div>
+         </div>
+      </section>
+      <footer>
+         <div class="footer">
+            <%@include file="/WEB-INF/views/common/footer.jsp"%>
+         </div>
+      </footer>
+   </div>
 
 
 </body>

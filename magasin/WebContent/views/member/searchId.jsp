@@ -166,12 +166,12 @@
 			   $("#name").focus();
 			   return false;
 		   }
-    	if($("#phone").val()==""){
+    	if($("#phone").val()=="" && $("#email").type=="hidden"){
 			   alert("전화번호를 입력해주세요.");
 			   $("#phone").focus();
 			   return false;
 		   }
-    	if($("#email").val()==""){
+    	if($("#email").val()=="" && $("#phone").type=="hidden"){
 			   alert("이메일을 확인해주세요.");
 			   $("#email").focus();
 			   return false;

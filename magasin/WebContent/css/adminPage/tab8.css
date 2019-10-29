@@ -104,13 +104,7 @@
 
 .tab8-content > .content-list > .list-title > table td,
 .tab8-content > .content-list > .list-content > table td {
-  width: 14.2857%;
+  width: 12.5%;
   height: 40px;
   line-height: 40px;
-}
-
-.tab8-content > .content-list > .list-title > table td:first-child,
-.tab8-content > .content-list > .list-content > table td:first-child {
-  width: 30px;
-  padding-left: 35px;
 }
