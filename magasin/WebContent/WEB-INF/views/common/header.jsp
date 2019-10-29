@@ -40,14 +40,14 @@
       </div>
 
       <div class="header-search">
-        
+     <!--    
         <a href="#"
           ><img
             src="/img/common_img/searchIcon.png"
             width="30"
             height="28"
             id="searchIcon"
-        /></a>
+        /></a> -->
       </div>
     </div>
   </body>

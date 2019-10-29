@@ -2,7 +2,8 @@
 
 /* layout.css */
 * {
-	font: 13px 'Poppins',"맑은 고딕",'MalgunGothic',Helvetica,sans-serif;
+	font: 13px 'Poppins',"맑은 고딕",'MalgunGothic',Helvetica,sans-serif; 
+
 }
 div {
 	box-sizing: border-box;
@@ -13,7 +14,7 @@ div {
 	background: rgb(246, 246, 246);
 }
 
-.wrapper {
+.wrapper {	
 	margin-left:150px;
 	padding: 0;
 	width: 1150px;

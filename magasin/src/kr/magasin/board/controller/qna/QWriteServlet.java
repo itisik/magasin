@@ -39,8 +39,8 @@ public class QWriteServlet extends HttpServlet {
 		
 		//임시
 
-		String prdName = "시발";
-		String prdSnImg = "test.jpg";
+		String prdName = request.getParameter("prdName");
+		String prdSnImg = request.getParameter("prdSnImg");
 		if(prdName==null&&prdSnImg==null) {
 			response.sendRedirect("/qnaList");
 		}else {

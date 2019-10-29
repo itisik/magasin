@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.magasin.prdPaging.model.service.ProductLeeService;
+import kr.magasin.prdPaging.model.vo.PageDataLee;
 import kr.magasin.prdPaging.model.vo.ProductLee;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 /**
  * Servlet implementation class NewProductServlet
@@ -33,10 +35,26 @@ public class NewProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		int reqPage;
+		
+		try {
+		reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		
+		}catch(NumberFormatException e) {
+			reqPage = 1;
+		}
+		
+		
 		String gender = request.getParameter("gender");
 		ProductLeeService service = new ProductLeeService();
-		ArrayList<ProductLee> list = service.newPrdList(gender);
-		request.setAttribute("newList", list);
+		PageDataLee pd = service.newPrdList(reqPage,gender);
+		ArrayList<ProductDtl> dtlList = service.searchColor();
+		
+		/*ArrayList<ProductLee> list = service.newPrdList(gender);*/
+		request.setAttribute("newList", pd.getLists());
+		request.setAttribute("pageNavi", pd.getPageNavi());
+		request.setAttribute("dtlList", dtlList);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/prdPage/newPrd.jsp");
 		rd.forward(request, response);
 		

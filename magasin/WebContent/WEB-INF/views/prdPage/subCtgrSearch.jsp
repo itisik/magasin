@@ -89,7 +89,7 @@
 	            <div class="cloths-event" style="display: none;"></div>
 	
 	            <div class="cloths-img"><a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>">
-	               <img src="/img/product/<%=list.get(4*i+j).getPrdSnImgpath()%>"></a>
+	               <img src="/upload/photo/<%=list.get(4*i+j).getPrdSnImgpath()%>"></a>
 	            </div>
 	            <div class="cloths-title">
 	               <a href="/productExdetail?prdId=<%=list.get(4*i+j).getPrdId() %>"><%=list.get(4*i+j).getPrdName()%></a>

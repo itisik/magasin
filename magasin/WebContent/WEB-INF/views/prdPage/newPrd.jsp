@@ -1,8 +1,12 @@
+<%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="kr.magasin.prdPaging.model.vo.ProductLee"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% ArrayList<ProductLee> list = (ArrayList<ProductLee>)request.getAttribute("newList"); %>   
+<% ArrayList<ProductLee> list = (ArrayList<ProductLee>)request.getAttribute("newList");
+	String pageNavi = (String)request.getAttribute("pageNavi");
+	ArrayList<ProductDtl> dtlList  = (ArrayList<ProductDtl>)request.getAttribute("dtlList");
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,21 +44,7 @@
 
                 </div>
 
-           <%--      <div class="title-category">     
-                <ul class="subCategory">  
-                
-                <%int c=0;
-                for(String sub : subCtgrList) {
-                	
-                %>
-                   
-                   <li><a href="/subCtgrSearch?ctgr=<%=list.get(0).getPrdCtgr() %>&subCtgr=<%=sub%>&gender=<%=list.get(0).getPrdGender()%>"><%=sub.toUpperCase()%></a>(<span class="subCtgr-count"><%=subCtgrCount.get(c) %></span>)</li>
-           
-                <% c++;
-                   }%>
-				
-                </ul>
-                </div>  --%>
+        
             </div>
         </div>
     </div> 
@@ -65,9 +55,7 @@
     	}
     </style>
     <div class="sub-main">
-    <div class="sub-title">
-             <div class="sub-top">new arrivalcategory have <strong><%=list.size() %></strong> product</div> 
-        </div> 
+     
         <%for(int i=0; i<list.size()/4; i++){ %>
 
         <div class="cate-window">
@@ -86,15 +74,15 @@
 	           <div class="cloths-color">
 	            
 	 			 <%
-	            for(int k=0; k<5; k++){
+	            for(int k=0; k<dtlList.size(); k++){
 	 
-/* 	               if(list.get(4*i+j).getPrdId() == prdDtl.get(k).getPrdId()){
- */	            %>
+ 	               if(list.get(4*i+j).getPrdId() == dtlList.get(k).getPrdId()){
+ 	            %>
 	            
-	            <div class="color1" style="background-color:red;"></div>
+	            <div class="color1" style="background-color:<%=dtlList.get(k).getPrdDtlColor()%>;"></div>
 	           
 	            <% 
-	            
+ 	               }
 	            }%> 
 	            <!--  <div class="color2"></div>
 	            <div class="color3"></div>
@@ -112,7 +100,7 @@
 										
 				
 									
-										
+							 <div class="move"><%=pageNavi %></div> 			
 										
 											
 					</div>

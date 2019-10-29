@@ -441,16 +441,22 @@ public Product ProductdetailId(Connection conn, int prdId) {
 		return subCtgrCount;
 	}
 
-	public ArrayList<ProductLee> newPrdList(Connection conn, String gender) {
+	public ArrayList<ProductLee> newPrdList(Connection conn,int start, int end, String gender) {
 		// TODO Auto-generated method stub
 		ArrayList<ProductLee> list = new ArrayList<ProductLee>();
 		ProductLee prd = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from product where prd_gender=? and (prd_up_date between sysdate-30 and sysdate) order by prd_up_date desc";
-		try {
+		String query = "select* from"+
+								"(select ROWNUM as rnum, n. * from"
+								+ "(select * from product where prd_gender=? order by prd_up_date desc) n )"
+								+ " where rnum between ? and ?";
+		
+			try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, gender);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -473,6 +479,33 @@ public Product ProductdetailId(Connection conn, int prdId) {
 		 }
 		
 		return list;
+	}
+
+
+	public int newPrdtotalCount(Connection conn, String gender) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select count(*) as total from product where prd_gender=? order by prd_up_date desc";
+		int result =0 ;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, gender);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("total");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 	
