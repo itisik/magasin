@@ -65,13 +65,13 @@
       text-align: left;
    }
     #search-pw-btn button {
-            font-size: 13px;
-            height: 45px;
-            width: 150px;
-            border: 0;
-            background-color: #444;
-            color: white;
-            border-radius: 3px;
+    font-size: 13px;
+    height: 45px;
+    width: 150px;
+    border: 0;
+    background-color: #444;
+    color: white;
+    border-radius: 3px;
     }
     .btn_searchPw{
        display: inline;
@@ -79,7 +79,6 @@
     .btn_main{
        display: inline;
     }
-
 </style>
 </head>
 <body id="body1">
@@ -101,13 +100,6 @@
                       <div class="container">
                         <table class="search-pw-table">
                            <tr>
-                              <th>비밀번호 찾기</th>
-                              <td>
-                                 <input type="radio" name="SearchPw" id="showEmail" onclick="showEmail()" checked><label for="email"><span>이메일</span></label>&nbsp;
-                                 <!-- <input type="radio" name="SearchPw" id="showPhone" onclick="showPhone()"><label for="phone"><span>휴대폰번호</span></label> -->
-                              </td>
-                           </tr>
-                           <tr>
                               <th>아이디 </th>
                               <td><input type="text" name="id" id="id" class="form-control"></td>
                            </tr>
@@ -116,27 +108,23 @@
                               <td><input type="text" name="name" id="name" class="form-control"></td>
                            </tr>
                            <tr id="viewEmail" style="display:;">
-                              <th>이메일로 찾기 </th>
-                              <td>
+                              <th>이메일 </th>
+                              <td> <!-- 회원가입이랑 똑같이 창띄워서  하기 -->
                               		<input type="text" name="email" id="email" class="form-control" placeholder="ex)choiji@naver.com"> 
-									<input type="button" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
+									<input type="submit" id="email_btn" class="btn-box" onclick="sendEmailWindow()" value="인증번호 발송">
 									<span id="emailChkMsg"></span> <!-- 이메일 중복된건지 체크 -->
 									<input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=getRandom()%>"/>
-									<input type="hidden" readonly="readonly" id="chkAfter" name="chkAfter"/>
+									<input type="hidden" readonly="readonly" id="chkAfter" name="chkAfter"/><!-- 값1이면 비번찾아주는 창 띄우게 -->
 									<div id="chkAfterMsg"></div>
                               </td>
-                           </tr>
-                           <!-- <tr id="viewPhone" style="display:none;">
-                              <th>휴대전화로 찾기</th>
-                              <td><input type="hidden" name="phone" id="phone" class="form-control"></td>
-                           </tr>  -->   
+                           </tr>  
                         </table>
                         </div>
                      <br>
                      <div>
                         <div id="search-pw-btn">
-                           <div class="btn_searchPw"><a href="/member/login.jsp"><button>로그인</button></a></div>
-                           <div class="btn_main"><a href="/index.jsp"><button>메인으로 이동</button></a></div>
+                        	<div class="btn_searchPw"><a href="#"><button>확인</button></a></div>
+                        	<div class="btn_main"><a href="/index.jsp"><button>메인으로 이동</button></a></div>
                         </div>   
                      </div>
                   </form>
@@ -182,17 +170,62 @@
 			   $("#name").focus();
 			   return false;
 		   }
-    	/* if($("#phone").val()==""){
-			   alert("전화번호를 입력해주세요.");
-			   $("#phone").focus();
-			   return false;
-		   } */
     	if($("#email").val()==""){
-			   alert("이메일을 확인해주세요.");
+			   alert("이메일을 입력해주세요.");
 			   $("#email").focus();
 			   return false;
 		   }
+    	//이메일 인증 했는지 체크
+		var chkAfter = document.getElementById("chkAfter");
+		//alert(chkAfter.value);
+		if(chkAfter.value != '1'){
+		alert("이메일 인증번호를 인증해주세요.");
+		return false;
+		}
     }
+	function sendEmailWindow(){
+		var email = document.getElementById("email").value;
+		var code_check = document.getElementById("code_check").value;
+		var closetime = 10;
+
+		//alert(email);
+		if(email == ""){
+			alert("이메일을 입력해주세요.");
+			return;
+		}
+
+		//email, code_check(랜덤숫자)값 넘겨줌
+		var url = "/sendEmail?email="+email+"&code_check="+code_check+""; //요청 서블릿 url
+		var title = "checkNumWindow";
+		var status = "left=500px, top=100px, width=300px, height=200px, menubar=no, status=no, scrollbar=yes";
+		window.open(url,title,status);
+		
+		//var popup = window.open("",title,status);
+		//checkNumFrm.checkNum.value = code_check;
+		//checkNumFrm.target = title;
+		//checkNumFrm.action = url;
+		//checkNumFrm.method ="post";
+		//checkNumFrm.submit();
+		//alert(code_check);
+		
+		//자동으로 닫히는 시간 설정 -되는지 확인하기
+		//if(closetime) setTimeout("numChkWindow.close();", closetime*1000);
+//		var popup = window.open(url,title,status);
+//		checkNumFrm.code_check.value=email;
+//		checkNumFrm.target=title;
+//		checkNumFrm.action = url;
+//		checkNumFrm.method="post";
+//		checkNumFrm.submit();
+		//빈 창 오픈
+		//var popup = window.open(url,title,status); //빈창이랑 checkIdFrm 연결해서 form수행했을 때 창에 뜰 수 있게해서 중복체크하고 넘겨줌     //나중엔 ajax쓰기
+		//checkIdFrm.checkId.value = id; //input hidden에 값 설정
+		//checkIdFrm.target = title; //popup창과 form태그를 연결
+		//action, method설정 후 form태그 submit
+		//checkIdFrm.action = url;
+		//checkIdFrm.method = "post";
+		//checkIdFrm.submit();
+	}
+	
    </script>
 </body>
 </html>
