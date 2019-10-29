@@ -66,8 +66,8 @@
    }
     #search-pw-btn button {
     font-size: 13px;
-    height: 45px;
-    width: 150px;
+    height: 40px;
+    width: 170px;
     border: 0;
     background-color: #444;
     color: white;
@@ -124,7 +124,6 @@
                      <div>
                         <div id="search-pw-btn">
                         	<div class="btn_searchPw"><a href="#"><button>확인</button></a></div>
-                        	<div class="btn_main"><a href="/index.jsp"><button>메인으로 이동</button></a></div>
                         </div>   
                      </div>
                   </form>

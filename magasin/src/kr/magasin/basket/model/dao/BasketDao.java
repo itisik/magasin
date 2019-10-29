@@ -8,9 +8,38 @@ import java.util.ArrayList;
 
 import kr.magasin.basket.model.vo.Basket;
 import kr.magasin.basket.model.vo.BasketT;
+import kr.magasin.basket.model.vo.BasketYim;
 import kr.magasin.common.JDBCTemplate;
+import oracle.jdbc.OracleConnection.CommitOption;
 
 public class BasketDao {
+	
+	public String goToBasket(Connection conn, int prdId, String prdDtlSize,String prdDtlColor ) {
+		String prdDtlId = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select prd_dtl_id from product_dtl where prd_id=? and prd_dtl_size=? and prd_dtl_color=?"; 
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, prdId);
+			pstmt.setString(2, prdDtlSize);
+			pstmt.setString(3, prdDtlColor);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				prdDtlId = rset.getString("prd_dtl_id");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}	
+		return prdDtlId;
+		
+	}
+	
  public ArrayList<Basket> basketList(Connection conn,String id){
 	 System.out.println("장바구니 디에이오~~");
 	 System.out.println("디에이오의 ID"+id);
@@ -147,6 +176,35 @@ public class BasketDao {
 			}
 		 return result;
 	 }
+	 
+	 public int updateBasket(Connection conn, BasketYim bsk) {
+		 int result = 0;
+		 PreparedStatement pstmt = null;
+		 String query = "insert into basket values(BASKET_SEQ.nextval,?,?,?)";
+		 //insert into basket values(BASKET_SEQ.nextval,'iris',19,2);
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, bsk.getBasketUserId());
+				pstmt.setInt(2, bsk.getBasketPrdDtlId());
+				pstmt.setInt(3, bsk.getBasketPrdCount());
+				result = pstmt.executeUpdate();
+
+				if(result >0) {
+					conn.commit();
+				}else {
+					conn.rollback();
+				}
+		
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+		  return result;
+	 } 
+		 
+	 
 	 public int locationPrd(Connection conn, int prdDtlId) {
 		 int result = 0;
 		 ResultSet rset = null;

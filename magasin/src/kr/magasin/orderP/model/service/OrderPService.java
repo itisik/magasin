@@ -7,8 +7,19 @@ import kr.magasin.common.JDBCTemplate;
 import kr.magasin.orderP.model.dao.OrderPDao;
 import kr.magasin.orderP.model.vo.Order;
 import kr.magasin.orderP.model.vo.OrderP2;
+import kr.magasin.orderP.model.vo.OrderYim;
 
 public class OrderPService {
+	
+	//ORDERP INSERT 
+	public int updateOrderP(int count, ArrayList<OrderYim> list) {
+		int result = 0;
+		Connection conn = JDBCTemplate.getConnection();
+		OrderPDao dao = new OrderPDao();
+		result = dao.updateOrderP(conn, count, list);
+		JDBCTemplate.close(conn);
+		return result;
+	}
 	
 	public ArrayList<OrderP2> selectAll(String id) {
 		ArrayList<OrderP2> list = new ArrayList<OrderP2>();

@@ -6,22 +6,61 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+   	body {
+        background-color: rgb(246,246,246);
+    }
+    #form2{
+    	text-align: center;
+    	margin: 0;
+    }
+    #form2 table{
+    	text-align: center;
+    	margin: 0;
+    }
+    .num-h3{
+   	 	text-align: center;
+    }
+	#checkBtn{
+		text-align: center;
+        font-size: 13px;
+        height: 40px;
+        width: 120px;
+        border: 0;
+        background-color: #444;
+        color: white;
+        border-radius: 3px;
+    }
+    #form2 tr td input{
+    	border: 1px solid #d7d7d7;
+        color: #333;
+        margin: 7px 0 0;
+       border-radius: 5px;
+       text-align: center;
+    }
+    #form2 tr td{
+    	text-align: center;
+    }
+    #check_code{
+    	font-size: 12px;
+    }
+
+</style>
 </head>
 <body>
+<h3 class="num-h3">인증번호</h3>
    <form id="form2">
       <table>
          <tr>
-            <td><span>인증번호</span></td>
+         	<th>인증번호: </th>
             <td>
-               <input type="text" name="code" id="code"
-               onkeyup="checkCode()" placeholder="인증번호를 입력하세요."/>
-            <div id="checkCode"></div></td>
+               <input type="text" name="code" id="code" onkeyup="checkCode()" placeholder="인증번호를 입력하세요."/><div id="checkCode"></div></td>
             <td>
-               <input type="hidden" readonly="readonly" name="code_check"
-               id="code_check" value="<%=request.getAttribute("code")%>"/>
+               <input type="hidden" readonly="readonly" name="code_check" id="code_check" value="<%=request.getAttribute("code")%>"/>
             </td>
          </tr>
       </table>
+      <br>
       <input id="checkBtn" type="hidden" onclick="closePop()" value='인증하기'/>
    </form>
    <script type="text/javascript">
