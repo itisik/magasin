@@ -18,6 +18,7 @@ import kr.magasin.prdPaging.model.service.ProductLeeService;
 
 
 import kr.magasin.product.model.vo.Product;
+import kr.magasin.productDtl.model.vo.ProductDtl;
 
 
 
@@ -45,17 +46,29 @@ public class ProductExpayServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 
+		int prdId = Integer.parseInt(request.getParameter("prdId"));
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		String prdName = request.getParameter("prdName");
+		int prdPrice = Integer.parseInt(request.getParameter("prdPrice"));
+		String prdDtlColor = request.getParameter("prdDtrlColor");
+		String prdDtlSize = request.getParameter("prdDtlSize");
+		
+		
+		
+		
+		ProductLeeService service = new ProductLeeService();
 
-	      int prdId = Integer.parseInt(request.getParameter("prdId"));
-
-	      ProductLeeService service = new ProductLeeService();
-
-	      Product pay = service.ProductdetailId(prdId);
-	      
-	         RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
-	         request.setAttribute("pays", pay);
-	         rd.forward(request, response);
-
+		Product pay = service.ProductdetailId(prdId);
+		
+		
+		
+		
+		
+			RequestDispatcher rd = request.getRequestDispatcher("/views/prdPage/expays.jsp");
+			request.setAttribute("pays", pay);
+			
+			
+			rd.forward(request, response);
 
 	}
 

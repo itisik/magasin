@@ -53,13 +53,18 @@
 							<img src="/img/product/<%=pdI.getPrdFilepath() %>">
 						</div>
 						<div class="detailInfor">	
-						<form name="expSub" id="Sub" action="/productExpay?prdId=<%=pdI.getPrdId()%>" method="post">
+
+						<form id="Sub" action="/productExpay" method="post">
+
 							<div class="table-wrapper">
 								<p><%=pdI.getPrdName()%></p>
+								 <input type="hidden" name="prdId" value="<%=pdI.getPrdId()%>">
+								 <input type="hidden" name="prdName" value="<%=pdI.getPrdName()%>">	
 								<table class="table detail-table">
 									<tr>
 										<th>Price</th>
 										<td><span><%=pdI.getPrdPrice()%></span>원</td>
+										<input type="hidden" name="prdPrice" value="<%=pdI.getPrdPrice()%>">
 										<!--sale가격에 대한 테이블삭제-->
 									</tr>
 									<tr>
@@ -67,7 +72,10 @@
 										<td class="color">
 										<%for( ProductDtl p : prdDtl ){ %>
 											<%if(pdI.getPrdId()==p.getPrdId()){ %>
-											<div class="color1" name = "color1" value="<%=p.getPrdDtlColor()%>"style="background-color:<%=p.getPrdDtlColor()%>;" onclick="btncolor();"></div>
+
+											<div class="color1" name ="color1" value="<%=p.getPrdDtlColor()%>"style="background-color:<%=p.getPrdDtlColor()%>;"></div>
+											<input type="hidden" name="prdDtlColor" value="<%=p.getPrdDtlColor()%>">
+
 											<%} 
 									}%>
 										</td>
@@ -75,11 +83,13 @@
 									<tr>
 										<th>size</th>
 										<td><select id="sizes" name ="size">
-												<option>-필수 옵션을 선택해주세요-</option>
+												<option value="no">-필수 옵션을 선택해주세요-</option>
 									<%for(ProductDtl p : prdDtl) {%>
 										<%if(pdI.getPrdId()==p.getPrdId()) {%>
 												<!--필수옵션에 사이즈 상세추가함-->
 												<option value="<%=p.getPrdDtlSize()%>"><%=p.getPrdDtlSize()%></option>
+												
+												
 										<%} %>
 									<%} %>
 										</select>
@@ -88,16 +98,25 @@
 								</table>
 								<div class="detailTotal">
 
-									  총 상품금액(수량): <input id = "totals" type="number" name="total" min="1" value="1"  style="width:40px;"><span><%=pdI.getPrdPrice()%></span>(won)
+
+									  총 상품금액(수량): <input id = "amount" type="number" name="total" min="1" value="1" style="width:40px;"><span id="total"><%=pdI.getPrdPrice()%></span>(won)
+
 								</div>
+								<script>
+									$("#amount").change(function(){
+										console.log($("#amount").val());
+										$("#total").text($("#amount").val()*<%=pdI.getPrdPrice()%>);
+									});
+								</script>
 								<div class="detailBag">
 									<div><a href="#"><img src="/img/product/topCartBtn.gif">ADD
 										TO BAG</a></div>
 										<!-- product buy now -> submit btn
 											product add -> button type btn -->
-										<div ><a href="/productExpay?prdId=<%=pdI.getPrdId()%>">
+											
+										<div ><button type="submit" id="pay-btn" style="border:none; background:none;">
 											<img src="/img/product/detailBuyBtn.gif">PRODUCT BUY NOW
-										</a>
+										</button>
 										</div>
 
 								</div>
@@ -107,9 +126,7 @@
                                <div>100원을 사도 무료배송!!</div>
 							</div>
 						</div>
-							<div style="display:none;">
-								<input type="submit">
-							</div>
+
 					   </form>
 					</div>
 				</div>
@@ -153,17 +170,35 @@
 		</div>
 		</footer>
 	</div>
-	
-		<script>
-	$(function(){
+	<script>
+		$(document).ready(function(){
+			var index = -1 ;
+			
+			$("#pay-btn").click(function(){
+				if(index == -1){
+					alert("색상을 선택하세요");
+					return false;
+				}else if($("#sizes").val()=='no'){
+					alert("사이즈를 선택하세요");
+					return false;	
+				}
+				
+			});
+		
+				
 		var PIEKEDCOLOR = "piekedColor";
 		
 		$('.color1').click(function(){
-			$(".color1").removeClass(PIEKEDCOLOR); <!-- 얇게 만드는과정  -->
+			$(".color1").removeClass(PIEKEDCOLOR); 
 			$(this).addClass(PIEKEDCOLOR);
-			$(this).addValue();
+
+			/* $(this).addValue(); */
+			index = $(".color1").index(this);
+			console.log(index);
+
+			});
 		});
-	});
+
 	
 	</script>
 </body>

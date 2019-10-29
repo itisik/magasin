@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import kr.magasin.adminPage.model.service.OrderSearchService;
-import kr.magasin.adminPage.model.vo.Customer;
 import kr.magasin.adminPage.model.vo.Order;
 
 /**
@@ -60,6 +59,7 @@ public class OrderSearchServlet extends HttpServlet {
 			list = new ArrayList<Order>();
 			list.set(0, new Order(999, "", "", "", "", "", "", "", "", 999));
 		}
+		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		new Gson().toJson(list, response.getWriter());
