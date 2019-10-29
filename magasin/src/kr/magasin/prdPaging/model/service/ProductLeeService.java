@@ -25,16 +25,12 @@ public class ProductLeeService {
 	}
 
 
-	/*
-	  public int ProductdetailId(ArrayList<BasketT> list) {
-
-		  Connection conn =	  JDBCTemplate.getConnection(); 
-		  pay = dao.insertBasket(conn, list, count);
-
-		  JDBCTemplate.close(conn); 
-		  return pay; 
-		  }
-	*/
+	   public Product ProductdetailId(int prdId) {
+		      Connection conn = JDBCTemplate.getConnection();
+		      Product pdI = dao.ProductdetailId(conn,prdId);
+		      JDBCTemplate.close(conn);
+		      return pdI;
+		   }
 
 
 /*
@@ -177,6 +173,15 @@ public class ProductLeeService {
 		System.out.println(subCtgrCount);
 		JDBCTemplate.close(conn);
 		return subCtgrCount;
+	}
+
+
+	public ArrayList<ProductLee> newPrdList(String gender) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<ProductLee> list = dao.newPrdList(conn,gender);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 	
 }

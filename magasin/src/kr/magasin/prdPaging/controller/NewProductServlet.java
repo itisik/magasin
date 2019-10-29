@@ -1,6 +1,7 @@
-package kr.magasin.board.controller.review;
+package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,22 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.magasin.board.model.vo.Review;
-import kr.magasin.member.model.vo.Member;
+import kr.magasin.prdPaging.model.service.ProductLeeService;
+import kr.magasin.prdPaging.model.vo.ProductLee;
 
 /**
- * Servlet implementation class ReviewWriteServlet
+ * Servlet implementation class NewProductServlet
  */
-@WebServlet(name = "ReviewWrite", urlPatterns = { "/reviewWrite" })
-public class ReviewWriteServlet extends HttpServlet {
+@WebServlet(name = "NewProduct", urlPatterns = { "/newProduct" })
+public class NewProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewWriteServlet() {
+    public NewProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +33,13 @@ public class ReviewWriteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		Member m = (Member)session.getAttribute("member");
-		if(m!= null) {
-			// test용 임시
-			String prdName= request.getParameter("prdName");
-			String prdSnImg = request.getParameter("prdSnImg");
-			request.setAttribute("prdName", prdName);
-			request.setAttribute("prdSnImg", prdSnImg);
-			System.out.println(prdSnImg);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/review/reviewWriteTest.jsp");
-			rd.forward(request, response);
-			
-		}else {
-			response.sendRedirect("/views/member/login.jsp");
-		}
+		String gender = request.getParameter("gender");
+		ProductLeeService service = new ProductLeeService();
+		ArrayList<ProductLee> list = service.newPrdList(gender);
+		request.setAttribute("newList", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/prdPage/newPrd.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**

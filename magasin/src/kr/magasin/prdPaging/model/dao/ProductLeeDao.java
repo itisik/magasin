@@ -53,49 +53,44 @@ public class ProductLeeDao {
 		return list;
 	}
 
-/*
-	// 상품번호로 페이지 이동 //
 
-	public Product ProductdetailId(Connection conn, ArrayList<BasketT> list) {
-		Product pdI = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String query = "select a.prd_Id, a.prd_Sn_Imgname, prd_Sn_Imgpath, prd_Dtl_Count from product a, product_dtl b where  a.prd_id = b.prd_id and prd_dtl_id=?";
-		
-		try {
-			for(int i=0;i<count;i++) {
-				
-		
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1,Integer.parseInt(list.get(i).getPrdDtlId()));
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				pa = new ProductAll();
-				pa.setPrdId(rset.getInt("prd_Id"));
-				pa.setPrdSnImgname(rset.getString("prd_Sn_Imgname"));
-				pa.setPrdSnImgpath(rset.getString("prd_Sn_Imgpath"));
-				pa.setPrdDtlCount(rset.getInt("prd_Dtl_Count"));
-				pa.setCount(list.get(i).getPrdCount());
-				pa.setPrdDtlColor(list.get(i).getPrdDtlColor());
-				pa.setPrdDtlSize(list.get(i).getPrdDtlSize());
-				pa.setPrdPrice(list.get(i).getPrdPrice());
-				pa.setPrdName(list.get(i).getPrdName());
-				pa.setPrdDtlSize(list.get(i).getPrdDtlSize());
-				lists.add(pa);
-			}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		System.out.println("데이터베이스 잘왔는지 확인 ");
-		System.out.println(list.get(0).getPrdDtlColor());
-		return lists;
-	}
-*/
+	// 상품번호로 페이지 이동 //
+public Product ProductdetailId(Connection conn, int prdId) {
+      Product pdI = null;
+      PreparedStatement pstmt = null;
+      ResultSet rset = null;
+      String query = "select * from product where prd_Id=?";
+      
+      try {
+         pstmt = conn.prepareStatement(query);
+         pstmt.setInt(1, prdId);
+         
+         rset = pstmt.executeQuery();
+         
+         if(rset.next()) {
+            pdI = new Product();
+            pdI.setPrdId(prdId);
+            pdI.setPrdName(rset.getString("prd_Name"));
+            pdI.setPrdGender(rset.getString("prd_gender"));
+            pdI.setPrdCtgr(rset.getString("prd_ctgr"));
+            pdI.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+            pdI.setPrdPrice(rset.getInt("prd_price"));
+            pdI.setPrdUpDate(rset.getDate("prd_up_date"));
+            pdI.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+            pdI.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+            pdI.setPrdFilename(rset.getString("prd_filename"));
+            pdI.setPrdFilepath(rset.getString("prd_filepath"));
+         }
+      } catch (SQLException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }finally {
+         JDBCTemplate.close(rset);
+         JDBCTemplate.close(pstmt);
+      }
+      return pdI;   
+   }
+
 /*
  	
  	가격과 신상으로 조회
@@ -442,6 +437,40 @@ public class ProductLeeDao {
 			e.printStackTrace();
 		}
 		return subCtgrCount;
+	}
+
+	public ArrayList<ProductLee> newPrdList(Connection conn, String gender) {
+		// TODO Auto-generated method stub
+		ArrayList<ProductLee> list = new ArrayList<ProductLee>();
+		ProductLee prd = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from product where prd_gender=? and (prd_up_date between sysdate-30 and sysdate) order by prd_up_date desc";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, gender);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				prd = new ProductLee();
+				prd.setPrdCtgr(rset.getString("prd_ctgr"));
+				prd.setPrdGender(rset.getString("prd_gender"));
+				prd.setPrdId(rset.getInt("prd_id"));
+				prd.setPrdName(rset.getString("prd_name"));
+				prd.setPrdPrice(rset.getInt("prd_price"));
+				prd.setPrdSnImgpath(rset.getString("prd_sn_imgpath"));
+				prd.setPrdSnImgname(rset.getString("prd_sn_imgname"));
+				prd.setPrdSubCtrg(rset.getString("prd_sub_ctgr"));
+				prd.setPrdUpDate(rset.getDate("prd_up_date"));
+				list.add(prd);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		 }
+		
+		return list;
 	}
 
 	

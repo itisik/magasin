@@ -65,7 +65,7 @@
                 	
                 %>
                    
-                   <li><a href="/subCtgrSearch?ctgr=<%=lists.get(0).getPrdCtgr() %>&subCtgr=<%=sub%>&gender=<%=lists.get(0).getPrdGender()%>"><%=sub%></a>(<span class="subCtgr-count"><%=subCtgrCount.get(c) %></span>)</li>
+                   <li><a href="/subCtgrSearch?ctgr=<%=lists.get(0).getPrdCtgr() %>&subCtgr=<%=sub%>&gender=<%=lists.get(0).getPrdGender()%>"><%=sub.toUpperCase()%></a>(<span class="subCtgr-count"><%=subCtgrCount.get(c) %></span>)</li>
            
                 <% c++;
                    }%>

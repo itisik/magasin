@@ -16,8 +16,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>	
+<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body id="body1">
+	<div class="wrapper">
 	<header>
 		<div class="header">
 				<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -95,9 +97,13 @@
 					<br>
 					
 					<a href="/noticeList" class="btn btn-md" >List</a>
-					<button type="button" class="btn btn-md" id="insertBtn" >등록</button>
+					<button type="button" class="btn btn-md btn-default" id="insertBtn" >등록</button>
 				</div>
-			
+				<style>
+				 #insertBtn {
+				 	background:white;
+				 }
+				</style>
 				
 				</form>
 			</div>
@@ -109,5 +115,6 @@
 				<%@include file="/WEB-INF/views/common/footer.jsp"%>
 			</div>
 	</footer>
+	</div>
 </body>
 </html>

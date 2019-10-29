@@ -81,13 +81,7 @@
 				<div class="mainContent" style="width: 943px;">
 					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 								<div class="reviewContainer">
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<!-- test용 버튼입니당~~~~~ -->
-				<a href="/reviewWrite" class="btn writeBtn">Write</a>
+				
 				<ul id="review">
 					<li>review</li>
 				</ul>
