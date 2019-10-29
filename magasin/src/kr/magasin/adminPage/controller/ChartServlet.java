@@ -1,13 +1,18 @@
 package kr.magasin.adminPage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import kr.magasin.adminPage.model.service.ChartService;
+import kr.magasin.adminPage.model.vo.Chart;
 
 /**
  * Servlet implementation class ChartServlet
@@ -33,9 +38,16 @@ public class ChartServlet extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		
 		ChartService service = new ChartService();
-		ArrayList<Chart>
+		ArrayList<Chart> chartList = service.ChartList(chartIndex, startDate, endDate);
 		
+		if(chartList == null) {
+			return;
+		}
 		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		new Gson().toJson(chartList, response.getWriter());
+
 	}
 
 	/**

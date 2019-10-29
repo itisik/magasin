@@ -763,6 +763,8 @@
 			   alert("개인정보 수집 및 이용에 동의하여 주시기 바랍니다.");
 			   return false;
 		   }
+	   }
+
 
 		   
 		   /* if(check2.prop("checked")==false){

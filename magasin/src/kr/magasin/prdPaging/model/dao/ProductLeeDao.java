@@ -91,6 +91,7 @@ public Product ProductdetailId(Connection conn, int prdId) {
       return pdI;   
    }
 
+
 /*
  	
  	가격과 신상으로 조회
@@ -337,6 +338,7 @@ public Product ProductdetailId(Connection conn, int prdId) {
 		}
 		return sub;
 	}
+
 
 	public int subTotalCount(Connection conn, String subCtgr, String gender) {
 		// TODO Auto-generated method stub

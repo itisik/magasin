@@ -1,15 +1,13 @@
-<%@page import="kr.magasin.prdPaging.model.vo.ProductAll"%>
+
+<%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.magasin.member.model.vo.Member"%>
+
 <%@page import="kr.magasin.product.model.vo.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%
-
-
- Product pay = (Product)request.getAttribute("pays");
-
-
+     Product pay = (Product)request.getAttribute("pays");
+	 
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,20 +33,20 @@
     <title>Insert title here</title>
 </head>
 <body id="body1">
-   <div class="wrapper">
-      <header>
-         <div class="header">
-            <%@include file="/WEB-INF/views/common/header.jsp"%>
-         </div>
-      </header>
-      <section>
-         <div class="mainContainer">
-            <div class="side-nav">
-               <%@include file="/WEB-INF/views/common/nav.html"%>
-            </div>
-            <div class="mainContent" style="width: 943px;">
-               <!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-      
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+		
     <div class="orderContainer">
         <div class="orderText">
             <p><a href="#">home</a>> order start</p>
@@ -257,14 +255,15 @@
       });
    });
 </script>
-         </div>
-      </section>
-      <footer>
-         <div class="footer">
-            <%@include file="/WEB-INF/views/common/footer.jsp"%>
-         </div>
-      </footer>
-   </div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer">
+				<%@include file="/WEB-INF/views/common/footer.jsp"%>
+			</div>
+		</footer>
+	</div>
+
 
 </body>
 

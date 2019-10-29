@@ -14,9 +14,11 @@
         ArrayList<ProductDtl> prdDtl = (ArrayList<ProductDtl>)request.getAttribute("prdDtl");
         ArrayList<String> subCtgr = (ArrayList<String>)request.getAttribute("sub");
 
+
         ArrayList<Integer> subCtgrCount = (ArrayList<Integer>)request.getAttribute("count");
 
    %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,23 +28,27 @@
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
 <body id="body1">
-   <div class="wrapper">
-      <header>
-         <div class="header">
-            <%@include file="/WEB-INF/views/common/header.jsp"%>
-         </div>
-      </header>
-      <section>
-         <div class="mainContainer">
-            <div class="side-nav">
-               <%@include file="/WEB-INF/views/common/nav.html"%>
-            </div>
-            <div class="mainContent" style="width: 943px;">
-               <!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-   <div class="windowContainer">
-   
-   
-     <div class="main-div">
+
+	<div class="wrapper">
+		<header>
+			<div class="header">
+				<%@include file="/WEB-INF/views/common/header.jsp"%>
+			</div>
+		</header>
+		<section>
+			<div class="mainContainer">
+				<div class="side-nav">
+					<%@include file="/WEB-INF/views/common/nav.html"%>
+				</div>
+				<div class="mainContent" style="width: 943px;">
+					<!-- 만드신 콘텐츠 넣으세요!!!!!!!!!!!!!!!!width 반드시 943!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+					
+
+	<div class="windowContainer">
+	
+	
+    <div class="main-div">
+
         <div class="main-title">
             <div class="title-middle">
                 <div class="title-text">
@@ -58,6 +64,7 @@
                 
                 <div class="title-category">     
 
+
                              <ul class="subCategory">  
                 
                 <%int c=0;
@@ -70,6 +77,7 @@
                 <% c++;
                    }%>
 				
+
 
                 </ul>
 
@@ -124,6 +132,7 @@
        <%} %>
     </div>
      <div class="move"><%=pageNavi %></div> 
+
 </div>            
             </div>
             </div>

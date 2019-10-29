@@ -1,17 +1,21 @@
 package kr.magasin.prdPaging.model.vo;
 
-public class ProductAll {
 
+import java.sql.Date;
+
+public class ProductAll {
+	
 	private int prdId;
-	   private String prdName;
-	   private int prdPrice;
-	   private String prdSnImgname;
-	   private  String prdSnImgpath;
-	   private int prdDtlId;
-	   private int prdDtlCount; //재고 수량
-	   private String prdDtlSize;
-	   private String prdDtlColor;
-	   private int count; // 구매개수
+	private String prdName;
+	private int prdPrice;
+	private String prdSnImgname;
+	private  String prdSnImgpath;
+	private int prdDtlId;
+	private int prdDtlCount; //재고 수량
+	private String prdDtlSize;
+	private String prdDtlColor;
+	private int count; // 구매개수 
+	
 	public ProductAll() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -90,5 +94,5 @@ public class ProductAll {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	   
+
 }
