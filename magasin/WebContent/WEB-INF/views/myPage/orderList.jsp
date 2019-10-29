@@ -56,7 +56,7 @@
 	
 	<tr>
 		<td class="ol-list-1"><%= oP.getOrderDate() %><br>[<%=oP.getOrderNum() %>]</td>
-        <td class="ol-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
+        <td class="ol-list-2"><a href="#"><img src="/upload/photo/<%=oP.getPrdSnImgpath()%>"></a></td>
         <td class="ol-list-3">
         	<ul>
         		<li class="ol-list-3-li-1" ><strong><%=oP.getPrdName() %></strong></li>

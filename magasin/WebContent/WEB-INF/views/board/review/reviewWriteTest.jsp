@@ -48,7 +48,7 @@
 						</tr>
 						<tr>
 							<th>Writer</th>
-							<td><%=m.getId() %><input type="hidden" value="<%=m.getId()%>" name="reviewWriter"></td>
+							<td><%=m.getId() %><input type="hidden" value="<%=m.getName()%>" name="reviewWriter"></td>
 						</tr>
 						<tr>
 							<th>별점</th>
@@ -82,7 +82,7 @@
 							<th>
 									<div class="pdt-div">
 
-										<img src="/img/product/<%=prdSnImg %>" width="150"><br>
+										<img src="/upload/photo/<%=prdSnImg %>" width="150"><br>
 										<p id="prdName" style="width:100%;text-align:center;"><%=prdName %></p>
 										<input type="hidden" name="prdSnImg" value="<%=prdSnImg %>">
 										<input type="hidden" name="prdName" value="<%=prdName %>">

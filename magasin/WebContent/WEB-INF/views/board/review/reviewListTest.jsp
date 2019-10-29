@@ -110,7 +110,7 @@
 							<tr>
 								<td style="width: 8%;">No.<%=r.getReviewNo() %></td>
 								<td style="width: 10%;">
-								<img src="/img/product/<%=r.getPrdSnImg() %>" width="100">
+								<img src="/upload/photo/<%=r.getPrdSnImg() %>" width="100">
 								<%=r.getPrdName() %>
 								</td>
 								<td style="width: 42%;"><span><%=r.getReviewTitle() %></span> &nbsp;&nbsp;
