@@ -19,6 +19,7 @@ public class BasketService {
 		
 	}
 	public ArrayList<Basket> basketList(String id){
+		System.out.println("장바구니 서비스 !!!");
 		ArrayList<Basket>list = new ArrayList<Basket>();
 		Connection conn = JDBCTemplate.getConnection();
 		BasketDao dao = new BasketDao();
