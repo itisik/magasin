@@ -111,8 +111,8 @@
 									});
 								</script>
 								<div class="detailBag">
-									<div><a href="#"><img src="/img/product/topCartBtn.gif">ADD
-										TO BAG</a></div>
+									<div><button type="button" name="button"  onclick="goToBasket();"><img src="/img/product/topCartBtn.gif">ADD
+										TO BAG</button></div>
 										<!-- product buy now -> submit btn
 											product add -> button type btn -->
 											
