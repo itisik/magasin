@@ -9,7 +9,7 @@
 					<i class="fas fa-box-open" style="color: #f43142;"></i> 신규주문
 				</div>
 				<div class="num">
-					<span id="order">11</span>건
+					<span id="order">0</span>건
 				</div>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 					<i class="fas fa-truck"></i> 배송중
 				</div>
 				<div class="num">
-					<span id="delivery">20</span>건
+					<span id="delivery">0</span>건
 				</div>
 			</div>
 
@@ -29,7 +29,7 @@
 					<i class="fas fa-people-carry"></i> 배송완료
 				</div>
 				<div class="num">
-					<span id="complete">32</span>건
+					<span id="complete">0</span>건
 				</div>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 					<i class="fas fa-won-sign"></i> 오늘 결제금액
 				</div>
 				<div class="num">
-					<span id="todayAccount">310,000</span>원
+					<span id="todayAccount">0</span>원
 				</div>
 			</div>
 
@@ -49,7 +49,7 @@
 					<i class="fas fa-money-check-alt"></i> 이번주 결제금액
 				</div>
 				<div class="num">
-					<span id="weekAccount">1,372,000</span>원
+					<span id="weekAccount">0</span>원
 				</div>
 			</div>
 		</div>
@@ -90,7 +90,7 @@
 					<i class="fas fa-question"></i> 미답변 문의
 				</div>
 				<div class="num">
-					<span id="q">4</span>건
+					<span id="q">0</span>건
 				</div>
 			</div>
 			<div class="preview">
@@ -114,3 +114,30 @@
 		</div>
 	</div>
 </div>
+
+<script>
+
+	const newOrder = $("#order");
+	const delivery2 = $("#delivery");
+	const complete2 = $("#complete");
+	const todayAccount2 = $("#todayAccount");
+	const weekAccount2 = $("#weekAccount");
+	const q2 = $("#q");
+	
+	$.ajax({
+		url : "/count",
+		type : "get",
+		success : function(data) {
+			newOrder.html(data[0].newOrder);
+			delivery2.html(data[0].shippingOrder);
+			complete2.html(data[0].comOrder);
+			todayAccount2.html(data[0].todayMoney);
+			weekAccount2.html(data[0].weekMoney);
+			q2.html(data[0].qCount);
+			//data[0].cancleOrder
+		},
+		error: function(){
+			console.log("!!!");
+		}
+	});
+</script>

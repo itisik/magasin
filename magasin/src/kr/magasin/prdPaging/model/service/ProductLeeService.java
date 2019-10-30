@@ -254,6 +254,7 @@ public class ProductLeeService {
 		ArrayList<String> sizes = dao.selectSize(conn,prdId);
 		JDBCTemplate.close(conn);		
 		return sizes;
+
 	}
 
 	public int orderComplete(String memberId ,int prdId, String size, int amount, String color) {
@@ -276,6 +277,20 @@ public class ProductLeeService {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
+		return result;
+
+	}
+	
+
+	public int orderComplete(int prdId, String size, int amount, String color) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.orderComplete(conn,prdId,size,amount,color);
+		if(result >0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
 		return result;
 	}
 	

@@ -138,7 +138,6 @@
 				<li class="tab-link" data-tab="tab-3">상품등록</li>
 				<li class="tab-link" data-tab="tab-4">고객조회</li>
 				<li class="tab-link" data-tab="tab-5">주문조회</li>
-				<li class="tab-link" data-tab="tab-6">답변관리</li>
 				<li class="tab-link" data-tab="tab-7">매출조회</li>
 				<li class="tab-link" data-tab="tab-8">등급관리</li>
 			</ul>
@@ -223,7 +222,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script type="text/javascript" src="/js/adminPage/adminPage.js"></script>
 	<script type="text/javascript" src="/js/adminPage/adminPagePrd.js"></script>
 	<script type="text/javascript" src="/js/adminPage/chart.js"></script>

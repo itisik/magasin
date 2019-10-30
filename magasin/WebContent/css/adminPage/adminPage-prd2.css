@@ -1,0 +1,239 @@
+#product-input,
+#priceinput,
+#stockinput {
+  width: 80%;
+}
+#gender,
+#categorysemi,
+#category,
+#categorysize {
+  height: 30px;
+  border-radius: 4px;
+}
+
+.productinput {
+  border-radius: 4px;
+}
+.producttable {
+  border: 1px solid #ababab;
+  width: 100%;
+}
+.thdiv {
+  float: left;
+  padding-left: 20px;
+}
+.thdiv1 {
+  float: left;
+  padding-left: 50px;
+  color: darkgrey;
+}
+#sebuspan {
+  padding-left: 20px;
+}
+.producttable tr {
+  line-height: 30px;
+}
+#thumbnaildiv {
+  display: table-cell;
+}
+#thumbnail,
+#productpicture {
+  height: 100px;
+}
+#thumbnaildiv tr {
+  vertical-align: middle;
+}
+#img-viewer,
+#img-viewer2 {
+  float: left;
+  margin-right: 20px;
+}
+
+#thimg1,
+#thimg2,
+#tdimg1,
+#tdimg2 {
+  vertical-align: middle;
+}
+#thdiv1,
+#thdiv2,
+#thdiv3 {
+  width: 37%;
+}
+#thdiv3,
+#tdcolor {
+  vertical-align: middle;
+  height: 100px;
+}
+#activeoption {
+  align-items: center;
+}
+.optiontable {
+  border: 1px solid #0b080f;
+  width: 100%;
+}
+.optiontable tr {
+  border: 1px solid #0b080f;
+}
+.optiontable th {
+  border: 1px solid #0b080f;
+}
+.optiontable td {
+  border: 1px solid #0b080f;
+  text-align: center;
+}
+.searchmain > span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.search1 > div {
+  display: inline-block;
+}
+.searchname{
+	padding-right: 
+}
+.searchname-1 > select,
+#category,
+#categorysemi1,
+#cal,
+#categorysemi2 {
+  height: 30px;
+  border-radius: 4px;
+}
+.searchname-2 > input {
+  height: 24px;
+  border-radius: 4px;
+  width: 300px;
+}
+.search2 > div {
+  display: inline-block;
+}
+
+#sebuspan {
+  padding-left: 100px;
+  padding-right: 80px;
+}
+.search3 > div {
+  display: inline-block;
+}
+.searchcal {
+  padding-left: 100px;
+}
+.search4 {
+  text-align: center;
+}
+#searchbtn {
+  width: 40px;
+  height: 40px;
+}
+.searchmain1 {
+  border: 1px solid #4c4c4e;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.searchmain2 {
+  border: 1px solid #4c4c4e;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.productlisttable tr {
+  border: 1px solid #4c4c4e;
+}
+.productlisttable th {
+  border: 1px solid #4c4c4e;
+}
+.productlisttable td {
+}
+.productlisttable {
+  width: 100%;
+  text-align: center;
+}
+.productlisttabletr th {
+  background: #4c4c4e;
+  color: #f2f0f1;
+  height: 15px;
+}
+
+#prdresult tbody tr td{
+	width:11%;
+}
+#prdresult tbody tr td button {
+	 border-radius: 4px;
+ 	 color: #fdfcf9;
+  	 background: green;
+}
+#prdresult tbody tr td a{
+	 border-radius: 4px;
+ 	 color: #fdfcf9;
+  	 background: green;
+}
+.productlisttabletr2 td button {
+  border-radius: 4px;
+  color: #fdfcf9;
+  background: green;
+}
+#tab-9 {
+  border: 1px solid black;
+  width: 85%;
+  height: 70vh;
+  position: absolute;
+  top: 20px;
+  left: 230px;
+}
+.tabupdate > span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.updatecon1-2 > input,
+.updatecon4-2 > input,
+.updatecon5-2 > input,
+.updatecon8-2 > input {
+  height: 24px;
+  border-radius: 4px;
+  width: 300px;
+}
+.updatecon1 > div {
+  display: inline-block;
+  height: 70px;
+  vertical-align: middle;
+}
+#gender2,
+#category2 {
+  height: 30px;
+  border-radius: 4px;
+}
+.updatecon9-1 button {
+  border-radius: 4px;
+  color: #fdfcf9;
+  background: #4c4c4e;
+  height: 40px;
+  width: 80px;
+}
+.updatecon1-1,
+.updatecon2-1,
+.updatecon3-1,
+.updatecon4-1,
+.updatecon5-1,
+.updatecon6-1,
+.updatecon7-1,
+.updatecon8-1,
+.updatecon9-1 {
+  width: 250px;
+}
+#asdfasdfasdf {
+  padding-left: 50px;
+}
+
+#product-input,
+#priceinput,
+#optioncolor,
+#optionvalue {
+  height: 24px;
+  border-radius: 4px;
+  width: 300px;
+}
+

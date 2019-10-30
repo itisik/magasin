@@ -93,6 +93,7 @@
    	</div>
     
      <div class="move" style="clear:both;"><%=pageNavi %></div> 	
+
 	<style>
 .paging-btn {
 	color: black;
@@ -102,6 +103,7 @@
 	
 }
 </style>				
+
 					</div>
 				</div>
 			</div>

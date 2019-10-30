@@ -2,7 +2,9 @@ package kr.magasin.prdPaging.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,12 +33,15 @@ public class OrderCompleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+
 		String memberId = request.getParameter("prdId");
+
 		int prdId = Integer.parseInt(request.getParameter("prdId"));
 		String size = request.getParameter("size");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		String color = request.getParameter("color");
 		ProductLeeService service = new ProductLeeService();
+
 		
 		int result = service.orderComplete(memberId,prdId,size,amount,color);
 		if(result>0) {
@@ -49,6 +54,7 @@ public class OrderCompleteServlet extends HttpServlet {
 			request.setAttribute("loc", "/");
 			RequestDispatcher rd= request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			rd.forward(request, response);
+
 		}
 		
 	}

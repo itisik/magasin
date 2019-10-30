@@ -245,8 +245,9 @@
                var r4 = '카드 승인 번호' +rsp.apply_num;
                alert(msg);
                $("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
-               location.href="/";
+              location.href="/";
                <%-- location.href='/orderComplete?memberId=<%=m.getId()%>&prdId=<%=pay.getPrdId()%>&size=<%=pay.getPrdDtlSize()%>&color=<%=pay.getPrdDtlColor()%>&amount=<%=pay.getAmount()%>'; --%>
+
             }else{
                $("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
              }

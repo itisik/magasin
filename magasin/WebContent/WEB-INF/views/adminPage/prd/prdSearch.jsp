@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style>
+	.searchname-1{
+		padding-right: 9%;
+	}
+</style>
+
 <div class="searchmain">
 	<i class="fas fa-list"></i><span> 상품 조회 및 수정/삭제</span> <br> <br>
 

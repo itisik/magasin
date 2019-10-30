@@ -28,8 +28,10 @@
 <title>Insert title here</title>
 <style>
 .basket-btn{
+
    border:none;
    background:none;
+
 }
 </style>
 <!-- 경필 CSS -->
@@ -37,6 +39,7 @@
 <link rel="stylesheet" href="/css/prdPage/exdetail.css">
 </head>
 <body id="body1">
+
    <div class="wrapper">
    
       <header>
@@ -128,6 +131,7 @@
                               </div>
 
                         </div>
+
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
   <style>
   
@@ -159,6 +163,7 @@
 }
 
                           </style>
+
                            
                                   <div class="delivery">
                                   <div>Magasin 배송</div>
@@ -280,5 +285,6 @@
 
    
    </script>
+
 </body>
 </html>

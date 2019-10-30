@@ -18,7 +18,6 @@
 		</div>
 		<div class="bottom-input">
 			<input name = "memberKeyword" id="memberKeyword" type="text" />
-			<div class="upCon" style = "display: none;">&nbsp;&nbsp;이상</div>
 		</div>
 	</div>
 	<div class="search-btn">
