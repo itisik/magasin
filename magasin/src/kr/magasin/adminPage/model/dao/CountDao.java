@@ -79,7 +79,7 @@ public class CountDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "SELECT COUNT(ORDER_MONEY) AS 결제금액 FROM ORDER_P WHERE TO_DATE(ORDER_DATE) = TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'))";
+		String query = "SELECT SUM(ORDER_MONEY) AS 결제금액 FROM ORDER_P WHERE TO_DATE(ORDER_DATE) = TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'))";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -101,7 +101,7 @@ public class CountDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = "SELECT COUNT(ORDER_MONEY) AS 결제금액 FROM ORDER_P WHERE TO_DATE(ORDER_DATE) BETWEEN TO_DATE(TO_CHAR(SYSDATE - 7, 'YYYY-MM-DD')) AND TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD')";
+		String query = "SELECT SUM(ORDER_MONEY) AS 결제금액 FROM ORDER_P WHERE TO_DATE(ORDER_DATE) BETWEEN TO_DATE(TO_CHAR(SYSDATE - 7, 'YYYY-MM-DD')) AND TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'))";
 
 		try {
 			pstmt = conn.prepareStatement(query);

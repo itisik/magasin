@@ -1,0 +1,422 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+/*              */
+
+body {
+  background-color: #eeeeee;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content 1fr;
+}
+
+li {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+ul.tabs {
+  background-color: #192033;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li {
+  background: none;
+  color: #f4f4f5;
+  background-color: #192033;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs li.current {
+  color: #ededed;
+  background-color: #0b83e6;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px;
+}
+
+.tab-content.current {
+  display: inherit;
+}
+
+.tabs {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+#tab-1,
+#tab-2,
+#tab-3,
+#tab-4,
+#tab-5,
+#tab-6,
+#tab-7,
+#tab-8 {
+  background-color: #eeeeee;
+
+  min-height: 700px;
+  overflow: none;
+
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  left: 211px;
+
+  min-width: 86%;
+  max-width: 86%;
+
+  min-height: 90%;
+  max-height: 90%;
+}
+
+#tab-1 {
+  overflow: hidden;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+}
+
+.window1,
+.window2 {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.order,
+.delivery,
+.account,
+.qna,
+.graph {
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 18px 25px;
+  border: 1px solid #cdcdcd;
+  width: 30%;
+  height: 60%;
+  background-color: #ffffff;
+  height: auto;
+}
+
+#order,
+#delivery,
+#complete,
+#todayAccount,
+#weekAccount,
+#q {
+  font-weight: bold;
+  font-size: 24px;
+  color: #f43142;
+}
+
+.window2 {
+  height: 75%;
+}
+
+.qna {
+  right: 0;
+  height: 100%;
+}
+
+.graph {
+  left: 0;
+  width: 75%;
+  height: 100%;
+}
+
+.order > .text,
+.delivery > .text,
+.account > .text,
+.graph > .text,
+.qna > .text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.graph > .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #cdcdcd;
+}
+
+.q-title {
+  font-size: 14px;
+}
+
+.chart {
+  margin-top: 10px;
+  border-top: 1px solid #cdcdcd;
+  width: 100%;
+  height: 100%;
+}
+
+.container2 {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
+
+ul.tabs2 {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs2 li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+ul.tabs2 li.current2 {
+  border: 1px solid #aaa;
+  background: #ededed;
+  color: #222;
+}
+
+.window4 > .tab-content2 {
+  display: none;
+  background: #ededed;
+  padding: 15px;
+  width: 1050px;
+  height: 470px;
+}
+
+.tab-content2.current2 {
+  display: inherit;
+}
+
+.window3 {
+  margin-top: 5px;
+  top: 0;
+  margin-bottom: 5px;
+}
+
+.window4 {
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+}
+
+span {
+  cursor: pointer;
+}
+
+span:hover {
+  text-decoration: solid;
+}
+
+.top-grade-search > h3 {
+  display: inline-block;
+}
+
+.top-grade-search > div {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.grade-option > select {
+  height: 30px;
+}
+
+.q-title:not(:first-child) {
+  border-top: 1px solid #cdcdcd;
+}
+
+.preview {
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.preview tr td {
+  padding: 10px 0px;
+}
+
+.tabs-logo {
+  margin-left: 30px;
+}

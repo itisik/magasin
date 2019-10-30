@@ -1,6 +1,4 @@
 $("#orderSearchBtn").click(function() {
-	const widthSize = 10;
-	
 	const timeIndex = $("[name = timeIndex]").val();
 	// 조회 기간 카테고리
 	
@@ -55,7 +53,7 @@ $("#orderSearchBtn").click(function() {
 					for (let index in data) {
 						const tr = $("<tr>");
 						
-						const chkTd = $("<td style='width: 4.2%;'>");
+						const chkTd = $("<td style='width: 3%;'>");
 						
 						let status;
 						
@@ -91,15 +89,15 @@ $("#orderSearchBtn").click(function() {
 						
 						chkTd.append($("<input type='checkbox' id='"+status+"'class='orderCheckBox'>"))
 						
-						const idTd = $("<td style='width: "+ widthSize +"%;'>").html(data[index].orderCusId);
-						const nameTd = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent(data[index].orderCusName));
-						const pNameTd = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent(data[index].orderCusPrdName));
-						const addr = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent("<div class='purAddr' id='"+ data[index].orderNum +"'>배송 예정지 보기</div>"));
-						const pCountTd = $("<td style='width: "+ widthSize +"%;'>").html(data[index].orderCusPrdCount);
-						const orderDate = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent(data[index].orderCusPurDate));
-						const orderOutDate = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent(data[index].orderCusOutDate));
-						const orderComDate = $("<td style='width: "+ widthSize +"%;'>").html(decodeURIComponent(data[index].orderCusComDate));
-						const orderStatus = $("<td style='width: "+ widthSize +"%;'>");
+						const idTd = $("<td style='width: 6%;'>").html(data[index].orderCusId);
+						const nameTd = $("<td style='width: 5%;'>").html(decodeURIComponent(data[index].orderCusName));
+						const addr = $("<td style='width: 36%;'>").html(decodeURIComponent(data[index].orderCusAddr));
+						const pNameTd = $("<td style='width: 10%;'>").html(decodeURIComponent(data[index].orderCusPrdName));
+						const pCountTd = $("<td style='width: 5%;'>").html(data[index].orderCusPrdCount);
+						const orderDate = $("<td style='width: 10%;'>").html(decodeURIComponent(data[index].orderCusPurDate));
+						const orderOutDate = $("<td style='width: 10%;'>").html(decodeURIComponent(data[index].orderCusOutDate));
+						const orderComDate = $("<td style='width: 10%;'>").html(decodeURIComponent(data[index].orderCusComDate));
+						const orderStatus = $("<td style='width: 10%;'>");
 						
 						let temp = "";
 						
@@ -147,8 +145,8 @@ $("#orderSearchBtn").click(function() {
 						tr.append(chkTd)
 						.append(idTd)
 						.append(nameTd)
-						.append(pNameTd)
 						.append(addr)
+						.append(pNameTd)
 						.append(pCountTd)
 						.append(orderDate)
 						.append(orderOutDate)
