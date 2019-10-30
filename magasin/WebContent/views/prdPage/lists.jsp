@@ -115,6 +115,7 @@
             %>
             
             <div class="color1" style="background-color:<%=prdDtl.get(i).get(k).getPrdDtlColor()%>"></div>
+
            
             <%}
                }%>

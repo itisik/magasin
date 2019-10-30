@@ -23,7 +23,7 @@
           <li><a href="/views/member/join.jsp">join</a></li>
           <li><a href="/views/member/login.jsp">log-in</a></li>
           
-          <% }else{%> <%if(m.getId().equals("admin")){%>
+          <% }else{%> <%if(m.getGrade().equals("admin")){%>
           <li><a href="/adminPageMain">관리자Page</a></li>
           <li><a href="/logout">Logout</a></li>
           <%}else{ %>

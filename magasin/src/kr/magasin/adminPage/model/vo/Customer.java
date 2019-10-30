@@ -3,36 +3,28 @@ package kr.magasin.adminPage.model.vo;
 public class Customer {
 	private String cusId;
 	private String cusName;
-	private String cusPrdName;
-	private String cusPrdCount;
-	private String cusPurDate;
-	private String cusOutDate;
-	private String cusComDate;
+	private String cusGender;
+	private String cusAddr;
+	private String cusPhone;
+	private String cusBirthdate;
+	private String cusEmail;
 
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	public String getCusComDate() {
-		return cusComDate;
 	}
 
-	public void setCusComDate(String cusComDate) {
-		this.cusComDate = cusComDate;
-	}
-
-	public Customer(String cusId, String cusName, String cusPrdName, String cusPrdCount, String cusPurDate,
-			String cusOutDate, String cusComDate) {
+	public Customer(String cusId, String cusName, String cusGender, String cusAddr, String cusPhone,
+			String cusBirthdate, String cusEmail) {
 		super();
 		this.cusId = cusId;
 		this.cusName = cusName;
-		this.cusPrdName = cusPrdName;
-		this.cusPrdCount = cusPrdCount;
-		this.cusPurDate = cusPurDate;
-		this.cusOutDate = cusOutDate;
-		this.cusComDate = cusComDate;
+		this.cusGender = cusGender;
+		this.cusAddr = cusAddr;
+		this.cusPhone = cusPhone;
+		this.cusBirthdate = cusBirthdate;
+		this.cusEmail = cusEmail;
 	}
+
 	public String getCusId() {
 		return cusId;
 	}
@@ -49,36 +41,45 @@ public class Customer {
 		this.cusName = cusName;
 	}
 
-	public String getCusPrdName() {
-		return cusPrdName;
+	public String getCusGender() {
+		return cusGender;
 	}
 
-	public void setCusPrdName(String cusPrdName) {
-		this.cusPrdName = cusPrdName;
+	public void setCusGender(String cusGender) {
+		this.cusGender = cusGender;
 	}
 
-	public String getCusPrdCount() {
-		return cusPrdCount;
+	public String getCusAddr() {
+		return cusAddr;
 	}
 
-	public void setCusPrdCount(String cusPrdCount) {
-		this.cusPrdCount = cusPrdCount;
+	public void setCusAddr(String cusAddr) {
+		this.cusAddr = cusAddr;
 	}
 
-	public String getCusPurDate() {
-		return cusPurDate;
+	public String getCusPhone() {
+		return cusPhone;
 	}
 
-	public void setCusPurDate(String cusPurDate) {
-		this.cusPurDate = cusPurDate;
+	public void setCusPhone(String cusPhone) {
+		this.cusPhone = cusPhone;
 	}
 
-	public String getCusOutDate() {
-		return cusOutDate;
+	public String getCusBirthdate() {
+		return cusBirthdate;
 	}
 
-	public void setCusOutDate(String cusOutDate) {
-		this.cusOutDate = cusOutDate;
+	public void setCusBirthdate(String cusBirthdate) {
+		this.cusBirthdate = cusBirthdate;
 	}
 
+	public String getCusEmail() {
+		return cusEmail;
+	}
+
+	public void setCusEmail(String cusEmail) {
+		this.cusEmail = cusEmail;
+	}
+	
+	
 }

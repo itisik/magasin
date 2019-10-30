@@ -77,7 +77,9 @@ public class SendEmailServlet extends HttpServlet {
 			//이메일 내용
 			String code = request.getParameter("code_check"); //인증번호 값 받기
 			request.setAttribute("code", code); //인증번호 저장
-			msg.setText(code, "UTF-8");
+			msg.setContent("<img src=\"https://postfiles.pstatic.net/MjAxOTEwMjlfMjkg/MDAxNTcyMzQ1NTU2Nzk5.KZ25FtBPnZGHjCFc5XGMZ4LzeL5_RhSnXNQW7rohYRMg.3RtLtih2LCw4grPw9PV5GfFL2vXHn5ZiCuNG1lDRbjQg.PNG.hiyomama/magasin_logo.PNG?type=w773\" width=200px height=80px>"+
+			"<h3>MAGASIN 인증번호는 [ " + code + " ] 입니다.</h3>","text/html;charset=utf-8");
+			//msg.setText(code, "UTF-8");
 			
 			//이메일 헤더
 			msg.setHeader("content-Type", "text/html;charset=UTF-8");

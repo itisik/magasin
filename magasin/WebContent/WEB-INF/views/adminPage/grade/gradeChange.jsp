@@ -13,10 +13,7 @@
 		<div class="bottom-select">
 			<select name = "memberCondition" class = "memberCondition">
 				<option value = "none">--선택--</option>
-				<option value = "customerName">고객이름</option>
 				<option value = "customerId">고객아이디</option>
-				<option value = "totalMoney">총구매금액</option>
-				<option value = "totalCount">총구매횟수</option>
 			</select>
 		</div>
 		<div class="bottom-input">
@@ -50,20 +47,6 @@
 		<div class="list-content">
 			<table id="memberResult">
 				<tr>
-					<td>idid1</td>
-					<td>name1</td>
-					<td>238000</td>
-					<td>3</td>
-					<td>2019-10-01</td>
-					<td>2019-10-15</td>
-					<td>
-					<select name = "memberGrade" class = "memberGrade">
-						<option value = "none">--선택--</option>
-						<option value = "admin">admin</option>
-						<option value = "member">member</option>
-					</select>
-					</td>
-					<td><button>등급변경</button></td>
 				</tr>
 			</table>
 		</div>
