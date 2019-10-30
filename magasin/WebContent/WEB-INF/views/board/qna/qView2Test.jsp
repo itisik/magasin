@@ -73,7 +73,7 @@
 							<td>
 							<div class="product-div">
 							
-							<img src="/img/product/<%=q.getPrdSnImg() %>" width="150"><br>
+							<img src="/upload/photo/<%=q.getPrdSnImg() %>" width="150"><br>
 							<span><%=q.getPrdName() %></span>
 							
 							</div>

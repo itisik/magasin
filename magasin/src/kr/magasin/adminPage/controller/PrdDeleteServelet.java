@@ -34,7 +34,7 @@ public class PrdDeleteServelet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int prdId = Integer.parseInt(request.getParameter("prdId"));
 		String prdSnImgpath = request.getParameter("prdSnImgpath");
-		String prdImgpath = request.getParameter("prdImgpath");
+		String prdFilepath = request.getParameter("prdFilepath");
 		
 		
 		ProductService service = new ProductService();
@@ -42,12 +42,12 @@ public class PrdDeleteServelet extends HttpServlet {
 		
 		
 		if(result>0){
-			if(prdSnImgpath !=null && prdImgpath!=null){
+			if(prdSnImgpath !=null && prdFilepath!=null){
 				String saveDirectory = getServletContext().getRealPath("/upload/photo");
-				File defFile = new File(saveDirectory+prdSnImgpath+prdImgpath);
+				File defFile = new File(saveDirectory+prdSnImgpath+prdFilepath);
 			}
 			request.setAttribute("msg", "상품삭제 완료");
-			request.setAttribute("loc", "/prdSearch");
+			request.setAttribute("loc", "/");
 			
 		}else{
 			request.setAttribute("msg", "상품삭제 실패");

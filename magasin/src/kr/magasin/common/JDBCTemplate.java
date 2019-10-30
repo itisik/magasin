@@ -15,7 +15,7 @@ public class JDBCTemplate {
      Connection conn = null;
      try {
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.40.9:1521:xe", "MAGASIN", "TEAM3!");
+        conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "MAGASIN", "TEAM3!");
         //자동으로 commit을 지원해주는 기능을 해제
         conn.setAutoCommit(false);
      } catch (ClassNotFoundException e) {

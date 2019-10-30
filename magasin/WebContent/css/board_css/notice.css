@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* noticeList.css */	
+*{
+	font: 13px 'Poppins',"맑은 고딕",'MalgunGothic',Helvetica,sans-serif;
+}
 .noticeContainer {
 	width: 943px;
 	height:100%;

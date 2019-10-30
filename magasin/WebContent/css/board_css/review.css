@@ -146,3 +146,27 @@
 .review-content-div {
 	clear: both;
 }
+
+.review-contents{
+	padding-left: 20px;
+}
+.review-img-container {
+	border: 1px dashed black;
+	width: 100%;
+	padding: 10px;
+	margin-left: 10px;
+}
+
+.review-img-div {
+	width: 100px;
+	float: left;
+	margin-right: 10px;
+	margin-left: 15px;
+	border: 1px solid white;
+}
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	

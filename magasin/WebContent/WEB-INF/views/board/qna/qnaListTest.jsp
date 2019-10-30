@@ -204,7 +204,7 @@
 							<tr>
 								<td><%=q.getqCtgr() %></td>
 								<td>
-								<img src="/img/product/<%=q.getPrdSnImg() %>" width="70">
+								<img src="/upload/photo/<%=q.getPrdSnImg() %>" width="70">
 								<br>
 								<%=q.getPrdName() %>
 								</td>
@@ -263,14 +263,7 @@
 							%>
 							
 					</table>
-					<!-- 임시로 -->
-					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
-					<!-- 임시로 --><!-- 임시로 --><!-- 임시로 --><!-- 임시로 -->
-					<%if(m!=null){ %>
-								
-								<p id="writeQ"><a href="/qWrite" class="btn" id="write">Write</a></p>
-								
-								<%} %>
+				
 				</div>
 				
 				

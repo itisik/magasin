@@ -10,24 +10,24 @@
 
 	<div class="order-view">
 		<div class="view0-title">
-			<i class="fas fa-store"></i>&nbsp;전체주문&nbsp;<a href="#"><span>64</span></a>건
+			<i class="fas fa-store"></i>&nbsp;전체주문&nbsp;<a href="#"><span id="orderAll">0</span></a>건
 		</div>
 		<div class="view0-content"></div>
 		<div class="view1-title">
-			<i class="fas fa-box-open"></i>&nbsp;신규주문&nbsp;<a href="#"><span>11</span></a>건
+			<i class="fas fa-box-open"></i>&nbsp;신규주문&nbsp;<a href="#"><span id="order2">0</span></a>건
 		</div>
 		<div class="view1-content"></div>
 		<div class="view2-title">
-			<i class="fas fa-shipping-fast"></i>&nbsp;배송중&nbsp;<a href="#"><span>20</span></a>건
+			<i class="fas fa-shipping-fast"></i>&nbsp;배송중&nbsp;<a href="#"><span id="delivery3">0</span></a>건
 		</div>
 		<div class="view2-content"></div>
 		<div class="view3-title">
-			<i class="fas fa-people-carry"></i>&nbsp;배송완료&nbsp;<a href="#"><span>32</span></a>건
+			<i class="fas fa-people-carry"></i>&nbsp;배송완료&nbsp;<a href="#"><span id="complete2">0</span></a>건
 		</div>
 		<div class="view3-content"></div>
 		<div class="view4-title">
 			<i class="fas fa-ban"></i>&nbsp;취소|<i class="fas fa-undo-alt"></i>환불요청&nbsp;<a
-				href="#"><span>1</span></a>건
+				href="#"><span id = "cancle">0</span></a>건
 		</div>
 		<div class="view4-content"></div>
 	</div>
@@ -131,6 +131,30 @@
 
 <script type="text/javascript" src="/js/adminPage/orderAjax.js"></script>
 <script>
+const orderAll = $("#orderAll");
+const newOrder2 = $("#order2");
+const delivery3 = $("#delivery3");
+const complete3 = $("#complete3");
+const todayAccount3 = $("#todayAccount3");
+const cancle = $("#cancle");
+
+$.ajax({
+	url : "/count",
+	type : "get",
+	success : function(data) {
+		orderAll.html(data[0].newOrder + data[0].shippingOrder + data[0].comOrder);
+		newOrder2.html(data[0].newOrder);
+		delivery3.html(data[0].shippingOrder);
+		todayAccount3.html(data[0].todayMoney);
+		complete3.html(data[0].comOrder);
+		cancle.html(data[0].cancleOrder);
+	},
+	error: function(){
+		console.log("!!!");
+	}
+});
+
+
 	$(".timeIndex").change(function() {
 		var isAll = $(".timeIndex>option:selected").val();
 		

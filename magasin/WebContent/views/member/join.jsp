@@ -26,7 +26,6 @@
 
 </head>
 <body id="body1">
-	<div class=join-main>
 		<div class="wrapper">
 			<header>
 			<div class="header">
@@ -369,7 +368,6 @@
 			</footer>
 		</div>
 
-	</div>
 	<script
 		src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>

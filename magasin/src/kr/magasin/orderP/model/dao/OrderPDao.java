@@ -6,11 +6,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import kr.magasin.basket.model.vo.BasketYim;
 import kr.magasin.common.JDBCTemplate;
 import kr.magasin.orderP.model.vo.Order;
 import kr.magasin.orderP.model.vo.OrderP2;
+import kr.magasin.orderP.model.vo.OrderYim;
 
 public class OrderPDao {
+	//결제완료 됬을 떄 데이터가 들어가야조 
+	//짜봄 
+	 public int updateOrderP(Connection conn,int count, ArrayList<OrderYim> list) {
+		 int result = 0;
+		 PreparedStatement pstmt = null;
+		 String query = "INSERT INTO ORDER_P VALUES(ORDER_P_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, 1, ?, SYSDATE, SYSDATE, SYSDATE)";
+			try {
+				for(int i=0; i<count;i++) {	
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, list.get(i).getOrderUserId());
+					pstmt.setString(2, list.get(i).getOrderBuyerName());
+					pstmt.setString(3, list.get(i).getOrderBuyerPhone());
+					pstmt.setInt(4, list.get(i).getOrderPrdDtlId());
+					pstmt.setInt(5, list.get(i).getOrderPrdCount());
+					pstmt.setInt(6,list.get(i).getOrderMoney() );
+					pstmt.setString(7, list.get(i).getOrderAddr());
+					pstmt.setString(8, list.get(i).getOrderPay());
+					result = pstmt.executeUpdate();
+					if(result >0) {
+						conn.commit();
+					}else {
+						conn.rollback();
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+		  return result;
+	 } 
+	
+	
 	
 	public ArrayList<Order> orderAll(Connection conn, String id){
 		Order op = null;

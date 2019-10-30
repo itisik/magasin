@@ -10,8 +10,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
-
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/myPage/orderList.css"> 
 <link rel="stylesheet" href="/css/common_css/layout.css">
@@ -58,7 +56,7 @@
 	
 	<tr>
 		<td class="ol-list-1"><%= oP.getOrderDate() %><br>[<%=oP.getOrderNum() %>]</td>
-        <td class="ol-list-2"><a href="#"><img src="/img/myPage/product1.jpg"></a></td>
+        <td class="ol-list-2"><a href="#"><img src="/upload/photo/<%=oP.getPrdSnImgpath()%>"></a></td>
         <td class="ol-list-3">
         	<ul>
         		<li class="ol-list-3-li-1" ><strong><%=oP.getPrdName() %></strong></li>
@@ -77,7 +75,7 @@
         <% String status = ""; %>
 	   <% if(Integer.parseInt(oP.getOrderStatus())==4){ status="배송완료";%>        	
           <td class="ol-list-6"><%= status %><br>
-          <a href="/reviewWrite?PrdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
+          <a href="/reviewWrite?prdName=<%=oP.getPrdName()%>&prdSnImg=<%=oP.getPrdSnImgpath()%>">리뷰쓰기</a></td>
         <%}else{
         	switch((Integer.parseInt(oP.getOrderStatus()))){
             case 1:status="주문완료"; break;

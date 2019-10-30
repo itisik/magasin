@@ -10,6 +10,7 @@
   height: 30px;
   border-radius: 4px;
 }
+
 .productinput {
   border-radius: 4px;
 }
@@ -88,8 +89,8 @@
 .search1 > div {
   display: inline-block;
 }
-.searchname-1 {
-  padding-left: 100px;
+.searchname{
+	padding-right: 
 }
 .searchname-1 > select,
 #category,
@@ -107,9 +108,7 @@
 .search2 > div {
   display: inline-block;
 }
-.searchcategory2 {
-  padding-left: 84px;
-}
+
 #sebuspan {
   padding-left: 100px;
   padding-right: 80px;
@@ -157,6 +156,20 @@
   background: #4c4c4e;
   color: #f2f0f1;
   height: 15px;
+}
+
+#prdresult tbody tr td{
+	width:11%;
+}
+#prdresult tbody tr td button {
+	 border-radius: 4px;
+ 	 color: #fdfcf9;
+  	 background: green;
+}
+#prdresult tbody tr td a{
+	 border-radius: 4px;
+ 	 color: #fdfcf9;
+  	 background: green;
 }
 .productlisttabletr2 td button {
   border-radius: 4px;

@@ -76,6 +76,7 @@
 									<option value="환불">환불</option>
 									<option value="기타">기타</option>
 								</select>
+								
 								</td>
 							</tr>
 							<tr>

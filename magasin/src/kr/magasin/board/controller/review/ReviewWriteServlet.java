@@ -37,10 +37,11 @@ public class ReviewWriteServlet extends HttpServlet {
 		Member m = (Member)session.getAttribute("member");
 		if(m!= null) {
 			// test용 임시
-			String prdName= "짜증나는자켓";
-			String prdSnImg = "121912b148a317da45f35c16cf99ddf4.jpg";
+			String prdName= request.getParameter("prdName");
+			String prdSnImg = request.getParameter("prdSnImg");
 			request.setAttribute("prdName", prdName);
 			request.setAttribute("prdSnImg", prdSnImg);
+			System.out.println(prdSnImg);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/review/reviewWriteTest.jsp");
 			rd.forward(request, response);
 			

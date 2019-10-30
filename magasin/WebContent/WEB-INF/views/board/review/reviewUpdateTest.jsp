@@ -99,7 +99,7 @@
 							<th>
 									<div class="pdt-div">
 
-										<img src="/img/product/<%=r.getPrdSnImg() %>" width="150"><br>
+										<img src="/upload/photo/<%=r.getPrdSnImg() %>" width="150"><br>
 										<p id="productName" style="width:100%;text-align:center;"><%=r.getPrdName() %></p>
 										<input type="hidden" name="prdName" value="<%=r.getPrdName() %>">
 										<input type="hidden" name="prdSnImg" value="<%=r.getPrdSnImg() %>">

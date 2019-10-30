@@ -10,10 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- <link rel="stylesheet" href="/css/member/login.css"> -->
 <style type="text/css">
-body {
-	padding: 30px;
-	background-color: rgb(246, 246, 246);
-}
 
 nav, .window__btns {
 	display: flex;
@@ -22,7 +18,7 @@ nav, .window__btns {
 }
 
 .main {
-	width: 80%;
+	width: 943px;
 	display: flex;
 	justify-content: center;
 }
@@ -125,13 +121,60 @@ button {
 	align-items: center;
 	height: 90vh;
 }
+input {
+	outline:none;
+	background:none;
+}
+
 
 </style>
+<style>
+	.btn2>a {
+		color:black;
+	}
+	.btn2>a:hover{
+		color: navy;
+		font-weight:bold;
+		
+	}
+	.window__join{
+		padding:0;
+		width:348px;
+		height:70px;
+		
+		
+	}
+	.window__join>a{
+		display:block;
+		width:100%;
+		height:100%;
+		color:black;
+		font-size:15px;
+		text-align:center;
+		line-height:70px;
+	}
+	.window__join>a:hover{
+		background:black;
+		color:white;
+		font-weight:bold;
+	}
+	</style>
+<script>
+	$(document).ready(function(){
+		$("input").focusin(function(){
+			
+			$(this).css("border-bottom","2px solid black");
+		});
+		$("input").focusout(function(){
+			$(this).css("border-bottom","1px solid black");
+		});
+	});
+</script>
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common_css/layout.css">
 </head>
 <body id="body1">
-	<div class="login-main">
+	
 		<div class="wrapper">
 			<header>
 			<div class="header">
@@ -148,7 +191,7 @@ button {
 						<div class="main">
 							<div class="login-window">
 								<div class="window__title">
-									<a>회원 로그인</a>
+									<a style="font-size:16px;">회원 로그인</a>
 								</div>
 								<div class="window_login_input">
 									<div class="window__id">
@@ -159,7 +202,7 @@ button {
 									</div>
 								</div>
 								<div class="window__loginBtn">
-									<button type="submit" style="cursor: pointer">LOGIN</button>
+									<button type="submit" style="cursor: pointer" id="login-btn">LOGIN</button>
 								</div>
 								<div class="window__btns">
 									<div class="btn1">
@@ -168,14 +211,15 @@ button {
 									</div>
 									&nbsp;&nbsp;
 									<div class="btn2">
-										<a href="/views/member/searchId.jsp" style="cursor: pointer"
-											class="">아이디 찾기</a> / <a href="/views/member/searchPw.jsp"
-											style="cursor: pointer" class="">비밀번호 찾기</a>
+										<a href="/views/member/searchId.jsp" style="cursor: pointer;"
+											>아이디 찾기</a> / <a href="/views/member/searchPw.jsp"
+											style="cursor: pointer;" >비밀번호 찾기</a>
 									</div>
 								</div>
 								<div class="window__join">
-									<a href="/views/member/join.jsp" style="cursor: pointer">회원가입하기</a>
+									<a href="/views/member/join.jsp" style="cursor: pointer;">회원가입하기</a>
 								</div>
+								
 							</div>
 						</div>
 					</form>
@@ -189,6 +233,6 @@ button {
 			</div>
 			</footer>
 		</div>
-	</div>
+	
 </body>
 </html>

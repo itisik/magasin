@@ -12,7 +12,7 @@
   margin-top: 10px;
   border: 1px solid #cdcdcd;
   background-color: #ffffff;
-  height: 130px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   padding: 25px 35px;
@@ -104,13 +104,7 @@
 
 .tab8-content > .content-list > .list-title > table td,
 .tab8-content > .content-list > .list-content > table td {
-  width: 14.2857%;
+  width: 12.5%;
   height: 40px;
   line-height: 40px;
-}
-
-.tab8-content > .content-list > .list-title > table td:first-child,
-.tab8-content > .content-list > .list-content > table td:first-child {
-  width: 30px;
-  padding-left: 35px;
 }
