@@ -22,7 +22,7 @@
 		</div>
 		<div class="view2-content"></div>
 		<div class="view3-title">
-			<i class="fas fa-people-carry"></i>&nbsp;배송완료&nbsp;<a href="#"><span id="complete2">0</span></a>건
+			<i class="fas fa-people-carry"></i>&nbsp;배송완료&nbsp;<a href="#"><span id="complete3">0</span></a>건
 		</div>
 		<div class="view3-content"></div>
 		<div class="view4-title">
@@ -90,30 +90,19 @@
 			<div class="list-title">
 				<table>
 					<tr>
-						<td>
+						<td style="width: 2.5%">
 						<input type="checkbox" id="orderAll"
 							class="orderCheckBox">
 						</td>
-						<!-- 
-						<td>고객아이디</td>
-						<td>고객이름</td>
-						<td>배송주소</td>
-						<td>상품이름</td>
-						<td>상품개수</td>
-						<td>결제일시</td>
-						<td>발송일시</td>
-						<td>배송완료일시</td>
-						<td>현재 상태</td>
-						 -->
-						<td>고객아이디</td>
-						<td style="padding-right: 5px;">고객이름</td>
-						<td style="padding-right: 8px;">배송주소</td>
-						<td style="padding-right: 10px;">상품이름</td>
-						<td style="padding-right: 15px;">상품개수</td>
-						<td style="padding-right: 18px;">결제일시</td>
-						<td style="padding-right: 20px;">발송일시</td>
-						<td style="padding-right: 25px;">배송완료일시</td>
-						<td style="padding-right: 30px;">현재 상태</td>
+						<td style="width: 6%">아이디</td>
+						<td style="width: 5%">이름</td>
+						<td style="width: 35.5%">배송주소</td>
+						<td style="width: 10%">상품이름</td>
+						<td style="width: 5%">상품개수</td>
+						<td style="width: 9.5%">결제일시</td>
+						<td style="width: 10%">발송일시</td>
+						<td style="width: 9%">배송완료일시</td>
+						<td style="width: 10%">현재 상태</td>
 					</tr>
 				</table>
 			</div>
