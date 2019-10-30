@@ -90,7 +90,7 @@ public class ProductLeeService {
 
 		while (!(i++ > pageNaviSize || pageNo > totalPage)) {
 			if (reqPage == pageNo) {
-				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
+				pageNavi += "<span class = 'selectPage'>" + pageNo + "</span>";
 			} else {
 				pageNavi += "<a class= 'btn paging-btn' href ='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage="
 						+ pageNo + "'>" + pageNo + "</a>";
@@ -160,7 +160,7 @@ public class ProductLeeService {
 
 		while (!(i++ > pageNaviSize || pageNo > totalPage)) {
 			if (reqPage == pageNo) {
-				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
+				pageNavi += "<span class = 'selectPage'>" + pageNo + "</span>";
 			} else {
 				pageNavi += "<a class= 'btn paging-btn' href ='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender
 						+ "&reqPage=" + pageNo + "'>" + pageNo + "</a>";
@@ -222,7 +222,7 @@ public class ProductLeeService {
 
 		while (!(i++ > pageNaviSize || pageNo > totalPage)) {
 			if (reqPage == pageNo) {
-				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
+				pageNavi += "<span class = 'selectPage'>" + pageNo + "</span>";
 			} else {
 				pageNavi += "<a class= 'btn paging-btn' href ='/newProduct?&gender=" + gender + "&reqPage=" + pageNo + "'>"
 						+ pageNo + "</a>";

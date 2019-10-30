@@ -14,7 +14,25 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <link rel="stylesheet" href="/css/prdPage/lists.css">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	font-size:15px;
+	
+}
+</style>	
 </head>
+
 <body id="body1">
 
 		<div class="wrapper">
@@ -94,15 +112,7 @@
     
      <div class="move" style="clear:both;"><%=pageNavi %></div> 	
 
-	<style>
-.paging-btn {
-	color: black;
-}
-.selectPage{
-	color: purple;
-	
-}
-</style>				
+			
 
 					</div>
 				</div>
