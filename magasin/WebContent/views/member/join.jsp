@@ -664,9 +664,9 @@
 	   //=======================================================================================//
 	   // submit 유효성 검사 //
 	   function checkz(){
-		   var getId = RegExp(/^[0-9a-z].{8,15}$/);
+		   var getId = RegExp(/^[0-9a-z]{8,15}$/);
 		   var getName = RegExp(/^[가-힣]+$/);
-		   var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		   var getMail = RegExp(/^[a-z0-9_\.\-]+@[a-z0-9\-]+\.[a-z0-9\-]+/);
 		   //var getCheck= RegExp(/^[a-z0-9]{8,15}$/);
 		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]).{6,15}$/);
 		   //var getPw = RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,15}$/);
@@ -722,9 +722,8 @@
 		   //비밀번호 재입력 확인 같은지
 		   if($("#pw").val()!=($("#pw2").val())){
 			   alert("비밀번호 확인란을 다시 입력해주세요.");
-			   $("#pw").val("");
 			   $("#pw2").val("");
-			   $("#pw").focus();
+			   $("#pw2").focus();
 			   return false;
 		   }
 		   //이름 공백 확인
