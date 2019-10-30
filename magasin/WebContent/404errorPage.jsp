@@ -27,7 +27,7 @@
 <body>
 	<div class="e1">
 		<div>
-			<img src="img/e1.jpg" id="bg" alt="404">
+			<img src="/img/e1.jpg" id="bg" alt="404">
 		</div>
 	</div>
 </body>
