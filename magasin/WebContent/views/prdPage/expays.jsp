@@ -1,4 +1,5 @@
 
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="javax.print.attribute.standard.PDLOverrideSupported"%>
 <%@page import="kr.magasin.prdPaging.model.vo.PaydcutLee"%>
 <%@page import="kr.magasin.productDtl.model.vo.ProductDtl"%>
@@ -118,14 +119,34 @@
                 <tr>
                     <td>주소<img src="/img/product/ico_required.gif"></td>
    
+                        <% 
+   String addrStr = m.getAddr();
+   String[] addrList = new String[4];
+   if(addrStr == null) {
+      addrStr="0,0,0,0";
+      System.out.println("널이다!!!!");
+      StringTokenizer str = new StringTokenizer(addrStr,",");
+      int countTokens = str.countTokens();
+      for(int i = 0;i<countTokens;i++) {
+         addrList[i] = str.nextToken();}
+   }else {
+      
+   StringTokenizer str = new StringTokenizer(addrStr,",");
+   int countTokens = str.countTokens();
+   for(int i = 0;i<countTokens;i++) {
+      addrList[i] = str.nextToken();
+   }
+   } 
+   %>
                              <td>
-                                <input type="text" name="addr1"  > <br>
-                                <input  type="text" name="addr2" ><br>
-                                <input  type="text" name="addr3" ><br>
-                                <input  type="text" name="addr4" >
+                                <input type="text" name="addr1" id="addr1" value="<%=addrList[3]%>"> <br>
+                                <input  type="text" name="addr2" id="addr2" value="<%=addrList[0]%>"><br>
+                                <input  type="text" name="addr3" id="addr3" value="<%=addrList[1]%>"><br>
+                                <input  type="text" name="addr4" id="addr4" value="<%=addrList[2]%>">
                             </td>
 
                 </tr>
+               
                 <tr>
                     <td>휴대전화<img src="/img/product/ico_required.gif"></td>
                     <td><input type="text" name="phone1" value="<%=m.getPhone()%>"></td>
@@ -136,36 +157,7 @@
                 </tr>
             </table>
         </div>
-        <div class="orderaddr">
-            <p>배송지 정보</p>
-            <p><img src="/img/product/ico_required.gif">필수 입력사항</p>
-        </div>
-        <table class="table-bordered addrInfor">
-            <tr>
-                <td>배송지 선택</td>
-                <td><input type="radio" name="addr5" checked="checked" value="oldA" >주문자 정보와동일
-                    <input type="radio" name="addr5" value="newA" >새로운 배송지
-                </td>
-            </tr>
-            <tr>
-                <td>받으시는 분<img src="/img/product/ico_required.gif"></td>
-                <td><input  type="text" name="name2" value=""></td>
-            </tr>
-            <tr>
-                <td>주소<img src="/img/product/ico_required.gif"></td>
-               <td>
-                                <input type="text" name="addr7" id='postCode'  placeholder="우편번호" readonly="readonly">
-                                <button id="addrSearchBtn" onclick="addrSearch();" class="btn" type="button">우편번호</button><br>
-                                <input id="roadAddr" type="text" name="addr8" placeholder="기본 도로명 주소"><br>
-                                <input id="jibunAddr" type="text" name="addr9" placeholder="상세주소"><br>
-                                <input id="addr_extraAddress" type="text" name="addr10" placeholder="참고항목">
-                            </td>
-            </tr>
-            <tr>
-                <td>휴대전화</td>
-                <td><input type="text" name="phone2" value=""></td>
-            </tr>
-        </table>
+    
         <div class="orderpay">
             <p>결제 예정금액</p>
         </div>
@@ -184,7 +176,7 @@
         <div class="orderpays">
             <p>결제수단</p>
         </div>
-        <table class="table-bordered order-pays">
+        <table class="table-bordered order-pays" style="margin-bottom:10px;">
             <tr id="payy" >
                 <th><label><input type="radio" value="<%=sum %>"></label>카드결제</th>
                 <td rowspan="3"><p>카드결제 최종금액</p>
@@ -253,7 +245,8 @@
                var r4 = '카드 승인 번호' +rsp.apply_num;
                alert(msg);
                $("#payResult").html(r1+"<br>"+r2+"<br>"+r3+"<br>"+r4);
-               location.href='/orderComplete?prdId=<%=pay.getPrdId()%>&size=<%=pay.getPrdDtlSize()%>&color=<%=pay.getPrdDtlColor()%>&amount=<%=pay.getAmount()%>';
+               location.href="/";
+               <%-- location.href='/orderComplete?memberId=<%=m.getId()%>&prdId=<%=pay.getPrdId()%>&size=<%=pay.getPrdDtlSize()%>&color=<%=pay.getPrdDtlColor()%>&amount=<%=pay.getAmount()%>'; --%>
             }else{
                $("#payResult").html('결제실패<br>'+'에러내용: '+rsp.error);
              }

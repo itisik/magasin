@@ -192,6 +192,44 @@ public class ReviewDao {
 		return result;
 	}
 
+	public ArrayList<Review> searchReview(Connection conn,String memberId) {
+		// TODO Auto-generated method stub
+		ArrayList<Review> list = new ArrayList<Review>();
+		Review n = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from review where review_writer = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				n = new Review();
+				n.setPrdName(rset.getString("prd_name"));
+				n.setPrdSnImg(rset.getString("prd_sn_img"));
+				n.setReviewCont(rset.getString("review_cont"));
+				n.setReviewCount(rset.getInt("review_count"));
+				n.setReviewDate(rset.getDate("review_date"));
+				n.setReviewFilename1(rset.getString("review_filename1"));
+				n.setReviewFilepath1(rset.getString("review_filepath1"));
+				n.setReviewFilename2(rset.getString("review_filename2"));
+				n.setReviewFilepath2(rset.getString("review_filepath2"));
+				n.setReviewNo(rset.getInt("review_no"));
+				n.setReviewPoint(rset.getInt("review_point"));
+				n.setReviewTitle(rset.getString("review_title"));
+				n.setReviewWriter(rset.getString("review_writer"));
+				list.add(n);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
 	
 
 

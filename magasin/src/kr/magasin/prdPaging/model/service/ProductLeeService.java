@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.magasin.member.model.dao.MemberDao;
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
+import kr.magasin.member.model.vo.Member;
+import kr.magasin.orderP.model.vo.Order;
+import kr.magasin.orderP.model.vo.OrderYim;
 import kr.magasin.prdPaging.model.dao.ProductLeeDao;
 import kr.magasin.prdPaging.model.vo.PageDataLee;
 import kr.magasin.prdPaging.model.vo.ProductAll;
@@ -75,7 +79,7 @@ public class ProductLeeService {
 
 		// 이전 버튼 생성
 		if (pageNo != 1) {
-			pageNavi += "<a class ='btn' href='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage="
+			pageNavi += "<a class ='btn paging-btn' href='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage="
 					+ (pageNo - 1) + "'><img src=\"/img/product/prnx2.jpg\"></a>"; //
 		}
 		int i = 1;
@@ -88,13 +92,13 @@ public class ProductLeeService {
 			if (reqPage == pageNo) {
 				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
 			} else {
-				pageNavi += "<a class= 'btn' href ='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage="
+				pageNavi += "<a class= 'btn paging-btn' href ='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage="
 						+ pageNo + "'>" + pageNo + "</a>";
 			}
 			pageNo++;
 		}
 		if (pageNo <= totalPage) {
-			pageNavi += "<a class = 'btn' href ='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage=" + pageNo
+			pageNavi += "<a class = 'btn paging-btn' href ='/productPage?ctgr=" + ctgr + "&gender=" + gender + "&reqPage=" + pageNo
 					+ "'><img src=\"/img/product/prnx3.jpg\"></a>";
 		}
 
@@ -145,7 +149,7 @@ public class ProductLeeService {
 
 		// 이전 버튼 생성
 		if (pageNo != 1) {
-			pageNavi += "<a class ='btn' href='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender + "&reqPage="
+			pageNavi += "<a class ='btn paging-btn' href='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender + "&reqPage="
 					+ (pageNo - 1) + "'><img src='/img/product/prnx2.jpg'></a>"; //
 		}
 		int i = 1;
@@ -158,13 +162,13 @@ public class ProductLeeService {
 			if (reqPage == pageNo) {
 				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
 			} else {
-				pageNavi += "<a class= 'btn' href ='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender
+				pageNavi += "<a class= 'btn paging-btn' href ='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender
 						+ "&reqPage=" + pageNo + "'>" + pageNo + "</a>";
 			}
 			pageNo++;
 		}
 		if (pageNo <= totalPage) {
-			pageNavi += "<a class = 'btn' href ='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender + "&reqPage="
+			pageNavi += "<a class = 'btn paging-btn' href ='/subCtgrSearch?subCtgr=" + subCtgr + "&gender=" + gender + "&reqPage="
 					+ pageNo + "'><img src='/img/product/prnx3.jpg'></a>";
 		}
 
@@ -207,7 +211,7 @@ public class ProductLeeService {
 
 		// 이전 버튼 생성
 		if (pageNo != 1) {
-			pageNavi += "<a class ='btn' href='/newProduct?&gender=" + gender + "&reqPage=" + (pageNo - 1)
+			pageNavi += "<a class ='btn paging-btn' href='/newProduct?&gender=" + gender + "&reqPage=" + (pageNo - 1)
 					+ "'><img src=\"/img/product/prnx2.jpg\"></a>"; //
 		}
 		int i = 1;
@@ -220,13 +224,13 @@ public class ProductLeeService {
 			if (reqPage == pageNo) {
 				pageNavi += "<span class = 'seletPage'>" + pageNo + "</span>";
 			} else {
-				pageNavi += "<a class= 'btn' href ='/newProduct?&gender=" + gender + "&reqPage=" + pageNo + "'>"
+				pageNavi += "<a class= 'btn paging-btn' href ='/newProduct?&gender=" + gender + "&reqPage=" + pageNo + "'>"
 						+ pageNo + "</a>";
 			}
 			pageNo++;
 		}
 		if (pageNo <= totalPage) {
-			pageNavi += "<a class = 'btn' href ='/newProduct?&gender=" + gender + "&reqPage=" + pageNo
+			pageNavi += "<a class = 'btn paging-btn' href ='/newProduct?&gender=" + gender + "&reqPage=" + pageNo
 					+ "'><img src=\"/img/product/prnx3.jpg\"></a>";
 		}
 
@@ -252,15 +256,26 @@ public class ProductLeeService {
 		return sizes;
 	}
 
-	public int orderComplete(int prdId, String size, int amount, String color) {
+	public int orderComplete(String memberId ,int prdId, String size, int amount, String color) {
 		// TODO Auto-generated method stub
 		Connection conn = JDBCTemplate.getConnection();
-		int result = dao.orderComplete(conn,prdId,size,amount,color);
+		ProductLee prd = dao.searchDtlId(conn,prdId,size,color); // price랑 dtl_ID 받아올거
+		MemberDao memDao = new MemberDao();
+		Member m = memDao.selectOne(conn, memberId);
+		int result = dao.addOrderP(conn,prd,m,amount);
+	
 		if(result >0) {
-			JDBCTemplate.commit(conn);
+			int result2 = dao.orderComplete(conn,prdId,size,amount,color);
+			if(result2>0) {
+				
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
+		JDBCTemplate.close(conn);
 		return result;
 	}
 	

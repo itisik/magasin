@@ -122,7 +122,7 @@
 					</li>
 					<li class="myp-div3-ul-li4">
 						<h3>
-							<img src="/img/myPage/myp-order.png"> <a href="#">Board</a>
+							<img src="/img/myPage/myp-order.png"> <a href="/boardSearch?memberId=<%=member.getId()%>">Board</a>
 						</h3> <pre>게시물 관리</pre>
 						<p>
 							고객님께서 작성하신 게시물을 <br>관리하는 공간입니다.

@@ -87,5 +87,14 @@ public class ReviewService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	public ArrayList<Review> searchReview(String memberId) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Review> list = dao.searchReview(conn,memberId);
+		if(list.isEmpty()) {
+			System.out.println("리뷰쓰지도 않았으면서,,");
+		}
+		return list;
+	}
 
 }

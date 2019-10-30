@@ -26,6 +26,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/prdPage/lists.css">
 <link rel="stylesheet" href="/css/common_css/layout.css">
+<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
+</style>
 </head>
 <body id="body1">
 

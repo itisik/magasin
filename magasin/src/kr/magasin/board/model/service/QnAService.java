@@ -250,6 +250,19 @@ public class QnAService {
 		JDBCTemplate.close(conn);		
 		return result;
 	}
+	
+	public PageData searchBoard(String memberId) {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<QEtc> qEtcList = dao.searchQEtc(conn,memberId);
+		ArrayList<QPrd> qPrdList = dao.searchQPrd(conn,memberId);
+		ArrayList<AEtc> aEtcList = dao.aEtcList(conn);
+		ArrayList<APrd> aPrdList = dao.aPrdList(conn);
+		
+		PageData pd = new PageData(null, null, null, qEtcList, aEtcList, qPrdList, aPrdList);
+		JDBCTemplate.close(conn);
+		return pd;
+	}
 
 
 }

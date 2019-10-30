@@ -70,12 +70,13 @@ public class ReviewUpdateEndServlet extends HttpServlet {
 				File delFile = new File(saveDirectory+"/"+oldFilepath1);
 				System.out.println(delFile.delete()?"성공":"실패");
 			}
-		}else if(filename2!=null) {
+		}
+		if(filename2!=null) {
 			if(oldFilename2!=null){
 				File delFile = new File(saveDirectory+"/"+oldFilepath2);
 				System.out.println(delFile.delete()?"성공":"실패");
 			}
-
+			
 		}else {
 			if(status1.equals("stay")) {
 				filename1 = oldFilename1;

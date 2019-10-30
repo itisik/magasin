@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import kr.magasin.basket.model.vo.BasketT;
 import kr.magasin.common.JDBCTemplate;
+import kr.magasin.member.model.vo.Member;
 import kr.magasin.orderP.model.vo.OrderP2;
 import kr.magasin.prdPaging.model.vo.ProductAll;
 import kr.magasin.prdPaging.model.vo.ProductLee;
@@ -629,6 +630,63 @@ public class ProductLeeDao {
 		} finally {
 			JDBCTemplate.close(pstmt);
 		}
+		return result;
+	}
+
+
+
+	public ProductLee searchDtlId(Connection conn, int prdId, String size, String color) {
+		// TODO Auto-generated method stub
+		ProductLee p = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select prd_dtl_id, prd_price from product_dtl where prd_dtl_size=? and prd_id = ? and prd_dtl_color= ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, size);
+			pstmt.setInt(2, prdId);
+			pstmt.setString(3, color);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				/*prdDtlId = rset.getInt("prd_dtl_id");*/
+				p.setPrdDtlId(rset.getInt("prd_dtl_id"));
+				p.setPrdPrice(rset.getInt("prd_price"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return p;
+	}
+
+
+
+	public int addOrderP(Connection conn, ProductLee prd, Member m, int amount) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "insert into order_p values(ORDER_P_SEQ.nextval,?,?,?,?,?,?,?,1,'card',sysdate,null)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,m.getId());
+			pstmt.setString(2, m.getName());
+			pstmt.setString(3,m.getPhone());
+			pstmt.setInt(4, prd.getPrdDtlId());
+			pstmt.setInt(5, amount);
+			pstmt.setInt(6, prd.getPrdPrice());
+			pstmt.setString(7, m.getAddr());
+			result= pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

@@ -661,6 +661,70 @@ public class QnADao {
 		}
 		return result ;
 	}
+	public ArrayList<QEtc> searchQEtc(Connection conn, String memberId) {
+		// TODO Auto-generated method stub
+		ArrayList<QEtc> list = new ArrayList<QEtc>();
+		QEtc q = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query="select * from q_etc where q_writer =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				q = new QEtc();
+				q.setqCont(rset.getString("q_cont"));
+				q.setqCtgr(rset.getString("q_ctgr"));
+				q.setqDate(rset.getDate("q_date"));
+				q.setqIsA(rset.getInt("q_is_a"));
+				q.setqNo(rset.getInt("q_no"));
+				q.setqTitle(rset.getString("q_title"));
+				q.setqWriter(rset.getString("q_writer"));
+				list.add(q);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+	public ArrayList<QPrd> searchQPrd(Connection conn, String memberId) {
+		// TODO Auto-generated method stub
+		ArrayList<QPrd> list = new ArrayList<QPrd>();
+		QPrd q = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query="select * from q_prd where q_writer =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				q = new QPrd();
+				q.setqCont(rset.getString("q_cont"));
+				q.setqCtgr(rset.getString("q_ctgr"));
+				q.setqDate(rset.getDate("q_date"));
+				q.setqIsA(rset.getInt("q_is_a"));
+				q.setqNo(rset.getInt("q_no"));
+				q.setqTitle(rset.getString("q_title"));
+				q.setqWriter(rset.getString("q_writer"));
+				q.setPrdName(rset.getString("prd_name"));
+				q.setPrdSnImg(rset.getString("prd_sn_img"));
+				list.add(q);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
 
 
 }

@@ -118,7 +118,15 @@
    	</div>
     
      <div class="move" style="clear:both;"><%=pageNavi %></div> 
-
+<style>
+.paging-btn {
+	color: black;
+}
+.selectPage{
+	color: purple;
+	
+}
+</style>
 </div>
                
             </div>

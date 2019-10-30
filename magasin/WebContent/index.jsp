@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>**INCLUDE 틀**</title>
+<title>MAGASIN</title>
 <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/css/common_css/layout.css">
