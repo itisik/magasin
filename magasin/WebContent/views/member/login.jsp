@@ -10,10 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- <link rel="stylesheet" href="/css/member/login.css"> -->
 <style type="text/css">
-body {
-	padding: 30px;
-	background-color: rgb(246, 246, 246);
-}
 
 nav, .window__btns {
 	display: flex;

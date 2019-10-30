@@ -8,10 +8,7 @@
 <link rel="stylesheet" href="/css/common_css/layout.css">
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <style type="text/css">
-   body {
-        padding: 60px;
-        background-color: rgb(246,246,246);
-    }
+
     .main{
        text-align: center;
       	width:350px;

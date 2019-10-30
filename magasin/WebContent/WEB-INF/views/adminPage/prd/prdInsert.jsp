@@ -126,7 +126,6 @@
                           <option value="etc">기타</option>
                           <!-- woman top -->
                           <option value="t">티셔츠</option>
-
                           <option value="blouse">블라우스</option>
                           <option value="etc">etc</option>
                           <!-- man top -->
@@ -332,6 +331,9 @@
       					$("#category option:eq(2)").hide();
       					$("#category option:eq(4)").hide();
       					$("#category option:eq(6)").hide();
+      					$("#category option:eq(8)").hide();
+      					$("#category option:eq(9)").hide();
+      					$("#category option:eq(10)").hide();
       					
       				}else if(state2 =='m'){
       					$('#category >option').show();
@@ -340,6 +342,10 @@
       					$("#category option:eq(3)").hide();
       					$("#category option:eq(5)").hide();
       					$("#category option:eq(7)").hide();
+      					$("#category option:eq(8)").hide();
+      					$("#category option:eq(9)").hide();
+      					$("#category option:eq(10)").hide();
+      					
 
       				}else if(state2 =='c'){
       					$('#category >option').show();
@@ -380,7 +386,7 @@
               			$('#categorysemi2 option:eq(19)').hide();
               			$('#categorysemi2 option:eq(20)').hide();
               		}else if(state == 'top_m'){
-              			('#categorysemi2 >option').show();
+              			$('#categorysemi2 >option').show();
               			$('#categorysemi2 option:eq(0)').prop("selected",true);
               			$('#categorysemi2 option:eq(1)').hide();
               			$('#categorysemi2 option:eq(2)').hide();

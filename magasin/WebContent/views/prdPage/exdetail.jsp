@@ -26,7 +26,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-
+<style>
+.basket-btn{
+	border:none;
+	background:none;
+}
+</style>
 <!-- 경필 CSS -->
 <!--test-->
 <link rel="stylesheet" href="/css/prdPage/exdetail.css">
@@ -108,7 +113,7 @@
 									});
 								</script>
 								<div class="detailBag">
-									<div><button type="button" name="button"  onclick="goToBasket();"><img src="/img/product/topCartBtn.gif">ADD
+									<div><button type="button" name="button" class="basket-btn" onclick="goToBasket();"><img src="/img/product/topCartBtn.gif">ADD
 										TO BAG</button></div>
 										<!-- product buy now -> submit btn
 											product add -> button type btn -->
@@ -120,14 +125,49 @@
 
 								</div>
                                     <!--상품문의하기 버튼과 배송비에관한 문구추가-->
-								    <a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn">상품 문의하기</a>
-                                  <div class="delivery"><div>Magasin 배송</div>
-                               <div>100원을 사도 무료배송!!</div>
+  <style>
+  
+  .qBtn{
+  	margin-left : 250px;
+  	margin-top: 120px;
+  	border: 1px dashed brown;
+  	background:none;
+  	font-size:18px;
+  }
+  .qBtn:hover{
+  	background:white;
+  }
+  .neon {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+
+@keyframes neon {
+  0%,
+  100% {
+    color: black;
+  }
+  50% {
+    color: brown;
+  }
+  
+}
+
+                          </style>
+								   
+                                  <div class="delivery">
+                                  <div>Magasin 배송</div>
+                               	<div>100원을 사도 무료배송!!</div>
+                               
 							</div>
+ 						<a href="/qWrite?prdName=<%=pdI.getPrdName()%>&prdSnImg=<%=pdI.getPrdSnImgpath() %>" class="btn btn-default qBtn neon">상품 문의하기</a>							
 						</div>
 
 					   </form>
+					   
 					</div>
+					
 				</div>
 					<div class="detailView">
 
@@ -161,6 +201,8 @@
 						</div>
 					</div> -->
 				</div>
+				
+				
 			</div>
 		</div>
 		</section>

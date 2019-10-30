@@ -609,5 +609,32 @@ public class ProductLeeDao {
 		return sizes;
 	}
 
+
+
+	public int orderComplete(Connection conn, int prdId, String size, int amount, String color) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update product_dtl set prd_dtl_count = (prd_dtl_count-?) where prd_Id=? and prd_dtl_size=? and prd_dtl_color =?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, amount);
+			pstmt.setInt(2, prdId);
+			pstmt.setString(3, size);
+			pstmt.setString(4, color);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	
+
 	
 }

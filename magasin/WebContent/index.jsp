@@ -28,26 +28,41 @@
 					<div class="mainContent" style="width: 943px;">
 						<div id="slider">
 							<div class="slider__item">
-								<h1>사진1</h1>
+								<img src="/img/common_img/main_img1.jpg" width="100%" height="100%">
 							</div>
 							<div class="slider__item">
-								<h1>사진2</h1>
+								<img src="/img/common_img/main_img2.jpg" width="100%" height="100%">
 							</div>
 							<div class="slider__item">
-								<h1>사진3</h1>
+								<img src="/img/common_img/main_img3.jpg" width="100%" height="100%">
+							</div>
+							 <div class="slider__item">
+								<img src="/img/common_img/main_img4.png" width="100%" height="100%">
 							</div>
 							<div class="slider__item">
-								<h1>사진4</h1>
+								<img src="/img/common_img/main_img5.png" width="100%" height="100%">
+							</div> 
+						</div>
+
+						<div class="mainContent-product" style="margin-top : 50px;">
+							<div class="main-product-link" style="margin-right:20px;">
+							<a href="/productPage?ctgr=outer_w&gender=w"><img src="/img/common_img/outer_w.jpg" width="470px" height="600px"></a>
+							<span style="font-size:16px;"> WOMAN OUTER </span>
 							</div>
-							<div class="slider__item">
-								<h1>사진5</h1>
+							<div class="main-product-link">
+							<a href="/productPage?ctgr=top_w&gender=w"><img src="/img/common_img/top_w.jpg" width="470px" height="600px"></a>
+							<span style="font-size:16px;"> WOMAN TOP </span>
 							</div>
 						</div>
-						<div class="mainContent-product">
-							<div>첫번째 상품</div>
-							<div>두번째 상품</div>
-							<div>세번째 상품</div>
-							<div>네번째 상품</div>
+						<div class="mainContent-product" style="margin-top : 50px;">
+							<div class="main-product-link" style="margin-right:20px;"><a href="/productPage?ctgr=top_m&gender=m"><img src="/img/common_img/top_m1.png" width="470px" height="600px"></a>
+							<br><span style="font-size:16px;"> MAN TOP </span>
+							</div>
+							 <div class="main-product-link">
+							<div class="main-product-link"><a href="/productPage?ctgr=outer_m&gender=m"><img src="/img/common_img/outer_m.png" width="470px" height="600px"></a>
+							<br><span style="font-size:16px;"> MAN OUTER </span>
+							</div>
+							</div> 
 						</div>
 					</div>
 				</div>

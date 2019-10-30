@@ -48,7 +48,7 @@
 						</tr>
 						<tr>
 							<th>Writer</th>
-							<td><%=m.getName() %><input type="hidden" value="<%=m.getName()%>" name="reviewWriter"></td>
+							<td><%=m.getId() %><input type="hidden" value="<%=m.getId()%>" name="reviewWriter"></td>
 						</tr>
 						<tr>
 							<th>별점</th>

@@ -126,7 +126,7 @@
          display:flex;
          justify-content:space-between;
      }
-     .detailBag div>a ,#pay-btn{
+     .detailBag div>a ,#pay-btn,.basket-btn{
          padding: 0px 3px 0px 12px;
          color: black;
          font-size: 19Px;

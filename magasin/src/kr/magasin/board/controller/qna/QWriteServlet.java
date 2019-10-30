@@ -38,17 +38,24 @@ public class QWriteServlet extends HttpServlet {
 		String prdSnImg = request.getParameter("prdSnImg");*/
 		
 		//임시
-
-		String prdName = request.getParameter("prdName");
-		String prdSnImg = request.getParameter("prdSnImg");
-		if(prdName==null&&prdSnImg==null) {
-			response.sendRedirect("/qnaList");
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("member");
+		if(m!=null) {
+			String prdName = request.getParameter("prdName");
+			String prdSnImg = request.getParameter("prdSnImg");
+			if(prdName==null&&prdSnImg==null) {
+				response.sendRedirect("/qnaList");
+			}else {
+				request.setAttribute("prdName", prdName);
+				request.setAttribute("prdSnImg", prdSnImg);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/qWrite2Test.jsp");
+				rd.forward(request, response);
+			}	
 		}else {
-			request.setAttribute("prdName", prdName);
-			request.setAttribute("prdSnImg", prdSnImg);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/board/qna/qWrite2Test.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("/views/member/login.jsp");
+			
 		}
+		
 	}
 
 	/**
